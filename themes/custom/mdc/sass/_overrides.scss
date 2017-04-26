@@ -20,40 +20,51 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Colours
 
-$paleBlue: #e5eeff;
-$lighterBlue: #80aaff;
-$lightBlue: #05f;
-$darkBlue: #000040;
 $paleOrange: #ffdfbf;
 $orange: #ff8200;
 $red: #c00;
-$pink: #ffe5f2;
-$paleGreen: #e5ffe5;
-$paleYellow: #ffffe5;
+$darkRed: #900;
+$chocolate: #311;
+
+$paleBlue: #e5eeff;
+$grey: #eee;
+
+$calendar1: #BFFFCF;
+$calendar2: #DFFFBF;
+$calendar3: #FFEFBF;
+$calendar4: #FFBFBF;
+$calendar5: #FFBFEF;
+$calendar6: #DFBFFF;
+$calendar7: #BFCFFF;
+$calendar8: #BFFFFF;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Elements
 
 body {
-  background-color: $darkBlue;
-  margin-top: 0;
+  background-color: $chocolate;
+  margin-top: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: $red;
 }
 
+h2 {
+  font-size: 25px;
+}
+
 a {
-  color: $lightBlue;
+  color: $red;
 
   &:active,
   &:focus,
   &:visited {
-    color: $lightBlue;
+    color: $red;
   }
 
   &:hover {
-    color: $lightBlue;
+    color: $orange;
     text-decoration: underline;
   }
 }
@@ -85,12 +96,10 @@ sub {
 // Footer
 
 .footer {
-  background-color: $darkBlue;
   color: white;
 
   a,
   .nav > li > a {
-    color: $lighterBlue;
     display: inline-block;
 
     &:hover {
@@ -103,27 +112,26 @@ sub {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Blocks
 
-#block-mdc-main-menu {
-  margin: 0 10px;
-
-  > ul {
-    background-color: $darkBlue;
-    width: 100%;
-
-    a {
-      color: white;
-    }
-
-    > li > a.is-active {
-      background-color: $lightBlue;
-    }
-
-    > li > a:hover,
-    > li > a:focus {
-      background-color: $red;
-    }
-  }
-}
+//#block-mdc-main-menu {
+//  margin: 0 10px;
+//
+//  > ul {
+//    background-color: $darkBlue;
+//    width: 100%;
+//
+//    a {
+//      color: white;
+//    }
+//
+//    > li > a.is-active {
+//      background-color: $lightBlue;
+//    }
+//
+//    > li > a:focus {
+//      background-color: $red;
+//    }
+//  }
+//}
 
 #block-booknavigation {
   margin: 15px 0;
@@ -155,20 +163,17 @@ sub {
 
   .top-page {
     font-weight: bold;
+    font-size: 16px;
   }
 
   .current-page {
-    color: $red;
+    color: $orange;
     font-weight: bold;
   }
 
-  .unpublished-page {
-    color: silver;
-  }
-
-  a:hover {
-    color: red;
-  }
+  //.unpublished-page {
+  //  color: silver;
+  //}
 }
 
 #block-imrs {
@@ -195,12 +200,12 @@ sub {
 }
 
 #left-sidebar {
-  background-color: $paleBlue;
+  background-color: $paleOrange;
   border-radius: 10px 0 0 10px;
 
   .block {
     padding: 20px 0;
-    border-bottom: solid 1px $lighterBlue;
+    border-bottom: solid 1px $orange;
 
     .field--name-body {
       margin-bottom: 0;
@@ -240,19 +245,27 @@ sub {
 
     td,
     th {
-      border: solid 1px silver;
+      border: solid 1px $orange;
       padding: 5px;
     }
 
-    thead tr,
+    thead td,
     th {
       font-weight: bold;
-      background-color: $paleBlue;
+      background-color: $paleOrange;
     }
 
-    tfoot tr {
+    tfoot td {
       font-weight: bold;
       background-color: $paleOrange;
+    }
+
+    th.planet {
+      text-align: center;
+    }
+
+    th.earth {
+      background-color: $paleBlue;
     }
   }
 }
@@ -260,39 +273,9 @@ sub {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Table styles
 
-tr.terrestrial {
-  font-weight: bold;
-  background-color: $paleGreen;
-}
-
-tr.satellite {
-  background-color: $pink;
-}
-
-tr.dwarf {
-  font-style: italic;
-  background-color: $paleYellow;
-}
-
-tr.major {
-  background-color: $paleGreen;
-}
-
-tr.minor {
-  background-color: $paleYellow;
-}
-
 td.num,
 th.num {
   text-align: right;
-}
-
-tr.hydrogen {
-  background-color: $paleYellow;
-}
-
-tr.helium {
-  background-color: $pink;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -303,7 +286,7 @@ tr.helium {
 }
 
 .book-nav {
-  background-color: $paleBlue;
+  background-color: $paleOrange;
   padding: 5px;
   border-radius: 5px;
   margin-bottom: 15px;
@@ -331,7 +314,6 @@ tr.helium {
 
 .logo {
   display: inline-block;
-  width: 50%;
   padding-left: 15px;
   float: none !important;
 
@@ -387,7 +369,12 @@ article.book {
 
 span.tab {
   display: inline-block;
-  width: 50px;
+  width: 75px;
+  margin-left: 20px;
+}
+
+div.indent {
+  margin-left: 20px;
 }
 
 figure {
@@ -397,4 +384,85 @@ figure {
 
 figcaption {
   text-align: center;
+}
+
+blockquote {
+  font-size: inherit;
+  font-style: italic;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Calendar pages
+
+#content .field--name-body .calPage {
+  margin: 5px;
+  display: inline-block;
+
+  td,
+  th {
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+  }
+
+  th.dayOfWeek {
+    font-weight: bold;
+  }
+
+  th.monthName {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  td.monthIcon {
+    background-color: transparent;
+
+    img {
+      margin: 5px;
+      height: 120px;
+    }
+  }
+}
+
+.calendar1 {
+  background-color: $calendar1;
+}
+
+.calendar2 {
+  background-color: $calendar2;
+}
+
+.calendar3 {
+  background-color: $calendar3;
+}
+
+.calendar4 {
+  background-color: $calendar4;
+}
+
+.calendar5 {
+  background-color: $calendar5;
+}
+
+.calendar6 {
+  background-color: $calendar6;
+}
+
+.calendar7 {
+  background-color: $calendar7;
+}
+
+.calendar8 {
+  background-color: $calendar8;
+}
+
+.intercalary {
+  color: $red;
+}
+
+.empty {
+  background-color: $grey;
 }

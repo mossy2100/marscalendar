@@ -3,6 +3,7 @@
 namespace Drupal\book_contents\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Database\Database;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -48,7 +49,8 @@ class BookContentsBlock extends BlockBase {
       '#description'   => $this->t("If <em>Show block on all pages</em> is selected, the block will contain the automatically generated menus for all of the site's books. If <em>Show block only on book pages</em> is selected, the block will contain only the one menu corresponding to the current page's book. In this case, if the current page is not in a book, no block will be displayed. The <em>Page specific visibility settings</em> or other visibility settings can be used in addition to selectively display this block."),
     ];
 
-    $books = db_query("select b.bid, n.title
+    $conn = Database::getConnection();
+    $books = $conn->query("select b.bid, n.title
       from book b
       left join node_field_data n on b.nid = n.nid
       where b.pid = 0
@@ -138,21 +140,28 @@ class BookContentsBlock extends BlockBase {
   public function build() {
     // Get the pages.
     $bid = $this->configuration['bid'];
-    $this->pages = [];
-    $rs = db_query("
-      select b.nid, b.pid, n.title, n.status
-      from book b
-      left join node_field_data n on b.nid = n.nid
-      where bid = :bid
-      order by pid, weight
-    ", [':bid' => $bid]);
-    foreach ($rs as $rec) {
-      $this->pages[$rec->nid] = $rec;
+    if (!$bid) {
+      $html = "No book selected. Configure the block, dude.";
+    }
+    else {
+      $this->pages = [];
+      $conn = Database::getConnection();
+      $rs = $conn->query("
+        select b.nid, b.pid, n.title, n.status
+        from book b
+        left join node_field_data n on b.nid = n.nid
+        where bid = :bid
+        order by pid, weight
+      ", [':bid' => $bid]);
+      foreach ($rs as $rec) {
+        $this->pages[$rec->nid] = $rec;
+      }
+      $html = $this->itemHtml($bid);
     }
 
     // Build the HTML.
     return [
-      '#markup' => $this->itemHtml($bid),
+      '#markup' => $html,
       '#cache'  => [
         'disabled' => TRUE,
       ],
