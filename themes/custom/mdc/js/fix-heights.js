@@ -7,16 +7,19 @@
   function fixHeights() {
     var content = $('#content');
     var leftSidebar = $('#left-sidebar');
+    var rightSidebar = $('#right-sidebar');
 
     // Reset the heights.
     content.css("height", "");
     leftSidebar.css("height", "");
+    rightSidebar.css("height", "");
 
     // If not in mobile/narrow display mode, update the heights to match.
     if ($(window).width() >= 768) {
       // Get the heights.
       var contentHeight = content.height();
       var leftSidebarHeight = leftSidebar.height();
+      var rightSidebarHeight = rightSidebar.height();
 
       // Get the minimum content height to span the full height of the viewport.
       var windowHeight = $(window).height();
@@ -26,11 +29,12 @@
       var minContentHeight = windowHeight - toolbarHeight - headerHeight - footerHeight;
 
       // Get the desired heights.
-      var height = Math.max(contentHeight, leftSidebarHeight, minContentHeight);
+      var height = Math.max(contentHeight, leftSidebarHeight, rightSidebarHeight, minContentHeight);
 
       // Set the heights.
-      leftSidebar.height(height);
       content.height(height);
+      leftSidebar.height(height);
+      rightSidebar.height(height);
     }
   }
 

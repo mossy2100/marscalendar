@@ -199,12 +199,9 @@ sub {
   border-radius: 0 0 10px 10px;
 }
 
-#left-sidebar {
+#left-sidebar,
+#right-sidebar {
   background-color: $paleOrange;
-
-  @media (min-width: 768px) {
-    border-radius: 10px 0 0 10px;
-  }
 
   .block {
     padding: 20px 0;
@@ -220,12 +217,17 @@ sub {
   }
 }
 
-#content {
-  background-color: white;
-
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  #left-sidebar {
+    border-radius: 10px 0 0 10px;
+  }
+  #right-sidebar {
     border-radius: 0 10px 10px 0;
   }
+}
+
+#content {
+  background-color: white;
 
   .field--name-body {
     margin: 0 0 15px;
