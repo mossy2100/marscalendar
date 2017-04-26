@@ -25,6 +25,7 @@ sites/*/private
 # Include uploaded images, to save me having to reupload them on production.
 sites/default/files/*
 !sites/default/files/inline-images
+!sites/default/files/month-icons
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
