@@ -15,7 +15,7 @@
     rightSidebar.css("height", "");
 
     // If not in mobile/narrow display mode, update the heights to match.
-    if ($(window).width() >= 768) {
+    if (leftSidebar.css('border-radius') != '0px') {
       // Get the heights.
       var contentHeight = content.height();
       var leftSidebarHeight = leftSidebar.height();
