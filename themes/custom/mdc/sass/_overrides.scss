@@ -29,14 +29,14 @@ $chocolate: #311;
 $paleBlue: #e5eeff;
 $grey: #eee;
 
-$calendar1: #BFFFCF;
-$calendar2: #DFFFBF;
-$calendar3: #FFEFBF;
-$calendar4: #FFBFBF;
-$calendar5: #FFBFEF;
-$calendar6: #DFBFFF;
-$calendar7: #BFCFFF;
-$calendar8: #BFFFFF;
+$spring: #d4ffbf;
+$spring-border: #99e673;
+$summer: #ffffbf;
+$summer-border: #ffd480;
+$autumn: #ffbfbf;
+$autumn-border: #ff8080;
+$winter: #bfdfff;
+$winter-border: #80bfff;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Elements
@@ -84,8 +84,8 @@ sub {
 // Header
 
 .page-header {
-  margin: 15px 0;
-  padding: 0;
+  margin: 0;
+  padding: 15px 0;
 }
 
 #header {
@@ -201,7 +201,10 @@ sub {
 
 #left-sidebar {
   background-color: $paleOrange;
-  border-radius: 10px 0 0 10px;
+
+  @media (min-width: 768px) {
+    border-radius: 10px 0 0 10px;
+  }
 
   .block {
     padding: 20px 0;
@@ -219,7 +222,10 @@ sub {
 
 #content {
   background-color: white;
-  border-radius: 0 10px 10px 0;
+
+  @media (min-width: 768px) {
+    border-radius: 0 10px 10px 0;
+  }
 
   .field--name-body {
     margin: 0 0 15px;
@@ -359,10 +365,6 @@ nav.tabs {
   margin: 15px 0;
 }
 
-article.book {
-  margin: 15px 0;
-}
-
 .math {
   margin-left: 20px;
 }
@@ -394,75 +396,88 @@ blockquote {
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Calendar pages
 
-#content .field--name-body .calPage {
-  margin: 5px;
-  display: inline-block;
+#content .field--name-body {
+  .calPage {
+    margin: 5px;
+    display: inline-block;
 
-  td,
-  th {
-    font-size: 12px;
-    text-align: center;
-    vertical-align: middle;
-    width: 28px;
-    height: 28px;
-    padding: 4px;
-  }
+    td {
+      font-size: 12px;
+      text-align: center;
+      vertical-align: middle;
+      width: 28px;
+      height: 28px;
+      padding: 4px;
+    }
 
-  th.dayOfWeek {
-    font-weight: bold;
-  }
+    tr.daysOfWeek th {
+      font-weight: bold;
+    }
 
-  th.monthName {
-    font-size: 18px;
-    font-weight: bold;
-  }
+    th.monthName {
+      font-size: 18px;
+      font-weight: bold;
+    }
 
-  td.monthIcon {
-    background-color: transparent;
+    td.monthIcon {
+      background-color: transparent;
 
-    img {
-      margin: 5px;
-      height: 120px;
+      img {
+        margin: 5px;
+        height: 120px;
+      }
+    }
+
+    .intercalary {
+      color: $red;
+    }
+
+    .empty {
+      background-color: $grey;
     }
   }
-}
 
-.calendar1 {
-  background-color: $calendar1;
-}
+  .spring {
+    td,
+    th {
+      border-color: $spring-border;
+    }
 
-.calendar2 {
-  background-color: $calendar2;
-}
+    th {
+      background-color: $spring;
+    }
+  }
 
-.calendar3 {
-  background-color: $calendar3;
-}
+  .summer {
+    td,
+    th {
+      border-color: $summer-border;
+    }
 
-.calendar4 {
-  background-color: $calendar4;
-}
+    th {
+      background-color: $summer;
+    }
+  }
 
-.calendar5 {
-  background-color: $calendar5;
-}
+  .autumn {
+    td,
+    th {
+      border-color: $autumn-border;
+    }
 
-.calendar6 {
-  background-color: $calendar6;
-}
+    th {
+      background-color: $autumn;
+    }
+  }
 
-.calendar7 {
-  background-color: $calendar7;
-}
+  .winter {
+    td,
+    th {
+      border-color: $winter-border;
+    }
 
-.calendar8 {
-  background-color: $calendar8;
-}
-
-.intercalary {
-  color: $red;
-}
-
-.empty {
-  background-color: $grey;
+    th {
+      background-color: $winter;
+    }
+  }
 }

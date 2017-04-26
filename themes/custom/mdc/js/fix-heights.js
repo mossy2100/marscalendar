@@ -9,7 +9,9 @@
     var leftSidebar = $('#left-sidebar');
 
     // Get the heights.
+    content.css("height", "");
     var contentHeight = content.height();
+    leftSidebar.css("height", "");
     var leftSidebarHeight = leftSidebar.height();
 
     // Get the minimum content height to span the full height of the viewport.
@@ -28,5 +30,6 @@
   }
 
   $(window).load(fixHeights);
+  $(window).resize(fixHeights);
 
 })(jQuery);

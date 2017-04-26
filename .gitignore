@@ -26,6 +26,7 @@ sites/*/private
 sites/default/files/*
 !sites/default/files/inline-images
 !sites/default/files/month-icons
+!sites/default/files/html
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
