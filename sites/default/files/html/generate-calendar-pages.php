@@ -67,7 +67,7 @@ foreach ($months as $i => $month) {
   <tr>
     <td class='monthIcon' colspan='7'><img src='/sites/default/files/month-icons/$month.png'></td>
   </tr>
-  <tr class='daysOfWeek'>
+  <tr class='daysOfWeek squares'>
     <th>S</th>
     <th>P</th>
     <th>E</th>
@@ -76,7 +76,7 @@ foreach ($months as $i => $month) {
     <th>V</th>
     <th>D</th>
   </tr>
-  <tr>
+  <tr class='squares'>
     <td>1</td>
     <td>2</td>
     <td>3</td>
@@ -85,7 +85,7 @@ foreach ($months as $i => $month) {
     <td>6</td>
     <td>7</td>
   </tr>
-  <tr>
+  <tr class='squares'>
     <td>8</td>
     <td>9</td>
     <td>10</td>
@@ -94,7 +94,7 @@ foreach ($months as $i => $month) {
     <td>13</td>
     <td>14</td>
   </tr>
-  <tr>
+  <tr class='squares'>
     <td>15</td>
     <td>16</td>
     <td>17</td>
@@ -103,7 +103,7 @@ foreach ($months as $i => $month) {
     <td>20</td>
     <td>21</td>
   </tr>
-  <tr>
+  <tr class='squares'>
     <td>22</td>
     <td>23</td>
     <td>24</td>

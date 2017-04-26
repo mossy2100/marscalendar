@@ -403,13 +403,20 @@ blockquote {
     margin: 5px;
     display: inline-block;
 
-    td {
+    td,
+    th {
       font-size: 12px;
       text-align: center;
       vertical-align: middle;
-      width: 28px;
-      height: 28px;
       padding: 4px;
+    }
+
+    tr.squares {
+      td,
+      th {
+        width: 23px;
+        height: 23px;
+      }
     }
 
     tr.daysOfWeek th {
@@ -417,7 +424,7 @@ blockquote {
     }
 
     th.monthName {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
     }
 
