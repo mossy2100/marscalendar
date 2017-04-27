@@ -42,8 +42,11 @@ $winter-border: #80bfff;
 // Elements
 
 body {
-  background-color: $chocolate;
-  margin-top: 20px;
+  @media (min-width: 768px) {
+    margin-top: 20px;
+  }
+
+  background-image: url("../images/stars-tileable.jpg");
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -81,11 +84,22 @@ sub {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
+// Background
+
+@media (min-width: 768px) {
+  #background-layer {
+    background-image: url("../images/hires-Mars-transparent-bg.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Header
 
 .page-header {
   margin: 0;
-  padding: 15px 0;
+  padding: 0 0 15px;
 }
 
 #header {
@@ -156,6 +170,26 @@ sub {
   }
 }
 
+.btn-primary {
+  background-color: $red;
+  border-color: $darkRed;
+
+  &:hover,
+  &:active,
+  &.active,
+  &:active:hover,
+  &:active:focus,
+  &:active.focus,
+  &.active:hover,
+  &.active:focus,
+  &.active.focus,
+  &:focus,
+  &.focus {
+    background-color: $orange;
+    border-color: $darkRed;
+  }
+}
+
 #block-bookcontents {
   > ul {
     margin-bottom: 0;
@@ -170,10 +204,6 @@ sub {
     color: $orange;
     font-weight: bold;
   }
-
-  //.unpublished-page {
-  //  color: silver;
-  //}
 }
 
 #block-imrs {
@@ -201,6 +231,7 @@ sub {
 
 #left-sidebar,
 #right-sidebar {
+  //background-color: rgba(255, 223, 191, .9);
   background-color: $paleOrange;
 
   .block {
@@ -221,13 +252,16 @@ sub {
   #left-sidebar {
     border-radius: 10px 0 0 10px;
   }
+
   #right-sidebar {
     border-radius: 0 10px 10px 0;
   }
 }
 
 #content {
+  //background-color: rgba(255, 255, 255, .9);
   background-color: white;
+  padding: 15px;
 
   .field--name-body {
     margin: 0 0 15px;
@@ -489,4 +523,26 @@ blockquote {
       background-color: $winter;
     }
   }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pagination
+
+.pagination > .active > a,
+.pagination > .active > a:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span,
+.pagination > .active > span:hover,
+.pagination > .active > span:focus {
+  background-color: $red;
+  border-color: $darkRed;
+}
+
+.pagination > li > a,
+.pagination > li > span,
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > span:hover,
+.pagination > li > span:focus {
+  color: $red;
 }

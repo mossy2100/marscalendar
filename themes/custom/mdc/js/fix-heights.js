@@ -17,7 +17,7 @@
     // If not in mobile/narrow display mode, update the heights to match.
     if (leftSidebar.css('border-radius') != '0px') {
       // Get the heights.
-      var contentHeight = content.height();
+      var contentHeight = content.height() + 30;
       var leftSidebarHeight = leftSidebar.height();
       var rightSidebarHeight = rightSidebar.height();
 
@@ -32,7 +32,7 @@
       var height = Math.max(contentHeight, leftSidebarHeight, rightSidebarHeight, minContentHeight);
 
       // Set the heights.
-      content.height(height);
+      content.height(height - 30);
       leftSidebar.height(height);
       rightSidebar.height(height);
     }
