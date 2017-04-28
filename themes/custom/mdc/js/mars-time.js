@@ -72,6 +72,13 @@ function solsInMonth(mir, month) {
 }
 
 /**
+ * Cache the function results.
+ *
+ * @type {int: object}
+ */
+var cache_timestamp2utopian = {};
+
+/**
  * Convert a Unix timestemp to a Utopian datetime.
  *
  * @param {int} ts
@@ -86,96 +93,90 @@ function timestamp2utopian(ts) {
   // Create utopianDateTime object.
   var utopianDateTime = {};
 
-  var kilomirs, mirLen;
-
   // Convert the timestamp to number of sols since EPOCH_START.
   var sols = (ts - EPOCH_START) / MS_PER_SOL;
-  var rem = Math.floor(sols);
-  var time = sols - rem;
+  // Round off to microsols.
+  sols = Math.round(sols * 1e6) / 1e6;
+  var origRem = Math.floor(sols);
+  var rem = origRem;
+  var time = Math.round((sols - rem) * 1e6) / 1e6;
 
-  // Get the current kilomir.
-  if (sols > 0) {
-    kilomirs = Math.floor(rem / SOLS_PER_KILOMIR);
+  // Check the cache. We cache dates, not times.
+  if (cache_timestamp2utopian[origRem] !== undefined) {
+    utopianDateTime = cache_timestamp2utopian[origRem];
   }
-  else if (sols < 0) {
-    kilomirs = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
-  }
-  else { // sols == 0
-    kilomirs = 0;
-  }
+  else {
 
-  // Adjust so remainder is positive.
-  rem -= kilomirs * SOLS_PER_KILOMIR;
-
-  // Calculate the mir.
-  var mir = kilomirs * 1000;
-  while (true) {
-    // If we have more sols left than there are in current mir, subtract the number of sols in the
-    // current mir from the remainder, and go to the next mir.
-    mirLen = solsInMir(mir);
-    // Done?
-    if (rem < mirLen) {
-      break;
+    // Calculate the kilomir.
+    // - kilomir -1 is from -1000 to   -1
+    // - Kilomir  0 is from     0 to  999
+    // - Kilomir  1 is from  1000 to 1999
+    var kilomir;
+    if (rem > 0) {
+      kilomir = Math.floor(rem / SOLS_PER_KILOMIR);
     }
-    rem -= mirLen;
-    mir++;
+    else if (rem < 0) {
+      kilomir = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
+    }
+    else { // rem == 0
+      kilomir = 0;
+    }
+
+    // Adjust so remainder is positive.
+    rem -= kilomir * SOLS_PER_KILOMIR;
+
+    // Calculate the mir.
+    var mirs = Math.floor(rem / SOLS_PER_MIR);
+    var mir = kilomir * 1000 + mirs;
+    if (mirs > 0) {
+      rem -= SOLS_PER_LONG_MIR + solsInMirs(mirs - 1);
+    }
+    var mirLen = solsInMir(mir);
+    if (rem >= mirLen) {
+      rem -= mirLen;
+      mir++;
+    }
+
+    // Calculate the quarter (0..3).
+    var month = 1, monthLen;
+    var q = Math.floor(rem / SOLS_PER_SHORT_QUARTER);
+    if (q == 4) {
+      q = 3;
+    }
+    if (q > 0) {
+      month += q * 6;
+      rem -= q * SOLS_PER_SHORT_QUARTER;
+    }
+
+    // Calculate the month.
+    var m = Math.floor(rem / SOLS_PER_LONG_MONTH);
+    if (m > 0) {
+      month += m;
+      rem -= m * SOLS_PER_LONG_MONTH;
+    }
+
+    // Calculate sol of the month.
+    // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
+    var sol = rem + 1;
+
+    // Create the result object with the date.
+    utopianDateTime.mir = mir;
+    utopianDateTime.month = month;
+    utopianDateTime.sol = sol;
+
+    // Get the month and sol names.
+    utopianDateTime.monthName = utopianMonthName(month);
+    utopianDateTime.solName = utopianSolName(sol);
+
+    // Cache the result.
+    cache_timestamp2utopian[origRem] = utopianDateTime;
   }
 
-  // Calculate the month.
-  var month = 1, monthLen;
-  // There are probably optimisations possible here by counting down quarters.
-  // Worst case the loop runs 23 times.
-  while (true) {
-    // If we have more sols left than there are in current month, subtract the number of sols in the
-    // current month from the remainder, and go to the next month.
-    monthLen = solsInMonth(mir, month);
-    // Done?
-    if (rem <= monthLen) {
-      break;
-    }
-    rem -= monthLen;
-    month++;
-  }
-
-  // Calculate sol of the month.
-  // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
-  var sol = rem + 1;
-
-  // Calculate the time.
-  var microsols = Math.round(time * 1e6);
-  time = microsols / 1e6;
-  if (time == 1) {
-    // Round up.
-    time = 0;
-    if (sol == monthLen) {
-      sol = 1;
-      if (month == 24) {
-        month = 1;
-        mir++;
-      }
-      else {
-        month++;
-      }
-    }
-    else {
-      sol++;
-    }
-  }
-
-  // Create the result object.
-  utopianDateTime.mir = mir;
-  utopianDateTime.month = month;
-  utopianDateTime.sol = sol;
+  // Add the time and formatted time string.
   utopianDateTime.time = time;
-
-  // Get the month and sol names.
-  utopianDateTime.monthName = utopianMonthName(month);
-  utopianDateTime.solName = utopianSolName(sol);
-
-  // Formatted time string.
+  var microsols = Math.round(time * 1e6);
   var mils = Math.floor(microsols / 1000);
   microsols -= mils * 1000;
-  utopianDateTime.timeStr = 'm' + padDigits(mils, 3) + '.' + padDigits(microsols, 3);
 
   return utopianDateTime;
 }
@@ -329,4 +330,78 @@ var UTOPIAN_SOL_NAMES = [
 function utopianSolName(nSolOfMonth, abbrev) {
   var name = UTOPIAN_SOL_NAMES[(nSolOfMonth - 1) % 7];
   return abbrev ? name.substr(0, 1) : name;
+}
+
+function testUtopianConvert() {
+  var u, ts, u2, ts2, result;
+
+  var testDates = [
+    {mir: 0, month: 1, sol: 1, time: 0},
+    {mir: 1, month: 1, sol: 1, time: 0},
+    {mir: 2, month: 1, sol: 1, time: 0},
+    {mir: 9, month: 1, sol: 1, time: 0},
+    {mir: 10, month: 1, sol: 1, time: 0},
+    {mir: 11, month: 1, sol: 1, time: 0},
+    {mir: 99, month: 1, sol: 1, time: 0},
+    {mir: 100, month: 1, sol: 1, time: 0},
+    {mir: 101, month: 1, sol: 1, time: 0},
+    {mir: 999, month: 1, sol: 1, time: 0},
+    {mir: 1000, month: 1, sol: 1, time: 0},
+    {mir: 1001, month: 1, sol: 1, time: 0},
+    {mir: -1, month: 1, sol: 1, time: 0},
+    {mir: -2, month: 1, sol: 1, time: 0},
+    {mir: -9, month: 1, sol: 1, time: 0},
+    {mir: -10, month: 1, sol: 1, time: 0},
+    {mir: -11, month: 1, sol: 1, time: 0},
+    {mir: -99, month: 1, sol: 1, time: 0},
+    {mir: -100, month: 1, sol: 1, time: 0},
+    {mir: -101, month: 1, sol: 1, time: 0},
+    {mir: -999, month: 1, sol: 1, time: 0},
+    {mir: -1000, month: 1, sol: 1, time: 0},
+    {mir: -1001, month: 1, sol: 1, time: 0},
+    {mir: 0, month: 24, sol: 27, time: 0},
+    {mir: 1, month: 24, sol: 27, time: 0},
+    {mir: 2, month: 24, sol: 27, time: 0},
+    {mir: 9, month: 24, sol: 27, time: 0},
+    {mir: 10, month: 24, sol: 27, time: 0},
+    {mir: 11, month: 24, sol: 27, time: 0},
+    {mir: 99, month: 24, sol: 27, time: 0},
+    {mir: 100, month: 24, sol: 27, time: 0},
+    {mir: 101, month: 24, sol: 27, time: 0},
+    {mir: 999, month: 24, sol: 27, time: 0},
+    {mir: 1000, month: 24, sol: 27, time: 0},
+    {mir: 1001, month: 24, sol: 27, time: 0},
+    {mir: -1, month: 24, sol: 27, time: 0},
+    {mir: -2, month: 24, sol: 27, time: 0},
+    {mir: -9, month: 24, sol: 27, time: 0},
+    {mir: -10, month: 24, sol: 27, time: 0},
+    {mir: -11, month: 24, sol: 27, time: 0},
+    {mir: -99, month: 24, sol: 27, time: 0},
+    {mir: -100, month: 24, sol: 27, time: 0},
+    {mir: -101, month: 24, sol: 27, time: 0},
+    {mir: -999, month: 24, sol: 27, time: 0},
+    {mir: -1000, month: 24, sol: 27, time: 0},
+    {mir: -1001, month: 24, sol: 27, time: 0}
+  ];
+
+  var passCount = 0, failCount = 0;
+
+  for (var i in testDates) {
+    u = testDates[i];
+    // u.time = 0.123456;
+    console.log(u);
+    ts = utopian2timestamp(u);
+    u2 = timestamp2utopian(ts);
+    ts2 = utopian2timestamp(u2);
+    if (ts == ts2) {
+      result = 'PASS';
+      passCount++;
+    }
+    else {
+      result = 'FAIL';
+      failCount++;
+    }
+    console.log(result);
+  }
+  console.log('PASS: ' + passCount + ', FAIL: ' + failCount);
 }

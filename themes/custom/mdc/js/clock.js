@@ -57,11 +57,11 @@ function padDigits(x, digits) {
 
     var mils = marsNow.time * 1000;
     var wholeMils = Math.floor(mils);
-    var microsols = Math.floor((mils - wholeMils) * 1000);
-    var marsTimeStr = 'm' + padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
+    var tals = Math.floor((mils - wholeMils) * 100);
+    var marsTimeStr = 'm' + padDigits(wholeMils, 3) + '.' + padDigits(tals, 2);
     $('#marsClockTime').html(marsTimeStr);
 
-    // Call this function again in one microsol.
+    // Call this function again in 1 µsol.
     setTimeout(showTime, MS_PER_MICROSOL);
   }
 
