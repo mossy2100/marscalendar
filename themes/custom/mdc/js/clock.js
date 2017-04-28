@@ -28,20 +28,20 @@
    * Update the clocks every microsol.
    */
   function showTime() {
-    // Get current Earth time:
-    var earthNow = new Date();
+    // Get current Unix timestamp.
+    var ts = (new Date()).valueOf();
 
-    // Get corresponding Mars Date:
-    var marsNow = gregorian2utopian(earthNow);
+    // Adjust for timezone.
+    ts += $('#marsClockTimeZone select').val() * MS_PER_ZODE;
 
-    // Set clock fields.
-    var marsMonth = utopianMonthName(marsNow.month);
+    // Get Utopian datetime.
+    var marsNow = timestamp2utopian(ts);
 
-    var marsDateStr = 'M' + marsNow.mir + ' ' + marsMonth + ' ' + marsNow.sol;
+    // Sol name.
+    $('#marsClockSol').html(marsNow.solName);
+
+    var marsDateStr = 'M' + marsNow.mir + ' ' + marsNow.monthName + ' ' + marsNow.sol;
     $('#marsClockDate').html(marsDateStr);
-
-    var solStr = solName(marsNow.sol);
-    $('#marsClockSol').html(solStr);
 
     var mils = marsNow.time * 1000;
     var wholeMils = Math.floor(mils);
@@ -49,8 +49,8 @@
     var marsTimeStr = padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
     $('#marsClockTime').html(marsTimeStr);
 
-    // When next to call showtime:
-    setTimeout(showTime, 89);
+    // Call this function again in one microsol.
+    setTimeout(showTime, MS_PER_MICROSOL);
   }
 
   $(showTime);

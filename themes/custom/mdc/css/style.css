@@ -10042,3 +10042,7 @@ blockquote {
   margin: 5px 0;
   font-weight: bold;
 }
+/* line 571, ../sass/_overrides.scss */
+#block-utopiandateandtime #marsClock div select {
+  max-width: 100%;
+}
