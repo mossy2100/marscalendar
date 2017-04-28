@@ -1,28 +1,40 @@
 /**
- * For clock.
+ * Created by shaun on 28/4/17.
+ *
+ * Loop to run the Mars clock.
  */
 
+/**
+ * Add characters to start of a string until desired minimum width is reached.
+ *
+ * @param {string} value
+ * @param {int} minWidth
+ * @param {string} chPad
+ * @returns {string}
+ */
+function padLeft(value, minWidth, chPad) {
+  // Convert to a string.
+  var result = value + "";
+  // If necessary, add pad characters until desired width is reached.
+  var n = minWidth - result.length;
+  if (n > 0) {
+    result = chPad.repeat(n) + result;
+  }
+  return result;
+}
+
+/**
+ * Pad a number to a certain number of digits.
+ *
+ * @param {int} x
+ * @param {int} digits
+ * @returns {string}
+ */
+function padDigits(x, digits) {
+  return (x < 0) ? ("-" + padLeft(-x, digits, "0")) : padLeft(x, digits, "0");
+}
+
 (function($) {
-
-  /**
-   * Add characters to start of a string until desired length reached.
-   */
-  function padLeft(value, width, chPad) {
-    // Convert to a string.
-    var result = value + "";
-    // Add pad characters until desired width is reached.
-    while (result.length < width) {
-      result = chPad + result;
-    }
-    return result;
-  }
-
-  /**
-   * Pad a number to a certain number of digits.
-   */
-  function padDigits(x, digits) {
-    return (x < 0) ? ("-" + padLeft(-x, digits, "0")) : padLeft(x, digits, "0");
-  }
 
   /**
    * Update the clocks every microsol.
@@ -46,7 +58,7 @@
     var mils = marsNow.time * 1000;
     var wholeMils = Math.floor(mils);
     var microsols = Math.floor((mils - wholeMils) * 1000);
-    var marsTimeStr = padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
+    var marsTimeStr = 'm' + padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
     $('#marsClockTime').html(marsTimeStr);
 
     // Call this function again in one microsol.

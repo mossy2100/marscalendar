@@ -1,41 +1,21 @@
-<p>Notation for Utopian dates is similar to the international standard ISO 8601 for Gregorian date,
-  time, and datetime strings, with a few changes:</p>
+<h2>Dates and datetimes</h2>
+
+<p>The standard notations for Utopian dates and datetimes are similar to the international standard ISO 8601 for Gregorian equivalents, with a few differences:</p>
 
 <ul>
-  <li>The date, time, or datetime string begins with ‘M’, to indicate that it relates to Mars.</li>
-  <li>Mir numbers do not need to be zero-padded to a fixed number of digits. The current mir number
-    (216 at the time of writing) has 3 digits, but this is written as <strong>M216</strong>, not
-    M0216. When it reaches 1000, it will be M1000. This is for future-proofing. Eventually mir
-    numbers will have 4 digits, 5 digits, and so on. It’s actually a flaw in ISO 8601 that years
-    must be expressed as exactly four digits, because the standard will not work from the year 10
-    000. The creators created a Y10K problem. They should remove this restriction from the standard,
-    and prefix the year number with ‘E’ to distinguish an Terran date from a Martian date.
-  </li>
-  <li>Month and sol parts of the date also don’t need to be zero-padded to 2 digits. e.g. <b>M216/1/5</b>
-  </li>
+  <li>A date or datetime string begins with ‘<strong>M</strong>’, to indicate mir or Mars date.</li>
+  <li>Mir numbers do not need to be zero-padded to a fixed number of digits. The current mir number (216 at the time of writing) has 3 digits, but this is written as <strong>M216</strong>, not M0216. When it reaches 1000, it will be M1000. This is for future-proofing. Eventually mir numbers will have 4 digits, 5 digits, and so on. It’s actually a flaw in ISO 8601 that years must be expressed as exactly four digits, because the standard will not work from the year 10 000. The authors of the standard created a Y10K problem. In my opinion they should remove this restriction from the standard.</li>
+  <li>Month and sol parts of the date also don’t need to be zero-padded to 2 digits. e.g. <b>M216/1/5</b></li>
   <li>Negative mir numbers are permitted, e.g. <b>M-100/10/5</b></li>
-  <li>Times are displayed as a decimal fraction of a sol, usually to 3 or 5 decimal places, to
-    indicate mils or tals respectively, e.g. <b>M.543</b></li>
-  <li>The date separator character is ‘/’. On Earth we use hyphen (or minus sign) ‘-’, forward slash
-    ‘/’, and period (or decimal point) ‘.’ characters as date separators, depending on the country.
-    The ISO 8601 standard uses the hyphen (e.g. “2016-12-06”). However, the hyphen and period
-    characters have other meanings within the format, as a negative sign and a decimal point
-    respectively, therefore we should choose an alternative for clarity. The forward slash is the
-    most obvious choice, as it clearly indicates a date when used in this way. A different character
-    could potentially be used, e.g. 216^17^22 or 216*17*22, but this might be tedious to write, less
-    likely to be adopted, and unclear as to its meaning (e.g. potentially interpreted as a
-    mathematical operator). The ‘M’ prefix will prevent confusion with Terran dates better than an
-    unusual separator.
-  </li>
-  <li>A date and time can be combined into a single datetime string, e.g. <b>M216/17/22.12345</b>
-  </li>
+  <li>A date and time can be combined into a single datetime string, e.g. <b>M216/17/22 .12345</b>. Times within a datetime string are displayed as a decimal fraction of a sol, usually to 3, 5, or 6 decimal places, to indicate mils, tals, or microsols respectively, depending on the desired resolution, e.g. <b>M216/1/5.12345</b></li>
+  <li>The date separator character is ‘<strong>/</strong>’. On Earth we use hyphen (or minus sign) ‘-’, forward slash ‘/’, and period (or decimal point) ‘.’ characters as date separators, depending on the country. The ISO 8601 standard uses the hyphen (e.g. “2016-12-06”). However, the hyphen and period characters have other meanings within the format, as a negative sign and a decimal point respectively, therefore we should choose an alternative for clarity. The forward slash is the most obvious choice, as it clearly indicates a date when used in this way. A different character could potentially be used, e.g. 216^17^22 or 216*17*22, but this might be tedious to write, less likely to be adopted, and unclear as to its meaning (e.g. potentially interpreted as a mathematical operator). The ‘<strong>M</strong>’ prefix will prevent confusion with Terran dates better than an unusual separator.</li>
   <li>Thousands and thousandths separators are not used and are invalid.</li>
 </ul>
 
-<p>Thus, the complete format description looks like:</p>
+<p>Thus, the complete format description for a Utopian date or datetime looks like:</p>
 
 <div class="indent">
-  <p><b>M</b>{date}{time}</p>
+  <p><b>M</b>{date}[{time}]</p>
 </div>
 
 <p>Where:</p>
@@ -43,46 +23,71 @@
 <div class="indent">
   <p>{date} = {mir}<b>/</b>{month}<b>/</b>{sol}</p>
 
-  <p>{mir} = an integer (negative, 0, or positive), with no thousands separators</p>
+  <p>{mir} = an integer (negative, 0, or positive)</p>
 
   <p>{month} = an integer in the range 1 to 24</p>
 
   <p>{sol} = an integer in the range 1 to 28</p>
 
-  <p>{time} = <b>.</b>{digits} (i.e. a decimal point followed by at least one digit, and no
-    thousandths separators)</p>
+  <p>{time} = <b>.</b>{digits} (i.e. a decimal point followed by at least one digit)</p>
 </div>
 
-<p>Both {date} and {time} are optional, but obviously not both.</p>
+<p>The {time} part is optional.</p>
 
-<p>Examples:</p>
+<p><i>Examples:</i></p>
 
 <div class="indent">
   <p>Date: <b>M216/17/8</b></p>
 
   <p>Date in negative mir: <b>M-32/17/8</b></p>
 
-  <p>Time, resolution mils: <b>M.543</b></p>
-
-  <p>Time, resolution tals: <b>M.54321</b></p>
-
   <p>Datetime, resolution mils: <b>M216/17/8.123</b></p>
 
   <p>Datetime, resolution tals: <b>M216/17/8.12345</b></p>
+
+  <p>Datetime, resolution microsols: <b>M216/17/8.123456</b></p>
 </div>
 
-<p>Presumably the ISO 8601 standard requires date and time parts to have fixed widths in order to
-  simplify parsing, but the above format is easily parsed and more compact.</p>
+<p>Presumably the ISO 8601 standard requires date and time parts to have fixed widths in order to simplify parsing, but the above format is easily parsed and more compact.</p>
 
-<p>Times will normally be expressed to 3 decimal places to indicate mils. Comparing Earth times of
-  day with Mars:</p>
+<h2>Long date format</h2>
+
+<p>The long date format looks like:</p>
+
+<p class="indent"><strong>M</strong>{mir} {monthName} {sol}</p>
+
+<p>For example:</p>
+
+<p class="indent"><strong>M216 Tucana 24</strong></p>
+
+<p>The ‘M’ prefix in front of the mir indicates the mir, and that it is a Martian date, and eliminates confusion about which number refers to the mir and which refers to the sol.</p>
+
+<h2>Time format</h2>
+
+<p>A time by itself is expressed as mils, zero-padded to 3 digits, and, optionally, a decimal point followed by tals or microsols. It is prefixed with a small ‘<strong>m</strong>’ to indicate mils (or Mars time).</p>
+
+<p class="indent"><strong>m</strong>{mils}[.{digits}]</p>
+
+<p><i>Examples:</i></p>
 
 <div class="indent">
-  <p>00:00 = <b>M.000</b></p>
+  <p>Time, resolution mils: <b>m012</b></p>
 
-  <p>06:00 = <b>M.250</b></p>
+  <p>Time, resolution tals: <b>m012.34</b></p>
 
-  <p>12:00 = <b>M.500</b></p>
-
-  <p>18:00 = <b>M.750</b></p>
+  <p>Time, resolution microsols: <b>m012.345</b></p>
 </div>
+
+<p>Comparing Earth times of day with Mars:</p>
+
+<div class="indent">
+  <p>00:00 = <strong>m000</strong></p>
+
+  <p>06:00 = <strong>m250</strong></p>
+
+  <p>12:00 = <strong>m500</strong></p>
+
+  <p>18:00 = <strong>m750</strong></p>
+</div>
+
+<p>&nbsp;</p>

@@ -2,13 +2,29 @@
  * Created by shaun on 26/4/17.
  */
 
-// To convert Earth time to Mars.
 var MS_PER_SOL = 88775244.09;
-var MS_PER_ZODE = MS_PER_SOL / 10;      // 8877524.409 ms
-var MS_PER_MIL = MS_PER_ZODE / 100;     // 88775.24409 ms
-var MS_PER_TAL = MS_PER_MIL / 100;      // 887.7524409 ms
-var MS_PER_MICROSOL = MS_PER_TAL / 10;  // 88.77524409 ms
+var MS_PER_ZODE = 8877524.409;
+var MS_PER_MIL = 88775.24409;
+var MS_PER_TAL = 887.7524409;
+var MS_PER_MICROSOL = 88.77524409;
+
+var SOLS_PER_SHORT_WEEK = 6;
+var SOLS_PER_LONG_WEEK = 7;
+var SOLS_PER_SHORT_MONTH = 27;
+var SOLS_PER_LONG_MONTH = 28;
+var SOLS_PER_SHORT_QUARTER = 167;
+var SOLS_PER_LONG_QUARTER = 168;
+var SOLS_PER_SHORT_MIR = 668;
+var SOLS_PER_LONG_MIR = 669;
+var SOLS_PER_MIR = 668.591;
 var SOLS_PER_KILOMIR = 668591;
+
+var WEEKS_PER_MONTH = 4;
+var WEEKS_PER_QUARTER = 24;
+var WEEKS_PER_MIR = 96;
+
+var MONTHS_PER_QUARTER = 6;
+var MONTHS_PER_MIR = 24;
 
 // Start datetime for Martian northern vernal equinox in 1609, the year Astronomy Novia was
 // published by Johannes Kepler, and also the year the telescope was first used for astronomy, by
@@ -28,8 +44,7 @@ function isLongMir(mir) {
   // - If the mir is divisible by 1000, then it's a long mir.
   // - If the mir is divisible by 100, then it's not a long mir.
   // - If the mir is divisible by 10, then it is a long mir.
-  mir = Math.abs(mir);
-  return (mir % 2 == 1) || (mir % 1000 == 0) || (mir % 100 != 0 && mir % 10 == 0);
+  return (mir % 2 != 0) || (mir % 1000 == 0) || (mir % 100 != 0 && mir % 10 == 0);
 }
 
 /**
@@ -39,7 +54,7 @@ function isLongMir(mir) {
  * @return int
  */
 function solsInMir(mir) {
-  return isLongMir(mir) ? 669 : 668;
+  return isLongMir(mir) ? SOLS_PER_LONG_MIR : SOLS_PER_SHORT_MIR;
 }
 
 /**
@@ -50,16 +65,17 @@ function solsInMir(mir) {
  * @return int
  */
 function solsInMonth(mir, month) {
-  return ((month == 24 && !isLongMir(mir)) || (month % 6 == 0)) ? 27 : 28;
+  if (month == MONTHS_PER_MIR) {
+    return isLongMir(mir) ? SOLS_PER_LONG_MONTH : SOLS_PER_SHORT_MONTH;
+  }
+  return (month % 6 == 0) ? SOLS_PER_SHORT_MONTH : SOLS_PER_LONG_MONTH;
 }
 
 /**
  * Convert a Unix timestemp to a Utopian datetime.
  *
- * @todo Test!!
- *
  * @param {int} ts
- * @return object
+ * @return {object}
  */
 function timestamp2utopian(ts) {
   // If no parameter provided, use current time:
@@ -70,31 +86,40 @@ function timestamp2utopian(ts) {
   // Create utopianDateTime object.
   var utopianDateTime = {};
 
+  var kilomirs, mirLen;
+
   // Convert the timestamp to number of sols since EPOCH_START.
   var sols = (ts - EPOCH_START) / MS_PER_SOL;
-  var solsRemaining = Math.floor(sols);
-  var time = sols - solsRemaining;
+  var rem = Math.floor(sols);
+  var time = sols - rem;
 
-  // Get the current millennia.
-  var kilomirs = Math.floor(solsRemaining / SOLS_PER_KILOMIR);
-  solsRemaining = solsRemaining % SOLS_PER_KILOMIR;
+  // Get the current kilomir.
+  if (sols > 0) {
+    kilomirs = Math.floor(rem / SOLS_PER_KILOMIR);
+  }
+  else if (sols < 0) {
+    kilomirs = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
+  }
+  else { // sols == 0
+    kilomirs = 0;
+  }
+
+  // Adjust so remainder is positive.
+  rem -= kilomirs * SOLS_PER_KILOMIR;
 
   // Calculate the mir.
-  var mir = 0, mirLen;
-  // There are probably optimisations possible here, by counting down centuries and decades.
-  // Worst case the loop runs 999 times.
+  var mir = kilomirs * 1000;
   while (true) {
     // If we have more sols left than there are in current mir, subtract the number of sols in the
-    // current mir from the solsRemainingainder, and go to the next mir.
+    // current mir from the remainder, and go to the next mir.
     mirLen = solsInMir(mir);
     // Done?
-    if (solsRemaining <= mirLen) {
+    if (rem < mirLen) {
       break;
     }
-    solsRemaining -= mirLen;
+    rem -= mirLen;
     mir++;
   }
-  utopianDateTime.mir = (kilomirs * 1000) + mir;
 
   // Calculate the month.
   var month = 1, monthLen;
@@ -102,29 +127,55 @@ function timestamp2utopian(ts) {
   // Worst case the loop runs 23 times.
   while (true) {
     // If we have more sols left than there are in current month, subtract the number of sols in the
-    // current month from the solsRemainingainder, and go to the next month.
+    // current month from the remainder, and go to the next month.
     monthLen = solsInMonth(mir, month);
     // Done?
-    if (solsRemaining <= monthLen) {
+    if (rem <= monthLen) {
       break;
     }
-    solsRemaining -= monthLen;
+    rem -= monthLen;
     month++;
   }
-  utopianDateTime.month = month;
-
-  // Get the month name.
-  utopianDateTime.monthName = utopianMonthName(month);
 
   // Calculate sol of the month.
-  // Add 1 because if there is 0 whole sols left we are in the first sol of the month.
-  utopianDateTime.sol = solsRemaining + 1;
+  // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
+  var sol = rem + 1;
 
-  // Get the sol name.
-  utopianDateTime.solName = utopianSolName(utopianDateTime.sol);
+  // Calculate the time.
+  var microsols = Math.round(time * 1e6);
+  time = microsols / 1e6;
+  if (time == 1) {
+    // Round up.
+    time = 0;
+    if (sol == monthLen) {
+      sol = 1;
+      if (month == 24) {
+        month = 1;
+        mir++;
+      }
+      else {
+        month++;
+      }
+    }
+    else {
+      sol++;
+    }
+  }
 
-  // Store the time.
+  // Create the result object.
+  utopianDateTime.mir = mir;
+  utopianDateTime.month = month;
+  utopianDateTime.sol = sol;
   utopianDateTime.time = time;
+
+  // Get the month and sol names.
+  utopianDateTime.monthName = utopianMonthName(month);
+  utopianDateTime.solName = utopianSolName(sol);
+
+  // Formatted time string.
+  var mils = Math.floor(microsols / 1000);
+  microsols -= mils * 1000;
+  utopianDateTime.timeStr = 'm' + padDigits(mils, 3) + '.' + padDigits(microsols, 3);
 
   return utopianDateTime;
 }
@@ -144,63 +195,61 @@ function gregorian2utopian(date) {
 }
 
 /**
- * Convert a Utopian datetime object to a Unix timestamp.
+ * Counts all sols in mirs from 1 to m.
+ * Note, does not count mir 0.
  *
- * @todo Test!!
+ * @param {int} m
+ * @returns {int}
+ */
+function solsInMirs(m) {
+  var a = Math.floor((m + 1) / 2);
+  var b = Math.floor(m / 10);
+  var c = Math.floor(m / 100);
+  var d = Math.floor(m / 1000);
+  return (m * SOLS_PER_SHORT_MIR) + a + b - c + d;
+}
+
+/**
+ * Convert a Utopian datetime object to a Unix timestamp.
  *
  * @param {object} utopianDateTime
  * @return {int}
  */
 function utopian2timestamp(utopianDateTime) {
   // Convert Utopian datetime to sols:
-  var sols = 0;
-  var m, mirs, kilomirs;
+  var sols = 0, n, q;
+  var sols2 = 0, x;
 
-  // Count how many sols to the start of the mir.
+  // Count how many sols from the start of the epoch to the start of the mir.
   if (utopianDateTime.mir > 0) {
     // Positive mir.
+    sols = SOLS_PER_LONG_MIR + solsInMirs(utopianDateTime.mir - 1);
 
-    // Count the sols in all kilomirs before the current one.
-    if (utopianDateTime.mir >= 1000) {
-      kilomirs = Math.floor(utopianDateTime.mir / 1000);
-      sols = kilomirs * SOLS_PER_KILOMIR;
-      mirs = utopianDateTime.mir - (1000 * kilomirs);
-    }
-    else {
-      mirs = utopianDateTime.mir;
-    }
-
-    // Count the sols in all mirs before the current one.
-    for (m = 0; m < mirs; m++) {
-      sols += solsInMir(m);
-    }
+    // Double check.
+    // for (x = 0; x < utopianDateTime.mir; x++) {
+    //   sols2 += solsInMir(x);
+    // }
   }
   else if (utopianDateTime.mir < 0) {
     // Negative mir.
+    sols = -solsInMirs(-utopianDateTime.mir);
 
-    // Count the sols in all kilomirs before the current one.
-    if (utopianDateTime.mir <= -1000) {
-      kilomirs = Math.floor(-utopianDateTime.mir / 1000);
-      sols = -kilomirs * SOLS_PER_KILOMIR;
-      mirs = utopianDateTime.mir + (1000 * kilomirs);
-    }
-    else {
-      mirs = utopianDateTime.mir;
-    }
-
-    // Count the sols in all mirs before the current one.
-    for (m = -1; m >= mirs; m--) {
-      sols -= solsInMir(m);
-    }
+    // Double check.
+    // for (x = utopianDateTime.mir; x < 0; x++) {
+    //   sols2 -= solsInMir(x);
+    // }
   }
 
   // Count the sols in all months before the current one.
-  for (var n = 1; n < utopianDateTime.month; n++) {
-    sols += solsInMonth(utopianDateTime.mir, n);
-  }
+  n = utopianDateTime.month - 1;
+  q = Math.floor(n / MONTHS_PER_QUARTER);
+  sols += (q * SOLS_PER_SHORT_QUARTER) + (n - (q * MONTHS_PER_QUARTER)) * SOLS_PER_LONG_MONTH;
 
-  // Count the solsRemainingaining sols, including the fractional part, which is the time of day.
-  sols += (utopianDateTime.sol - 1) + utopianDateTime.time;
+  // Add the sols in the current month before the current one.
+  sols += utopianDateTime.sol - 1;
+
+  // Add the time of day.
+  sols += utopianDateTime.time;
 
   // Convert to Unix timestamp.
   return EPOCH_START + (sols * MS_PER_SOL);
@@ -222,30 +271,30 @@ function utopian2gregorian(utopianDateTime) {
 // Names and abbreviated names of the Martian months.
 var UTOPIAN_MONTH_NAMES = [
   undefined,
-  ["Phe", "Phoenix",        "Phoenix",          "00 55.91"],
-  ["Cet", "Cetus",          "Whale",            "01 40.10"],
-  ["Dor", "Dorado",         "Dolphinfish",      "05 14.51"],
-  ["Lep", "Lepus",          "Hare",             "05 33.95"],
-  ["Col", "Columba",        "Dove",             "05 51.76"],
-  ["Mon", "Monoceros",      "Unicorn",          "07 03.63"],
-  ["Vol", "Volans",         "Flying Fish",      "07 47.73"],
-  ["Lyn", "Lynx",           "Lynx",             "07 59.53"],
-  ["Cam", "Camelopardalis", "Giraffe",          "08 51.37"],
-  ["Cha", "Chamaeleon",     "Chameleon",        "10 41.53"],
-  ["Hya", "Hydra",          "Sea Serpent",      "11 36.73"],
-  ["Crv", "Corvus",         "Raven",            "12 26.52"],
-  ["Cen", "Centaurus",      "Centaur",          "13 04.27"],
-  ["Dra", "Draco",          "Dragon",           "15 08.64"],
-  ["Lup", "Lupus",          "Wolf",             "15 13.21"],
-  ["Aps", "Apus",           "Bird of Paradise", "16 08.65"],
-  ["Pav", "Pavo",           "Peacock",          "19 36.71"],
-  ["Aql", "Aquila",         "Eagle",            "19 40.02"],
-  ["Vul", "Vulpecula",      "Fox",              "20 13.88"],
-  ["Cyg", "Cygnus",         "Swan",             "20 35.28"],
-  ["Del", "Delphinus",      "Dolphin",          "20 41.61"],
-  ["Gru", "Grus",           "Crane",            "22 27.39"],
-  ["Peg", "Pegasus",        "Pegasus",          "22 41.84"],
-  ["Tuc", "Tucana",         "Toucan",           "23 46.64"]
+  ["Phe", "Phoenix", "Phoenix", "00 55.91"],
+  ["Cet", "Cetus", "Whale", "01 40.10"],
+  ["Dor", "Dorado", "Dolphinfish", "05 14.51"],
+  ["Lep", "Lepus", "Hare", "05 33.95"],
+  ["Col", "Columba", "Dove", "05 51.76"],
+  ["Mon", "Monoceros", "Unicorn", "07 03.63"],
+  ["Vol", "Volans", "Flying Fish", "07 47.73"],
+  ["Lyn", "Lynx", "Lynx", "07 59.53"],
+  ["Cam", "Camelopardalis", "Giraffe", "08 51.37"],
+  ["Cha", "Chamaeleon", "Chameleon", "10 41.53"],
+  ["Hya", "Hydra", "Sea Serpent", "11 36.73"],
+  ["Crv", "Corvus", "Raven", "12 26.52"],
+  ["Cen", "Centaurus", "Centaur", "13 04.27"],
+  ["Dra", "Draco", "Dragon", "15 08.64"],
+  ["Lup", "Lupus", "Wolf", "15 13.21"],
+  ["Aps", "Apus", "Bird of Paradise", "16 08.65"],
+  ["Pav", "Pavo", "Peacock", "19 36.71"],
+  ["Aql", "Aquila", "Eagle", "19 40.02"],
+  ["Vul", "Vulpecula", "Fox", "20 13.88"],
+  ["Cyg", "Cygnus", "Swan", "20 35.28"],
+  ["Del", "Delphinus", "Dolphin", "20 41.61"],
+  ["Gru", "Grus", "Crane", "22 27.39"],
+  ["Peg", "Pegasus", "Pegasus", "22 41.84"],
+  ["Tuc", "Tucana", "Toucan", "23 46.64"]
 ];
 
 /**
