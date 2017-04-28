@@ -4,5 +4,7 @@
 // Bootstrap Framework.
 @import '../bootstrap/assets/stylesheets/bootstrap';
 
+@import "compass/css3";
+
 // Base-theme overrides.
 @import 'overrides';

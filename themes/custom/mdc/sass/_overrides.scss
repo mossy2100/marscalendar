@@ -226,7 +226,7 @@ sub {
 #branding {
   display: block;
   background-color: white;
-  border-radius: 0 0 10px 10px;
+  @include border-radius(0 0 10px 10px);
 }
 
 #left-sidebar,
@@ -250,11 +250,11 @@ sub {
 
 @media (min-width: 768px) {
   #left-sidebar {
-    border-radius: 10px 0 0 10px;
+    @include border-radius(10px 0 0 10px);
   }
 
   #right-sidebar {
-    border-radius: 0 10px 10px 0;
+    @include border-radius(0 10px 10px 0);
   }
 }
 
@@ -330,7 +330,7 @@ th.num {
 .book-nav {
   background-color: $paleOrange;
   padding: 5px;
-  border-radius: 5px;
+  @include border-radius(5px);
   margin-bottom: 15px;
 
   table {
@@ -545,4 +545,28 @@ blockquote {
 .pagination > li > span:hover,
 .pagination > li > span:focus {
   color: $red;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Mars clock
+
+#block-utopiandateandtime {
+  h2 {
+    font-size: 16px;
+    margin-top: 0;
+  }
+
+  #marsClock {
+    background-color: white;
+    @include border-radius(10px);
+    border: 1px solid #ccc;
+    padding: 5px;
+
+    div {
+      text-align: center;
+      font-size: 14px;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+  }
 }

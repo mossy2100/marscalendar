@@ -279,7 +279,7 @@ function SolName(nSolOfMonth)
     if (doI == 5)
 	ThisSol = 'On this sol in 170: Philip K. Dick was born, author of "Martian Time-Slip."';
     if (doI == 6)
-	ThisSol = 'On this sol in 162: Edgar Rice Burroughs‘ "The Warlord of Mars" began serialization in "All-Story" (date approximate).';
+	ThisSol = 'On this sol in 162: Edgar Rice BurroughsÂ‘ "The Warlord of Mars" began serialization in "All-Story" (date approximate).';
     if (doI == 7)
 	ThisSol = '';
     if (doI == 8)
@@ -291,7 +291,7 @@ function SolName(nSolOfMonth)
     if (doI == 11)
 	ThisSol = '';
     if (doI == 12)
-	ThisSol = 'On this sol in 188: Mars 1 was launched. Robert A. Heinlein‘s "Podkayne of Mars" began serialization in "If" (date approximate).';
+	ThisSol = 'On this sol in 188: Mars 1 was launched. Robert A. HeinleinÂ‘s "Podkayne of Mars" began serialization in "If" (date approximate).';
     if (doI == 13)
 	ThisSol = '';
     if (doI == 14)
@@ -313,9 +313,9 @@ function SolName(nSolOfMonth)
     if (doI == 22)
 	ThisSol = '';
     if (doI == 23)
-	ThisSol = 'On this sol in 206: US President Bill Clinton abandoned George Bush‘s goal of a manned landing on Mars. His National Science and Technology Council‘s statement of National Space Policy only mentioned "a sustained program to support a robotic presence on the surface of Mars by year 2000 for the purposes of scientific research, exploration and technology development."';
+	ThisSol = 'On this sol in 206: US President Bill Clinton abandoned George BushÂ‘s goal of a manned landing on Mars. His National Science and Technology CouncilÂ‘s statement of National Space Policy only mentioned "a sustained program to support a robotic presence on the surface of Mars by year 2000 for the purposes of scientific research, exploration and technology development."';
     if (doI == 24)
-	ThisSol = 'On this sol in 161: Edgar Rice Burroughs‘ "Under the Moons of Mars" began serialization in "All-Story," later was published as a novel under the title "A Princess of Mars" (date approximate).';
+	ThisSol = 'On this sol in 161: Edgar Rice BurroughsÂ‘ "Under the Moons of Mars" began serialization in "All-Story," later was published as a novel under the title "A Princess of Mars" (date approximate).';
     if (doI == 25)
 	ThisSol = '';
     if (doI == 26)
@@ -349,7 +349,7 @@ function SolName(nSolOfMonth)
     if (doI == 40)
 	ThisSol = '';
     if (doI == 41)
-	ThisSol = 'On this sol in 164: Edgar Rice Burroughs‘ "A Princess of Mars" was published by McClurg.';
+	ThisSol = 'On this sol in 164: Edgar Rice BurroughsÂ‘ "A Princess of Mars" was published by McClurg.';
     if (doI == 42)
 	ThisSol = '';
     if (doI == 43)
@@ -409,7 +409,7 @@ function SolName(nSolOfMonth)
     if (doI == 70)
 	ThisSol = 'On this sol in 206: Mars Global Surveyor was launched.\n\nOn this sol in 208: "The Third International Mars Society Convention" opened in Toronto, Ontario.';
     if (doI == 71)
-	ThisSol = 'On this sol in 165: Edgar Rice Burroughs‘ "The Warlord of Mars" was published by McClurg.';
+	ThisSol = 'On this sol in 165: Edgar Rice BurroughsÂ‘ "The Warlord of Mars" was published by McClurg.';
     if (doI == 72)
 	ThisSol = '';
     if (doI == 73)
@@ -443,7 +443,7 @@ function SolName(nSolOfMonth)
     if (doI == 87)
 	ThisSol = '';
     if (doI == 88)
-	ThisSol = 'On this sol in 173: Edgar Rice Burroughs‘ "The Swords of Mars" began serialization in "Blue Book" (date approximate).';
+	ThisSol = 'On this sol in 173: Edgar Rice BurroughsÂ‘ "The Swords of Mars" began serialization in "Blue Book" (date approximate).';
     if (doI == 89)
 	ThisSol = '';
     if (doI == 90)
@@ -467,7 +467,7 @@ function SolName(nSolOfMonth)
     if (doI == 99)
 	ThisSol = '';
     if (doI == 100)
-	ThisSol = 'On this sol in 153: H. G. Wells‘ "The War of the Worlds" began serialization in England in "Pearson‘s" (date approximate).';
+	ThisSol = 'On this sol in 153: H. G. WellsÂ‘ "The War of the Worlds" began serialization in England in "PearsonÂ‘s" (date approximate).';
     if (doI == 101)
 	ThisSol = '';
     if (doI == 102)
@@ -497,7 +497,7 @@ function SolName(nSolOfMonth)
     if (doI == 114)
 	ThisSol = '';
     if (doI == 115)
-	ThisSol = 'On this sol in 203: "America at the Threshold: America‘s Space Exploration Initiative" ("The Stafford Report") called for manned missions to Mars beginning in 215.';
+	ThisSol = 'On this sol in 203: "America at the Threshold: AmericaÂ‘s Space Exploration Initiative" ("The Stafford Report") called for manned missions to Mars beginning in 215.';
     if (doI == 116)
 	ThisSol = '';
     if (doI == 117)
@@ -525,7 +525,7 @@ function SolName(nSolOfMonth)
     if (doI == 128)
 	ThisSol = '';
     if (doI == 129)
-	ThisSol = 'On this sol in 153: H. G. Wells‘ "The War of the Worlds" began serialization in the USA in "Cosmopolitan" (date approximate).';
+	ThisSol = 'On this sol in 153: H. G. WellsÂ‘ "The War of the Worlds" began serialization in the USA in "Cosmopolitan" (date approximate).';
     if (doI == 130)
 	ThisSol = '';
     if (doI == 131)
@@ -609,13 +609,13 @@ function SolName(nSolOfMonth)
     if (doI == 170)
 	ThisSol = 'On this sol in 202: "Mars is essentially in the same orbit. Mars is somewhat the same distance from the sun, which is very important. We have seen pictures where there are canals, we believe, and water. If there is water, that means there is oxygen. If oxygen, that means we can breathe." -- US Vice President Dan Quayle';
     if (doI == 171)
-	ThisSol = 'On this sol in 171: The Mercury Theater of the Air, starring Orson Welles, performed Howard Koch‘s radio play "Invasion from Mars." The broadcast terrorized the eastern USA.';
+	ThisSol = 'On this sol in 171: The Mercury Theater of the Air, starring Orson Welles, performed Howard KochÂ‘s radio play "Invasion from Mars." The broadcast terrorized the eastern USA.';
     if (doI == 172)
 	ThisSol = '';
     if (doI == 173)
 	ThisSol = '';
     if (doI == 174)
-	ThisSol = 'On this sol in 163: Edgar Rice Burroughs‘ "Thuvia, Maid of Mars" began serialization in "All-Story Weekly."';
+	ThisSol = 'On this sol in 163: Edgar Rice BurroughsÂ‘ "Thuvia, Maid of Mars" began serialization in "All-Story Weekly."';
     if (doI == 175)
 	ThisSol = '';
     if (doI == 176)
@@ -661,7 +661,7 @@ function SolName(nSolOfMonth)
     if (doI == 196)
 	ThisSol = 'On this sol in 197: Contact with Viking Lander 2 was lost after 1,280 sols in Utopia Planitia.';
     if (doI == 197)
-	ThisSol = 'On this sol in 184: Fredric Brown‘s "Martians, Go Home" was published (date approximate).';
+	ThisSol = 'On this sol in 184: Fredric BrownÂ‘s "Martians, Go Home" was published (date approximate).';
     if (doI == 198)
 	ThisSol = '';
     if (doI == 199)
@@ -685,7 +685,7 @@ function SolName(nSolOfMonth)
     if (doI == 208)
 	ThisSol = 'On this sol in 176: Edgar Rice Burroughs began writing "Escape on Mars," part 3 of a new Mars series. The story was later was published under the title "The Yellow Men of Mars."\n\nOn this date in 195: Viking Lander 1 achieved first successful landing on Mars in Chryse Planitia. The spacecraft was later renamed the Thomas A. Mutch Memorial Station.\n\nOn this sol in 209: A meteorite, designated Sayh al Uhaymir 120, was discovered near Dar al Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI == 209)
-	ThisSol = 'On this sol in 171: Edgar Rice Burroughs‘ "A Fighting Man of Mars" was published by "Metropolitan."';
+	ThisSol = 'On this sol in 171: Edgar Rice BurroughsÂ‘ "A Fighting Man of Mars" was published by "Metropolitan."';
     if (doI == 210)
 	ThisSol = '';
     if (doI == 212)
@@ -723,7 +723,7 @@ function SolName(nSolOfMonth)
     if (doI == 227)
 	ThisSol = '';
     if (doI == 228)
-	ThisSol = 'On this sol in 183: I. M. Levitt‘s Earth-Mars Clock debuted in New York, New York.';
+	ThisSol = 'On this sol in 183: I. M. LevittÂ‘s Earth-Mars Clock debuted in New York, New York.';
     if (doI == 229)
 	ThisSol = '';
     if (doI == 230)
@@ -735,7 +735,7 @@ function SolName(nSolOfMonth)
     if (doI == 233)
 	ThisSol = 'On this sol in 136: A meteorite fell near Shergotty, India. In the 1980s, the Shergotty meteorite was identified as having originated on Mars.';
     if (doI == 234)
-	ThisSol = 'On this sol in 152: "The observations of 1894 have made it practically certain that the so-called ‘canals‘ of Mars are real, whatever may be their explanation," Princeton astronomer Charles A. Young declared in his article for "Cosmopolitan," "Mr. Lowell‘s Theory of Mars" (date approximate).\n\nOn this sol in 158: In a letter to "The New York Times," Nikola Tesla declared, "I can easily bridge the gulf which separates us from Mars."\n\nOn this sol in 162: Edgar Rice Burroughs began writing "The Gods of Mars."';
+	ThisSol = 'On this sol in 152: "The observations of 1894 have made it practically certain that the so-called Â‘canalsÂ‘ of Mars are real, whatever may be their explanation," Princeton astronomer Charles A. Young declared in his article for "Cosmopolitan," "Mr. LowellÂ‘s Theory of Mars" (date approximate).\n\nOn this sol in 158: In a letter to "The New York Times," Nikola Tesla declared, "I can easily bridge the gulf which separates us from Mars."\n\nOn this sol in 162: Edgar Rice Burroughs began writing "The Gods of Mars."';
     if (doI == 235)
 	ThisSol = '';
     if (doI == 236)
@@ -743,13 +743,13 @@ function SolName(nSolOfMonth)
     if (doI == 237)
 	ThisSol = '';
     if (doI == 238)
-	ThisSol = 'On this sol in 175: Edgar Rice Burroughs‘ "The Synthetic Men of Mars" was published in "Argosy."';
+	ThisSol = 'On this sol in 175: Edgar Rice BurroughsÂ‘ "The Synthetic Men of Mars" was published in "Argosy."';
     if (doI == 239)
 	ThisSol = '';
     if (doI == 240)
 	ThisSol = '';
     if (doI == 241)
-	ThisSol = 'On this sol in 185: Isaac Asimov‘s "I‘m in Marsport without Hilda" appeared in "Venture Science Fiction" (date approximate).';
+	ThisSol = 'On this sol in 185: Isaac AsimovÂ‘s "IÂ‘m in Marsport without Hilda" appeared in "Venture Science Fiction" (date approximate).';
     if (doI == 242)
 	ThisSol = '';
     if (doI == 243)
@@ -761,7 +761,7 @@ function SolName(nSolOfMonth)
     if (doI == 246)
 	ThisSol = 'On this sol in 205: The "Mars Together" conference opened in Palo Alto, California.\n\nOn this sol in 208: A meteorite, designated Sayh al Uhaymir 094, was discovered near Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI == 247)
-	ThisSol = 'On this sol in 181: Ray Bradbury‘s "The Martian Chronicles" was published (date approximate).';
+	ThisSol = 'On this sol in 181: Ray BradburyÂ‘s "The Martian Chronicles" was published (date approximate).';
     if (doI == 248)
 	ThisSol = 'On this sol in 195: Viking Orbiter 1 frame 70A13 imaged the Cydonia Face and Pyramids.';
     if (doI == 249)
@@ -773,7 +773,7 @@ function SolName(nSolOfMonth)
     if (doI == 252)
 	ThisSol = 'On this sol in 191: Mariner 6 was launched.';
     if (doI == 253)
-	ThisSol = 'On this sol in 166: Edgar Rice Burroughs‘ "The Chessmen of Mars" began serialization in "Argosy All-Story Weekly."';
+	ThisSol = 'On this sol in 166: Edgar Rice BurroughsÂ‘ "The Chessmen of Mars" began serialization in "Argosy All-Story Weekly."';
     if (doI == 254)
 	ThisSol = 'On this sol in 196: Contact with Viking Orbiter 2 was lost after 697 sols in Mars orbit.';
     if (doI == 255)
@@ -787,7 +787,7 @@ function SolName(nSolOfMonth)
     if (doI == 259)
 	ThisSol = '';
     if (doI == 260)
-	ThisSol = 'On this sol in 182: Leigh Brackett‘s "The Last Days of Shandakor" appeared in "Startling Stories" (date approximate).';
+	ThisSol = 'On this sol in 182: Leigh BrackettÂ‘s "The Last Days of Shandakor" appeared in "Startling Stories" (date approximate).';
     if (doI == 261)
 	ThisSol = '';
     if (doI == 262)
@@ -799,13 +799,13 @@ function SolName(nSolOfMonth)
     if (doI == 265)
 	ThisSol = '';
     if (doI == 266)
-	ThisSol = 'On this sol in 195: Viking Orbiter 1 frame 86A10 imaged the Utopia Faces.\n\nOn this sol in 204: Contact with Mars Observer was lost enroute to Mars.\n\nOn this sol in 208: Thomas W. Cronin‘s "As it Is on Mars" was published.';
+	ThisSol = 'On this sol in 195: Viking Orbiter 1 frame 86A10 imaged the Utopia Faces.\n\nOn this sol in 204: Contact with Mars Observer was lost enroute to Mars.\n\nOn this sol in 208: Thomas W. CroninÂ‘s "As it Is on Mars" was published.';
     if (doI == 267)
 	ThisSol = '';
     if (doI == 268)
 	ThisSol = '';
     if (doI == 269)
-	ThisSol = 'On this sol in 202: NASA‘s "Report of the 90-Day Study on Human Exploration of the Moon and Mars" estimated the cost of a manned Mars program at $450 billion. Political support for manned Mars missions subsequently collapsed.\n\nOn this sol in 204: Mars Observer passed Mars three days after contact was lost.';
+	ThisSol = 'On this sol in 202: NASAÂ‘s "Report of the 90-Day Study on Human Exploration of the Moon and Mars" estimated the cost of a manned Mars program at $450 billion. Political support for manned Mars missions subsequently collapsed.\n\nOn this sol in 204: Mars Observer passed Mars three days after contact was lost.';
     if (doI == 270)
 	ThisSol = '';
     if (doI == 271)
@@ -815,7 +815,7 @@ function SolName(nSolOfMonth)
     if (doI == 273)
 	ThisSol = '';
     if (doI == 274)
-	ThisSol = 'On this sol in 176: Edgar Rice Burroughs‘ "John Carter and the Giant of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "John Carter of Mars."';
+	ThisSol = 'On this sol in 176: Edgar Rice BurroughsÂ‘ "John Carter and the Giant of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "John Carter of Mars."';
     if (doI == 275)
 	ThisSol = '';
     if (doI == 276)
@@ -839,9 +839,9 @@ function SolName(nSolOfMonth)
     if (doI == 285)
 	ThisSol = '';
     if (doI == 286)
-	ThisSol = 'On this sol in 195: "Today we have touched Mars. There is life on Mars and it is us--extensions of our eyes in all directions, extensions of our mind, extensions of our heart and soul have touched Mars today. That‘s the message to look for there: We are on Mars. We are the Martians!" --Ray Bradbury, speaking at "The Search for Life in the Solar System" symposium in Pasadena, California.';
+	ThisSol = 'On this sol in 195: "Today we have touched Mars. There is life on Mars and it is us--extensions of our eyes in all directions, extensions of our mind, extensions of our heart and soul have touched Mars today. ThatÂ‘s the message to look for there: We are on Mars. We are the Martians!" --Ray Bradbury, speaking at "The Search for Life in the Solar System" symposium in Pasadena, California.';
     if (doI == 287)
-	ThisSol = 'On this sol in 180: Marvin the Martian first appeared in animated short film "Haredevil Hare."\n\nOn this sol in 184: Robert A. Heinlein‘s "Double Star" began serialization in "Astounding Science Fiction" (date approximate).';
+	ThisSol = 'On this sol in 180: Marvin the Martian first appeared in animated short film "Haredevil Hare."\n\nOn this sol in 184: Robert A. HeinleinÂ‘s "Double Star" began serialization in "Astounding Science Fiction" (date approximate).';
     if (doI == 288)
 	ThisSol = '';
     if (doI == 289)
@@ -855,7 +855,7 @@ function SolName(nSolOfMonth)
     if (doI == 293)
 	ThisSol = '';
     if (doI == 294)
-	ThisSol = 'On this sol in 152: Percival Lowell‘s "Mars" was published (date approximate).\n\nOn this sol in 183: The motion picture "Mars and Beyond" was released in the USA.';
+	ThisSol = 'On this sol in 152: Percival LowellÂ‘s "Mars" was published (date approximate).\n\nOn this sol in 183: The motion picture "Mars and Beyond" was released in the USA.';
     if (doI == 295)
 	ThisSol = '';
     if (doI == 296)
@@ -867,7 +867,7 @@ function SolName(nSolOfMonth)
     if (doI == 299)
 	ThisSol = 'On this sol in 191: Mars 1969B failed during launch.';
     if (doI == 300)
-	ThisSol = 'On this sol in 206: William K. Hartmann‘s "Mars Underground" was published (date approximate).';
+	ThisSol = 'On this sol in 206: William K. HartmannÂ‘s "Mars Underground" was published (date approximate).';
     if (doI == 301)
 	ThisSol = '';
     if (doI == 302)
@@ -885,7 +885,7 @@ function SolName(nSolOfMonth)
     if (doI == 308)
 	ThisSol = '';
     if (doI == 309)
-	ThisSol = 'On this sol in 209: Thomas W. Cronin‘s "Give Us This Mars" was published.';
+	ThisSol = 'On this sol in 209: Thomas W. CroninÂ‘s "Give Us This Mars" was published.';
     if (doI == 310)
 	ThisSol = 'On this sol in 197: Contact with Viking Orbiter 1 was lost after 1,469 sols in Mars orbit.';
     if (doI == 311)
@@ -931,7 +931,7 @@ function SolName(nSolOfMonth)
     if (doI == 331)
 	ThisSol = '';
     if (doI == 332)
-	ThisSol = 'On this sol in 176: Edgar Rice Burroughs‘ "The City of Mummies" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."';
+	ThisSol = 'On this sol in 176: Edgar Rice BurroughsÂ‘ "The City of Mummies" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."';
     if (doI == 333)
 	ThisSol = '';
     if (doI == 334)
@@ -949,7 +949,7 @@ function SolName(nSolOfMonth)
     if (doI == 340)
 	ThisSol = '';
     if (doI == 341)
-	ThisSol = 'On this sol in 193: Lin Carter‘s "The Man Who Loved Mars" was published (date approximate).';
+	ThisSol = 'On this sol in 193: Lin CarterÂ‘s "The Man Who Loved Mars" was published (date approximate).';
     if (doI == 342)
 	ThisSol = '';
     if (doI == 343)
@@ -961,7 +961,7 @@ function SolName(nSolOfMonth)
     if (doI == 346)
 	ThisSol = '';
     if (doI == 347)
-	ThisSol = 'On this sol in 177: Edgar Rice Burroughs‘ "The Skeleton Men of Jupiter" appeared in "Amazing Stories" (date approximate). Later included in the anthology "John Carter of Mars."';
+	ThisSol = 'On this sol in 177: Edgar Rice BurroughsÂ‘ "The Skeleton Men of Jupiter" appeared in "Amazing Stories" (date approximate). Later included in the anthology "John Carter of Mars."';
     if (doI == 348)
 	ThisSol = '';
     if (doI == 349)
@@ -979,7 +979,7 @@ function SolName(nSolOfMonth)
     if (doI == 355)
 	ThisSol = 'On this sol in 152: In the first of a series of 40 seances, the spiritualist medium Catherine Elise Mueller communicated with Martians, speaking in their language, and in some seances, writing in Martian.\n\nOn this sol in 158: During the War of the Worlds, the Martians launched the fifth of ten cylinders toward Earth.';
     if (doI == 356)
-	ThisSol = 'On this sol in 158: During the War of the Worlds, the Martians launched the sixth of ten cylinders toward Earth.\n\nOn this sol in 189: "I say let‘s do it quickly and establish a foothold on a new planet while we still have one left to take off from." --Wernher von Braun, "Manned Mars Landing," "Aviation Week & Space Technology."';
+	ThisSol = 'On this sol in 158: During the War of the Worlds, the Martians launched the sixth of ten cylinders toward Earth.\n\nOn this sol in 189: "I say letÂ‘s do it quickly and establish a foothold on a new planet while we still have one left to take off from." --Wernher von Braun, "Manned Mars Landing," "Aviation Week & Space Technology."';
     if (doI == 357)
 	ThisSol = 'On this sol in 158: During the War of the Worlds, the Martians launched the seventh of ten cylinders toward Earth.';
     if (doI == 358)
@@ -1001,7 +1001,7 @@ function SolName(nSolOfMonth)
     if (doI == 366)
 	ThisSol = '';
     if (doI == 367)
-	ThisSol = 'On this sol in 153: H. G. Wells‘ "The War of the Worlds" was published as a novella (date approximate).';
+	ThisSol = 'On this sol in 153: H. G. WellsÂ‘ "The War of the Worlds" was published as a novella (date approximate).';
     if (doI == 368)
 	ThisSol = 'On this sol in 199: "The Case For Mars II" conference opened in Boulder, Colorado.';
     if (doI == 369)
@@ -1035,7 +1035,7 @@ function SolName(nSolOfMonth)
     if (doI == 383)
 	ThisSol = 'On this sol in 158: During the War of the Worlds, the second Martian cylinder landed on the Addlestone Golf Links. A battalion of the Cardigan Regiment rushed the Horsell pit in skirmish order and was annihilated by the Heat-Ray. The fighting-machine then destroyed Woking.\n\nOn this sol in 192: Mars 3 was launched.';
     if (doI == 384)
-	ThisSol = 'On this sol in 158: During the War of the Worlds, the third Martian cylinder landed north of Pyrford, completing the Surrey Triangle. Five Martian fighting-machines advanced down the Wey River to the confluence of the Thames. Royal Army batteries engage the Martians, destroying one fighting-machine, but Weybridge and Chertsey were destroyed by Heat-Ray. Later, the St. George’s Hill battery damaged one fighting-machine, but was then destroyed. Seven Martian fighting-machines fanned out along a curved line between St. George’s Hill, Weybridge, and the village of Send. The Martians discharged Black Smoke across the valley of the Thames, advancing through Street Cobham and Ditton. Richmond, Kingston, and Wimbledon were destroyed.';
+	ThisSol = 'On this sol in 158: During the War of the Worlds, the third Martian cylinder landed north of Pyrford, completing the Surrey Triangle. Five Martian fighting-machines advanced down the Wey River to the confluence of the Thames. Royal Army batteries engage the Martians, destroying one fighting-machine, but Weybridge and Chertsey were destroyed by Heat-Ray. Later, the St. GeorgeÂ’s Hill battery damaged one fighting-machine, but was then destroyed. Seven Martian fighting-machines fanned out along a curved line between St. GeorgeÂ’s Hill, Weybridge, and the village of Send. The Martians discharged Black Smoke across the valley of the Thames, advancing through Street Cobham and Ditton. Richmond, Kingston, and Wimbledon were destroyed.';
     if (doI == 385)
 	ThisSol = 'On this sol in 158: During the War of the Worlds, the fourth Martian cylinder landed in Bushey Park, beginning the West End Triangle. The Martians advanced in a line from Hanwell in the north to Coombe and Malden in the south. Organized resistance by the British forces collapsed. The Martians went to and fro over the North Downs between Guildford and Maidstone, using the Black Smoke to eliminate any artillery batteries located there. Police organization in London broke down. The railway system collapsed.\n\nOn this sol in 192: Mariner 9 was launched.';
     if (doI == 386)
@@ -1087,15 +1087,15 @@ function SolName(nSolOfMonth)
     if (doI == 409)
 	ThisSol = 'On this sol in 191: Mariner 7 passed Mars.';
     if (doI == 410)
-	ThisSol = 'On this sol in 201: The Planetary Society‘s "Mars Declaration" was published in "The Washington Post."';
+	ThisSol = 'On this sol in 201: The Planetary SocietyÂ‘s "Mars Declaration" was published in "The Washington Post."';
     if (doI == 411)
 	ThisSol = '';
     if (doI == 412)
 	ThisSol = '';
     if (doI == 413)
-	ThisSol = 'On this sol in 191: Members of the Charles Manson "family," a Martian nest patterned on Robert A. Heinlein‘s "Stranger in a Strange Land," murdered actress Sharon Tate and four others in Los Angeles.';
+	ThisSol = 'On this sol in 191: Members of the Charles Manson "family," a Martian nest patterned on Robert A. HeinleinÂ‘s "Stranger in a Strange Land," murdered actress Sharon Tate and four others in Los Angeles.';
     if (doI == 414)
-	ThisSol = 'On this sol in 191: Members of the Charles Manson "family," a Martian nest patterned on Robert A. Heinlein‘s "Stranger in a Strange Land," murdered Leno and Rosemary LaBianca in Los Angeles.';
+	ThisSol = 'On this sol in 191: Members of the Charles Manson "family," a Martian nest patterned on Robert A. HeinleinÂ‘s "Stranger in a Strange Land," murdered Leno and Rosemary LaBianca in Los Angeles.';
     if (doI == 415)
 	ThisSol = '';
     if (doI == 416)
@@ -1109,7 +1109,7 @@ function SolName(nSolOfMonth)
     if (doI == 420)
 	ThisSol = 'On this sol in 119: Giovanni Schiaparelli was born, developed first detailed maps of Mars and originated the system of areographic nomenclature in use today.\n\nOn this sol in 200: The "NASA Mars Conference" opened in Washington, DC.';
     if (doI == 421)
-	ThisSol = 'On this sol in 176: Edgar Rice Burroughs‘ "The Black Pirates of Barsoom" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."';
+	ThisSol = 'On this sol in 176: Edgar Rice BurroughsÂ‘ "The Black Pirates of Barsoom" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."';
     if (doI == 422)
 	ThisSol = 'On this sol in 203: US President George H. W. Bush issued National Space Policy Directive 6, "Space Exploration Initiative," calling for human expeditions to Mars.';
     if (doI == 423)
@@ -1123,7 +1123,7 @@ function SolName(nSolOfMonth)
     if (doI == 427)
 	ThisSol = '';
     if (doI == 428)
-	ThisSol = 'On this sol in 202: Voicing his opposition to the Bush Administration‘s Space Exploration Initiative, Senator Albert Gore, Jr. told his fellow legislators, "Before discussing a mission to Mars, the Administration needs a mission to reality."';
+	ThisSol = 'On this sol in 202: Voicing his opposition to the Bush AdministrationÂ‘s Space Exploration Initiative, Senator Albert Gore, Jr. told his fellow legislators, "Before discussing a mission to Mars, the Administration needs a mission to reality."';
     if (doI == 429)
 	ThisSol = 'On this sol in 151: The Lowell Observatory began its study of Mars. Eighteen months later, Percival Lowell was published the observations of the 151 opposition in a popular book, Mars.';
     if (doI == 430)
@@ -1137,7 +1137,7 @@ function SolName(nSolOfMonth)
     if (doI == 434)
 	ThisSol = 'On this sol in 209: Mars Exploration Rover Opportunity was launched.';
     if (doI == 435)
-	ThisSol = 'On this sol in 191: A NASA report to US President Richard Nixon‘s Space Task Group, which was chartered to explore options for space efforts beyond the Apollo program, stated, "Manned expeditions to Mars could begin as early as 1981."';
+	ThisSol = 'On this sol in 191: A NASA report to US President Richard NixonÂ‘s Space Task Group, which was chartered to explore options for space efforts beyond the Apollo program, stated, "Manned expeditions to Mars could begin as early as 1981."';
     if (doI == 436)
 	ThisSol = 'On this sol in 202: George Bush became the first US President to set a target date for sending humans to Mars: "I believe that before America celebrates the 50th anniversary of its landing on the Moon, the American flag should be planted on Mars."';
     if (doI == 437)
@@ -1161,11 +1161,11 @@ function SolName(nSolOfMonth)
     if (doI == 446)
 	ThisSol = '';
     if (doI == 447)
-	ThisSol = 'On this sol in 176: Edgar Rice Burroughs‘ "The Black Pirates of Barsoom" was published in Amazing Stories.\n\nOn this sol in 198: Contact with the Thomas A. Mutch Memorial Station (Viking Lander 1) was lost after 2,244 sols in Chryse Planitia.';
+	ThisSol = 'On this sol in 176: Edgar Rice BurroughsÂ‘ "The Black Pirates of Barsoom" was published in Amazing Stories.\n\nOn this sol in 198: Contact with the Thomas A. Mutch Memorial Station (Viking Lander 1) was lost after 2,244 sols in Chryse Planitia.';
     if (doI == 448)
 	ThisSol = '';
     if (doI == 449)
-	ThisSol = 'On this sol in 158: I. M. Levitt was born, inventor of a Martian calendar and the first Earth-Mars mechanical date-time computer.\n\nOn this sol in 191: The report by US President Richard Nixon‘s Space Task Group, "The Post-Apollo Space Program: Directions for the Future," stated, "We conclude that NASA has the demonstrated organizational competence and technology base, by virtue of the Apollo success and other achievements, to carry out a successful program to land man on Mars within 15 years." Nevertheless, the report backed away from an early manned landing on Mars, recommending that the focus for the next decades in space should be on the development of hardware and systems that would ultimately support a manned mission to Mars at the close of the 20th century.';
+	ThisSol = 'On this sol in 158: I. M. Levitt was born, inventor of a Martian calendar and the first Earth-Mars mechanical date-time computer.\n\nOn this sol in 191: The report by US President Richard NixonÂ‘s Space Task Group, "The Post-Apollo Space Program: Directions for the Future," stated, "We conclude that NASA has the demonstrated organizational competence and technology base, by virtue of the Apollo success and other achievements, to carry out a successful program to land man on Mars within 15 years." Nevertheless, the report backed away from an early manned landing on Mars, recommending that the focus for the next decades in space should be on the development of hardware and systems that would ultimately support a manned mission to Mars at the close of the 20th century.';
     if (doI == 450)
 	ThisSol = 'On this sol in 201: Phobos 1 was launched.';
     if (doI == 451)
@@ -1187,7 +1187,7 @@ function SolName(nSolOfMonth)
     if (doI == 459)
 	ThisSol = 'On this sol in 202: "The Case For Mars IV" conference opened in Boulder, Colorado.';
     if (doI == 460)
-	ThisSol = 'On this sol in 170: Edgar Rice Burroughs‘ "A Fighting Man of Mars" began serialization in "Blue Book" (date approximate).';
+	ThisSol = 'On this sol in 170: Edgar Rice BurroughsÂ‘ "A Fighting Man of Mars" began serialization in "Blue Book" (date approximate).';
     if (doI == 461)
 	ThisSol = '';
     if (doI == 462)
@@ -1205,7 +1205,7 @@ function SolName(nSolOfMonth)
     if (doI == 468)
 	ThisSol = '';
     if (doI == 469)
-	ThisSol = 'On this sol in 182: Isaac Asimov‘s "The Martian Way" appeared in "Galaxy Science Fiction" (date approximate).\n\nOn this sol in 210: The motion picture "The War of the Worlds" was released in the USA.';
+	ThisSol = 'On this sol in 182: Isaac AsimovÂ‘s "The Martian Way" appeared in "Galaxy Science Fiction" (date approximate).\n\nOn this sol in 210: The motion picture "The War of the Worlds" was released in the USA.';
     if (doI == 470)
 	ThisSol = '';
     if (doI == 471)
@@ -1227,11 +1227,11 @@ function SolName(nSolOfMonth)
     if (doI == 479)
 	ThisSol = 'On this sol in 193: Mars 4 was launched.';
     if (doI == 480)
-	ThisSol = 'On this sol in 142: Asaph Hall announced the discovery of Mars‘ two moons. At the suggestion of Henry Madan, the Science Master of Eton, England, Hall named the moons Phobos and Deimos.';
+	ThisSol = 'On this sol in 142: Asaph Hall announced the discovery of MarsÂ‘ two moons. At the suggestion of Henry Madan, the Science Master of Eton, England, Hall named the moons Phobos and Deimos.';
     if (doI == 481)
 	ThisSol = 'On this sol in 160: An unfortunate dog in Nakhla, Egypt was struck by part of a meteorite and killed. In the 1980s, the Nakhla meteorite was identified as having originated on Mars.';
     if (doI == 482)
-	ThisSol = 'On this sol in 176: Edgar Rice Burroughs‘ "The Yellow Men of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this sol in 184: A dust storm began with a bright cloud over the Hellas-Noachis region that spread to engulf the whole planet by mid-September.';
+	ThisSol = 'On this sol in 176: Edgar Rice BurroughsÂ‘ "The Yellow Men of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this sol in 184: A dust storm began with a bright cloud over the Hellas-Noachis region that spread to engulf the whole planet by mid-September.';
     if (doI == 483)
 	ThisSol = 'On this sol in 193: Mars 5 was launched.';
     if (doI == 484)
@@ -1247,7 +1247,7 @@ function SolName(nSolOfMonth)
     if (doI == 489)
 	ThisSol = '';
     if (doI == 490)
-	ThisSol = 'On this sol in 142: Henry Draper of New York and Edward Singleton Holden of the U.S. Naval Observatory in Washington claimed to have jointly discovered the third moon at Draper‘s private observatory at Hastings-on-the-Hudson. This discovery proved to be false; in fact, the proposed moon did not even obey Kepler‘s laws.\n\nOn this sol in 151: The British scientific journal "Nature" reported that the Lick and Nice Observatories had seen a great light on Mars, which was later speculated to have been the casting of the huge gun used to launch the War of the Worlds.';
+	ThisSol = 'On this sol in 142: Henry Draper of New York and Edward Singleton Holden of the U.S. Naval Observatory in Washington claimed to have jointly discovered the third moon at DraperÂ‘s private observatory at Hastings-on-the-Hudson. This discovery proved to be false; in fact, the proposed moon did not even obey KeplerÂ‘s laws.\n\nOn this sol in 151: The British scientific journal "Nature" reported that the Lick and Nice Observatories had seen a great light on Mars, which was later speculated to have been the casting of the huge gun used to launch the War of the Worlds.';
     if (doI == 491)
 	ThisSol = '';
     if (doI == 492)
@@ -1297,7 +1297,7 @@ function SolName(nSolOfMonth)
     if (doI == 514)
 	ThisSol = 'Winter Solstice (nominal date).\n\nOn this sol in 142: Giovanni Schiaparelli observed the canale Ambrosia.';
     if (doI == 515)
-	ThisSol = 'On this sol in 188: Philip K. Dick‘s "Martian Time-Slip" was published (date approximate).';
+	ThisSol = 'On this sol in 188: Philip K. DickÂ‘s "Martian Time-Slip" was published (date approximate).';
     if (doI == 516)
 	ThisSol = '';
     if (doI == 517)
@@ -1327,7 +1327,7 @@ function SolName(nSolOfMonth)
     if (doI == 529)
 	ThisSol = '';
     if (doI == 530)
-	ThisSol = 'On this sol in 166: Edgar Rice Burroughs‘ "The Chessmen of Mars" was published by McClurg.\n\nOn this sol in 170: Lin Carter was born, author of "The Man Who Loved Mars."';
+	ThisSol = 'On this sol in 166: Edgar Rice BurroughsÂ‘ "The Chessmen of Mars" was published by McClurg.\n\nOn this sol in 170: Lin Carter was born, author of "The Man Who Loved Mars."';
     if (doI == 531)
 	ThisSol = 'On this sol in 142: Giovanni Schiaparelli observed Mare Erythraeum and Noachis to be obscured by clouds.';
     if (doI == 532)
@@ -1347,7 +1347,7 @@ function SolName(nSolOfMonth)
     if (doI == 539)
 	ThisSol = '';
     if (doI == 540)
-	ThisSol = 'On this sol in 160: "Martians Build Two Immense Canals in Two Years" reported in "The New York Times."\n\nOn this sol in 176: Edgar Rice Burroughs‘ "The Invisible Men of Mars" appeared in Amazing Stories (date approximate). The story was later included in the anthology Llana of Gathol.';
+	ThisSol = 'On this sol in 160: "Martians Build Two Immense Canals in Two Years" reported in "The New York Times."\n\nOn this sol in 176: Edgar Rice BurroughsÂ‘ "The Invisible Men of Mars" appeared in Amazing Stories (date approximate). The story was later included in the anthology Llana of Gathol.';
     if (doI == 541)
 	ThisSol = 'On this sol in 142: Giovanni Schiaparelli observed the canale Eunostos.';
     if (doI == 542)
@@ -1794,7 +1794,7 @@ function setEarthDateFromDays(daysSince)
 		LeapDay = 0;
 	
     if (doI+1 == 1)
-	ThisDay = 'On this day in 1898: H. G. Wells‘ "The War of the Worlds" was published as a novella (date approximate).\n\nOn this day in 1941: Edgar Rice Burroughs‘ "John Carter and the Giant of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "John Carter of Mars."';
+	ThisDay = 'On this day in 1898: H. G. WellsÂ‘ "The War of the Worlds" was published as a novella (date approximate).\n\nOn this day in 1941: Edgar Rice BurroughsÂ‘ "John Carter and the Giant of Mars" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "John Carter of Mars."';
     if (doI+1 == 2)
 	ThisDay = 'On this day in 1920: Isaac Asimov was born, author of "The Martian Way."';
     if (doI+1 == 3)
@@ -1806,7 +1806,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1 == 6)
 	ThisDay = '';
     if (doI+1 == 7)
-	ThisDay = 'On this day in 1921: Edgar Rice Burroughs began writing "The Chessmen of Mars."\n\nOn this day in 1939: Edgar Rice Burroughs‘ "The Synthetic Men of Mars" was published in "Argosy."';
+	ThisDay = 'On this day in 1921: Edgar Rice Burroughs began writing "The Chessmen of Mars."\n\nOn this day in 1939: Edgar Rice BurroughsÂ‘ "The Synthetic Men of Mars" was published in "Argosy."';
     if (doI+1 == 8)
 	ThisDay = '';
     if (doI+1 == 9)
@@ -1820,7 +1820,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1 == 13)
 	ThisDay = 'On this day in 1907: In a letter to "The New York Times," Nikola Tesla declared, "I can easily bridge the gulf which separates us from Mars."\n\nOn this day in 1980: A meteorite, designated EETA 79001, was discovered in the Elephant Moraine, Antarctica. The meteorite was later identified as having originated on Mars.';
     if (doI+1 == 14)
-	ThisDay = 'On this day in 1954: I. M. Levitt‘s Earth-Mars Clock debuted in New York, New York.\n\nOn this day in 2004: US President George W. Bush announced plans to establish a lunar base to support human missions to Mars.';
+	ThisDay = 'On this day in 1954: I. M. LevittÂ‘s Earth-Mars Clock debuted in New York, New York.\n\nOn this day in 2004: US President George W. Bush announced plans to establish a lunar base to support human missions to Mars.';
     if (doI+1 == 15)
 	ThisDay = 'On this day in 1905: "The New York Times" reported that Nikola Tesla might use an oscillator to "wake up" Mars.';
     if (doI+1 == 16)
@@ -1856,7 +1856,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1 == 31)
 	ThisDay = '';
     if (doI+1 == 32)
-	ThisDay = 'On this day in 1912: Edgar Rice Burroughs‘ "Under the Moons of Mars" began serialization in "All-Story," later was published as a novel under the title "A Princess of Mars" (date approximate).\n\nOn this day in 1943: Edgar Rice Burroughs‘ "The Skeleton Men of Jupiter" appeared in "Amazing Stories" (date approximate). Later included in the anthology "John Carter of Mars."\n\nOn this day in 1956: Robert A. Heinlein‘s "Double Star" began serialization in "Astounding Science Fiction" (date approximate).';
+	ThisDay = 'On this day in 1912: Edgar Rice BurroughsÂ‘ "Under the Moons of Mars" began serialization in "All-Story," later was published as a novel under the title "A Princess of Mars" (date approximate).\n\nOn this day in 1943: Edgar Rice BurroughsÂ‘ "The Skeleton Men of Jupiter" appeared in "Amazing Stories" (date approximate). Later included in the anthology "John Carter of Mars."\n\nOn this day in 1956: Robert A. HeinleinÂ‘s "Double Star" began serialization in "Astounding Science Fiction" (date approximate).';
     if (doI+1 == 33)
 	ThisDay = 'On this day in 1896: In the first of a series of 40 seances, the spiritualist medium Catherine Elise Mueller communicated with Martians, speaking in their language, and in some seances, writing in Martian.';
     if (doI+1 == 34)
@@ -1890,7 +1890,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1 == 48)
 	ThisDay = 'Quirinalia, sacred to Quirinus, celebrating the ascension of Romulus. Celebrated by the flamen Quirinalis. It is also known as the Feast of Fools.';
     if (doI+1 == 49)
-	ThisDay = 'On this day in 1922: Edgar Rice Burroughs‘ "The Chessmen of Mars" began serialization in "Argosy All-Story Weekly."';
+	ThisDay = 'On this day in 1922: Edgar Rice BurroughsÂ‘ "The Chessmen of Mars" began serialization in "Argosy All-Story Weekly."';
     if (doI+1 == 50)
 	ThisDay = '';
     if (doI+1 == 51)
@@ -1912,7 +1912,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1 == 59)
 	ThisDay = 'On this day in 1928: Edgar Rice Burroughs began dictating "A Fighting Man of Mars" on Ediphone.';
     if (doI+1-LeapDay == 60)
-	ThisDay = 'Feriae Marti, the original New Year‘s Day on the Roman calendar. The Salii, a collegium divided into the Palatini (devoted to Mars Gradivus) and the Agonenses (devoted to Quirinus), dressed in archaic military armor and bearing the sacred shields, dance throughout the streets and chant the ancient Carme Saliare. After their dance, the Salii hold a spectacular feast.\n\nOn this day in 1941: Edgar Rice Burroughs‘ "The City of Mummies" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1973: Lin Carter‘s "The Man Who Loved Mars" was published (date approximate).\n\nOn this day in 2001: Thomas W. Cronin‘s "As it Is on Mars" was published.\n\nOn this day in 2003: Thomas W. Cronin‘s "Give Us This Mars" was published.';
+	ThisDay = 'Feriae Marti, the original New YearÂ‘s Day on the Roman calendar. The Salii, a collegium divided into the Palatini (devoted to Mars Gradivus) and the Agonenses (devoted to Quirinus), dressed in archaic military armor and bearing the sacred shields, dance throughout the streets and chant the ancient Carme Saliare. After their dance, the Salii hold a spectacular feast.\n\nOn this day in 1941: Edgar Rice BurroughsÂ‘ "The City of Mummies" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1973: Lin CarterÂ‘s "The Man Who Loved Mars" was published (date approximate).\n\nOn this day in 2001: Thomas W. CroninÂ‘s "As it Is on Mars" was published.\n\nOn this day in 2003: Thomas W. CroninÂ‘s "Give Us This Mars" was published.';
     if (doI+1-LeapDay == 61)
 	ThisDay = '';
     if (doI+1-LeapDay == 62)
@@ -1948,15 +1948,15 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 77)
 	ThisDay = '';
     if (doI+1-LeapDay == 78)
-	ThisDay = 'Quinquatria, a celebration sacred to Mars, the first of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the season‘s coming military campaigns.';
+	ThisDay = 'Quinquatria, a celebration sacred to Mars, the first of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the seasonÂ‘s coming military campaigns.';
     if (doI+1-LeapDay == 79)
-	ThisDay = 'Quinquatria, a celebration sacred to Mars, the second of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the season‘s coming military campaigns.';
+	ThisDay = 'Quinquatria, a celebration sacred to Mars, the second of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the seasonÂ‘s coming military campaigns.';
     if (doI+1-LeapDay == 80)
-	ThisDay = 'Quinquatria, a celebration sacred to Mars, the third of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the season‘s coming military campaigns.';
+	ThisDay = 'Quinquatria, a celebration sacred to Mars, the third of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the seasonÂ‘s coming military campaigns.';
     if (doI+1-LeapDay == 81)
-	ThisDay = 'Quinquatria, a celebration sacred to Mars, the fourth of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the season‘s coming military campaigns.';
+	ThisDay = 'Quinquatria, a celebration sacred to Mars, the fourth of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the seasonÂ‘s coming military campaigns.';
     if (doI+1-LeapDay == 82)
-	ThisDay = 'Quinquatria, a celebration sacred to Mars, the last of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the season‘s coming military campaigns.\n\nTubilustrum, the lustration of trumpets, sacred to Mars. An ewe is sacrificed to sanctify the trumpets used in many of the public rites in preparation for both the coming sacral year and the military campaigning season. It is accompanied by a dance of the Salii.\n\nOn this day in 1912: Wernher von Braun was born, developed the Saturn V launch vehicle, author of "The Mars Project."';
+	ThisDay = 'Quinquatria, a celebration sacred to Mars, the last of five days. The Salii (priests of Mars) dance in the comitium (attended by the pontiffs and the symbolic representatives of the army--the tribuni celerum), and the sacred arma ancilia are purified. In this sense, it is a ritual preparation for the seasonÂ‘s coming military campaigns.\n\nTubilustrum, the lustration of trumpets, sacred to Mars. An ewe is sacrificed to sanctify the trumpets used in many of the public rites in preparation for both the coming sacral year and the military campaigning season. It is accompanied by a dance of the Salii.\n\nOn this day in 1912: Wernher von Braun was born, developed the Saturn V launch vehicle, author of "The Mars Project."';
     if (doI+1-LeapDay == 83)
 	ThisDay = '';
     if (doI+1-LeapDay == 84)
@@ -1974,7 +1974,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 90)
 	ThisDay = '';
     if (doI+1-LeapDay == 91)
-	ThisDay = 'On this day in 1897: H. G. Wells‘ "The War of the Worlds" began serialization in England in "Pearson‘s" (date approximate).\n\nOn this day in 1930: Edgar Rice Burroughs‘ "A Fighting Man of Mars" began serialization in "Blue Book" (date approximate).\n\nOn this day in 1952: Leigh Brackett‘s "The Last Days of Shandakor" appeared in "Startling Stories" (date approximate).\n\nOn this day in 1964: Philip K. Dick‘s "Martian Time-Slip" was published (date approximate).';
+	ThisDay = 'On this day in 1897: H. G. WellsÂ‘ "The War of the Worlds" began serialization in England in "PearsonÂ‘s" (date approximate).\n\nOn this day in 1930: Edgar Rice BurroughsÂ‘ "A Fighting Man of Mars" began serialization in "Blue Book" (date approximate).\n\nOn this day in 1952: Leigh BrackettÂ‘s "The Last Days of Shandakor" appeared in "Startling Stories" (date approximate).\n\nOn this day in 1964: Philip K. DickÂ‘s "Martian Time-Slip" was published (date approximate).';
     if (doI+1-LeapDay == 92)
 	ThisDay = '';
     if (doI+1-LeapDay == 93)
@@ -1988,7 +1988,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 97)
 	ThisDay = '';
     if (doI+1-LeapDay == 98)
-	ThisDay = 'On this day in 1916: Edgar Rice Burroughs‘ "Thuvia, Maid of Mars" began serialization in "All-Story Weekly."';
+	ThisDay = 'On this day in 1916: Edgar Rice BurroughsÂ‘ "Thuvia, Maid of Mars" began serialization in "All-Story Weekly."';
     if (doI+1-LeapDay == 99)
 	ThisDay = '';
    if (doI+1-LeapDay == 100)
@@ -2034,11 +2034,11 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 120)
 	ThisDay = '';
     if (doI+1-LeapDay == 121)
-	ThisDay = 'On this day in 1897: H. G. Wells‘ "The War of the Worlds" began serialization in the USA in "Cosmopolitan" (date approximate).\n\nOn this day in 1950: Ray Bradbury‘s "The Martian Chronicles" was published (date approximate).\n\nOn this day in 1963: The television series "My Favorite Martian" ended with the 107th episode.\n\nOn this day in 1998: A meteorite, designated Dar al Gani 476, was discovered near Dar al Gani, Libya. The meteorite was later identified as having originated on Mars.';
+	ThisDay = 'On this day in 1897: H. G. WellsÂ‘ "The War of the Worlds" began serialization in the USA in "Cosmopolitan" (date approximate).\n\nOn this day in 1950: Ray BradburyÂ‘s "The Martian Chronicles" was published (date approximate).\n\nOn this day in 1963: The television series "My Favorite Martian" ended with the 107th episode.\n\nOn this day in 1998: A meteorite, designated Dar al Gani 476, was discovered near Dar al Gani, Libya. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 122)
 	ThisDay = '';
     if (doI+1-LeapDay == 123)
-	ThisDay = 'On this day in 1990: Voicing his opposition to the Bush Administration‘s Space Exploration Initiative, Senator Albert Gore, Jr. told his fellow legislators, "Before discussing a mission to Mars, the Administration needs a mission to reality."\n\nOn this day in 1991: "America at the Threshold: America‘s Space Exploration Initiative" ("The Stafford Report") called for manned missions to Mars beginning in 2014.';
+	ThisDay = 'On this day in 1990: Voicing his opposition to the Bush AdministrationÂ‘s Space Exploration Initiative, Senator Albert Gore, Jr. told his fellow legislators, "Before discussing a mission to Mars, the Administration needs a mission to reality."\n\nOn this day in 1991: "America at the Threshold: AmericaÂ‘s Space Exploration Initiative" ("The Stafford Report") called for manned missions to Mars beginning in 2014.';
     if (doI+1-LeapDay == 124)
 	ThisDay = '';
     if (doI+1-LeapDay == 125)
@@ -2084,7 +2084,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 145)
 	ThisDay = '';
     if (doI+1-LeapDay == 146)
-	ThisDay = 'On this day in 1988: The Planetary Society‘s "Mars Declaration" was published in "The Washington Post."\n\nOn this day in 1993: "The Case For Mars V" conference opened in Boulder, Colorado.';
+	ThisDay = 'On this day in 1988: The Planetary SocietyÂ‘s "Mars Declaration" was published in "The Washington Post."\n\nOn this day in 1993: "The Case For Mars V" conference opened in Boulder, Colorado.';
     if (doI+1-LeapDay == 147)
 	ThisDay = '';
     if (doI+1-LeapDay == 148)
@@ -2094,9 +2094,9 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 150)
 	ThisDay = 'On this day in 1971: Mariner 9 was launched.';
     if (doI+1-LeapDay == 151)
-	ThisDay = 'On this day in 1931: Edgar Rice Burroughs‘ "A Fighting Man of Mars" was published in "Metropolitan."';
+	ThisDay = 'On this day in 1931: Edgar Rice BurroughsÂ‘ "A Fighting Man of Mars" was published in "Metropolitan."';
     if (doI+1-LeapDay == 152)
-	ThisDay = 'This day is sacred to Mars. It is the anniversary of the dedication of the Temple of Mars near the Capena gate.\n\nOn this day in 1894: The Lowell Observatory began its study of Mars. Eighteen months later, Percival Lowell was published the observations of the 1894 opposition in a popular book, "Mars."\n\nOn this day in 1941: Edgar Rice Burroughs‘ "The Black Pirates of Barsoom" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1990: The motion picture "Total Recall" was released in the USA.';
+	ThisDay = 'This day is sacred to Mars. It is the anniversary of the dedication of the Temple of Mars near the Capena gate.\n\nOn this day in 1894: The Lowell Observatory began its study of Mars. Eighteen months later, Percival Lowell was published the observations of the 1894 opposition in a popular book, "Mars."\n\nOn this day in 1941: Edgar Rice BurroughsÂ‘ "The Black Pirates of Barsoom" appeared in "Amazing Stories" (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1990: The motion picture "Total Recall" was released in the USA.';
     if (doI+1-LeapDay == 153)
 	ThisDay = 'On this day in 1895: "The San Francisco Chronicle" reported that an observer had read the name of the Almighty in Hebrew letters on the surface of Mars.\n\nOn this day in 2003: Mars Express was launched.';
     if (doI+1-LeapDay == 154)
@@ -2126,7 +2126,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 166)
 	ThisDay = 'On this day in 1907: During the War of the Worlds, the second Martian cylinder landed on the Addlestone Golf Links. A battalion of the Cardigan Regiment rushed the Horsell pit in skirmish order and was annihilated by the Heat-Ray. The fighting-machine then destroyed Woking.';
     if (doI+1-LeapDay == 167)
-	ThisDay = 'On this day in 1907: During the War of the Worlds, the third Martian cylinder landed north of Pyrford, completing the Surrey Triangle. Five Martian fighting-machines advanced down the Wey River to the confluence of the Thames. Royal Army batteries engage the Martians, destroying one fighting-machine, but Weybridge and Chertsey were destroyed by Heat-Ray. Later, the St. George’s Hill battery damaged one fighting-machine, but was then destroyed. Seven Martian fighting-machines fanned out along a curved line between St. George’s Hill, Weybridge, and the village of Send. The Martians discharged Black Smoke across the valley of the Thames, advancing through Street Cobham and Ditton. Richmond, Kingston, and Wimbledon were destroyed.';
+	ThisDay = 'On this day in 1907: During the War of the Worlds, the third Martian cylinder landed north of Pyrford, completing the Surrey Triangle. Five Martian fighting-machines advanced down the Wey River to the confluence of the Thames. Royal Army batteries engage the Martians, destroying one fighting-machine, but Weybridge and Chertsey were destroyed by Heat-Ray. Later, the St. GeorgeÂ’s Hill battery damaged one fighting-machine, but was then destroyed. Seven Martian fighting-machines fanned out along a curved line between St. GeorgeÂ’s Hill, Weybridge, and the village of Send. The Martians discharged Black Smoke across the valley of the Thames, advancing through Street Cobham and Ditton. Richmond, Kingston, and Wimbledon were destroyed.';
     if (doI+1-LeapDay == 168)
 	ThisDay = 'On this day in 1907: During the War of the Worlds, the fourth Martian cylinder landed in Bushey Park, beginning the West End Triangle. The Martians advanced in a line from Hanwell in the north to Coombe and Malden in the south. Organized resistance by the British forces collapsed. The Martians went to and fro over the North Downs between Guildford and Maidstone, using the Black Smoke to eliminate any artillery batteries located there. Police organization in London broke down. The railway system collapsed.\n\nOn this day in 2000: A meteorite, designated Dhofar 378, was discovered near Dhofar, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 169)
@@ -2148,7 +2148,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 177)
 	ThisDay = '';
     if (doI+1-LeapDay == 178)
-	ThisDay = 'On this day in 1941: Edgar Rice Burroughs‘ "The Black Pirates of Barsoom" was published in "Amazing Stories."\n\nOn this day in 2001: A meteorite, designated Sayh al Uhaymir 060, was discovered near Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
+	ThisDay = 'On this day in 1941: Edgar Rice BurroughsÂ‘ "The Black Pirates of Barsoom" was published in "Amazing Stories."\n\nOn this day in 2001: A meteorite, designated Sayh al Uhaymir 060, was discovered near Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 179)
 	ThisDay = 'On this day in 1911: An unfortunate dog in Nakhla, Egypt was struck by part of a meteorite and killed. In the 1980s, the Nakhla meteorite was identified as having originated on Mars.';
     if (doI+1-LeapDay == 180)
@@ -2156,7 +2156,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 181)
 	ThisDay = '';
     if (doI+1-LeapDay == 182)
-	ThisDay = 'On this day in 1911: Writing down his daydreams on the backs of old letterheads of previously failed businesses, Edgar Rice Burroughs used free time at his office to begin "A Princess of Mars" (date approximate).\n\nOn this day in 1997: William K. Hartmann‘s "Mars Underground" was published (date approximate).';
+	ThisDay = 'On this day in 1911: Writing down his daydreams on the backs of old letterheads of previously failed businesses, Edgar Rice Burroughs used free time at his office to begin "A Princess of Mars" (date approximate).\n\nOn this day in 1997: William K. HartmannÂ‘s "Mars Underground" was published (date approximate).';
     if (doI+1-LeapDay == 183)
 	ThisDay = '';
     if (doI+1-LeapDay == 184)
@@ -2214,13 +2214,13 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 210)
 	ThisDay = '';
     if (doI+1-LeapDay == 211)
-	ThisDay = 'On this day in 1894: Henri Joseph Anastase Perrotin, director of the Nice Observatory, sent the following telegram: "Projection lumineuse dans région australe du terminateur de Mars observeé par Javelle 28 Juillet 16 heures Perrotin."';
+	ThisDay = 'On this day in 1894: Henri Joseph Anastase Perrotin, director of the Nice Observatory, sent the following telegram: "Projection lumineuse dans rÃ©gion australe du terminateur de Mars observeÃ© par Javelle 28 Juillet 16 heures Perrotin."';
     if (doI+1-LeapDay == 212)
 	ThisDay = 'On this day in 1969: Mariner 6 passed Mars.';
     if (doI+1-LeapDay == 213)
-	ThisDay = 'On this day in 1941: Edgar Rice Burroughs‘ "The Yellow Men of Mars" appeared in :Amazing Stories: (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1968: NASA terminated the contract to procure additional Saturn Vs, ending production with Saturn 515, and abandoning the heavy-lift launch capability required to launch piloted Mars missions.\n\nOn this day in 2000: A meteorite, designated Sayh al Uhaymir 051, was discovered near Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
+	ThisDay = 'On this day in 1941: Edgar Rice BurroughsÂ‘ "The Yellow Men of Mars" appeared in :Amazing Stories: (date approximate). The story was later included in the anthology "Llana of Gathol."\n\nOn this day in 1968: NASA terminated the contract to procure additional Saturn Vs, ending production with Saturn 515, and abandoning the heavy-lift launch capability required to launch piloted Mars missions.\n\nOn this day in 2000: A meteorite, designated Sayh al Uhaymir 051, was discovered near Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 214)
-	ThisDay = 'On this day in 1894: The British scientific journal "Nature" reported the observation of Stephane Javelle.  "If we assume the light to be on the planet itself, then it must either have a physical or human origin; so it is expected that the old idea that the Martians are signalling to us will be revived."  H. G. Wells’ narrator later speculated, "I am inclined to think that this blaze may have been the casting of the huge gun, in the vast pit sunk into their planet, from which their shots were fired at us."';
+	ThisDay = 'On this day in 1894: The British scientific journal "Nature" reported the observation of Stephane Javelle.  "If we assume the light to be on the planet itself, then it must either have a physical or human origin; so it is expected that the old idea that the Martians are signalling to us will be revived."  H. G. WellsÂ’ narrator later speculated, "I am inclined to think that this blaze may have been the casting of the huge gun, in the vast pit sunk into their planet, from which their shots were fired at us."';
     if (doI+1-LeapDay == 215)
 	ThisDay = 'On this day in 1945: The motion picture "The Purple Monster Strikes" was released in the USA.\n\nOn this day in 1967: NASA Manned Spacecraft Center issued "Request for Proposal No. BG721-28-7-528P, Planetary Surface Sample Return Probe Study for Manned Mars/Venus Reconnaissance/Retrieval Missions" in the 1975-1982 time frame. Rep. Joseph Karth, acting chairman of the House Subcommittee on NASA Oversight, who had been fighting an uphill battle to preserve Project Voyager funding, later expressed his exasperation, for the move cast the program of Saturn V-launched unmanned orbiters and landers in the role of a foot in the door for manned follow-on missions to the planets: "Very bluntly, a manned mission to Mars or Venus by 1975 or 1977 is now and always has been out of the question, and anyone who persists in this kind of misallocation of resources at this time will be stopped."';
     if (doI+1-LeapDay == 216)
@@ -2234,9 +2234,9 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 220)
 	ThisDay = 'On this day in 2002: "The Fifth International Mars Society Convention" opened in Boulder, Colorado.';
     if (doI+1-LeapDay == 221)
-	ThisDay = 'On this day in 1965: "I say let‘s do it quickly and establish a foothold on a new planet while we still have one left to take off from." --Wernher von Braun, "Manned Mars Landing," "Aviation Week & Space Technology."\n\nOn this day in 1969: Members of the Charles Manson "family," a Martian nest patterned on Robert A. Heinlein‘s "Stranger in a Strange Land," murdered actress Sharon Tate and four others in Los Angeles.\n\nOn this day in 1973: Mars 7 was launched.';
+	ThisDay = 'On this day in 1965: "I say letÂ‘s do it quickly and establish a foothold on a new planet while we still have one left to take off from." --Wernher von Braun, "Manned Mars Landing," "Aviation Week & Space Technology."\n\nOn this day in 1969: Members of the Charles Manson "family," a Martian nest patterned on Robert A. HeinleinÂ‘s "Stranger in a Strange Land," murdered actress Sharon Tate and four others in Los Angeles.\n\nOn this day in 1973: Mars 7 was launched.';
     if (doI+1-LeapDay == 222)
-	ThisDay = 'On this day in 1877: Asaph Hall gave up a search for Martian moons. The following night, having resumed his search at the insistence of his wife, Angelina, he detected a faint object near Mars, which he later named Deimos.\n\nOn this day in 1969: Members of the Charles Manson "family," a Martian nest patterned on Robert A. Heinlein‘s "Stranger in a Strange Land," murdered Leno and Rosemary LaBianca in Los Angeles.\n\nOn this day in 2000: "The Third International Mars Society Convention" opened in Toronto, Ontario.';
+	ThisDay = 'On this day in 1877: Asaph Hall gave up a search for Martian moons. The following night, having resumed his search at the insistence of his wife, Angelina, he detected a faint object near Mars, which he later named Deimos.\n\nOn this day in 1969: Members of the Charles Manson "family," a Martian nest patterned on Robert A. HeinleinÂ‘s "Stranger in a Strange Land," murdered Leno and Rosemary LaBianca in Los Angeles.\n\nOn this day in 2000: "The Third International Mars Society Convention" opened in Toronto, Ontario.';
     if (doI+1-LeapDay == 223)
 	ThisDay = 'On this day in 1989: "Mars is essentially in the same orbit. Mars is somewhat the same distance from the sun, which is very important. We have seen pictures where there are canals, we believe, and water. If there is water, that means there is oxygen. If oxygen, that means we can breathe." -- US Vice President Dan Quayle';
     if (doI+1-LeapDay == 224)
@@ -2252,7 +2252,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 229)
 	ThisDay = 'On this day in 1877: Asaph Hall discovered Phobos.';
     if (doI+1-LeapDay == 230)
-	ThisDay = 'On this day in 1845: Omsby MacKnight Mitchel observed a white patch detached from the south polar cap of Mars. The feature became known as the Mountains of Mitchel. Actually it is a depression.\n\nOn this day in 1877: Asaph Hall announced the discovery of Mars‘ two moons. At the suggestion of Henry Madan, the Science Master of Eton, England, Hall named the moons Phobos and Deimos.';
+	ThisDay = 'On this day in 1845: Omsby MacKnight Mitchel observed a white patch detached from the south polar cap of Mars. The feature became known as the Mountains of Mitchel. Actually it is a depression.\n\nOn this day in 1877: Asaph Hall announced the discovery of MarsÂ‘ two moons. At the suggestion of Henry Madan, the Science Master of Eton, England, Hall named the moons Phobos and Deimos.';
     if (doI+1-LeapDay == 231)
 	ThisDay = '';
     if (doI+1-LeapDay == 232)
@@ -2272,7 +2272,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 239)
 	ThisDay = 'On this day in 1911: "Martians Build Two Immense Canals in Two Years" reported in "The New York Times."';
     if (doI+1-LeapDay == 240)
-	ThisDay = 'On this day in 1877: Henry Draper of New York and Edward Singleton Holden of the U.S. Naval Observatory in Washington claimed to have jointly discovered the third moon at Draper‘s private observatory at Hastings-on-the-Hudson. This discovery proved to be false; in fact, the proposed moon did not even obey Kepler‘s laws.';
+	ThisDay = 'On this day in 1877: Henry Draper of New York and Edward Singleton Holden of the U.S. Naval Observatory in Washington claimed to have jointly discovered the third moon at DraperÂ‘s private observatory at Hastings-on-the-Hudson. This discovery proved to be false; in fact, the proposed moon did not even obey KeplerÂ‘s laws.';
     if (doI+1-LeapDay == 241)
 	ThisDay = '';
     if (doI+1-LeapDay == 242)
@@ -2280,7 +2280,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 243)
 	ThisDay = '';
     if (doI+1-LeapDay == 244)
-	ThisDay = 'On this day in 1875: Edgar Rice Burroughs was born, author of the "Barsoom" series.\n\nOn this day in 1969: A NASA report to US President Richard Nixon‘s Space Task Group, which was chartered to explore options for space efforts beyond the Apollo program, stated, "Manned expeditions to Mars could begin as early as 1981."\n\nOn this day in 1993: Sailor Mars first appeared in the manga "Run Run."';
+	ThisDay = 'On this day in 1875: Edgar Rice Burroughs was born, author of the "Barsoom" series.\n\nOn this day in 1969: A NASA report to US President Richard NixonÂ‘s Space Task Group, which was chartered to explore options for space efforts beyond the Apollo program, stated, "Manned expeditions to Mars could begin as early as 1981."\n\nOn this day in 1993: Sailor Mars first appeared in the manga "Run Run."';
     if (doI+1-LeapDay == 245)
 	ThisDay = 'On this day in 1988: Contact with Phobos 1 was lost en route to Mars.';
     if (doI+1-LeapDay == 246)
@@ -2308,7 +2308,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 257)
 	ThisDay = '';
     if (doI+1-LeapDay == 258)
-	ThisDay = 'On this day in 1877: Giovanni Schiaparelli observed the canale Cyclops.\n\nOn this day in 1969: The report by US President Richard Nixon‘s Space Task Group, "The Post-Apollo Space Program: Directions for the Future," stated, "We conclude that NASA has the demonstrated organizational competence and technology base, by virtue of the Apollo success and other achievements, to carry out a successful program to land man on Mars within 15 years." Nevertheless, the report backed away from an early manned landing on Mars, recommending that the focus for the next decades in space should be on the development of hardware and systems that would ultimately support a manned mission to Mars at the close of the 20th century.';
+	ThisDay = 'On this day in 1877: Giovanni Schiaparelli observed the canale Cyclops.\n\nOn this day in 1969: The report by US President Richard NixonÂ‘s Space Task Group, "The Post-Apollo Space Program: Directions for the Future," stated, "We conclude that NASA has the demonstrated organizational competence and technology base, by virtue of the Apollo success and other achievements, to carry out a successful program to land man on Mars within 15 years." Nevertheless, the report backed away from an early manned landing on Mars, recommending that the focus for the next decades in space should be on the development of hardware and systems that would ultimately support a manned mission to Mars at the close of the 20th century.';
     if (doI+1-LeapDay == 259)
 	ThisDay = '';
     if (doI+1-LeapDay == 260)
@@ -2316,7 +2316,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 261)
 	ThisDay = 'On this day in 1976: Viking Orbiter 1 frame 86A10 imaged the Utopia Faces.';
     if (doI+1-LeapDay == 262)
-	ThisDay = 'On this day in 1995: Sailor Mars first appeared in "An Uncharmed Life" episode of the animated television series "Sailor Moon" (USA air date).\n\nOn this day in 1996: US President Bill Clinton abandoned George Bush‘s goal of a manned landing on Mars. His National Science and Technology Council‘s statement of National Space Policy only mentioned "a sustained program to support a robotic presence on the surface of Mars by year 2000 for the purposes of scientific research, exploration and technology development."';
+	ThisDay = 'On this day in 1995: Sailor Mars first appeared in "An Uncharmed Life" episode of the animated television series "Sailor Moon" (USA air date).\n\nOn this day in 1996: US President Bill Clinton abandoned George BushÂ‘s goal of a manned landing on Mars. His National Science and Technology CouncilÂ‘s statement of National Space Policy only mentioned "a sustained program to support a robotic presence on the surface of Mars by year 2000 for the purposes of scientific research, exploration and technology development."';
     if (doI+1-LeapDay == 263)
 	ThisDay = '';
     if (doI+1-LeapDay == 264)
@@ -2332,7 +2332,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 269)
 	ThisDay = '';
     if (doI+1-LeapDay == 270)
-	ThisDay = 'On this day in 1919: Edgar Rice Burroughs‘ "The Warlord of Mars" was published by McClurg.\n\nOn this day in 1940: Edgar Rice Burroughs began writing "The Black Pirates of Barsoom," part 2 of a new Mars series.';
+	ThisDay = 'On this day in 1919: Edgar Rice BurroughsÂ‘ "The Warlord of Mars" was published by McClurg.\n\nOn this day in 1940: Edgar Rice Burroughs began writing "The Black Pirates of Barsoom," part 2 of a new Mars series.';
     if (doI+1-LeapDay == 271)
 	ThisDay = '';
     if (doI+1-LeapDay == 272)
@@ -2340,7 +2340,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 273)
 	ThisDay = '';
     if (doI+1-LeapDay == 274)
-	ThisDay = 'On this day in 1783: William Herschel observed the south polar cap of Mars. "I am inclined to think that the white spot has some little revolution.... It is rather probable that the real pole, though within the spot, may lie near the circumference of it, or one-third of its diameter from one of the sides. A few days more will show it, as I shall now fix my particular attention on it."\n\nOn this day in 1895: "The observations of 1894 have made it practically certain that the so-called ‘canals‘ of Mars are real, whatever may be their explanation," Princeton astronomer Charles A. Young declared in his article for "Cosmopolitan," "Mr. Lowell‘s Theory of Mars" (date approximate).';
+	ThisDay = 'On this day in 1783: William Herschel observed the south polar cap of Mars. "I am inclined to think that the white spot has some little revolution.... It is rather probable that the real pole, though within the spot, may lie near the circumference of it, or one-third of its diameter from one of the sides. A few days more will show it, as I shall now fix my particular attention on it."\n\nOn this day in 1895: "The observations of 1894 have made it practically certain that the so-called Â‘canalsÂ‘ of Mars are real, whatever may be their explanation," Princeton astronomer Charles A. Young declared in his article for "Cosmopolitan," "Mr. LowellÂ‘s Theory of Mars" (date approximate).';
     if (doI+1-LeapDay == 275)
 	ThisDay = '';
     if (doI+1-LeapDay == 276)
@@ -2354,11 +2354,11 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 280)
 	ThisDay = 'On this day in 1997: Contact with the Carl Sagan Memorial Station (Mars Pathfinder) was lost after 93 sols in Ares Vallis.';
     if (doI+1-LeapDay == 281)
-	ThisDay = 'On this day in 1976: "Today we have touched Mars. There is life on Mars and it is us--extensions of our eyes in all directions, extensions of our mind, extensions of our heart and soul have touched Mars today. That‘s the message to look for there: We are on Mars. We are the Martians!" --Ray Bradbury, speaking at "The Search for Life in the Solar System" symposium in Pasadena, California.\n\nOn this day in 2002: A meteorite, designated Sayh al Uhaymir 150, was discovered near Dar al Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
+	ThisDay = 'On this day in 1976: "Today we have touched Mars. There is life on Mars and it is us--extensions of our eyes in all directions, extensions of our mind, extensions of our heart and soul have touched Mars today. ThatÂ‘s the message to look for there: We are on Mars. We are the Martians!" --Ray Bradbury, speaking at "The Search for Life in the Solar System" symposium in Pasadena, California.\n\nOn this day in 2002: A meteorite, designated Sayh al Uhaymir 150, was discovered near Dar al Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 282)
 	ThisDay = '';
     if (doI+1-LeapDay == 283)
-	ThisDay = 'On this day in 1877: Giovanni Schiaparelli observed Mare Erythraeum and Noachis to be obscured by clouds.\n\nOn this day in 1917: Edgar Rice Burroughs‘ "A Princess of Mars" was published by McClurg.\n\nOn this day in 1960: Mars 1960A, the first known Mars mission, failed during launch.';
+	ThisDay = 'On this day in 1877: Giovanni Schiaparelli observed Mare Erythraeum and Noachis to be obscured by clouds.\n\nOn this day in 1917: Edgar Rice BurroughsÂ‘ "A Princess of Mars" was published by McClurg.\n\nOn this day in 1960: Mars 1960A, the first known Mars mission, failed during launch.';
     if (doI+1-LeapDay == 284)
 	ThisDay = '';
     if (doI+1-LeapDay == 285)
@@ -2398,11 +2398,11 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 302)
 	ThisDay = '';
     if (doI+1-LeapDay == 303)
-	ThisDay = 'On this day in 1938: The Mercury Theater of the Air, starring Orson Welles, performed Howard Koch‘s radio play "Invasion from Mars." The broadcast terrorized the eastern USA.';
+	ThisDay = 'On this day in 1938: The Mercury Theater of the Air, starring Orson Welles, performed Howard KochÂ‘s radio play "Invasion from Mars." The broadcast terrorized the eastern USA.';
     if (doI+1-LeapDay == 304)
 	ThisDay = '';
     if (doI+1-LeapDay == 305)
-	ThisDay = 'On this day in 1934: Edgar Rice Burroughs‘ "The Swords of Mars" began serialization in "Blue Book" (date approximate).\n\nOn this day in 1952: Isaac Asimov‘s "The Martian Way" appeared in "Galaxy Science Fiction" (date approximate).\n\nOn this day in 1955: Fredric Brown‘s "Martians, Go Home" was published (date approximate).\n\nOn this day in 1957: Isaac Asimov‘s "I‘m in Marsport without Hilda" appeared in "Venture Science Fiction" (date approximate).\n\nOn this day in 1962: Mars 1 was launched. Robert A. Heinlein‘s "Podkayne of Mars" began serialization in "If" (date approximate).';
+	ThisDay = 'On this day in 1934: Edgar Rice BurroughsÂ‘ "The Swords of Mars" began serialization in "Blue Book" (date approximate).\n\nOn this day in 1952: Isaac AsimovÂ‘s "The Martian Way" appeared in "Galaxy Science Fiction" (date approximate).\n\nOn this day in 1955: Fredric BrownÂ‘s "Martians, Go Home" was published (date approximate).\n\nOn this day in 1957: Isaac AsimovÂ‘s "IÂ‘m in Marsport without Hilda" appeared in "Venture Science Fiction" (date approximate).\n\nOn this day in 1962: Mars 1 was launched. Robert A. HeinleinÂ‘s "Podkayne of Mars" began serialization in "If" (date approximate).';
     if (doI+1-LeapDay == 306)
 	ThisDay = '';
     if (doI+1-LeapDay == 307)
@@ -2440,7 +2440,7 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 323)
 	ThisDay = 'On this day in 2003: A meteorite, designated Sayh al Uhaymir 125, was discovered near Dar al Sayh al Uhaymir, Oman. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 324)
-	ThisDay = 'On this day in 1989: NASA‘s "Report of the 90-Day Study on Human Exploration of the Moon and Mars" estimated the cost of a manned Mars program at $450 billion. Political support for manned Mars missions subsequently collapsed.';
+	ThisDay = 'On this day in 1989: NASAÂ‘s "Report of the 90-Day Study on Human Exploration of the Moon and Mars" estimated the cost of a manned Mars program at $450 billion. Political support for manned Mars missions subsequently collapsed.';
     if (doI+1-LeapDay == 325)
 	ThisDay = '';
     if (doI+1-LeapDay == 325)
@@ -2460,11 +2460,11 @@ function setEarthDateFromDays(daysSince)
     if (doI+1-LeapDay == 332)
 	ThisDay = 'On this day in 1659: Christiaan Huygens drew the first sketch of Mars, including a dark, triangular area later named Syrtis Major, the first Martian surface feature identified from Earth. Huygens used his own design of telescope, which was of much higher quality than that of his predecessors and allowed a magnification of 50 times.\n\nOn this day in 1964: Mariner 4 was launched.';
     if (doI+1-LeapDay == 333)
-	ThisDay = 'On this day in 1922: Edgar Rice Burroughs‘ "The Chessmen of Mars" was published by McClurg.\n\nOn this day in 2000: A meteorite, designated Y000593, was discovered in the Yamato Mountains, Antarctica. The meteorite was later identified as having originated on Mars.';
+	ThisDay = 'On this day in 1922: Edgar Rice BurroughsÂ‘ "The Chessmen of Mars" was published by McClurg.\n\nOn this day in 2000: A meteorite, designated Y000593, was discovered in the Yamato Mountains, Antarctica. The meteorite was later identified as having originated on Mars.';
     if (doI+1-LeapDay == 334)
 	ThisDay = 'On this day in 1964: Zond 2 was launched.\n\nOn this day in 1971: Mariner 9 returned the first image of Phobos.';
     if (doI+1-LeapDay == 335)
-	ThisDay = 'On this day in 1659: Christiaan Huygens noted, "The rotation of Mars, like that of the Earth, seems to have a period of 24 hours."\n\nOn this day in 1895: Percival Lowell‘s "Mars" was published (date approximate).\n\nOn this day in 1913: Edgar Rice Burroughs‘ "The Warlord of Mars" began serialization in "All-Story" (date approximate).';
+	ThisDay = 'On this day in 1659: Christiaan Huygens noted, "The rotation of Mars, like that of the Earth, seems to have a period of 24 hours."\n\nOn this day in 1895: Percival LowellÂ‘s "Mars" was published (date approximate).\n\nOn this day in 1913: Edgar Rice BurroughsÂ‘ "The Warlord of Mars" began serialization in "All-Story" (date approximate).';
     if (doI+1-LeapDay == 336)
 	ThisDay = 'On this day in 1971: Mars 3 Orbiter entered Mars orbit. Contact with Mars 2 Lander was lost shortly after landing. No useful data was returned.';
     if (doI+1-LeapDay == 337)

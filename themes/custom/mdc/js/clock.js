@@ -4,45 +4,53 @@
 
 (function($) {
 
-  var timerID2 = null;
-  var timerRunning2 = false;
+  /**
+   * Add characters to start of a string until desired length reached.
+   */
+  function padLeft(value, width, chPad) {
+    // Convert to a string.
+    var result = value + "";
+    // Add pad characters until desired width is reached.
+    while (result.length < width) {
+      result = chPad + result;
+    }
+    return result;
+  }
+
+  /**
+   * Pad a number to a certain number of digits.
+   */
+  function padDigits(x, digits) {
+    return (x < 0) ? ("-" + padLeft(-x, digits, "0")) : padLeft(x, digits, "0");
+  }
 
   /**
    * Update the clocks every microsol.
    */
   function showTime() {
     // Get current Earth time:
-    var EarthNow = new Date();
+    var earthNow = new Date();
 
     // Get corresponding Mars Date:
-    var MarsNow = DateToMarsDate(EarthNow);
+    var marsNow = gregorian2utopian(earthNow);
 
     // Set clock fields.
-    var oldMarsTime2 = document.Clock.MarsTime2.value;
-    var newMarsTime2;
+    var marsMonth = utopianMonthName(marsNow.month);
 
-    newMarsTime2 = FormatMarsTime2Stretched(MarsNow2);
+    var marsDateStr = 'M' + marsNow.mir + ' ' + marsMonth + ' ' + marsNow.sol;
+    $('#marsClockDate').html(marsDateStr);
 
-    document.Clock.MarsTime2.value = newMarsTime2;
+    var solStr = solName(marsNow.sol);
+    $('#marsClockSol').html(solStr);
 
-    if (newMarsTime2 != oldMarsTime2) {
-      document.Clock.MarsSol2.value = SolName(MarsNow2.Sol);
-      document.Clock.MarsDate2.value = FormatMarsDate2(MarsNow2);
-    }
+    var mils = marsNow.time * 1000;
+    var wholeMils = Math.floor(mils);
+    var microsols = Math.floor((mils - wholeMils) * 1000);
+    var marsTimeStr = padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
+    $('#marsClockTime').html(marsTimeStr);
 
-    // Earth:
-    var oldEarthTime2 = document.Clock.EarthTime2.value;
-    var newEarthTime2;
-    newEarthTime2 = FormatTime(EarthNow2);
-    document.Clock.EarthTime2.value = newEarthTime2;
-    if (newEarthTime2 != oldEarthTime2) {
-      document.Clock.EarthDay2.value = EnglishDayName(EarthNow2.getUTCDay());
-      document.Clock.EarthDate2.value = FormatDate(EarthNow2);
-    }
-
-    // when next to call showtime:
-    timerID2 = setTimeout("showTime()", 89);
-    timerRunning2 = true;
+    // When next to call showtime:
+    setTimeout(showTime, 89);
   }
 
   $(showTime);

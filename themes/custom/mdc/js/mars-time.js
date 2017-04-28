@@ -60,7 +60,7 @@ function solsInMonth(mir, month) {
  * @param {Date} date
  * @return object
  */
-function DateToMarsDate(date) {
+function gregorian2utopian(date) {
   // If no parameter provided, use current time:
   if (date === undefined) {
     date = new Date();
@@ -132,7 +132,7 @@ function DateToMarsDate(date) {
  * @param {object} utopianDate
  * @return {Date}
  */
-function MarsDateToDate(utopianDate) {
+function utopian2gregorian(utopianDate) {
   // Convert Utopian datetime to sols:
   var sols = 0;
 
@@ -191,6 +191,17 @@ var UTOPIAN_MONTH_NAMES = [
   ["Tuc", "Tucana",         "Toucan",           "23 46.64"]
 ];
 
+/**
+ * Returns the month name given the month number (1..24).
+ *
+ * @param {int} month
+ * @param {boolean} abbrev
+ * @return {string}
+ */
+function utopianMonthName(month, abbrev) {
+  return UTOPIAN_MONTH_NAMES[month][abbrev ? 0 : 1];
+}
+
 // Names and abbreviated names of the Martian sols.
 var UTOPIAN_SOL_NAMES = [
   "Sunsol",
@@ -201,17 +212,6 @@ var UTOPIAN_SOL_NAMES = [
   "Jupitersol",
   "Deimosol"
 ];
-
-/**
- * Returns the month name given the month number (1..24).
- *
- * @param {int} month
- * @param {boolean} abbrev
- * @return {string}
- */
-function marsMonthName(month, abbrev) {
-  return UTOPIAN_MONTH_NAMES[month][abbrev ? 0 : 1];
-}
 
 /**
  * Returns the sol name given the sol number (1..28).

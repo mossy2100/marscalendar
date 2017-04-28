@@ -4,6 +4,8 @@ global-styling:
       css/style.css: {}
   js:
       js/fix-heights.js: {}
+      js/mars-time.js: {}
+      js/clock.js: {}
 
 bootstrap-scripts:
   js:
