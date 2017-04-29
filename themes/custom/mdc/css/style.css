@@ -9676,7 +9676,7 @@ sub {
 }
 /* line 204, ../sass/_overrides.scss */
 #block-bookcontents a {
-  padding: 5px;
+  padding: 2px 5px;
   margin: 2px 0;
   display: block;
   width: 100%;
