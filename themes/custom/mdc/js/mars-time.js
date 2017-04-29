@@ -31,6 +31,7 @@ var MONTHS_PER_MIR = 24;
 // Galileo Galilei. Expressed in milliseconds.
 // 1609-Mar-10 18:00:40 (JD = 2308804.250463)
 var EPOCH_START = Date.UTC(1609, 2, 10, 18, 0, 40);
+// var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 46, 400);
 
 /**
  * Returns true if a long mir.
