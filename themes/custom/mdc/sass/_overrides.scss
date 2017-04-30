@@ -347,8 +347,26 @@ sub {
       text-align: center;
     }
 
+    tr.mars,
+    th.mars {
+      background-color: $autumn;
+    }
+
+    th.mars,
+    td.mars,
+    tr.mars td {
+      border-color: $autumn-border;
+    }
+
+    tr.earth,
     th.earth {
-      background-color: $paleBlue;
+      background-color: $winter;
+    }
+
+    th.earth,
+    td.earth,
+    tr.earth td {
+      border-color: $winter-border;
     }
   }
 }
@@ -615,13 +633,6 @@ blockquote {
     border: none;
   }
 
-  tr.earth {
-    td {
-      background-color: $winter;
-      border: solid 1px $winter-border;
-    }
-  }
-
   #btns-convert {
     td {
       border: none;
@@ -630,13 +641,6 @@ blockquote {
 
     button {
       margin: 0 2px;
-    }
-  }
-
-  tr.mars {
-    td {
-      background-color: $autumn;
-      border: solid 1px $autumn-border;
     }
   }
 
