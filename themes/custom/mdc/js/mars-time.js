@@ -29,12 +29,31 @@ var WEEKS_PER_MIR = 96;
 var MONTHS_PER_QUARTER = 6;
 var MONTHS_PER_MIR = 24;
 
-// Start datetime for Martian northern vernal equinox in 1609, the year Astronomy Novia was
-// published by Johannes Kepler, and also the year the telescope was first used for astronomy, by
-// Galileo Galilei. Expressed in milliseconds.
-// 1609-Mar-10 18:00:40 (JD = 2308804.250463)
+/**
+ * Start datetime for Martian northern vernal equinox in 1609, the year Astronomy Novia was
+ * published by Johannes Kepler, and also the year the telescope was first used for astronomy, by
+ * Galileo Galilei. A Unix timestamp in milliseconds.
+ *
+ * 1609 March 10, 18:00:40 (JD 2308804.25046)
+ * This was used in the Darian Calendar (1986, 1999, 2002) and subsequently in the
+ * Areosynchronous Calendar (1999).
+ * This is the original and most commonly used value, so will continue to use this for now.
+ *
+ * 1609 March 11, 18:40:36 (JD 2308805.27819)
+ * Martiana (Gangale and Dudley-Rowley, 2002)
+ * This was a more recent variation of the Darian Calendar. For some reason they changed the
+ * epoch, although I don't know why. Maybe they recalculated it.
+ *
+ * If I use this page:
+ *   http://www-mars.lmd.jussieu.fr/mars/time/mars_date_to_earth_date.html
+ * with Mars year -183 and Ls = 0, the result is
+ * 1609-03-10 (JD 2308804.282733746)
+ * Converting the JD to Gregorian using this page:
+ *   http://www.onlineconversion.com/julian_date.htm
+ * gives
+ * 1609 March 10, 18:47:08
+ */
 var EPOCH_START = Date.UTC(1609, 2, 10, 18, 0, 40);
-// var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 46, 400);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Helper functions.
