@@ -41,10 +41,11 @@ function padDigits(x, digits) {
    */
   function showTime() {
     // Get current Unix timestamp.
-    var ts = (new Date()).valueOf();
+    var ts = Date.now();
 
     // Adjust for timezone.
-    ts += $('#marsClockTimeZone select').val() * MS_PER_ZODE;
+    var tzOffset = parseInt($('#marsClockTimeZone select').val(), 10);
+    ts += tzOffset * MS_PER_ZODE;
 
     // Get Utopian datetime.
     var marsNow = timestamp2utopian(ts);
@@ -55,10 +56,7 @@ function padDigits(x, digits) {
     var marsDateStr = 'M' + marsNow.mir + ' ' + marsNow.monthName + ' ' + marsNow.sol;
     $('#marsClockDate').html(marsDateStr);
 
-    var mils = marsNow.time * 1000;
-    var wholeMils = Math.floor(mils);
-    var tals = Math.floor((mils - wholeMils) * 100);
-    var marsTimeStr = 'm' + padDigits(wholeMils, 3) + '.' + padDigits(tals, 2);
+    var marsTimeStr = 'm' + formatMarsTime(marsNow.mils, 3);
     $('#marsClockTime').html(marsTimeStr);
 
     // Call this function again in 1 µsol.

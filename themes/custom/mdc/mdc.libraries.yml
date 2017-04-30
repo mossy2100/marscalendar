@@ -6,6 +6,8 @@ global-styling:
       js/fix-heights.js: {}
       js/mars-time.js: {}
       js/clock.js: {}
+      js/earth-time.js: {}
+      js/converter.js: {}
 
 bootstrap-scripts:
   js:

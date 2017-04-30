@@ -1,6 +1,9 @@
 /**
- * Created by shaun on 26/4/17.
+ * Created by Shaun Moss on 2017-04-26.
  */
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Constants.
 
 var MS_PER_SOL = 88775244.09;
 var MS_PER_ZODE = 8877524.409;
@@ -33,6 +36,9 @@ var MONTHS_PER_MIR = 24;
 var EPOCH_START = Date.UTC(1609, 2, 10, 18, 0, 40);
 // var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 46, 400);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Helper functions.
+
 /**
  * Returns true if a long mir.
  *
@@ -46,16 +52,6 @@ function isLongMir(mir) {
   // - If the mir is divisible by 100, then it's not a long mir.
   // - If the mir is divisible by 10, then it is a long mir.
   return (mir % 2 != 0) || (mir % 1000 == 0) || (mir % 100 != 0 && mir % 10 == 0);
-}
-
-/**
- * Returns number of sols in a given mir.
- *
- * @param {int} mir
- * @return int
- */
-function solsInMir(mir) {
-  return isLongMir(mir) ? SOLS_PER_LONG_MIR : SOLS_PER_SHORT_MIR;
 }
 
 /**
@@ -73,26 +69,52 @@ function solsInMonth(mir, month) {
 }
 
 /**
+ * Returns number of sols in a given mir.
+ *
+ * @param {int} mir
+ * @return int
+ */
+function solsInMir(mir) {
+  return isLongMir(mir) ? SOLS_PER_LONG_MIR : SOLS_PER_SHORT_MIR;
+}
+
+/**
+ * Counts the sols in mirs from 1 to m (or -m to -1).
+ * Note: does not count mir 0.
+ *
+ * @param {int} m
+ * @returns {int}
+ */
+function solsInMirs(m) {
+  var a = Math.floor((m + 1) / 2);
+  var b = Math.floor(m / 10);
+  var c = Math.floor(m / 100);
+  var d = Math.floor(m / 1000);
+  return (m * SOLS_PER_SHORT_MIR) + a + b - c + d;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Convert between Unix timestamps and Mars datetimes.
+
+/**
  * Cache the function results.
  *
- * @type {int: object}
+ * @type {object}
  */
 var cache_timestamp2utopian = {};
 
 /**
- * Convert a Unix timestemp to a Utopian datetime.
+ * Convert a Unix timestamp to a Utopian datetime.
  *
  * @param {int} ts
  * @return {object}
  */
 function timestamp2utopian(ts) {
-  // If no parameter provided, use current time:
-  if (ts === undefined) {
-    ts = (new Date()).valueOf();
-  }
+  // Create dtMars object.
+  var dtMars = {};
 
-  // Create utopianDateTime object.
-  var utopianDateTime = {};
+  // Make the timestamp an integer (round off to milliseconds).
+  ts = Math.round(ts);
 
   // Convert the timestamp to number of sols since EPOCH_START.
   var sols = (ts - EPOCH_START) / MS_PER_SOL;
@@ -100,11 +122,10 @@ function timestamp2utopian(ts) {
   sols = Math.round(sols * 1e6) / 1e6;
   var origRem = Math.floor(sols);
   var rem = origRem;
-  var time = Math.round((sols - rem) * 1e6) / 1e6;
 
   // Check the cache. We cache dates, not times.
   if (cache_timestamp2utopian[origRem] !== undefined) {
-    utopianDateTime = cache_timestamp2utopian[origRem];
+    dtMars = cache_timestamp2utopian[origRem];
   }
   else {
 
@@ -161,116 +182,106 @@ function timestamp2utopian(ts) {
     var sol = rem + 1;
 
     // Create the result object with the date.
-    utopianDateTime.mir = mir;
-    utopianDateTime.month = month;
-    utopianDateTime.sol = sol;
+    dtMars.mir = mir;
+    dtMars.month = month;
+    dtMars.sol = sol;
 
     // Get the month and sol names.
-    utopianDateTime.monthName = utopianMonthName(month);
-    utopianDateTime.solName = utopianSolName(sol);
+    dtMars.monthName = utopianMonthName(month);
+    dtMars.solName = utopianSolName(sol);
 
     // Cache the result.
-    cache_timestamp2utopian[origRem] = utopianDateTime;
+    cache_timestamp2utopian[origRem] = dtMars;
   }
 
-  // Add the time and formatted time string.
-  utopianDateTime.time = time;
-  var microsols = Math.round(time * 1e6);
-  var mils = Math.floor(microsols / 1000);
-  microsols -= mils * 1000;
+  // Get the mils.
+  var microsols = Math.round((sols - origRem) * 1e6);
+  dtMars.mils = microsols / 1e3;
 
-  return utopianDateTime;
-}
-
-/**
- * Convert a JS Date object to a Utopian date.
- *
- * @param {Date} date
- * @returns {object}
- */
-function gregorian2utopian(date) {
-  // If no parameter provided, use current datetime.
-  if (date === undefined) {
-    date = new Date();
-  }
-  return timestamp2utopian(date.valueOf());
-}
-
-/**
- * Counts all sols in mirs from 1 to m.
- * Note, does not count mir 0.
- *
- * @param {int} m
- * @returns {int}
- */
-function solsInMirs(m) {
-  var a = Math.floor((m + 1) / 2);
-  var b = Math.floor(m / 10);
-  var c = Math.floor(m / 100);
-  var d = Math.floor(m / 1000);
-  return (m * SOLS_PER_SHORT_MIR) + a + b - c + d;
+  return dtMars;
 }
 
 /**
  * Convert a Utopian datetime object to a Unix timestamp.
  *
- * @param {object} utopianDateTime
+ * @param {object} dtMars
  * @return {int}
  */
-function utopian2timestamp(utopianDateTime) {
+function utopian2timestamp(dtMars) {
   // Convert Utopian datetime to sols:
   var sols = 0, n, q;
   var sols2 = 0, x;
 
   // Count how many sols from the start of the epoch to the start of the mir.
-  if (utopianDateTime.mir > 0) {
+  if (dtMars.mir > 0) {
     // Positive mir.
-    sols = SOLS_PER_LONG_MIR + solsInMirs(utopianDateTime.mir - 1);
+    sols = SOLS_PER_LONG_MIR + solsInMirs(dtMars.mir - 1);
 
     // Double check.
-    // for (x = 0; x < utopianDateTime.mir; x++) {
+    // for (x = 0; x < dtMars.mir; x++) {
     //   sols2 += solsInMir(x);
     // }
   }
-  else if (utopianDateTime.mir < 0) {
+  else if (dtMars.mir < 0) {
     // Negative mir.
-    sols = -solsInMirs(-utopianDateTime.mir);
+    sols = -solsInMirs(-dtMars.mir);
 
     // Double check.
-    // for (x = utopianDateTime.mir; x < 0; x++) {
+    // for (x = dtMars.mir; x < 0; x++) {
     //   sols2 -= solsInMir(x);
     // }
   }
 
   // Count the sols in all months before the current one.
-  n = utopianDateTime.month - 1;
+  n = dtMars.month - 1;
   q = Math.floor(n / MONTHS_PER_QUARTER);
   sols += (q * SOLS_PER_SHORT_QUARTER) + (n - (q * MONTHS_PER_QUARTER)) * SOLS_PER_LONG_MONTH;
 
   // Add the sols in the current month before the current one.
-  sols += utopianDateTime.sol - 1;
+  sols += dtMars.sol - 1;
 
-  // Add the time of day.
-  sols += utopianDateTime.time;
+  // Add the mils.
+  sols += (dtMars.mils / 1e3);
 
   // Convert to Unix timestamp.
-  return EPOCH_START + (sols * MS_PER_SOL);
+  return Math.round(EPOCH_START + (sols * MS_PER_SOL));
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Convert between Earth and Mars datetimes.
+
+/**
+ * Convert a JS Date object to a Utopian datetime object.
+ *
+ * @param {Date} dtEarth
+ * @returns {object}
+ */
+function gregorian2utopian(dtEarth) {
+  var ts = dtEarth.valueOf();
+  var dtMars = timestamp2utopian(ts);
+  return dtMars;
 }
 
 /**
  * Convert a Utopian datetime object to a JS Date object.
  *
- * @param {object} utopianDateTime
+ * @param {object} dtMars
  * @return {int}
  */
-function utopian2gregorian(utopianDateTime) {
-  return new Date(utopian2timestamp(utopianDateTime));
+function utopian2gregorian(dtMars) {
+  var ts = utopian2timestamp(dtMars);
+  var dtEarth = new Date(ts);
+  return dtEarth
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Constants and functions for calendar month and sol names.
 
-// Names and abbreviated names of the Martian months.
+/**
+ * Names and abbreviated names of the Martian months.
+ *
+ * @var {array}
+ */
 var UTOPIAN_MONTH_NAMES = [
   undefined,
   ["Phe", "Phoenix", "Phoenix", "00 55.91"],
@@ -310,7 +321,11 @@ function utopianMonthName(month, abbrev) {
   return UTOPIAN_MONTH_NAMES[month][abbrev ? 0 : 1];
 }
 
-// Names and abbreviated names of the Martian sols.
+/**
+ * Names and abbreviated names of the sols of the week.
+ *
+ * @var {array}
+ */
 var UTOPIAN_SOL_NAMES = [
   "Sunsol",
   "Phobosol",
@@ -333,68 +348,119 @@ function utopianSolName(nSolOfMonth, abbrev) {
   return abbrev ? name.substr(0, 1) : name;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Formatting function.
+
+/**
+ * Given a Mars time in mils, format with mils expressed as 3 digits, plus a specified number of
+ * decimals.
+ *
+ * Examples:
+ * 999
+ * 999.99
+ * 999.999
+ *
+ * @param {number} mils
+ * @param {int} decimals
+ *   This value will usually be 0, 2 or 3.
+ * @return {string}
+ */
+function formatMarsTime(mils, decimals) {
+  var points = Math.floor(mils * Math.pow(10, decimals));
+  var digits = padDigits(points, 3 + decimals);
+  var marsTimeStr = digits.substr(0, 3) + '.' + digits.substr(3, decimals);
+  return marsTimeStr;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Testing functions.
+
 function testUtopianConvert() {
-  var u, ts, u2, ts2, result;
-
-  var testDates = [
-    {mir: 0, month: 1, sol: 1, time: 0},
-    {mir: 1, month: 1, sol: 1, time: 0},
-    {mir: 2, month: 1, sol: 1, time: 0},
-    {mir: 9, month: 1, sol: 1, time: 0},
-    {mir: 10, month: 1, sol: 1, time: 0},
-    {mir: 11, month: 1, sol: 1, time: 0},
-    {mir: 99, month: 1, sol: 1, time: 0},
-    {mir: 100, month: 1, sol: 1, time: 0},
-    {mir: 101, month: 1, sol: 1, time: 0},
-    {mir: 999, month: 1, sol: 1, time: 0},
-    {mir: 1000, month: 1, sol: 1, time: 0},
-    {mir: 1001, month: 1, sol: 1, time: 0},
-    {mir: -1, month: 1, sol: 1, time: 0},
-    {mir: -2, month: 1, sol: 1, time: 0},
-    {mir: -9, month: 1, sol: 1, time: 0},
-    {mir: -10, month: 1, sol: 1, time: 0},
-    {mir: -11, month: 1, sol: 1, time: 0},
-    {mir: -99, month: 1, sol: 1, time: 0},
-    {mir: -100, month: 1, sol: 1, time: 0},
-    {mir: -101, month: 1, sol: 1, time: 0},
-    {mir: -999, month: 1, sol: 1, time: 0},
-    {mir: -1000, month: 1, sol: 1, time: 0},
-    {mir: -1001, month: 1, sol: 1, time: 0},
-    {mir: 0, month: 24, sol: 27, time: 0},
-    {mir: 1, month: 24, sol: 27, time: 0},
-    {mir: 2, month: 24, sol: 27, time: 0},
-    {mir: 9, month: 24, sol: 27, time: 0},
-    {mir: 10, month: 24, sol: 27, time: 0},
-    {mir: 11, month: 24, sol: 27, time: 0},
-    {mir: 99, month: 24, sol: 27, time: 0},
-    {mir: 100, month: 24, sol: 27, time: 0},
-    {mir: 101, month: 24, sol: 27, time: 0},
-    {mir: 999, month: 24, sol: 27, time: 0},
-    {mir: 1000, month: 24, sol: 27, time: 0},
-    {mir: 1001, month: 24, sol: 27, time: 0},
-    {mir: -1, month: 24, sol: 27, time: 0},
-    {mir: -2, month: 24, sol: 27, time: 0},
-    {mir: -9, month: 24, sol: 27, time: 0},
-    {mir: -10, month: 24, sol: 27, time: 0},
-    {mir: -11, month: 24, sol: 27, time: 0},
-    {mir: -99, month: 24, sol: 27, time: 0},
-    {mir: -100, month: 24, sol: 27, time: 0},
-    {mir: -101, month: 24, sol: 27, time: 0},
-    {mir: -999, month: 24, sol: 27, time: 0},
-    {mir: -1000, month: 24, sol: 27, time: 0},
-    {mir: -1001, month: 24, sol: 27, time: 0}
-  ];
-
+  var u1, u2, u3, ts1, ts2, ts3, ts4, dt1, dt2, result;
   var passCount = 0, failCount = 0;
 
+  var testDates = [
+    {mir: 216, month: 24, sol: 25, mils: 377.49},
+    {mir: 0, month: 1, sol: 1, mils: 0},
+    {mir: 1, month: 1, sol: 1, mils: 0},
+    {mir: 2, month: 1, sol: 1, mils: 0},
+    {mir: 9, month: 1, sol: 1, mils: 0},
+    {mir: 10, month: 1, sol: 1, mils: 0},
+    {mir: 11, month: 1, sol: 1, mils: 0},
+    {mir: 99, month: 1, sol: 1, mils: 0},
+    {mir: 100, month: 1, sol: 1, mils: 0},
+    {mir: 101, month: 1, sol: 1, mils: 0},
+    {mir: 999, month: 1, sol: 1, mils: 0},
+    {mir: 1000, month: 1, sol: 1, mils: 0},
+    {mir: 1001, month: 1, sol: 1, mils: 0},
+    {mir: -1, month: 1, sol: 1, mils: 0},
+    {mir: -2, month: 1, sol: 1, mils: 0},
+    {mir: -9, month: 1, sol: 1, mils: 0},
+    {mir: -10, month: 1, sol: 1, mils: 0},
+    {mir: -11, month: 1, sol: 1, mils: 0},
+    {mir: -99, month: 1, sol: 1, mils: 0},
+    {mir: -100, month: 1, sol: 1, mils: 0},
+    {mir: -101, month: 1, sol: 1, mils: 0},
+    {mir: -999, month: 1, sol: 1, mils: 0},
+    {mir: -1000, month: 1, sol: 1, mils: 0},
+    {mir: -1001, month: 1, sol: 1, mils: 0},
+    {mir: 0, month: 24, sol: 27, mils: 0},
+    {mir: 1, month: 24, sol: 27, mils: 0},
+    {mir: 2, month: 24, sol: 27, mils: 0},
+    {mir: 9, month: 24, sol: 27, mils: 0},
+    {mir: 10, month: 24, sol: 27, mils: 0},
+    {mir: 11, month: 24, sol: 27, mils: 0},
+    {mir: 99, month: 24, sol: 27, mils: 0},
+    {mir: 100, month: 24, sol: 27, mils: 0},
+    {mir: 101, month: 24, sol: 27, mils: 0},
+    {mir: 999, month: 24, sol: 27, mils: 0},
+    {mir: 1000, month: 24, sol: 27, mils: 0},
+    {mir: 1001, month: 24, sol: 27, mils: 0},
+    {mir: -1, month: 24, sol: 27, mils: 0},
+    {mir: -2, month: 24, sol: 27, mils: 0},
+    {mir: -9, month: 24, sol: 27, mils: 0},
+    {mir: -10, month: 24, sol: 27, mils: 0},
+    {mir: -11, month: 24, sol: 27, mils: 0},
+    {mir: -99, month: 24, sol: 27, mils: 0},
+    {mir: -100, month: 24, sol: 27, mils: 0},
+    {mir: -101, month: 24, sol: 27, mils: 0},
+    {mir: -999, month: 24, sol: 27, mils: 0},
+    {mir: -1000, month: 24, sol: 27, mils: 0},
+    {mir: -1001, month: 24, sol: 27, mils: 0}
+  ];
+
   for (var i in testDates) {
-    u = testDates[i];
-    // u.time = 0.123456;
-    console.log(u);
-    ts = utopian2timestamp(u);
-    u2 = timestamp2utopian(ts);
+    console.log('');
+    console.log("TEST...");
+
+    u1 = testDates[i];
+    console.log(u1);
+
+    ts1 = utopian2timestamp(u1);
+    console.log('ts1: ' + ts1);
+
+    u2 = timestamp2utopian(ts1);
+    console.log(u2);
+
     ts2 = utopian2timestamp(u2);
-    if (ts == ts2) {
+    console.log('ts2: ' + ts2);
+
+    dt1 = utopian2gregorian(u1);
+    console.log('dt1: ' + dt1);
+
+    u3 = gregorian2utopian(dt1);
+    console.log(u3);
+
+    dt2 = utopian2gregorian(u2);
+    console.log('dt2: ' + dt2);
+
+    ts3 = dt1.valueOf();
+    console.log('ts3: ' + ts3);
+
+    ts4 = dt2.valueOf();
+    console.log('ts4: ' + ts4);
+
+    if (ts1 == ts2 && ts2 == ts3 && ts3 == ts4) {
       result = 'PASS';
       passCount++;
     }
@@ -406,3 +472,4 @@ function testUtopianConvert() {
   }
   console.log('PASS: ' + passCount + ', FAIL: ' + failCount);
 }
+

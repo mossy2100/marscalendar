@@ -605,3 +605,53 @@ blockquote {
     }
   }
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Datetime converter
+
+#converter {
+  table,
+  tr {
+    border: none;
+  }
+
+  tr.earth {
+    td {
+      background-color: $winter;
+      border: solid 1px $winter-border;
+    }
+  }
+
+  #btns-convert {
+    td {
+      border: none;
+      text-align: center;
+    }
+  }
+
+  tr.mars {
+    td {
+      background-color: $autumn;
+      border: solid 1px $autumn-border;
+    }
+  }
+
+  input,
+  select {
+    display: inline-block;
+  }
+
+  #earth-datetime {
+    width: 200px;
+  }
+
+  #mir,
+  #mils {
+    width: 100px;
+  }
+
+  #mars-month,
+  #sol {
+    width: auto;
+  }
+}

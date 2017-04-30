@@ -1,5 +1,7 @@
 /**
- * Created by shaun on 6/2/17.
+ * Created by shaun on 6/2/2017.
+ *
+ * Make the sidebar and content region heights all match.
  */
 
 (function($) {

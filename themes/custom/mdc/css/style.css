@@ -10085,3 +10085,43 @@ blockquote {
 #block-utopiandateandtime #marsClock div select {
   max-width: 100%;
 }
+
+/* line 613, ../sass/_overrides.scss */
+#converter table,
+#converter tr {
+  border: none;
+}
+/* line 619, ../sass/_overrides.scss */
+#converter tr.earth td {
+  background-color: #bfdfff;
+  border: solid 1px #80bfff;
+}
+/* line 626, ../sass/_overrides.scss */
+#converter #btns-convert td {
+  border: none;
+  text-align: center;
+}
+/* line 633, ../sass/_overrides.scss */
+#converter tr.mars td {
+  background-color: #ffbfbf;
+  border: solid 1px #ff8080;
+}
+/* line 639, ../sass/_overrides.scss */
+#converter input,
+#converter select {
+  display: inline-block;
+}
+/* line 644, ../sass/_overrides.scss */
+#converter #earth-datetime {
+  width: 200px;
+}
+/* line 648, ../sass/_overrides.scss */
+#converter #mir,
+#converter #mils {
+  width: 100px;
+}
+/* line 653, ../sass/_overrides.scss */
+#converter #mars-month,
+#converter #sol {
+  width: auto;
+}
