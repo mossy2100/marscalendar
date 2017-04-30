@@ -627,6 +627,10 @@ blockquote {
       border: none;
       text-align: center;
     }
+
+    button {
+      margin: 0 2px;
+    }
   }
 
   tr.mars {
@@ -648,6 +652,7 @@ blockquote {
   #mir,
   #mils {
     width: 100px;
+    margin-left: 2px;
   }
 
   #mars-month,

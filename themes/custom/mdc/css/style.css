@@ -10101,26 +10101,31 @@ blockquote {
   border: none;
   text-align: center;
 }
-/* line 633, ../sass/_overrides.scss */
+/* line 631, ../sass/_overrides.scss */
+#converter #btns-convert button {
+  margin: 0 2px;
+}
+/* line 637, ../sass/_overrides.scss */
 #converter tr.mars td {
   background-color: #ffbfbf;
   border: solid 1px #ff8080;
 }
-/* line 639, ../sass/_overrides.scss */
+/* line 643, ../sass/_overrides.scss */
 #converter input,
 #converter select {
   display: inline-block;
 }
-/* line 644, ../sass/_overrides.scss */
+/* line 648, ../sass/_overrides.scss */
 #converter #earth-datetime {
   width: 200px;
 }
-/* line 648, ../sass/_overrides.scss */
+/* line 652, ../sass/_overrides.scss */
 #converter #mir,
 #converter #mils {
   width: 100px;
+  margin-left: 2px;
 }
-/* line 653, ../sass/_overrides.scss */
+/* line 658, ../sass/_overrides.scss */
 #converter #mars-month,
 #converter #sol {
   width: auto;
