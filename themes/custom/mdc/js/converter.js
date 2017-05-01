@@ -23,27 +23,49 @@
     setEarthDatetime(dtEarth);
 
     // Set the Mars datetime fields.
-    setMarsDatetime(dtEarth);
+    var dtMars = gregorian2utopian(dtEarth);
+    setMarsDatetime(dtMars);
 
     // Assign button actions.
     $('#btn-convert-earth2mars').click(function () {
       event.preventDefault();
       var dtEarth = getEarthDatetime();
-      setMarsDatetime(dtEarth);
+      var dtMars = gregorian2utopian(dtEarth);
+      setMarsDatetime(dtMars);
     });
 
     $('#btn-convert-mars2earth').click(function () {
       event.preventDefault();
-      var dtEarth = getMarsDatetime();
-      if (dtEarth !== false) {
+      var dtMars = getMarsDatetime();
+      if (dtMars !== false) {
+        var dtEarth = utopian2gregorian(dtMars);
+        dtEarth.setSeconds(0);
+        dtEarth.setMilliseconds(0);
         setEarthDatetime(dtEarth);
       }
     });
 
     // Assign selector behaviours.
-    $("#earth-datetime").change(updateDayOfWeek);
-    $("#mir").change(updateSolSelector);
-    $("#mars-month").change(updateSolSelector);
+    $("#earth-datetime").change(function() {
+      setDayOfWeekAndYear();
+    });
+
+    $(".mars-date").change(function() {
+      updateSolSelector();
+      setSolOfWeekAndMir();
+    });
+
+    $('#mils').change(function() {
+      // Reformat the mils like 999.999.
+      var mils = parseFloat($("#mils").val(), 10);
+      if (mils < 0) {
+        mils = 0;
+      }
+      if (mils > 999.999) {
+        mils = 999.999;
+      }
+      $("#mils").val(formatMarsTime(dtMars.mils, 3));
+    });
   }
 
   /**
@@ -77,48 +99,49 @@
     var minute = dtEarth.getMinutes();
     var dateTimeStr = padDigits(year, 4) + '-' + padDigits(month, 2) + '-' + padDigits(day, 2) + 'T' + padDigits(hour, 2) + ':' + padDigits(minute, 2);
     $("#earth-datetime").val(dateTimeStr);
-    $("#day-of-week").html(gregorianDayName(dayOfWeek));
+
+    // Set the day of the week and the year.
+    setDayOfWeekAndYear(dtEarth);
   }
 
   /**
    * Get the Mars datetime from the form.
    *
-   * @returns {Date|boolean}
+   * @returns {object|boolean}
    */
   function getMarsDatetime() {
     var mir = parseInt($("#mir").val(), 10);
     var month = parseInt($("#mars-month").val(), 10);
     var sol = parseInt($("#sol").val(), 10);
-    if (sol < 1 || sol > 28) {
-      // Show an error.
-      return false;
-    }
     var mils = parseFloat($("#mils").val(), 10);
-    if (mils < 0 || mils > 999.999) {
-      // Show an error.
-      return false;
-    }
     var dtMars = {mir: mir, month: month, sol: sol, mils: mils};
-    var dtEarth = utopian2gregorian(dtMars);
-    dtEarth.setSeconds(0);
-    dtEarth.setMilliseconds(0);
-    return dtEarth;
+    return dtMars;
   }
 
   /**
    * Set the Mars datetime on the form.
    *
-   * @param {Date} dtEarth
+   * @param {object} dtMars
    */
-  function setMarsDatetime(dtEarth) {
-    var dtMars = gregorian2utopian(dtEarth);
+  function setMarsDatetime(dtMars) {
+    // Set the mir.
     $("#mir").val(dtMars.mir);
+
+    // Set the month.
     $("#mars-month").val(dtMars.month);
-    updateSolSelector();
+
+    // Update the sol selector.
+    // updateSolSelector();
+
+    // Set the sol.
     $("#sol").val(dtMars.sol);
+
+    // Set the time.
     var marsTimeStr = formatMarsTime(dtMars.mils, 3);
     $("#mils").val(marsTimeStr);
-    $("#sol-of-week").html(dtMars.solName);
+
+    // Set the sol of the week and the mir.
+    setSolOfWeekAndMir(dtMars);
   }
 
   /**
@@ -158,10 +181,34 @@
   /**
    * Update the day of the week to match the selected Earth date.
    */
-  function updateDayOfWeek() {
-    var dtEarth = getEarthDatetime();
+  function setDayOfWeekAndYear(dtEarth) {
+    if (dtEarth === undefined) {
+      dtEarth = getEarthDatetime();
+    }
+
+    // Set the day of the week.
     var dayOfWeek = dtEarth.getDay();
     $("#day-of-week").html(gregorianDayName(dayOfWeek));
+
+    // Set the day of the year.
+    var dtYearStart = new Date(dtEarth.getFullYear(), 0, 1);
+    var dayOfYear = Math.floor((dtEarth - dtYearStart) / MS_PER_DAY) + 1;
+    $("#day-of-year").html(dayOfYear);
+  }
+
+  /**
+   * Update the sol of the week and mir to match the selected Mars date.
+   */
+  function setSolOfWeekAndMir(dtMars) {
+    if (dtMars === undefined) {
+      dtMars = getMarsDatetime();
+    }
+
+    // Set the sol of the week.
+    $("#sol-of-week").html(utopianSolName(dtMars.sol));
+
+    // Set the sol of the mir.
+    $("#sol-of-mir").html(solOfMir(dtMars.month, dtMars.sol));
   }
 
   $(initConverter);

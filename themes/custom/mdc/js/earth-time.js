@@ -6,14 +6,26 @@
 /**
  * Constants
  */
+var MS_PER_SECOND = 1000;
+var MS_PER_MINUTE = 60000;
+var MS_PER_HOUR = 3600000;
+var MS_PER_DAY = 86400000;
+
 var SECONDS_PER_MINUTE = 60;
-var MINUTES_PER_HOUR = 60;
 var SECONDS_PER_HOUR = 3600;
-var HOURS_PER_DAY = 24;
 var SECONDS_PER_DAY = 86400;
+
+var MINUTES_PER_HOUR = 60;
+var MINUTES_PER_DAY = 1440;
+
+var HOURS_PER_DAY = 24;
+
+var DAYS_PER_WEEK = 7;
 var DAYS_PER_YEAR = 365.2425;
 var DAYS_PER_COMMON_YEAR = 365;
 var DAYS_PER_LEAP_YEAR = 366;
+
+var MONTHS_PER_YEAR = 12;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Constants and functions for calendar month and day names.

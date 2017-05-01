@@ -11,6 +11,10 @@
       <td><label for="day-of-week">Day of the week</label></td>
       <td><span id="day-of-week"></span></td>
     </tr>
+    <tr class="earth">
+      <td><label for="day-of-year">Day of the year</label></td>
+      <td><span id="day-of-year"></span></td>
+    </tr>
     <tr id="btns-convert">
       <td colspan="2">
         <button id="btn-convert-earth2mars" class="btn btn-primary">Convert &darr;</button>
@@ -19,15 +23,15 @@
     </tr>
     <tr class="mars">
       <td><label for="mir">Mir</label></td>
-      <td>M<input type="number" id="mir" class="form-text form-control"></td>
+      <td>M<input type="number" id="mir" class="mars-date form-text form-control"></td>
     </tr>
     <tr class="mars">
       <td><label for="mars-month">Month</label></td>
-      <td><select id="mars-month" class="form-select form-control"></select></td>
+      <td><select id="mars-month" class="mars-date form-select form-control"></select></td>
     </tr>
     <tr class="mars">
       <td><label for="sol">Sol</label></td>
-      <td><select id="sol" class="form-select form-control"></select></td>
+      <td><select id="sol" class="mars-date form-select form-control"></select></td>
     </tr>
     <tr class="mars">
       <td><label for="mils">Time</label></td>
@@ -37,6 +41,10 @@
     <tr class="mars">
       <td><label for="sol-of-week">Sol of the week</label></td>
       <td><span id="sol-of-week"></span></td>
+    </tr>
+    <tr class="mars">
+      <td><label for="sol-of-mir">Sol of the mir</label></td>
+      <td><span id="sol-of-mir"></span></td>
     </tr>
   </table>
 </form>

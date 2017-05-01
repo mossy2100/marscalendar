@@ -98,18 +98,31 @@ function solsInMir(mir) {
 }
 
 /**
- * Counts the sols in mirs from 1 to m (or -m to -1).
+ * Counts the sols in mirs from 1 to mir (or -mir to -1).
  * Note: does not count mir 0.
  *
- * @param {int} m
+ * @param {int} mir
  * @returns {int}
  */
-function solsInMirs(m) {
-  var a = Math.floor((m + 1) / 2);
-  var b = Math.floor(m / 10);
-  var c = Math.floor(m / 100);
-  var d = Math.floor(m / 1000);
-  return (m * SOLS_PER_SHORT_MIR) + a + b - c + d;
+function solsInMirs(mir) {
+  var a = Math.floor((mir + 1) / 2);
+  var b = Math.floor(mir / 10);
+  var c = Math.floor(mir / 100);
+  var d = Math.floor(mir / 1000);
+  return (mir * SOLS_PER_SHORT_MIR) + a + b - c + d;
+}
+
+/**
+ * Calculate the sol of the mir (1..669).
+ *
+ * @param {int} month
+ * @param {int} sol
+ * @returns {int}
+ */
+function solOfMir(month, sol) {
+  var q = Math.floor((month - 1) / 6);
+  var m = month - (q * 6) - 1;
+  return (q * SOLS_PER_SHORT_QUARTER) + (m * SOLS_PER_LONG_MONTH) + sol;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
