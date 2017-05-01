@@ -37,12 +37,8 @@
     $('#btn-convert-mars2earth').click(function () {
       event.preventDefault();
       var dtMars = getMarsDatetime();
-      if (dtMars !== false) {
-        var dtEarth = utopian2gregorian(dtMars);
-        dtEarth.setSeconds(0);
-        dtEarth.setMilliseconds(0);
-        setEarthDatetime(dtEarth);
-      }
+      var dtEarth = utopian2gregorian(dtMars);
+      setEarthDatetime(dtEarth);
     });
 
     // Assign selector behaviours.
@@ -94,7 +90,6 @@
     var year = dtEarth.getFullYear();
     var month = dtEarth.getMonth() + 1;
     var day = dtEarth.getDate();
-    var dayOfWeek = dtEarth.getDay();
     var hour = dtEarth.getHours();
     var minute = dtEarth.getMinutes();
     var dateTimeStr = padDigits(year, 4) + '-' + padDigits(month, 2) + '-' + padDigits(day, 2) + 'T' + padDigits(hour, 2) + ':' + padDigits(minute, 2);
@@ -107,7 +102,7 @@
   /**
    * Get the Mars datetime from the form.
    *
-   * @returns {object|boolean}
+   * @returns {object}
    */
   function getMarsDatetime() {
     var mir = parseInt($("#mir").val(), 10);
