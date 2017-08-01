@@ -306,7 +306,7 @@ sub {
   padding: 15px;
 
   .field--name-body {
-    margin: 0 0 15px;
+    margin: 0 0 30px;
 
     img {
       text-align: center;
@@ -368,6 +368,99 @@ sub {
     td.earth,
     tr.earth td {
       border-color: $winter-border;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Calendar pages
+    .calPage {
+      margin: 5px;
+      display: inline-block;
+
+      td,
+      th {
+        font-size: 12px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 4px;
+      }
+
+      tr.squares {
+        td,
+        th {
+          width: 23px;
+          height: 23px;
+        }
+      }
+
+      tr.daysOfWeek th {
+        font-weight: bold;
+      }
+
+      th.monthName {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      td.monthIcon {
+        background-color: transparent;
+
+        img {
+          margin: 5px;
+          height: 120px;
+        }
+      }
+
+      .intercalary {
+        color: $red;
+      }
+
+      .empty {
+        background-color: $grey;
+      }
+    }
+
+    .spring {
+      td,
+      th {
+        border-color: $spring-border;
+      }
+
+      th {
+        background-color: $spring;
+      }
+    }
+
+    .summer {
+      td,
+      th {
+        border-color: $summer-border;
+      }
+
+      th {
+        background-color: $summer;
+      }
+    }
+
+    .autumn {
+      td,
+      th {
+        border-color: $autumn-border;
+      }
+
+      th {
+        background-color: $autumn;
+      }
+    }
+
+    .winter {
+      td,
+      th {
+        border-color: $winter-border;
+      }
+
+      th {
+        background-color: $winter;
+      }
     }
   }
 }
@@ -477,102 +570,6 @@ figcaption {
 blockquote {
   font-size: inherit;
   font-style: italic;
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Calendar pages
-
-#content .field--name-body {
-  .calPage {
-    margin: 5px;
-    display: inline-block;
-
-    td,
-    th {
-      font-size: 12px;
-      text-align: center;
-      vertical-align: middle;
-      padding: 4px;
-    }
-
-    tr.squares {
-      td,
-      th {
-        width: 23px;
-        height: 23px;
-      }
-    }
-
-    tr.daysOfWeek th {
-      font-weight: bold;
-    }
-
-    th.monthName {
-      font-size: 16px;
-      font-weight: bold;
-    }
-
-    td.monthIcon {
-      background-color: transparent;
-
-      img {
-        margin: 5px;
-        height: 120px;
-      }
-    }
-
-    .intercalary {
-      color: $red;
-    }
-
-    .empty {
-      background-color: $grey;
-    }
-  }
-
-  .spring {
-    td,
-    th {
-      border-color: $spring-border;
-    }
-
-    th {
-      background-color: $spring;
-    }
-  }
-
-  .summer {
-    td,
-    th {
-      border-color: $summer-border;
-    }
-
-    th {
-      background-color: $summer;
-    }
-  }
-
-  .autumn {
-    td,
-    th {
-      border-color: $autumn-border;
-    }
-
-    th {
-      background-color: $autumn;
-    }
-  }
-
-  .winter {
-    td,
-    th {
-      border-color: $winter-border;
-    }
-
-    th {
-      background-color: $winter;
-    }
-  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
