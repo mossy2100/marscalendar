@@ -28,6 +28,8 @@ $chocolate: #311;
 
 $paleBlue: #e5eeff;
 $grey: #eee;
+$pink: #ffd2ff;
+$purple: #c9abff;
 
 $spring: #d4ffbf;
 $spring-border: #99e673;
@@ -410,10 +412,6 @@ sub {
         }
       }
 
-      .intercalary {
-        color: $red;
-      }
-
       .empty {
         background-color: $grey;
       }
@@ -461,6 +459,38 @@ sub {
       th {
         background-color: $winter;
       }
+    }
+
+    .special-sol {
+      font-weight: bold;
+    }
+
+    .vernal-equinox {
+      background-color: $spring-border;
+    }
+
+    .summer-solstice {
+      background-color: $summer-border;
+    }
+
+    .autumnal-equinox {
+      background-color: $autumn-border;
+    }
+
+    .winter-solstice {
+      background-color: $winter-border;
+    }
+
+    .aphelion {
+      background-color: $purple;
+    }
+
+    .perihelion {
+      background-color: $pink;
+    }
+
+    .intercalary {
+      background-color: $grey;
     }
   }
 }
