@@ -351,23 +351,27 @@ sub {
     }
 
     tr.mars,
-    th.mars {
+    th.mars,
+    td.mars {
       background-color: $autumn;
     }
 
     th.mars,
     td.mars,
+    tr.mars th,
     tr.mars td {
       border-color: $autumn-border;
     }
 
     tr.earth,
-    th.earth {
+    th.earth,
+    td.earth {
       background-color: $winter;
     }
 
     th.earth,
     td.earth,
+    tr.earth th,
     tr.earth td {
       border-color: $winter-border;
     }
@@ -676,34 +680,28 @@ blockquote {
     border: none;
   }
 
-  #btns-convert {
-    td {
-      border: none;
-      text-align: center;
-    }
-
-    button {
-      margin: 0 2px;
-    }
-  }
+  //#btns-convert {
+  //  td {
+  //    border: none;
+  //    text-align: center;
+  //  }
+  //
+  //  button {
+  //    margin: 0 2px;
+  //  }
+  //}
 
   input,
   select {
     display: inline-block;
   }
 
-  #earth-datetime {
-    width: 200px;
-  }
+  select {
+    width: auto;
+  };
 
-  #mir,
-  #mils {
+  input {
     width: 100px;
     margin-left: 2px;
-  }
-
-  #mars-month,
-  #sol {
-    width: auto;
   }
 }

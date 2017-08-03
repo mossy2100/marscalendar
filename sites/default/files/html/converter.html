@@ -3,48 +3,35 @@
 
 <form id="converter">
   <table>
-    <tr class="earth">
-      <td><label for="earth-datetime">Earth datetime</label></td>
-      <td><input type="datetime-local" id="earth-datetime" class="form-text form-control"></td>
+    <tr>
+      <th>Year/Mir</th>
+      <td class="earth"><input id="year" class="earth-date form-text form-control"></td>
+      <td class="mars">M<input id="mir" class="mars-date form-text form-control"></td>
     </tr>
-    <tr class="earth">
-      <td><label for="day-of-week">Day of the week</label></td>
-      <td><span id="day-of-week"></span></td>
+    <tr>
+      <th>Month</th>
+      <td class="earth"><select id="earth-month" class="earth-date form-select form-control"></select></td>
+      <td class="mars"><select id="mars-month" class="mars-date form-select form-control"></select></td>
     </tr>
-    <tr class="earth">
-      <td><label for="day-of-year">Day of the year</label></td>
-      <td><span id="day-of-year"></span></td>
+    <tr>
+      <th>Day/Sol of the month</th>
+      <td class="earth"><select id="day" class="earth-date form-select form-control"></select></td>
+      <td class="mars"><select id="sol" class="mars-date form-select form-control"></select></td>
     </tr>
-    <tr id="btns-convert">
-      <td colspan="2">
-        <button id="btn-convert-earth2mars" class="btn btn-primary">Convert &darr;</button>
-        <button id="btn-convert-mars2earth" class="btn btn-primary">Convert &uarr;</button>
-      </td>
+    <tr>
+      <th>Day/Sol of the week</th>
+      <td class="earth"><span id="day-of-week"></span></td>
+      <td class="mars"><span id="sol-of-week"></span></td>
     </tr>
-    <tr class="mars">
-      <td><label for="mir">Mir</label></td>
-      <td>M<input type="number" id="mir" class="mars-date form-text form-control"></td>
+    <tr>
+      <th>Day/Sol of the year/mir</th>
+      <td class="earth"><span id="day-of-year"></span></td>
+      <td class="mars"><span id="sol-of-mir"></span></td>
     </tr>
-    <tr class="mars">
-      <td><label for="mars-month">Month</label></td>
-      <td><select id="mars-month" class="mars-date form-select form-control"></select></td>
-    </tr>
-    <tr class="mars">
-      <td><label for="sol">Sol</label></td>
-      <td><select id="sol" class="mars-date form-select form-control"></select></td>
-    </tr>
-    <tr class="mars">
-      <td><label for="mils">Time</label></td>
-      <td><input type="number" id="mils" class="form-text form-control" min="0"
-        max="999.999" step="0.001"></td>
-    </tr>
-    <tr class="mars">
-      <td><label for="sol-of-week">Sol of the week</label></td>
-      <td><span id="sol-of-week"></span></td>
-    </tr>
-    <tr class="mars">
-      <td><label for="sol-of-mir">Sol of the mir</label></td>
-      <td><span id="sol-of-mir"></span></td>
+    <tr>
+      <th>Time</th>
+      <td class="earth"><input id="earth-time" class="earth-date form-text form-control"></td>
+      <td class="mars"><input id="mars-time" class="mars-date form-text form-control"></td>
     </tr>
   </table>
 </form>

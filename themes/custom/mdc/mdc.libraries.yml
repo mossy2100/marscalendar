@@ -4,9 +4,9 @@ global-styling:
       css/style.css: {}
   js:
       js/fix-heights.js: {}
+      js/earth-time.js: {}
       js/mars-time.js: {}
       js/clock.js: {}
-      js/earth-time.js: {}
       js/converter.js: {}
 
 bootstrap-scripts:

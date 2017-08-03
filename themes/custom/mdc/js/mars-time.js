@@ -381,7 +381,7 @@ function utopianSolName(nSolOfMonth, abbrev) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// Formatting function.
+// Formatting functions.
 
 /**
  * Given a Mars time in mils, format as 999.999.
@@ -390,109 +390,24 @@ function utopianSolName(nSolOfMonth, abbrev) {
  * @return {string}
  */
 function formatMarsTime(mils) {
+  if (typeof mils == 'string') {
+    mils = parseFloat(mils, 10);
+    if (isNaN(mils)) {
+      return '000.000';
+    }
+  }
+  if (typeof mils != 'number') {
+    return '000.000';
+  }
+  // mils is a number, check ranges.
+  if (mils < 0) {
+    return '000.000';
+  }
+  if (mils > 999.999) {
+    return '999.999';
+  }
+  // Format the time.
   var wholeMils = Math.floor(mils);
-  var microsols = Math.floor((mils - wholeMils) * 1000);
+  var microsols = Math.round((mils - wholeMils) * 1000);
   return padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-// Testing functions.
-
-function testUtopianConvert() {
-  var u1, u2, u3, ts1, ts2, ts3, ts4, dt1, dt2, result;
-  var passCount = 0, failCount = 0;
-
-  var testDates = [
-    {mir: 216, month: 24, sol: 25, mils: 377.49},
-    {mir: 0, month: 1, sol: 1, mils: 0},
-    {mir: 1, month: 1, sol: 1, mils: 0},
-    {mir: 2, month: 1, sol: 1, mils: 0},
-    {mir: 9, month: 1, sol: 1, mils: 0},
-    {mir: 10, month: 1, sol: 1, mils: 0},
-    {mir: 11, month: 1, sol: 1, mils: 0},
-    {mir: 99, month: 1, sol: 1, mils: 0},
-    {mir: 100, month: 1, sol: 1, mils: 0},
-    {mir: 101, month: 1, sol: 1, mils: 0},
-    {mir: 999, month: 1, sol: 1, mils: 0},
-    {mir: 1000, month: 1, sol: 1, mils: 0},
-    {mir: 1001, month: 1, sol: 1, mils: 0},
-    {mir: -1, month: 1, sol: 1, mils: 0},
-    {mir: -2, month: 1, sol: 1, mils: 0},
-    {mir: -9, month: 1, sol: 1, mils: 0},
-    {mir: -10, month: 1, sol: 1, mils: 0},
-    {mir: -11, month: 1, sol: 1, mils: 0},
-    {mir: -99, month: 1, sol: 1, mils: 0},
-    {mir: -100, month: 1, sol: 1, mils: 0},
-    {mir: -101, month: 1, sol: 1, mils: 0},
-    {mir: -999, month: 1, sol: 1, mils: 0},
-    {mir: -1000, month: 1, sol: 1, mils: 0},
-    {mir: -1001, month: 1, sol: 1, mils: 0},
-    {mir: 0, month: 24, sol: 27, mils: 0},
-    {mir: 1, month: 24, sol: 27, mils: 0},
-    {mir: 2, month: 24, sol: 27, mils: 0},
-    {mir: 9, month: 24, sol: 27, mils: 0},
-    {mir: 10, month: 24, sol: 27, mils: 0},
-    {mir: 11, month: 24, sol: 27, mils: 0},
-    {mir: 99, month: 24, sol: 27, mils: 0},
-    {mir: 100, month: 24, sol: 27, mils: 0},
-    {mir: 101, month: 24, sol: 27, mils: 0},
-    {mir: 999, month: 24, sol: 27, mils: 0},
-    {mir: 1000, month: 24, sol: 27, mils: 0},
-    {mir: 1001, month: 24, sol: 27, mils: 0},
-    {mir: -1, month: 24, sol: 27, mils: 0},
-    {mir: -2, month: 24, sol: 27, mils: 0},
-    {mir: -9, month: 24, sol: 27, mils: 0},
-    {mir: -10, month: 24, sol: 27, mils: 0},
-    {mir: -11, month: 24, sol: 27, mils: 0},
-    {mir: -99, month: 24, sol: 27, mils: 0},
-    {mir: -100, month: 24, sol: 27, mils: 0},
-    {mir: -101, month: 24, sol: 27, mils: 0},
-    {mir: -999, month: 24, sol: 27, mils: 0},
-    {mir: -1000, month: 24, sol: 27, mils: 0},
-    {mir: -1001, month: 24, sol: 27, mils: 0}
-  ];
-
-  for (var i in testDates) {
-    console.log('');
-    console.log("TEST...");
-
-    u1 = testDates[i];
-    console.log(u1);
-
-    ts1 = utopian2timestamp(u1);
-    console.log('ts1: ' + ts1);
-
-    u2 = timestamp2utopian(ts1);
-    console.log(u2);
-
-    ts2 = utopian2timestamp(u2);
-    console.log('ts2: ' + ts2);
-
-    dt1 = utopian2gregorian(u1);
-    console.log('dt1: ' + dt1);
-
-    u3 = gregorian2utopian(dt1);
-    console.log(u3);
-
-    dt2 = utopian2gregorian(u2);
-    console.log('dt2: ' + dt2);
-
-    ts3 = dt1.valueOf();
-    console.log('ts3: ' + ts3);
-
-    ts4 = dt2.valueOf();
-    console.log('ts4: ' + ts4);
-
-    if (ts1 == ts2 && ts2 == ts3 && ts3 == ts4) {
-      result = 'PASS';
-      passCount++;
-    }
-    else {
-      result = 'FAIL';
-      failCount++;
-    }
-    console.log(result);
-  }
-  console.log('PASS: ' + passCount + ', FAIL: ' + failCount);
-}
-
