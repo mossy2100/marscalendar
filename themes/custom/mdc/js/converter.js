@@ -60,7 +60,7 @@
       if (mils > 999.999) {
         mils = 999.999;
       }
-      $("#mils").val(formatMarsTime(dtMars.mils, 3));
+      $("#mils").val(formatMarsTime(mils));
     });
   }
 
@@ -132,7 +132,7 @@
     $("#sol").val(dtMars.sol);
 
     // Set the time.
-    var marsTimeStr = formatMarsTime(dtMars.mils, 3);
+    var marsTimeStr = formatMarsTime(dtMars.mils);
     $("#mils").val(marsTimeStr);
 
     // Set the sol of the week and the mir.

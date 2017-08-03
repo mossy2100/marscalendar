@@ -384,24 +384,15 @@ function utopianSolName(nSolOfMonth, abbrev) {
 // Formatting function.
 
 /**
- * Given a Mars time in mils, format with mils expressed as 3 digits, plus a specified number of
- * decimals.
- *
- * Examples:
- * 999
- * 999.99
- * 999.999
+ * Given a Mars time in mils, format as 999.999.
  *
  * @param {number} mils
- * @param {int} decimals
- *   This value will usually be 0, 2 or 3.
  * @return {string}
  */
-function formatMarsTime(mils, decimals) {
-  var points = Math.floor(mils * Math.pow(10, decimals));
-  var digits = padDigits(points, 3 + decimals);
-  var marsTimeStr = digits.substr(0, 3) + '.' + digits.substr(3, decimals);
-  return marsTimeStr;
+function formatMarsTime(mils) {
+  var wholeMils = Math.floor(mils);
+  var microsols = Math.floor((mils - wholeMils) * 1000);
+  return padDigits(wholeMils, 3) + '.' + padDigits(microsols, 3);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
