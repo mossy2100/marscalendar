@@ -144,8 +144,10 @@
    */
   function initSolSelector() {
     var solSelector = $('#sol');
+    var label;
     for (var i = 1; i <= 28; i++) {
-      solSelector.append($('<option>', {id: 'sol' + i, value: i, text: i}));
+      label = (i < 10 ? '0' : '') + i;
+      solSelector.append($('<option>', {id: 'sol' + i, value: i, text: label}));
     }
   }
 
@@ -154,8 +156,10 @@
    */
   function initMarsMonthSelector() {
     var monthSelector = $('#mars-month');
+    var label;
     for (var i = 1; i <= 24; i++) {
-      monthSelector.append($('<option>', {value: i, text: i + ' - ' + UTOPIAN_MONTH_NAMES[i][1]}));
+      label = (i < 10 ? '0' : '') + i + ' (' + UTOPIAN_MONTH_NAMES[i][1] + ')';
+      monthSelector.append($('<option>', {value: i, text: label}));
     }
   }
 

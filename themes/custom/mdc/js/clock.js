@@ -56,7 +56,7 @@ function padDigits(x, digits) {
     var marsDateStr = 'M' + marsNow.mir + ' ' + marsNow.monthName + ' ' + marsNow.sol;
     $('#marsClockDate').html(marsDateStr);
 
-    var marsTimeStr = 'm' + formatMarsTime(marsNow.mils, 3);
+    var marsTimeStr = formatMarsTime(marsNow.mils, 3);
     $('#marsClockTime').html(marsTimeStr);
 
     // Call this function again in 1 µsol.
