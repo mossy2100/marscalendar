@@ -10065,28 +10065,46 @@ span.tab {
 }
 
 /* line 587, ../sass/_overrides.scss */
+.fixed-width50 {
+  display: inline-block;
+  width: 50px;
+}
+
+/* line 592, ../sass/_overrides.scss */
+.fixed-width75 {
+  display: inline-block;
+  width: 75px;
+}
+
+/* line 597, ../sass/_overrides.scss */
+.fixed-width100 {
+  display: inline-block;
+  width: 100px;
+}
+
+/* line 602, ../sass/_overrides.scss */
 .indent {
   margin-left: 20px;
 }
 
-/* line 591, ../sass/_overrides.scss */
+/* line 606, ../sass/_overrides.scss */
 figure {
   text-align: center;
   margin: 0 auto 10px;
 }
 
-/* line 596, ../sass/_overrides.scss */
+/* line 611, ../sass/_overrides.scss */
 figcaption {
   text-align: center;
 }
 
-/* line 600, ../sass/_overrides.scss */
+/* line 615, ../sass/_overrides.scss */
 blockquote {
   font-size: inherit;
   font-style: italic;
 }
 
-/* line 608, ../sass/_overrides.scss */
+/* line 623, ../sass/_overrides.scss */
 .pagination > .active > a,
 .pagination > .active > a:hover,
 .pagination > .active > a:focus,
@@ -10097,7 +10115,7 @@ blockquote {
   border-color: #900;
 }
 
-/* line 618, ../sass/_overrides.scss */
+/* line 633, ../sass/_overrides.scss */
 .pagination > li > a,
 .pagination > li > span,
 .pagination > li > a:hover,
@@ -10107,12 +10125,12 @@ blockquote {
   color: #c00;
 }
 
-/* line 631, ../sass/_overrides.scss */
+/* line 646, ../sass/_overrides.scss */
 #block-utopiandateandtime h2 {
   font-size: 16px;
   margin-top: 0;
 }
-/* line 636, ../sass/_overrides.scss */
+/* line 651, ../sass/_overrides.scss */
 #block-utopiandateandtime #marsClock {
   background-color: white;
   -moz-border-radius: 10px;
@@ -10121,48 +10139,48 @@ blockquote {
   border: 1px solid #ccc;
   padding: 5px;
 }
-/* line 642, ../sass/_overrides.scss */
+/* line 657, ../sass/_overrides.scss */
 #block-utopiandateandtime #marsClock div {
   text-align: center;
   font-size: 14px;
   margin: 5px 0;
   font-weight: bold;
 }
-/* line 648, ../sass/_overrides.scss */
+/* line 663, ../sass/_overrides.scss */
 #block-utopiandateandtime #marsClock div select {
   max-width: 100%;
 }
 
-/* line 659, ../sass/_overrides.scss */
+/* line 674, ../sass/_overrides.scss */
 #converter table,
 #converter tr {
   border: none;
 }
-/* line 665, ../sass/_overrides.scss */
+/* line 680, ../sass/_overrides.scss */
 #converter #btns-convert td {
   border: none;
   text-align: center;
 }
-/* line 670, ../sass/_overrides.scss */
+/* line 685, ../sass/_overrides.scss */
 #converter #btns-convert button {
   margin: 0 2px;
 }
-/* line 675, ../sass/_overrides.scss */
+/* line 690, ../sass/_overrides.scss */
 #converter input,
 #converter select {
   display: inline-block;
 }
-/* line 680, ../sass/_overrides.scss */
+/* line 695, ../sass/_overrides.scss */
 #converter #earth-datetime {
   width: 200px;
 }
-/* line 684, ../sass/_overrides.scss */
+/* line 699, ../sass/_overrides.scss */
 #converter #mir,
 #converter #mils {
   width: 100px;
   margin-left: 2px;
 }
-/* line 690, ../sass/_overrides.scss */
+/* line 705, ../sass/_overrides.scss */
 #converter #mars-month,
 #converter #sol {
   width: auto;
