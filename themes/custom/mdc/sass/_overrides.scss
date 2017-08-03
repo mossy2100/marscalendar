@@ -21,7 +21,10 @@
 // Colours
 
 $paleOrange: #ffdfbf;
-$orange: #ff8200;
+$orange: #ff8833;
+//$orange: #ff8200;
+$darkOrange: #e67300;
+
 $red: #c00;
 $darkRed: #900;
 $chocolate: #311;
@@ -188,7 +191,7 @@ sub {
   &:focus,
   &.focus {
     background-color: $orange;
-    border-color: $darkRed;
+    border-color: $darkOrange;
   }
 }
 
@@ -350,29 +353,23 @@ sub {
       text-align: center;
     }
 
-    tr.mars,
-    th.mars,
-    td.mars {
+    .mars {
       background-color: $autumn;
     }
 
-    th.mars,
-    td.mars,
-    tr.mars th,
-    tr.mars td {
+    .mars,
+    .mars th,
+    .mars td {
       border-color: $autumn-border;
     }
 
-    tr.earth,
-    th.earth,
-    td.earth {
+    .earth {
       background-color: $winter;
     }
 
-    th.earth,
-    td.earth,
-    tr.earth th,
-    tr.earth td {
+    .earth,
+    .earth th,
+    .earth td {
       border-color: $winter-border;
     }
 
@@ -675,33 +672,54 @@ blockquote {
 // Datetime converter
 
 #converter {
-  table,
-  tr {
-    border: none;
+  #btn-reset-converter {
+    padding: 3px 6px;
   }
 
-  //#btns-convert {
-  //  td {
-  //    border: none;
-  //    text-align: center;
-  //  }
-  //
-  //  button {
-  //    margin: 0 2px;
-  //  }
-  //}
+  div {
+    text-align: center;
+    border: solid 1px black;
+    padding: 5px;
+    @include border-radius(5px);
+    margin: 5px 0;
+  }
+
+  h3 {
+    color: black;
+    font-size: 18px;
+  }
+
+  h3,
+  p {
+    margin: 5px 0;
+  }
 
   input,
   select {
     display: inline-block;
+    height: 30px;
+    padding: 4px;
+  }
+
+  input {
+    text-align: center;
   }
 
   select {
     width: auto;
   };
 
-  input {
-    width: 100px;
-    margin-left: 2px;
+  span {
+    font-weight: bold;
+  }
+
+  #year,
+  #mir {
+    width: 50px;
+  }
+
+  #earth-time,
+  #mars-time {
+    width: 75px;
   }
 }

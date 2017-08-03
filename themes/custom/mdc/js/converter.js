@@ -18,17 +18,8 @@ var currentMir;
     initSolSelector();
     initMarsMonthSelector();
 
-    // Get the current datetime.
-    var dtEarth = new Date();
-    dtEarth.setMilliseconds(0);
-
-    // Set the Earth datetime fields.
-    setEarthDatetime(dtEarth);
-
-    // Set the Mars datetime fields.
-    var dtMars = gregorian2utopian(dtEarth);
-    currentMir = dtMars.mir;
-    setMarsDatetime(dtMars);
+    // Reset the datetimes to now.
+    resetDatetimes();
 
     // When the year changes, reformat.
     var $year = $('#year');
@@ -83,6 +74,51 @@ var currentMir;
       var dtEarth = utopian2gregorian(dtMars);
       setEarthDatetime(dtEarth);
     });
+
+    // Reset the datetimes when the reset link is clicked.
+    $('#btn-reset-converter').click(resetDatetimes);
+  }
+
+  /**
+   * Set the Earth and Mars datetimes to now.
+   */
+  function resetDatetimes() {
+    // Get the current datetime.
+    var dtEarth = new Date();
+    dtEarth.setMilliseconds(0);
+
+    // Set the Earth datetime fields.
+    setEarthDatetime(dtEarth);
+
+    // Set the Mars datetime fields.
+    var dtMars = gregorian2utopian(dtEarth);
+    currentMir = dtMars.mir;
+    setMarsDatetime(dtMars);
+  }
+
+  /**
+   * Calculate the ordinal suffix for a number and append it as a superscript.
+   *
+   * @param {int} n
+   * @return {string}
+   */
+  function appendOrdinalSuffix(n) {
+    var mod10 = n % 10;
+    var mod100 = n % 100;
+    var suffix;
+    if (mod10 == 1 && mod100 != 11) {
+      suffix = 'st';
+    }
+    else if (mod10 == 2 && mod100 != 12) {
+      suffix = 'nd';
+    }
+    else if (mod10 == 3 && mod100 != 13) {
+      suffix = 'rd';
+    }
+    else {
+      suffix = 'th';
+    }
+    return n + '<sup>' + suffix + '</sup>';
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,7 +218,7 @@ var currentMir;
     // Set the day of the year.
     var dtYearStart = new Date(dtEarth.getFullYear(), 0, 1);
     var dayOfYear = Math.floor((dtEarth - dtYearStart) / MS_PER_DAY) + 1;
-    $("#day-of-year").html(dayOfYear);
+    $("#day-of-year").html(appendOrdinalSuffix(dayOfYear));
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,7 +312,8 @@ var currentMir;
     $("#sol-of-week").html(utopianSolName(dtMars.sol));
 
     // Set the sol of the mir.
-    $("#sol-of-mir").html(solOfMir(dtMars.month, dtMars.sol));
+    var som = solOfMir(dtMars.month, dtMars.sol);
+    $("#sol-of-mir").html(appendOrdinalSuffix(som));
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

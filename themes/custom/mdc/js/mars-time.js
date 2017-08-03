@@ -29,6 +29,9 @@ var WEEKS_PER_MIR = 96;
 var MONTHS_PER_QUARTER = 6;
 var MONTHS_PER_MIR = 24;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Epoch start datetime.
+
 /**
  * Start datetime for Martian northern vernal equinox in 1609, the year Astronomy Novia was
  * published by Johannes Kepler, and also the year the telescope was first used for astronomy, by
@@ -37,13 +40,19 @@ var MONTHS_PER_MIR = 24;
  * 1609 March 10, 18:00:40 (JD 2308804.25046)
  * This was used in the Darian Calendar (1986, 1999, 2002) and subsequently in the
  * Areosynchronous Calendar (1999).
- * This is the original and most commonly used value, so will continue to use this for now.
- *
+ * This is the original and most commonly used value.
+ */
+// var EPOCH_START = Date.UTC(1609, 2, 10, 18, 0, 40);
+
+/**
  * 1609 March 11, 18:40:36 (JD 2308805.27819)
  * Martiana (Gangale and Dudley-Rowley, 2002)
  * This was a more recent variation of the Darian Calendar. For some reason they changed the
  * epoch, although I don't know why. Maybe they recalculated it.
- *
+ */
+var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 36);
+
+/**
  * If I use this page:
  *   http://www-mars.lmd.jussieu.fr/mars/time/mars_date_to_earth_date.html
  * with Mars year -183 and Ls = 0, the result is
@@ -53,7 +62,6 @@ var MONTHS_PER_MIR = 24;
  * gives
  * 1609 March 10, 18:47:08
  */
-var EPOCH_START = Date.UTC(1609, 2, 10, 18, 0, 40);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Helper functions.
