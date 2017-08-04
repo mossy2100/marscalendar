@@ -110,11 +110,24 @@ Perseus
 
 Hi Derrick
 
-Regarding areocentric coordinates for constellations, Francois Guesdon did some work on this last year.  We actually ordered the constellations according to ecliptic R.A., seeing as how the Sun travels along the path of the ecliptic, so that the calendar becomes sort of like a psuedo-zodiac.  For the ideal balance, we tried to find constellations with ecliptic R.A.s that lay between those of the zodiacal constellations.  This would result in a "neat" alternating pattern of zodiacal and non-zodiacal constellations. While this is probably not that important, it would result in at least the odd month names matching between the Utopian and Darian calendars.
+Regarding areocentric coordinates for constellations, Francois Guesdon did some work on this last
+year.  We actually ordered the constellations according to ecliptic R.A., seeing as how the Sun
+travels along the path of the ecliptic, so that the calendar becomes sort of like a psuedo-zodiac.
+For the ideal balance, we tried to find constellations with ecliptic R.A.s that lay between those of
+the zodiacal constellations.  This would result in a "neat" alternating pattern of zodiacal and
+non-zodiacal constellations. While this is probably not that important, it would result in at least
+the odd month names matching between the Utopian and Darian calendars.
 
-Francois calculated the "areocentric" declination for the constellations we were interested in (I've attached his results for your interest) so we could eliminate those that were too far north or south.  However, as mentioned in the earlier email, this restriction eliminated some of the most popular and recognisable constellations and should probably be relaxed.  For example, Crux, even though it would primarily be visible only to people in southern Mars, is one of the most famous and recognisable constellations and probably would add more value to the calendar than, for example, Grus.
+Francois calculated the "areocentric" declination for the constellations we were interested in (I've
+attached his results for your interest) so we could eliminate those that were too far north or
+south. However, as mentioned in the earlier email, this restriction eliminated some of the most
+popular and recognisable constellations and should probably be relaxed. For example, Crux, even
+though it would primarily be visible only to people in southern Mars, is one of the most famous and
+recognisable constellations and probably would add more value to the calendar than, for example,
+Grus.
 
-The only other possible reason to know the areocentric declination would perhaps be to strike a balance between northern and southern constellations.
+The only other possible reason to know the areocentric declination would perhaps be to strike a
+balance between northern and southern constellations.
 
 Here are Francois' calculations of areocentric declinations, for some of the constellations:
 
