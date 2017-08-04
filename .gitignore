@@ -22,11 +22,14 @@ sites/*/services*.yml
 #sites/*/files
 sites/*/private
 
-# Include uploaded images, to save me having to reupload them on production.
+# Ignore user-uploaded files.
 sites/default/files/*
+
+# Include image, HTML, and PDF files that are wanted on both local and remote sites.
 !sites/default/files/inline-images
 !sites/default/files/month-icons
 !sites/default/files/html
+!sites/default/files/pdf
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
