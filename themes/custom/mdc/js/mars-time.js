@@ -124,13 +124,13 @@ function solsInMirs(mir) {
  * Calculate the sol of the mir (1..669).
  *
  * @param {int} month
- * @param {int} sol
+ * @param {int} solOfMonth
  * @returns {int}
  */
-function solOfMir(month, sol) {
+function solOfMir(month, solOfMonth) {
   var q = Math.floor((month - 1) / 6);
   var m = month - (q * 6) - 1;
-  return (q * SOLS_PER_SHORT_QUARTER) + (m * SOLS_PER_LONG_MONTH) + sol;
+  return (q * SOLS_PER_SHORT_QUARTER) + (m * SOLS_PER_LONG_MONTH) + solOfMonth;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,18 +217,18 @@ function timestamp2utopian(ts) {
       rem -= m * SOLS_PER_LONG_MONTH;
     }
 
-    // Calculate sol of the month.
+    // Calculate sol of the month (1..28).
     // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
     var sol = rem + 1;
 
     // Create the result object with the date.
     dtMars.mir = mir;
     dtMars.month = month;
-    dtMars.sol = sol;
-
-    // Get the month and sol names.
+    dtMars.solOfMonth = sol;
     dtMars.monthName = utopianMonthName(month);
-    dtMars.solName = utopianSolName(sol);
+    dtMars.solOfWeek = (sol - 1) % SOLS_PER_LONG_WEEK + 1;
+    dtMars.solName = utopianSolName(dtMars.solOfWeek);
+    dtMars.solOfMir = solOfMir(month, sol);
 
     // Cache the result.
     cache_timestamp2utopian[origRem] = dtMars;
@@ -278,7 +278,7 @@ function utopian2timestamp(dtMars) {
   sols += (q * SOLS_PER_SHORT_QUARTER) + (n - (q * MONTHS_PER_QUARTER)) * SOLS_PER_LONG_MONTH;
 
   // Add the sols in the current month before the current one.
-  sols += dtMars.sol - 1;
+  sols += dtMars.solOfMonth - 1;
 
   // Add the mils.
   sols += (dtMars.mils / 1e3);
@@ -363,10 +363,13 @@ function utopianMonthName(month, abbrev) {
 
 /**
  * Names and abbreviated names of the sols of the week.
+ * Note, unlike ISO 8601, which designates Monday as the first day of the week, and therefore
+ * Sunday as the last, in the Utopian Calendar, Sunsol is the first sol of the week.
  *
  * @var {array}
  */
 var UTOPIAN_SOL_NAMES = [
+  undefined,
   "Sunsol",
   "Phobosol",
   "Earthsol",
@@ -377,14 +380,14 @@ var UTOPIAN_SOL_NAMES = [
 ];
 
 /**
- * Returns the sol name given the sol number (1..28).
+ * Returns the sol name given the weeksol number (1..7).
  *
- * @param {int} nSolOfMonth
+ * @param {int} weeksolNum
  * @param {boolean} abbrev
  * @returns {string}
  */
-function utopianSolName(nSolOfMonth, abbrev) {
-  var name = UTOPIAN_SOL_NAMES[(nSolOfMonth - 1) % SOLS_PER_LONG_WEEK];
+function utopianSolName(weeksolNum, abbrev) {
+  var name = UTOPIAN_SOL_NAMES[weeksolNum];
   return abbrev ? name.substr(0, 1) : name;
 }
 

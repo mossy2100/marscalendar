@@ -13,20 +13,35 @@
     var ts = Date.now();
 
     // Adjust for timezone.
-    var tzOffset = parseInt($('#marsClockTimeZone select').val(), 10);
+    var tzOffset = parseInt($('#mars-clock-tz').val(), 10);
     ts += tzOffset * MS_PER_ZODE;
 
     // Get Utopian datetime.
     var marsNow = timestamp2utopian(ts);
 
-    // Sol name.
-    $('#marsClockSol').html(marsNow.solName);
+    // Date.
+    var marsDateStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
+      padDigits(marsNow.solOfMonth, 2);
+    $('#mars-clock-date').html(marsDateStr);
 
-    var marsDateStr = 'M' + marsNow.mir + ' ' + marsNow.monthName + ' ' + marsNow.sol;
-    $('#marsClockDate').html(marsDateStr);
+    // Month name.
+    $('#mars-clock-month-name').html(marsNow.monthName);
 
+    // Time.
     var marsTimeStr = formatMarsTime(marsNow.mils);
-    $('#marsClockTime').html(marsTimeStr);
+    $('#mars-clock-time').html(marsTimeStr);
+
+    // Sol name.
+    $('#mars-clock-sol-name').html(marsNow.solName);
+
+    // Sol number of the week.
+    $('#mars-clock-sol-of-week').html(appendOrdinalSuffix(marsNow.solOfWeek));
+
+    // Sol number of the mir.
+    $('#mars-clock-sol-of-mir').html(appendOrdinalSuffix(marsNow.solOfMir));
+
+    // The mir.
+    $('#mars-clock-mir').html('M' + marsNow.mir);
 
     // Call this function again in 1 µsol.
     setTimeout(showTime, MS_PER_MICROSOL);

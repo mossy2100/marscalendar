@@ -53,3 +53,34 @@ Math.mod = function (x, y) {
   // Handle negative operands correctly.
   return x - (Math.div(x, y) * y);
 };
+
+/**
+ * Calculate the ordinal suffix for a number.
+ *
+ * @param {int} n
+ * @return {string}
+ */
+function ordinalSuffix(n) {
+  var mod10 = Math.mod(n, 10);
+  var mod100 = Math.mod(n, 100);
+  if (mod10 == 1 && mod100 != 11) {
+    return 'st';
+  }
+  else if (mod10 == 2 && mod100 != 12) {
+    return 'nd';
+  }
+  else if (mod10 == 3 && mod100 != 13) {
+    return 'rd';
+  }
+  return 'th';
+}
+
+/**
+ * Append to a number its ordinal suffix as a superscript.
+ *
+ * @param {int} n
+ * @return {string}
+ */
+function appendOrdinalSuffix(n) {
+  return n + '<sup>' + ordinalSuffix(n) + '</sup>';
+}

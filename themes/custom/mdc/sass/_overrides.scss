@@ -649,7 +649,7 @@ blockquote {
     margin-top: 0;
   }
 
-  #marsClock {
+  #mars-clock {
     background-color: white;
     @include border-radius(10px);
     border: 1px solid #ccc;
@@ -659,11 +659,14 @@ blockquote {
       text-align: center;
       font-size: 14px;
       margin: 5px 0;
-      font-weight: bold;
 
       select {
         max-width: 100%;
       }
+    }
+
+    span {
+      font-weight: bold;
     }
   }
 }
@@ -674,14 +677,6 @@ blockquote {
 #converter {
   #btn-reset-converter {
     padding: 3px 6px;
-  }
-
-  div {
-    text-align: center;
-    border: solid 1px black;
-    padding: 5px;
-    @include border-radius(5px);
-    margin: 5px 0;
   }
 
   h3 {
@@ -701,16 +696,34 @@ blockquote {
     padding: 4px;
   }
 
-  input {
-    text-align: center;
-  }
-
   select {
     width: auto;
   };
 
   span {
     font-weight: bold;
+  }
+
+  label {
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+  .converter-panel {
+    text-align: center;
+    border: solid 1px black;
+    padding: 5px;
+    @include border-radius(5px);
+    margin: 5px 0;
+  }
+
+  .date-part {
+    text-align: left;
+    display: inline-block;
+
+    label {
+      font-size: 12px;
+    }
   }
 
   #year,

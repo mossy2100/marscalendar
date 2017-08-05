@@ -90,7 +90,7 @@ function daysInYear(year) {
     return undefined;
   }
   return isLeapYear(year) ? 366 : 365;
-};
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Constants and functions for calendar month and day names.
@@ -144,14 +144,14 @@ var GREGORIAN_DAY_NAMES = [
 ];
 
 /**
- * Returns the day name given the day of the week number (0..6).
+ * Returns the day name given the weekday number (0..6).
  *
- * @param {int} dayOfWeek
+ * @param {int} weekdayNum
  * @param {boolean} abbrev
  * @returns {string}
  */
-function gregorianDayName(dayOfWeek, abbrev) {
-  var name = GREGORIAN_DAY_NAMES[dayOfWeek];
+function gregorianDayName(weekdayNum, abbrev) {
+  var name = GREGORIAN_DAY_NAMES[weekdayNum];
   return abbrev ? name.substr(0, 3) : name;
 }
 
@@ -224,3 +224,16 @@ function formatEarthTime(time) {
 
   return padDigits(hour, 2) + ':' + padDigits(minute, 2) + ':' + padDigits(second, 2);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Extend the Date object.
+
+/**
+ * Returns the day of the year (0..366).
+ *
+ * @returns {number}
+ */
+Date.prototype.getDayOfYear = function () {
+  var dtYearStart = new Date(this.getFullYear(), 0, 1);
+  return Math.floor((this - dtYearStart) / MS_PER_DAY) + 1;
+};

@@ -1,6 +1,7 @@
-<div id="marsClock">
-  <div id="marsClockTimeZone">
-    <select>
+<div id="mars-clock">
+  <div>
+    Time zone:
+    <select id="mars-clock-tz">
       <option value='-5'>MCT-5 (Amazonis)</option>
       <option value='-4'>MCT-4 (Olympus)</option>
       <option value='-3'>MCT-3 (Tharsis)</option>
@@ -15,9 +16,28 @@
     </select>
   </div>
 
-  <div id="marsClockSol">&nbsp;</div>
+  <div>
+    Date:
+    <span id="mars-clock-date"></span>
+  </div>
 
-  <div id="marsClockDate">&nbsp;</div>
+  <div>
+    Time: <span id="mars-clock-time"></span>
+  </div>
 
-  <div id="marsClockTime">&nbsp;</div>
+  <div>
+    Month: <span id="mars-clock-month-name"></span>
+  </div>
+
+  <div>
+    Sol: <span id="mars-clock-sol-name"></span>
+  </div>
+
+  <div>
+    <span id="mars-clock-sol-of-week"></span> sol of the week
+  </div>
+
+  <div>
+    <span id="mars-clock-sol-of-mir"></span> sol of <span id="mars-clock-mir"></span>
+  </div>
 </div>

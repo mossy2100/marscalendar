@@ -96,31 +96,6 @@ var currentMir;
     setMarsDatetime(dtMars);
   }
 
-  /**
-   * Calculate the ordinal suffix for a number and append it as a superscript.
-   *
-   * @param {int} n
-   * @return {string}
-   */
-  function appendOrdinalSuffix(n) {
-    var mod10 = Math.mod(n, 10);
-    var mod100 = Math.mod(n, 100);
-    var suffix;
-    if (mod10 == 1 && mod100 != 11) {
-      suffix = 'st';
-    }
-    else if (mod10 == 2 && mod100 != 12) {
-      suffix = 'nd';
-    }
-    else if (mod10 == 3 && mod100 != 13) {
-      suffix = 'rd';
-    }
-    else {
-      suffix = 'th';
-    }
-    return n + '<sup>' + suffix + '</sup>';
-  }
-
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Earth datetime functions.
 
@@ -138,7 +113,10 @@ var currentMir;
     var hour = parseInt(parts[0], 10);
     var minute = parseInt(parts[1], 10);
     var second = parseInt(parts[2], 10);
-    return new Date(year, month - 1, day, hour, minute, second);
+    var dtEarth = new Date(year, month - 1, day, hour, minute, second);
+    // To add support for years from 0..99, set the year again using setFullYear().
+    dtEarth.setFullYear(year);
+    return dtEarth;
   }
 
   /**
@@ -211,14 +189,18 @@ var currentMir;
       dtEarth = getEarthDatetime();
     }
 
-    // Set the day of the week.
+    // Set the day of the week name.
     var dayOfWeek = dtEarth.getDay();
-    $("#day-of-week").html(gregorianDayName(dayOfWeek));
+    $("#day-name").html(gregorianDayName(dayOfWeek));
 
-    // Set the day of the year.
-    var dtYearStart = new Date(dtEarth.getFullYear(), 0, 1);
-    var dayOfYear = Math.floor((dtEarth - dtYearStart) / MS_PER_DAY) + 1;
-    $("#day-of-year").html(appendOrdinalSuffix(dayOfYear));
+    // Set the day of the week number.
+    // JS defines Sunday as day 0, so we add 1, to make Sunday the 1st day of the week.
+    // This is usually the case, even though ISO 8601 specifies Monday as day 1 of the week.
+    $("#day-of-week").html(appendOrdinalSuffix(dayOfWeek + 1));
+
+    // Set the day of the year number.
+    $("#day-of-year").html(appendOrdinalSuffix(dtEarth.getDayOfYear()));
+    $("#year2").html(dtEarth.getFullYear());
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -232,9 +214,23 @@ var currentMir;
   function getMarsDatetime() {
     var mir = parseInt($("#mir").val(), 10);
     var month = parseInt($("#mars-month").val(), 10);
-    var sol = parseInt($("#sol").val(), 10);
+    var solOfMonth = parseInt($("#sol").val(), 10);
     var mils = parseFloat($("#mars-time").val(), 10);
-    return {mir: mir, month: month, sol: sol, mils: mils};
+    var solOfWeek = (solOfMonth - 1) % SOLS_PER_LONG_WEEK + 1;
+
+    // Create the result object.
+    var dtMars = {
+      mir: mir,
+      month: month,
+      solOfMonth: solOfMonth,
+      monthName: utopianMonthName(month),
+      solOfWeek: solOfWeek,
+      solName: utopianSolName(solOfWeek),
+      solOfMir: solOfMir(month, solOfMonth),
+      mils: mils
+    };
+
+    return dtMars;
   }
 
   /**
@@ -253,7 +249,7 @@ var currentMir;
     // updateSolSelector();
 
     // Set the sol.
-    $("#sol").val(dtMars.sol);
+    $("#sol").val(dtMars.solOfMonth);
 
     // Set the time.
     $("#mars-time").val(formatMarsTime(dtMars.mils));
@@ -308,12 +304,15 @@ var currentMir;
       dtMars = getMarsDatetime();
     }
 
-    // Set the sol of the week.
-    $("#sol-of-week").html(utopianSolName(dtMars.sol));
+    // Set the sol of the week name.
+    $("#sol-name").html(dtMars.solName);
 
-    // Set the sol of the mir.
-    var som = solOfMir(dtMars.month, dtMars.sol);
-    $("#sol-of-mir").html(appendOrdinalSuffix(som));
+    // Set the sol of the week number.
+    $("#sol-of-week").html(appendOrdinalSuffix(dtMars.solOfWeek));
+
+    // Set the sol of the mir number.
+    $("#sol-of-mir").html(appendOrdinalSuffix(dtMars.solOfMir));
+    $("#mir2").html('M' + dtMars.mir);
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

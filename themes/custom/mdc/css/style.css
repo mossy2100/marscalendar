@@ -10129,7 +10129,7 @@ blockquote {
   margin-top: 0;
 }
 /* line 652, ../sass/_overrides.scss */
-#block-utopiandateandtime #marsClock {
+#block-utopiandateandtime #mars-clock {
   background-color: white;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -10138,23 +10138,56 @@ blockquote {
   padding: 5px;
 }
 /* line 658, ../sass/_overrides.scss */
-#block-utopiandateandtime #marsClock div {
+#block-utopiandateandtime #mars-clock div {
   text-align: center;
   font-size: 14px;
   margin: 5px 0;
-  font-weight: bold;
 }
-/* line 664, ../sass/_overrides.scss */
-#block-utopiandateandtime #marsClock div select {
+/* line 663, ../sass/_overrides.scss */
+#block-utopiandateandtime #mars-clock div select {
   max-width: 100%;
 }
+/* line 668, ../sass/_overrides.scss */
+#block-utopiandateandtime #mars-clock span {
+  font-weight: bold;
+}
 
-/* line 675, ../sass/_overrides.scss */
+/* line 678, ../sass/_overrides.scss */
 #converter #btn-reset-converter {
   padding: 3px 6px;
 }
-/* line 679, ../sass/_overrides.scss */
-#converter div {
+/* line 682, ../sass/_overrides.scss */
+#converter h3 {
+  color: black;
+  font-size: 18px;
+}
+/* line 687, ../sass/_overrides.scss */
+#converter h3,
+#converter p {
+  margin: 5px 0;
+}
+/* line 692, ../sass/_overrides.scss */
+#converter input,
+#converter select {
+  display: inline-block;
+  height: 30px;
+  padding: 4px;
+}
+/* line 699, ../sass/_overrides.scss */
+#converter select {
+  width: auto;
+}
+/* line 703, ../sass/_overrides.scss */
+#converter span {
+  font-weight: bold;
+}
+/* line 707, ../sass/_overrides.scss */
+#converter label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+/* line 712, ../sass/_overrides.scss */
+#converter .converter-panel {
   text-align: center;
   border: solid 1px black;
   padding: 5px;
@@ -10163,41 +10196,21 @@ blockquote {
   border-radius: 5px;
   margin: 5px 0;
 }
-/* line 687, ../sass/_overrides.scss */
-#converter h3 {
-  color: black;
-  font-size: 18px;
-}
-/* line 692, ../sass/_overrides.scss */
-#converter h3,
-#converter p {
-  margin: 5px 0;
-}
-/* line 697, ../sass/_overrides.scss */
-#converter input,
-#converter select {
+/* line 720, ../sass/_overrides.scss */
+#converter .date-part {
+  text-align: left;
   display: inline-block;
-  height: 30px;
-  padding: 4px;
 }
-/* line 704, ../sass/_overrides.scss */
-#converter input {
-  text-align: center;
+/* line 724, ../sass/_overrides.scss */
+#converter .date-part label {
+  font-size: 12px;
 }
-/* line 708, ../sass/_overrides.scss */
-#converter select {
-  width: auto;
-}
-/* line 712, ../sass/_overrides.scss */
-#converter span {
-  font-weight: bold;
-}
-/* line 716, ../sass/_overrides.scss */
+/* line 729, ../sass/_overrides.scss */
 #converter #year,
 #converter #mir {
   width: 50px;
 }
-/* line 721, ../sass/_overrides.scss */
+/* line 734, ../sass/_overrides.scss */
 #converter #earth-time,
 #converter #mars-time {
   width: 75px;
