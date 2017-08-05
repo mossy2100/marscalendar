@@ -34,15 +34,18 @@ var MONTHS_PER_YEAR = 12;
  * Returns true if year is a leap year, otherwise false.
  * Returns undefined for invalid input.
  *
+ * @requires mod()
+ * @see misc.js
+ *
  * @param {number} year
  * @returns {boolean}
  */
 function isLeapYear(year) {
-  year = parseInt(year, 10);
-  if (isNaN(year) || year < 0) {
+  if (isNaN(year)) {
     return undefined;
   }
-  return (year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0));
+  year = Math.floor(year);
+  return (Math.mod(year, 400) == 0) || ((Math.mod(year, 4) == 0) && (Math.mod(year, 100) != 0));
 }
 
 /**
@@ -54,11 +57,19 @@ function isLeapYear(year) {
  * @returns {number}
  */
 function daysInMonth(year, month) {
-  month = parseInt(month, 10);
-  if (isNaN(month) || month < 1 || month > 12) {
+  // Check for valid input.
+  if (isNaN(month)) {
     return undefined;
   }
+  month = Math.floor(month);
+  if (month < 1 || month > 12) {
+    return undefined;
+  }
+
   if (month == 2) {
+    if (isNaN(year)) {
+      return undefined;
+    }
     return isLeapYear(year) ? 29 : 28;
   }
   if (month == 4 || month == 6 || month == 9 || month == 11) {

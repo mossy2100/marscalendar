@@ -4,6 +4,8 @@ global-styling:
       css/style.css: {}
   js:
       js/fix-heights.js: {}
+      js/strings.js: {}
+      js/math.js: {}
       js/earth-time.js: {}
       js/mars-time.js: {}
       js/clock.js: {}

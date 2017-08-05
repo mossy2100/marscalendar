@@ -384,7 +384,7 @@ var UTOPIAN_SOL_NAMES = [
  * @returns {string}
  */
 function utopianSolName(nSolOfMonth, abbrev) {
-  var name = UTOPIAN_SOL_NAMES[(nSolOfMonth - 1) % 7];
+  var name = UTOPIAN_SOL_NAMES[(nSolOfMonth - 1) % SOLS_PER_LONG_WEEK];
   return abbrev ? name.substr(0, 1) : name;
 }
 

@@ -10153,12 +10153,7 @@ blockquote {
 #converter #btn-reset-converter {
   padding: 3px 6px;
 }
-/* line 678, ../sass/_overrides.scss */
-#converter #btn-reset-converter:focus {
-  background-color: #c00;
-  border-color: #900;
-}
-/* line 684, ../sass/_overrides.scss */
+/* line 679, ../sass/_overrides.scss */
 #converter div {
   text-align: center;
   border: solid 1px black;
@@ -10168,41 +10163,41 @@ blockquote {
   border-radius: 5px;
   margin: 5px 0;
 }
-/* line 692, ../sass/_overrides.scss */
+/* line 687, ../sass/_overrides.scss */
 #converter h3 {
   color: black;
   font-size: 18px;
 }
-/* line 697, ../sass/_overrides.scss */
+/* line 692, ../sass/_overrides.scss */
 #converter h3,
 #converter p {
   margin: 5px 0;
 }
-/* line 702, ../sass/_overrides.scss */
+/* line 697, ../sass/_overrides.scss */
 #converter input,
 #converter select {
   display: inline-block;
   height: 30px;
   padding: 4px;
 }
-/* line 709, ../sass/_overrides.scss */
+/* line 704, ../sass/_overrides.scss */
 #converter input {
   text-align: center;
 }
-/* line 713, ../sass/_overrides.scss */
+/* line 708, ../sass/_overrides.scss */
 #converter select {
   width: auto;
 }
-/* line 717, ../sass/_overrides.scss */
+/* line 712, ../sass/_overrides.scss */
 #converter span {
   font-weight: bold;
 }
-/* line 721, ../sass/_overrides.scss */
+/* line 716, ../sass/_overrides.scss */
 #converter #year,
 #converter #mir {
   width: 50px;
 }
-/* line 726, ../sass/_overrides.scss */
+/* line 721, ../sass/_overrides.scss */
 #converter #earth-time,
 #converter #mars-time {
   width: 75px;

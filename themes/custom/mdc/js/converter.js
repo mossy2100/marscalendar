@@ -103,8 +103,8 @@ var currentMir;
    * @return {string}
    */
   function appendOrdinalSuffix(n) {
-    var mod10 = n % 10;
-    var mod100 = n % 100;
+    var mod10 = Math.mod(n, 10);
+    var mod100 = Math.mod(n, 100);
     var suffix;
     if (mod10 == 1 && mod100 != 11) {
       suffix = 'st';
