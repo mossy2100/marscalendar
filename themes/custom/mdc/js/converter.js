@@ -190,13 +190,11 @@ var currentMir;
     }
 
     // Set the day of the week name.
-    var dayOfWeek = dtEarth.getDay();
+    var dayOfWeek = dtEarth.getDayOfWeek();
     $("#day-name").html(gregorianDayName(dayOfWeek));
 
-    // Set the day of the week number.
-    // JS defines Sunday as day 0, so we add 1, to make Sunday the 1st day of the week.
-    // This is usually the case, even though ISO 8601 specifies Monday as day 1 of the week.
-    $("#day-of-week").html(appendOrdinalSuffix(dayOfWeek + 1));
+    // Set the day of the week number (uses ISO 8601 numbering).
+    $("#day-of-week").html(appendOrdinalSuffix(dayOfWeek));
 
     // Set the day of the year number.
     $("#day-of-year").html(appendOrdinalSuffix(dtEarth.getDayOfYear()));

@@ -130,28 +130,33 @@ function gregorianMonthName(month, abbrev) {
 
 /**
  * Names and abbreviated names of the days of the week.
+ * Uses ISO 8601 numbering.
+ * @see Date.prototype.getDayOfWeek() (below)
  *
  * @var {array}
  */
 var GREGORIAN_DAY_NAMES = [
-  "Sunday",
+  undefined,
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
+  "Sunday"
 ];
 
 /**
- * Returns the day name given the weekday number (0..6).
+ * Returns the day name given the weekday number (1..7).
+ * Uses ISO 8601 numbering.
+ * @see Date.prototype.getDayOfWeek() (below)
  *
- * @param {int} weekdayNum
+ * @param {int} dayOfWeek
  * @param {boolean} abbrev
  * @returns {string}
  */
-function gregorianDayName(weekdayNum, abbrev) {
-  var name = GREGORIAN_DAY_NAMES[weekdayNum];
+function gregorianDayName(dayOfWeek, abbrev) {
+  var name = GREGORIAN_DAY_NAMES[dayOfWeek];
   return abbrev ? name.substr(0, 3) : name;
 }
 
@@ -236,4 +241,16 @@ function formatEarthTime(time) {
 Date.prototype.getDayOfYear = function () {
   var dtYearStart = new Date(this.getFullYear(), 0, 1);
   return Math.floor((this - dtYearStart) / MS_PER_DAY) + 1;
+};
+
+/**
+ * Returns the day of the week (1..7) according to ISO 8601 numbering.
+ * Javascript specifies Sunday = 0, Monday = 1 ... Saturday = 6.
+ * ISO 8601 specifies Monday = 1 ... Saturday = 6, Sunday = 7.
+ *
+ * @returns {number}
+ */
+Date.prototype.getDayOfWeek = function () {
+  var dow = this.getDay();
+  return dow ? dow : 7;
 };
