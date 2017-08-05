@@ -10146,47 +10146,49 @@ blockquote {
 /* line 663, ../sass/_overrides.scss */
 #block-utopiandateandtime #mars-clock div select {
   max-width: 100%;
+  height: 24px;
+  padding: 2px 4px;
 }
-/* line 668, ../sass/_overrides.scss */
+/* line 670, ../sass/_overrides.scss */
 #block-utopiandateandtime #mars-clock span {
   font-weight: bold;
 }
 
-/* line 678, ../sass/_overrides.scss */
+/* line 680, ../sass/_overrides.scss */
 #converter #btn-reset-converter {
   padding: 3px 6px;
 }
-/* line 682, ../sass/_overrides.scss */
+/* line 684, ../sass/_overrides.scss */
 #converter h3 {
   color: black;
   font-size: 18px;
 }
-/* line 687, ../sass/_overrides.scss */
+/* line 689, ../sass/_overrides.scss */
 #converter h3,
 #converter p {
   margin: 5px 0;
 }
-/* line 692, ../sass/_overrides.scss */
+/* line 694, ../sass/_overrides.scss */
 #converter input,
 #converter select {
   display: inline-block;
-  height: 30px;
-  padding: 4px;
+  height: 24px;
+  padding: 2px 4px;
 }
-/* line 699, ../sass/_overrides.scss */
+/* line 701, ../sass/_overrides.scss */
 #converter select {
   width: auto;
 }
-/* line 703, ../sass/_overrides.scss */
+/* line 705, ../sass/_overrides.scss */
 #converter span {
   font-weight: bold;
 }
-/* line 707, ../sass/_overrides.scss */
+/* line 709, ../sass/_overrides.scss */
 #converter label {
   margin-bottom: 0;
   font-weight: normal;
 }
-/* line 712, ../sass/_overrides.scss */
+/* line 714, ../sass/_overrides.scss */
 #converter .converter-panel {
   text-align: center;
   border: solid 1px black;
@@ -10196,21 +10198,21 @@ blockquote {
   border-radius: 5px;
   margin: 5px 0;
 }
-/* line 720, ../sass/_overrides.scss */
+/* line 722, ../sass/_overrides.scss */
 #converter .date-part {
   text-align: left;
   display: inline-block;
 }
-/* line 724, ../sass/_overrides.scss */
+/* line 726, ../sass/_overrides.scss */
 #converter .date-part label {
   font-size: 12px;
 }
-/* line 729, ../sass/_overrides.scss */
+/* line 731, ../sass/_overrides.scss */
 #converter #year,
 #converter #mir {
   width: 50px;
 }
-/* line 734, ../sass/_overrides.scss */
+/* line 736, ../sass/_overrides.scss */
 #converter #earth-time,
 #converter #mars-time {
   width: 75px;
