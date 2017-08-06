@@ -31,6 +31,7 @@ $chocolate: #311;
 
 $paleBlue: #e5eeff;
 $grey: #eee;
+$grey2: #ddd;
 $pink: #ffd2ff;
 $purple: #c9abff;
 
@@ -471,7 +472,7 @@ sub {
     }
 
     .intercalary {
-      background-color: $grey;
+      background-color: $grey2;
     }
   }
 }
