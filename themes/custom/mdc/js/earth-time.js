@@ -164,6 +164,18 @@ function gregorianDayName(dayOfWeek, abbrev) {
 // Formatting functions.
 
 /**
+ * Format hour, minute, and second in HH:mm:ss format.
+ *
+ * @param {int} hour
+ * @param {int} minute
+ * @param {int} second
+ * @returns {string}
+ */
+function formatHms(hour, minute, second) {
+  return padDigits(hour, 2) + ':' + padDigits(minute, 2) + ':' + padDigits(second, 2);
+}
+
+/**
  * Given a datetime, format the time part HH:mm:ss.
  *
  * @param time
@@ -227,26 +239,53 @@ function formatEarthTime(time) {
     return '00:00:00';
   }
 
-  return padDigits(hour, 2) + ':' + padDigits(minute, 2) + ':' + padDigits(second, 2);
+  return formatHms(hour, minute, second);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Extend the Date object.
 
 /**
- * Returns the day of the year (0..366).
+ * Returns the day of the year (0..366), according to the system time zone.
  *
  * @returns {number}
  */
 Date.prototype.getDayOfYear = function () {
-  var dtYearStart = new Date(this.getFullYear(), 0, 1);
+  var dtYearStart = new Date(2000, 0, 1, 0, 0, 0, 0);
+  dtYearStart.setFullYear(this.getFullYear());
   return Math.floor((this - dtYearStart) / MS_PER_DAY) + 1;
 };
 
 /**
- * Returns the day of the week (1..7) according to ISO 8601 numbering.
+ * Returns the day of the year (0..366), according to UTC.
+ *
+ * @returns {number}
+ */
+Date.prototype.getUTCDayOfYear = function () {
+  var ts = Date.UTC(2000, 0, 1, 0, 0, 0, 0);
+  var dtYearStart = new Date(ts);
+  dtYearStart.setUTCFullYear(this.getUTCFullYear());
+  return Math.floor((this - dtYearStart) / MS_PER_DAY) + 1;
+};
+
+/**
+ * Returns the day of the week (1..7), according to UTC.
+ *
+ * Uses ISO 8601 numbering.
  * Javascript specifies Sunday = 0, Monday = 1 ... Saturday = 6.
  * ISO 8601 specifies Monday = 1 ... Saturday = 6, Sunday = 7.
+ *
+ * @returns {number}
+ */
+Date.prototype.getUTCDayOfWeek = function () {
+  var dow = this.getUTCDay();
+  return dow ? dow : 7;
+};
+
+/**
+ * Returns the day of the week (1..7), according to system time zone.
+ *
+ * Uses ISO 8601 numbering, as above.
  *
  * @returns {number}
  */

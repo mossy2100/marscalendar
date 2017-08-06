@@ -41,8 +41,15 @@
   }
 
   $(function() {
+    // Check the clock is visible.
+    var $block = $("#block-utopiandateandtime div");
+    if (!$block.length) {
+      return;
+    }
+
     // Load the clock HTML.
-    $("#block-utopiandateandtime div").load("/sites/default/files/html/clock.html");
+    $block.load("/sites/default/files/html/clock.html");
+
     // Display the time, updating every microsol.
     showTime();
   });

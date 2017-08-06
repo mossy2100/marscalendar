@@ -4,7 +4,7 @@
  * For the Earth to Mars datetime converter.
  */
 
-var currentMir;
+var currentYear, dtEarth, currentMir, dtMars;
 
 (function ($) {
 
@@ -18,8 +18,17 @@ var currentMir;
     initSolSelector();
     initMarsMonthSelector();
 
-    // Reset the datetimes to now.
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Reset actions.
+
+    // Initialise datetimes to now.
     resetDatetimes();
+
+    // Reset the datetimes when the reset link is clicked.
+    $('#btn-reset-converter').click(resetDatetimes);
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Actions for when Earth fields change.
 
     // When the year changes, reformat.
     var $year = $('#year');
@@ -27,10 +36,31 @@ var currentMir;
       var year = parseInt($year.val(), 10);
       if (isNaN(year)) {
         // Default to current year.
-        year = (new Date()).getFullYear();
+        year = currentYear;
       }
       $year.val(year);
+      dtEarth = getEarthDatetime();
     });
+
+    // When the Earth time changes, reformat.
+    var $earthTime = $('#earth-time');
+    $earthTime.change(function() {
+      $earthTime.val(formatEarthTime($earthTime.val()));
+      dtEarth = getEarthDatetime();
+    });
+
+    // Events when any Earth datetime field changes.
+    $(".earth-date").change(function() {
+      updateDaySelector();
+      dtEarth = getEarthDatetime();
+      setEarthDerivedValues(dtEarth);
+      // Update the Mars datetime.
+      dtMars = gregorian2utopian(dtEarth, dtMars.timeZone);
+      setMarsDatetime(dtMars);
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    // Actions for when Mars fields change.
 
     // When the mir changes, reformat.
     var $mir = $('#mir');
@@ -41,58 +71,45 @@ var currentMir;
         mir = currentMir;
       }
       $mir.val(mir);
-    });
-
-    // When the Earth time changes, reformat.
-    var $earthTime = $('#earth-time');
-    $earthTime.change(function() {
-      $earthTime.val(formatEarthTime($earthTime.val()));
+      dtMars = getMarsDatetime();
     });
 
     // When the Mars time changes, reformat.
     var $marsTime = $('#mars-time');
     $marsTime.change(function() {
       $marsTime.val(formatMarsTime($marsTime.val()));
-    });
-
-    // Events when any Earth datetime field changes.
-    $(".earth-date").change(function() {
-      updateDaySelector();
-      setDayOfWeekAndYear();
-      // Update the Mars datetime.
-      var dtEarth = getEarthDatetime();
-      var dtMars = gregorian2utopian(dtEarth);
-      setMarsDatetime(dtMars);
+      dtMars = getMarsDatetime();
     });
 
     // Events when any Mars datetime field changes.
     $(".mars-date").change(function() {
       updateSolSelector();
-      setSolOfWeekAndMir();
+      dtMars = getMarsDatetime();
+      setMarsDerivedValues(dtMars);
       // Update the Earth datetime.
-      var dtMars = getMarsDatetime();
-      var dtEarth = utopian2gregorian(dtMars);
+      dtEarth = utopian2gregorian(dtMars);
       setEarthDatetime(dtEarth);
     });
-
-    // Reset the datetimes when the reset link is clicked.
-    $('#btn-reset-converter').click(resetDatetimes);
   }
 
   /**
    * Set the Earth and Mars datetimes to now.
    */
   function resetDatetimes() {
-    // Get the current datetime.
-    var dtEarth = new Date();
+    // Get the current Earth datetime.
+    dtEarth = new Date();
     dtEarth.setMilliseconds(0);
+    currentYear = dtEarth.getFullYear();
 
     // Set the Earth datetime fields.
     setEarthDatetime(dtEarth);
 
-    // Set the Mars datetime fields.
-    var dtMars = gregorian2utopian(dtEarth);
+    // Get the current Mars datetime.
+    var timeZone = dtMars && dtMars.timeZone ? dtMars.timeZone : 0;
+    dtMars = gregorian2utopian(dtEarth, timeZone);
     currentMir = dtMars.mir;
+
+    // Set the Mars datetime fields.
     setMarsDatetime(dtMars);
   }
 
@@ -102,7 +119,7 @@ var currentMir;
   /**
    * Get the Earth datetime from the form.
    *
-   * @returns {Date}
+   * @returns {object}
    */
   function getEarthDatetime() {
     var year = parseInt($("#year").val(), 10);
@@ -113,10 +130,21 @@ var currentMir;
     var hour = parseInt(parts[0], 10);
     var minute = parseInt(parts[1], 10);
     var second = parseInt(parts[2], 10);
-    var dtEarth = new Date(year, month - 1, day, hour, minute, second);
-    // To add support for years from 0..99, set the year again using setFullYear().
-    dtEarth.setFullYear(year);
-    return dtEarth;
+    var timeZone = $('#earth-time-zone').val();
+
+    // Construct the Date object, using different methods depending on timezone setting.
+    var timestamp, dt;
+    if (timeZone == 'local') {
+      dt = new Date(2000, month - 1, day, hour, minute, second, 0);
+      dt.setFullYear(year);
+    }
+    else {
+      timestamp = Date.UTC(2000, month - 1, day, hour, minute, second, 0);
+      dt = new Date(timestamp);
+      dt.setUTCFullYear(year);
+    }
+
+    return dt;
   }
 
   /**
@@ -125,20 +153,40 @@ var currentMir;
    * @param {Date} dtEarth
    */
   function setEarthDatetime(dtEarth) {
-    // Set the mir.
-    $("#year").val(dtEarth.getFullYear());
+    var year, month, day, hour, minute, second;
+    var timeZone = $('#earth-time-zone').val();
 
-    // Set the month.
-    $("#earth-month").val(dtEarth.getMonth() + 1);
+    if (timeZone == 'local') {
+      year = dtEarth.getFullYear();
+      month = dtEarth.getMonth() + 1;
+      day = dtEarth.getDate();
+      hour = dtEarth.getHours();
+      minute = dtEarth.getMinutes();
+      second = dtEarth.getSeconds();
+    }
+    else {
+      year = dtEarth.getUTCFullYear();
+      month = dtEarth.getUTCMonth() + 1;
+      day = dtEarth.getUTCDate();
+      hour = dtEarth.getUTCHours();
+      minute = dtEarth.getUTCMinutes();
+      second = dtEarth.getUTCSeconds();
+    }
 
-    // Set the day.
-    $("#day").val(dtEarth.getDate());
+    // Update the year field.
+    $("#year").val(year);
 
-    // Set the time.
-    $("#earth-time").val(formatEarthTime(dtEarth));
+    // Update the month field.
+    $("#earth-month").val(month);
+
+    // Update the day field.
+    $("#day").val(day);
+
+    // Update the time field.
+    $("#earth-time").val(formatHms(hour, minute, second));
 
     // Set the day of the week and the year.
-    setDayOfWeekAndYear(dtEarth);
+    setEarthDerivedValues(dtEarth);
   }
 
   /**
@@ -183,24 +231,35 @@ var currentMir;
 
   /**
    * Update the day of the week to match the selected Earth date.
+   *
+   * @param {Date} dtEarth
    */
-  function setDayOfWeekAndYear(dtEarth) {
-    if (dtEarth === undefined) {
-      dtEarth = getEarthDatetime();
+  function setEarthDerivedValues(dtEarth) {
+    var month, dayOfWeek, dayOfYear;
+
+    var utc = $('#earth-time-zone').val() == 'utc';
+    if (utc) {
+      month = dtEarth.getUTCMonth() + 1;
+      dayOfWeek = dtEarth.getUTCDayOfWeek();
+      dayOfYear = dtEarth.getUTCDayOfYear();
+    }
+    else {
+      month = dtEarth.getMonth() + 1;
+      dayOfWeek = dtEarth.getDayOfWeek();
+      dayOfYear = dtEarth.getDayOfYear();
     }
 
     // Set the month name.
-    $("#earth-month-name").html(gregorianMonthName(dtEarth.getMonth() + 1));
+    $("#earth-month-name").html(gregorianMonthName(month));
 
     // Set the day of the week name.
-    var dayOfWeek = dtEarth.getDayOfWeek();
     $("#day-name").html(gregorianDayName(dayOfWeek));
 
     // Set the day of the week number (uses ISO 8601 numbering).
     $("#day-of-week").html(appendOrdinalSuffix(dayOfWeek));
 
     // Set the day of the year number.
-    $("#day-of-year").html(appendOrdinalSuffix(dtEarth.getDayOfYear()));
+    $("#day-of-year").html(appendOrdinalSuffix(dayOfYear));
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,9 +276,10 @@ var currentMir;
     var solOfMonth = parseInt($("#sol").val(), 10);
     var mils = parseFloat($("#mars-time").val(), 10);
     var solOfWeek = (solOfMonth - 1) % SOLS_PER_LONG_WEEK + 1;
+    var timeZone = parseInt($('#mars-time-zone').val(), 10);
 
-    // Create the result object.
-    var dtMars = {
+    // Generate the datetime object.
+    return {
       mir: mir,
       month: month,
       solOfMonth: solOfMonth,
@@ -227,10 +287,9 @@ var currentMir;
       solOfWeek: solOfWeek,
       solName: utopianSolName(solOfWeek),
       solOfMir: solOfMir(month, solOfMonth),
-      mils: mils
+      mils: mils,
+      timeZone: timeZone
     };
-
-    return dtMars;
   }
 
   /**
@@ -245,17 +304,17 @@ var currentMir;
     // Set the month.
     $("#mars-month").val(dtMars.month);
 
-    // Update the sol selector.
-    // updateSolSelector();
-
     // Set the sol.
     $("#sol").val(dtMars.solOfMonth);
 
     // Set the time.
     $("#mars-time").val(formatMarsTime(dtMars.mils));
 
+    // Set the time zone.
+    $("#mars-time-zone").val(dtMars.timeZone);
+
     // Set the sol of the week and the mir.
-    setSolOfWeekAndMir(dtMars);
+    setMarsDerivedValues(dtMars);
   }
 
   /**
@@ -298,12 +357,10 @@ var currentMir;
 
   /**
    * Update the sol of the week and mir to match the selected Mars date.
+   *
+   * @param {object} dtMars
    */
-  function setSolOfWeekAndMir(dtMars) {
-    if (dtMars === undefined) {
-      dtMars = getMarsDatetime();
-    }
-
+  function setMarsDerivedValues(dtMars) {
     // Set the month name.
     $("#mars-month-name").html(dtMars.monthName);
 
@@ -318,7 +375,16 @@ var currentMir;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
-  // We are GO for launch.
-  $(initConverter);
+
+  $(function() {
+    // Check we are on the datetime converter page.
+    var $converter = $('#converter');
+    if (!$converter.length) {
+      return;
+    }
+
+    // We are GO for launch.
+    initConverter();
+  });
 
 })(jQuery);

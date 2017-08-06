@@ -1,0 +1,6 @@
+name: Utopian Calendar
+description: 'Functions for Utopian Calendar datetimes, clock, and converter.'
+package: Core
+
+type: module
+core: '8.x'

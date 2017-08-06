@@ -137,102 +137,98 @@ function solOfMir(month, solOfMonth) {
 // Convert between Unix timestamps and Mars datetimes.
 
 /**
- * Cache the function results.
- *
- * @type {object}
- */
-var cache_timestamp2utopian = {};
-
-/**
  * Convert a Unix timestamp to a Utopian datetime.
  *
- * @param {int} ts
+ * @param {int} timestamp
+ *   Unix timestamp.
+ * @param {int} timeZone
+ *   The time zone that the datetime should be relative to (-5..5).
  * @return {object}
  */
-function timestamp2utopian(ts) {
+function timestamp2utopian(timestamp, timeZone) {
   // Create dtMars object.
   var dtMars = {};
 
   // Make the timestamp an integer (round off to milliseconds).
-  ts = Math.round(ts);
+  timestamp = Math.round(timestamp);
 
   // Convert the timestamp to number of sols since EPOCH_START.
-  var sols = (ts - EPOCH_START) / MS_PER_SOL;
+  var sols = (timestamp - EPOCH_START) / MS_PER_SOL;
+
   // Round off to microsols.
   sols = Math.round(sols * 1e6) / 1e6;
+
+  // Adjust for time zone.
+  if (timeZone === undefined) {
+    timeZone = 0;
+  }
+  sols += timeZone / 10;
+
+  // Get the remainder.
   var origRem = Math.floor(sols);
   var rem = origRem;
 
-  // Check the cache. We cache dates, not times.
-  if (cache_timestamp2utopian[origRem] !== undefined) {
-    dtMars = cache_timestamp2utopian[origRem];
+  // Calculate the kilomir.
+  // - kilomir -1 is from -1000 to   -1
+  // - Kilomir  0 is from     0 to  999
+  // - Kilomir  1 is from  1000 to 1999
+  var kilomir;
+  if (rem > 0) {
+    kilomir = Math.floor(rem / SOLS_PER_KILOMIR);
   }
-  else {
-
-    // Calculate the kilomir.
-    // - kilomir -1 is from -1000 to   -1
-    // - Kilomir  0 is from     0 to  999
-    // - Kilomir  1 is from  1000 to 1999
-    var kilomir;
-    if (rem > 0) {
-      kilomir = Math.floor(rem / SOLS_PER_KILOMIR);
-    }
-    else if (rem < 0) {
-      kilomir = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
-    }
-    else { // rem == 0
-      kilomir = 0;
-    }
-
-    // Adjust so remainder is positive.
-    rem -= kilomir * SOLS_PER_KILOMIR;
-
-    // Calculate the mir.
-    var mirs = Math.floor(rem / SOLS_PER_MIR);
-    var mir = kilomir * 1000 + mirs;
-    if (mirs > 0) {
-      rem -= SOLS_PER_LONG_MIR + solsInMirs(mirs - 1);
-    }
-    var mirLen = solsInMir(mir);
-    if (rem >= mirLen) {
-      rem -= mirLen;
-      mir++;
-    }
-
-    // Calculate the quarter (0..3).
-    var month = 1, monthLen;
-    var q = Math.floor(rem / SOLS_PER_SHORT_QUARTER);
-    if (q == 4) {
-      q = 3;
-    }
-    if (q > 0) {
-      month += q * 6;
-      rem -= q * SOLS_PER_SHORT_QUARTER;
-    }
-
-    // Calculate the month.
-    var m = Math.floor(rem / SOLS_PER_LONG_MONTH);
-    if (m > 0) {
-      month += m;
-      rem -= m * SOLS_PER_LONG_MONTH;
-    }
-
-    // Calculate sol of the month (1..28).
-    // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
-    var sol = rem + 1;
-
-    // Create the result object with the date.
-    dtMars.mir = mir;
-    dtMars.month = month;
-    dtMars.solOfMonth = sol;
-    dtMars.monthName = utopianMonthName(month);
-    dtMars.solOfWeek = (sol - 1) % SOLS_PER_LONG_WEEK + 1;
-    dtMars.solName = utopianSolName(dtMars.solOfWeek);
-    dtMars.solOfMir = solOfMir(month, sol);
-
-    // Cache the result.
-    cache_timestamp2utopian[origRem] = dtMars;
+  else if (rem < 0) {
+    kilomir = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
   }
+  else { // rem == 0
+    kilomir = 0;
+  }
+
+  // Adjust so remainder is positive.
+  rem -= kilomir * SOLS_PER_KILOMIR;
+
+  // Calculate the mir.
+  var mirs = Math.floor(rem / SOLS_PER_MIR);
+  var mir = kilomir * 1000 + mirs;
+  if (mirs > 0) {
+    rem -= SOLS_PER_LONG_MIR + solsInMirs(mirs - 1);
+  }
+  var mirLen = solsInMir(mir);
+  if (rem >= mirLen) {
+    rem -= mirLen;
+    mir++;
+  }
+
+  // Calculate the quarter (0..3).
+  var month = 1, monthLen;
+  var q = Math.floor(rem / SOLS_PER_SHORT_QUARTER);
+  if (q == 4) {
+    q = 3;
+  }
+  if (q > 0) {
+    month += q * 6;
+    rem -= q * SOLS_PER_SHORT_QUARTER;
+  }
+
+  // Calculate the month.
+  var m = Math.floor(rem / SOLS_PER_LONG_MONTH);
+  if (m > 0) {
+    month += m;
+    rem -= m * SOLS_PER_LONG_MONTH;
+  }
+
+  // Calculate sol of the month (1..28).
+  // Add 1 because if there are 0 sols remaining we are in the first sol of the month.
+  var sol = rem + 1;
+
+  // Create the result object.
+  dtMars.mir = mir;
+  dtMars.month = month;
+  dtMars.solOfMonth = sol;
+  dtMars.monthName = utopianMonthName(month);
+  dtMars.solOfWeek = (sol - 1) % SOLS_PER_LONG_WEEK + 1;
+  dtMars.solName = utopianSolName(dtMars.solOfWeek);
+  dtMars.solOfMir = solOfMir(month, sol);
+  dtMars.timeZone = timeZone;
 
   // Get the mils.
   var microsols = Math.round((sols - origRem) * 1e6);
@@ -283,6 +279,11 @@ function utopian2timestamp(dtMars) {
   // Add the mils.
   sols += (dtMars.mils / 1e3);
 
+  // Add time zone offset.
+  if (dtMars.timeZone !== undefined) {
+    sols -= dtMars.timeZone / 10;
+  }
+
   // Convert to Unix timestamp.
   return Math.round(EPOCH_START + (sols * MS_PER_SOL));
 }
@@ -296,10 +297,9 @@ function utopian2timestamp(dtMars) {
  * @param {Date} dtEarth
  * @returns {object}
  */
-function gregorian2utopian(dtEarth) {
-  var ts = dtEarth.valueOf();
-  var dtMars = timestamp2utopian(ts);
-  return dtMars;
+function gregorian2utopian(dtEarth, timeZone) {
+  var timestamp = dtEarth.valueOf();
+  return timestamp2utopian(timestamp, timeZone);
 }
 
 /**
@@ -309,9 +309,8 @@ function gregorian2utopian(dtEarth) {
  * @return {int}
  */
 function utopian2gregorian(dtMars) {
-  var ts = utopian2timestamp(dtMars);
-  var dtEarth = new Date(ts);
-  return dtEarth
+  var timestamp = utopian2timestamp(dtMars);
+  return new Date(timestamp);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
