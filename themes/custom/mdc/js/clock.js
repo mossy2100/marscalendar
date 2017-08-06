@@ -19,17 +19,13 @@
     // Get Utopian datetime.
     var marsNow = timestamp2utopian(ts);
 
-    // Date.
-    var marsDateStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
-      padDigits(marsNow.solOfMonth, 2);
-    $('#mars-clock-date').html(marsDateStr);
+    // Datetime.
+    var marsDatetimeStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
+      padDigits(marsNow.solOfMonth, 2) + ':' + formatMarsTime(marsNow.mils);
+    $('#mars-clock-datetime').html(marsDatetimeStr);
 
     // Month name.
     $('#mars-clock-month-name').html(marsNow.monthName);
-
-    // Time.
-    var marsTimeStr = formatMarsTime(marsNow.mils);
-    $('#mars-clock-time').html(marsTimeStr);
 
     // Sol name.
     $('#mars-clock-sol-name').html(marsNow.solName);
@@ -40,13 +36,15 @@
     // Sol number of the mir.
     $('#mars-clock-sol-of-mir').html(appendOrdinalSuffix(marsNow.solOfMir));
 
-    // The mir.
-    $('#mars-clock-mir').html('M' + marsNow.mir);
-
-    // Call this function again in 1 µsol.
+    // Call this function again in 1 microsol.
     setTimeout(showTime, MS_PER_MICROSOL);
   }
 
-  $(showTime);
+  $(function() {
+    // Load the clock HTML.
+    $("#block-utopiandateandtime div").load("/sites/default/files/html/clock.html");
+    // Display the time, updating every microsol.
+    showTime();
+  });
 
 })(jQuery);

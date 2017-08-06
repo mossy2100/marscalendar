@@ -28,11 +28,18 @@
           <label>Day</label><br>
           <select id="day" class="earth-date form-select form-control"></select>
         </div>
+        <div class="date-part">
+          &nbsp;<br><b>T</b>
+        </div>
+        <div class="date-part">
+          <label>Time</label><br>
+          <input id="earth-time" class="earth-date form-text form-control">
+        </div>
       </div>
-      <p><label>Time:</label> <input id="earth-time" class="earth-date form-text form-control"></p>
+      <p><label>Month:</label> <span id="earth-month-name"></span></p>
       <p><label>Day:</label> <span id="day-name"></span></p>
       <p><span id="day-of-week"></span> day of the week</p>
-      <p><span id="day-of-year"></span> day of <span id="year2"></span></p>
+      <p><span id="day-of-year"></span> day of the year</p>
     </div>
     <div class="converter-panel mars">
       <h3>Utopian</h3>
@@ -58,11 +65,18 @@
           <label>Sol</label><br>
           <select id="sol" class="mars-date form-select form-control"></select>
         </div>
+        <div class="date-part">
+          &nbsp;<br><b>:</b>
+        </div>
+        <div class="date-part">
+          <label>Time</label><br>
+          <input id="mars-time" class="mars-date form-text form-control">
+        </div>
       </div>
-      <p><label>Time:</label> <input id="mars-time" class="mars-date form-text form-control"></p>
+      <p><label>Month:</label> <span id="mars-month-name"></span></p>
       <p><label>Sol:</label> <span id="sol-name"></span></p>
       <p><span id="sol-of-week"></span> sol of the week</p>
-      <p><span id="sol-of-mir"></span> sol of <span id="mir2"></span></p>
+      <p><span id="sol-of-mir"></span> sol of the mir</p>
     </div>
   </form>
 </div>

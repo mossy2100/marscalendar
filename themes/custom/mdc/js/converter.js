@@ -160,7 +160,7 @@ var currentMir;
     var monthSelector = $('#earth-month');
     var label;
     for (var i = 1; i <= 12; i++) {
-      label = (i < 10 ? '0' : '') + i + ' (' + GREGORIAN_MONTH_NAMES[i] + ')';
+      label = (i < 10 ? '0' : '') + i;
       monthSelector.append($('<option>', {value: i, text: label}));
     }
   }
@@ -189,6 +189,9 @@ var currentMir;
       dtEarth = getEarthDatetime();
     }
 
+    // Set the month name.
+    $("#earth-month-name").html(gregorianMonthName(dtEarth.getMonth() + 1));
+
     // Set the day of the week name.
     var dayOfWeek = dtEarth.getDayOfWeek();
     $("#day-name").html(gregorianDayName(dayOfWeek));
@@ -198,7 +201,6 @@ var currentMir;
 
     // Set the day of the year number.
     $("#day-of-year").html(appendOrdinalSuffix(dtEarth.getDayOfYear()));
-    $("#year2").html(dtEarth.getFullYear());
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -275,7 +277,7 @@ var currentMir;
     var monthSelector = $('#mars-month');
     var label;
     for (var i = 1; i <= 24; i++) {
-      label = (i < 10 ? '0' : '') + i + ' (' + UTOPIAN_MONTH_NAMES[i][1] + ')';
+      label = (i < 10 ? '0' : '') + i;
       monthSelector.append($('<option>', {value: i, text: label}));
     }
   }
@@ -302,7 +304,10 @@ var currentMir;
       dtMars = getMarsDatetime();
     }
 
-    // Set the sol of the week name.
+    // Set the month name.
+    $("#mars-month-name").html(dtMars.monthName);
+
+    // Set the sol name.
     $("#sol-name").html(dtMars.solName);
 
     // Set the sol of the week number.
@@ -310,7 +315,6 @@ var currentMir;
 
     // Set the sol of the mir number.
     $("#sol-of-mir").html(appendOrdinalSuffix(dtMars.solOfMir));
-    $("#mir2").html('M' + dtMars.mir);
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

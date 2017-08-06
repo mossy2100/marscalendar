@@ -60,4 +60,3 @@ core/phpunit.xml
 # sass cache
 .sass-cache
 themes/**/.sass-cache
-
