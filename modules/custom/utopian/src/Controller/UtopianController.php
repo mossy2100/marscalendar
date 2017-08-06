@@ -14,24 +14,4 @@ namespace Drupal\utopian\Controller;
  */
 class UtopianController {
 
-  /**
-   * Displays the converter.
-   *
-   * @return array
-   *   A render array representing the converter page content.
-   */
-  public function converter() {
-//    $html = file_get_contents(DRUPAL_ROOT . '/sites/default/files/html/converter.html');
-//
-//    var_dump($html);
-
-    $build = array(
-//      '#type' => 'markup',
-      '#theme' => 'utopian_converter',
-      '#cache' => [
-        'max-age' => 0,
-      ],
-    );
-    return $build;
-  }
 }
