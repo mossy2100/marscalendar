@@ -9660,24 +9660,25 @@ sub {
   border-color: #e67300;
 }
 
-/* line 199, ../sass/_overrides.scss */
-#block-bookcontents {
+/* line 200, ../sass/_overrides.scss */
+#block-calendar {
   font-size: 16px;
+  padding-top: 13px;
 }
 @media (min-width: 768px) {
-  /* line 199, ../sass/_overrides.scss */
-  #block-bookcontents {
+  /* line 200, ../sass/_overrides.scss */
+  #block-calendar {
     font-size: 14px;
   }
 }
-/* line 206, ../sass/_overrides.scss */
-#block-bookcontents > ul {
+/* line 208, ../sass/_overrides.scss */
+#block-calendar > ul {
   padding-left: 0;
   margin-bottom: 0;
   list-style-type: none;
 }
-/* line 212, ../sass/_overrides.scss */
-#block-bookcontents a {
+/* line 214, ../sass/_overrides.scss */
+#block-calendar a {
   padding: 2px 5px;
   margin: 2px 0;
   display: block;
@@ -9686,39 +9687,39 @@ sub {
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 219, ../sass/_overrides.scss */
-#block-bookcontents a:hover {
+/* line 221, ../sass/_overrides.scss */
+#block-calendar a:hover {
   background-color: #ff8833;
   color: white;
   text-decoration: none;
 }
-/* line 226, ../sass/_overrides.scss */
-#block-bookcontents .current-page {
+/* line 228, ../sass/_overrides.scss */
+#block-calendar li.active a {
   background-color: #c00;
   color: white;
   font-weight: bold;
 }
 
-/* line 234, ../sass/_overrides.scss */
+/* line 236, ../sass/_overrides.scss */
 #block-imrs img {
   width: 100%;
 }
 
-/* line 239, ../sass/_overrides.scss */
+/* line 241, ../sass/_overrides.scss */
 #block-copyrightnotice {
   margin: 15px 0;
 }
 
-/* line 243, ../sass/_overrides.scss */
+/* line 245, ../sass/_overrides.scss */
 #block-mdc-socialicons {
   padding-bottom: 10px !important;
 }
 
-/* line 250, ../sass/_overrides.scss */
+/* line 252, ../sass/_overrides.scss */
 #branding {
   display: block;
 }
-/* line 253, ../sass/_overrides.scss */
+/* line 255, ../sass/_overrides.scss */
 #branding .logo {
   display: inline-block;
   float: none !important;
@@ -9726,16 +9727,16 @@ sub {
   margin: 10px 10px 0;
 }
 @media (min-width: 768px) {
-  /* line 253, ../sass/_overrides.scss */
+  /* line 255, ../sass/_overrides.scss */
   #branding .logo {
     margin: 0;
   }
 }
-/* line 263, ../sass/_overrides.scss */
+/* line 265, ../sass/_overrides.scss */
 #branding .logo img {
   max-width: 100%;
 }
-/* line 268, ../sass/_overrides.scss */
+/* line 270, ../sass/_overrides.scss */
 #branding .navbar-text {
   color: white;
   font-size: 16px;
@@ -9743,105 +9744,109 @@ sub {
   margin: 5px 10px 10px;
 }
 @media (min-width: 768px) {
-  /* line 268, ../sass/_overrides.scss */
+  /* line 270, ../sass/_overrides.scss */
   #branding .navbar-text {
     font-size: 24px;
     margin: 5px 0 10px;
   }
 }
 
-/* line 281, ../sass/_overrides.scss */
+/* line 283, ../sass/_overrides.scss */
 #left-sidebar,
 #right-sidebar {
   background-color: #ffdfbf;
 }
-/* line 286, ../sass/_overrides.scss */
+/* line 288, ../sass/_overrides.scss */
 #left-sidebar .block,
 #right-sidebar .block {
   padding: 20px 0;
   border-bottom: solid 1px #ff8833;
 }
-/* line 290, ../sass/_overrides.scss */
+/* line 292, ../sass/_overrides.scss */
 #left-sidebar .block .field--name-body,
 #right-sidebar .block .field--name-body {
   margin-bottom: 0;
 }
-/* line 294, ../sass/_overrides.scss */
+/* line 296, ../sass/_overrides.scss */
 #left-sidebar .block:last-child,
 #right-sidebar .block:last-child {
   border-bottom: none;
 }
 
 @media (min-width: 768px) {
-  /* line 301, ../sass/_overrides.scss */
+  /* line 303, ../sass/_overrides.scss */
   #left-sidebar {
     -moz-border-radius: 10px 0 0 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px 0 0 10px;
   }
 
-  /* line 305, ../sass/_overrides.scss */
+  /* line 307, ../sass/_overrides.scss */
   #right-sidebar {
     -moz-border-radius: 0 10px 10px 0;
     -webkit-border-radius: 0;
     border-radius: 0 10px 10px 0;
   }
 }
-/* line 310, ../sass/_overrides.scss */
+/* line 312, ../sass/_overrides.scss */
 #content {
   background-color: white;
   padding: 15px;
 }
-/* line 314, ../sass/_overrides.scss */
+/* line 316, ../sass/_overrides.scss */
+#content ul.links {
+  display: none;
+}
+/* line 320, ../sass/_overrides.scss */
 #content .field--name-body {
   margin: 0 0 30px;
 }
-/* line 317, ../sass/_overrides.scss */
+/* line 323, ../sass/_overrides.scss */
 #content .field--name-body img {
   text-align: center;
   margin: 0 auto 10px;
   max-width: 100%;
 }
-/* line 323, ../sass/_overrides.scss */
+/* line 329, ../sass/_overrides.scss */
 #content .field--name-body li {
   margin: 10px 0;
 }
-/* line 327, ../sass/_overrides.scss */
+/* line 333, ../sass/_overrides.scss */
 #content .field--name-body table {
   margin: 10px auto;
 }
-/* line 331, ../sass/_overrides.scss */
+/* line 337, ../sass/_overrides.scss */
 #content .field--name-body caption {
   font-style: italic;
   color: black;
 }
-/* line 336, ../sass/_overrides.scss */
+/* line 342, ../sass/_overrides.scss */
 #content .field--name-body td,
 #content .field--name-body th {
   border: solid 1px #ff8833;
   padding: 5px;
 }
-/* line 342, ../sass/_overrides.scss */
+/* line 348, ../sass/_overrides.scss */
 #content .field--name-body thead td,
 #content .field--name-body th {
   font-weight: bold;
   background-color: #ffdfbf;
 }
-/* line 348, ../sass/_overrides.scss */
+/* line 354, ../sass/_overrides.scss */
 #content .field--name-body tfoot td {
   font-weight: bold;
   background-color: #ffdfbf;
 }
-/* line 353, ../sass/_overrides.scss */
+/* line 359, ../sass/_overrides.scss */
 #content .field--name-body th.planet {
   text-align: center;
 }
-/* line 359, ../sass/_overrides.scss */
+/* line 365, ../sass/_overrides.scss */
 #content .field--name-body .calPage {
   margin: 5px;
   display: inline-block;
 }
-/* line 363, ../sass/_overrides.scss */
+/* line 369, ../sass/_overrides.scss */
 #content .field--name-body .calPage td,
 #content .field--name-body .calPage th {
   font-size: 12px;
@@ -9849,240 +9854,219 @@ sub {
   vertical-align: middle;
   padding: 4px;
 }
-/* line 372, ../sass/_overrides.scss */
+/* line 378, ../sass/_overrides.scss */
 #content .field--name-body .calPage tr.squares td,
 #content .field--name-body .calPage tr.squares th {
   width: 23px;
   height: 23px;
 }
-/* line 379, ../sass/_overrides.scss */
+/* line 385, ../sass/_overrides.scss */
 #content .field--name-body .calPage tr.daysOfWeek th {
   font-weight: bold;
 }
-/* line 383, ../sass/_overrides.scss */
+/* line 389, ../sass/_overrides.scss */
 #content .field--name-body .calPage th.monthName {
   font-size: 16px;
   font-weight: bold;
 }
-/* line 388, ../sass/_overrides.scss */
+/* line 394, ../sass/_overrides.scss */
 #content .field--name-body .calPage td.monthIcon {
   background-color: transparent;
 }
-/* line 391, ../sass/_overrides.scss */
+/* line 397, ../sass/_overrides.scss */
 #content .field--name-body .calPage td.monthIcon img {
   margin: 5px;
   height: 120px;
 }
-/* line 397, ../sass/_overrides.scss */
+/* line 403, ../sass/_overrides.scss */
 #content .field--name-body .calPage .empty {
   background-color: #eee;
 }
-/* line 403, ../sass/_overrides.scss */
+/* line 409, ../sass/_overrides.scss */
 #content .field--name-body .spring td,
 #content .field--name-body .spring th {
   border-color: #99e673;
 }
-/* line 408, ../sass/_overrides.scss */
+/* line 414, ../sass/_overrides.scss */
 #content .field--name-body .spring th {
   background-color: #d4ffbf;
 }
-/* line 414, ../sass/_overrides.scss */
+/* line 420, ../sass/_overrides.scss */
 #content .field--name-body .summer td,
 #content .field--name-body .summer th {
   border-color: #ffd480;
 }
-/* line 419, ../sass/_overrides.scss */
+/* line 425, ../sass/_overrides.scss */
 #content .field--name-body .summer th {
   background-color: #ffffbf;
 }
-/* line 425, ../sass/_overrides.scss */
+/* line 431, ../sass/_overrides.scss */
 #content .field--name-body .autumn td,
 #content .field--name-body .autumn th {
   border-color: #ff8080;
 }
-/* line 430, ../sass/_overrides.scss */
+/* line 436, ../sass/_overrides.scss */
 #content .field--name-body .autumn th {
   background-color: #ffbfbf;
 }
-/* line 436, ../sass/_overrides.scss */
+/* line 442, ../sass/_overrides.scss */
 #content .field--name-body .winter td,
 #content .field--name-body .winter th {
   border-color: #80bfff;
 }
-/* line 441, ../sass/_overrides.scss */
+/* line 447, ../sass/_overrides.scss */
 #content .field--name-body .winter th {
   background-color: #bfdfff;
 }
-/* line 446, ../sass/_overrides.scss */
+/* line 452, ../sass/_overrides.scss */
 #content .field--name-body .special-sol {
   font-weight: bold;
 }
-/* line 450, ../sass/_overrides.scss */
+/* line 456, ../sass/_overrides.scss */
 #content .field--name-body .vernal-equinox {
   background-color: #99e673;
 }
-/* line 454, ../sass/_overrides.scss */
+/* line 460, ../sass/_overrides.scss */
 #content .field--name-body .summer-solstice {
   background-color: #ffd480;
 }
-/* line 458, ../sass/_overrides.scss */
+/* line 464, ../sass/_overrides.scss */
 #content .field--name-body .autumnal-equinox {
   background-color: #ff8080;
 }
-/* line 462, ../sass/_overrides.scss */
+/* line 468, ../sass/_overrides.scss */
 #content .field--name-body .winter-solstice {
   background-color: #80bfff;
 }
-/* line 466, ../sass/_overrides.scss */
+/* line 472, ../sass/_overrides.scss */
 #content .field--name-body .aphelion {
   background-color: #c9abff;
 }
-/* line 470, ../sass/_overrides.scss */
+/* line 476, ../sass/_overrides.scss */
 #content .field--name-body .perihelion {
   background-color: #ffd2ff;
 }
-/* line 474, ../sass/_overrides.scss */
+/* line 480, ../sass/_overrides.scss */
 #content .field--name-body .intercalary {
   background-color: #ddd;
 }
 
-/* line 483, ../sass/_overrides.scss */
+/* line 489, ../sass/_overrides.scss */
 td.num,
 th.num {
   text-align: right;
 }
 
-/* line 491, ../sass/_overrides.scss */
+/* line 497, ../sass/_overrides.scss */
 .author {
   display: none;
 }
 
-/* line 495, ../sass/_overrides.scss */
-.book-nav {
-  background-color: #ffdfbf;
-  padding: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
 /* line 501, ../sass/_overrides.scss */
-.book-nav table {
-  width: 100%;
-}
-/* line 505, ../sass/_overrides.scss */
-.book-nav .prev-page {
-  text-align: left;
-}
-/* line 509, ../sass/_overrides.scss */
-.book-nav .up-page {
-  text-align: center;
-}
-/* line 513, ../sass/_overrides.scss */
-.book-nav .next-page {
-  text-align: right;
+.book-nav {
+  display: none;
 }
 
-/* line 518, ../sass/_overrides.scss */
+/* line 525, ../sass/_overrides.scss */
 .breadcrumb {
   background-color: transparent;
 }
 
-/* line 522, ../sass/_overrides.scss */
+/* line 529, ../sass/_overrides.scss */
 .alert {
   margin: 15px 0;
 }
 
-/* line 526, ../sass/_overrides.scss */
+/* line 533, ../sass/_overrides.scss */
 ol.breadcrumb {
   margin: 15px 0;
   padding: 0;
 }
 
-/* line 531, ../sass/_overrides.scss */
+/* line 538, ../sass/_overrides.scss */
 ul.links {
   margin: 25px 0 5px;
 }
 
-/* line 535, ../sass/_overrides.scss */
+/* line 542, ../sass/_overrides.scss */
 #social-icons {
   margin: 10px 0;
 }
-/* line 538, ../sass/_overrides.scss */
+/* line 545, ../sass/_overrides.scss */
 #social-icons p {
   margin: 0;
 }
-/* line 542, ../sass/_overrides.scss */
+/* line 549, ../sass/_overrides.scss */
 #social-icons a {
   display: inline-block;
   width: 40px;
   height: 40px;
   margin: 4px 2px;
 }
-/* line 549, ../sass/_overrides.scss */
+/* line 556, ../sass/_overrides.scss */
 #social-icons img {
   width: 40px;
   height: 40px;
 }
 
-/* line 555, ../sass/_overrides.scss */
+/* line 562, ../sass/_overrides.scss */
 nav.tabs {
   margin: 15px 0;
 }
 
-/* line 559, ../sass/_overrides.scss */
+/* line 566, ../sass/_overrides.scss */
 .math {
   margin-left: 20px;
 }
 
-/* line 563, ../sass/_overrides.scss */
+/* line 570, ../sass/_overrides.scss */
 span.tab {
   display: inline-block;
   width: 75px;
   margin-left: 20px;
 }
 
-/* line 569, ../sass/_overrides.scss */
+/* line 576, ../sass/_overrides.scss */
 .fixed-width50 {
   display: inline-block;
   width: 50px;
 }
 
-/* line 574, ../sass/_overrides.scss */
+/* line 581, ../sass/_overrides.scss */
 .fixed-width75 {
   display: inline-block;
   width: 75px;
 }
 
-/* line 579, ../sass/_overrides.scss */
+/* line 586, ../sass/_overrides.scss */
 .fixed-width100 {
   display: inline-block;
   width: 100px;
 }
 
-/* line 584, ../sass/_overrides.scss */
+/* line 591, ../sass/_overrides.scss */
 .indent {
   margin-left: 20px;
 }
 
-/* line 588, ../sass/_overrides.scss */
+/* line 595, ../sass/_overrides.scss */
 figure {
   text-align: center;
   margin: 0 auto 10px;
 }
 
-/* line 593, ../sass/_overrides.scss */
+/* line 600, ../sass/_overrides.scss */
 figcaption {
   text-align: center;
 }
 
-/* line 597, ../sass/_overrides.scss */
+/* line 604, ../sass/_overrides.scss */
 blockquote {
   font-size: inherit;
   font-style: italic;
 }
 
-/* line 605, ../sass/_overrides.scss */
+/* line 612, ../sass/_overrides.scss */
 .pagination > .active > a,
 .pagination > .active > a:hover,
 .pagination > .active > a:focus,
@@ -10093,7 +10077,7 @@ blockquote {
   border-color: #900;
 }
 
-/* line 615, ../sass/_overrides.scss */
+/* line 622, ../sass/_overrides.scss */
 .pagination > li > a,
 .pagination > li > span,
 .pagination > li > a:hover,
@@ -10103,58 +10087,58 @@ blockquote {
   color: #c00;
 }
 
-/* line 628, ../sass/_overrides.scss */
+/* line 635, ../sass/_overrides.scss */
 #block-utopiandateandtime h2 {
   font-size: 16px;
   margin-top: 0;
 }
-/* line 634, ../sass/_overrides.scss */
+/* line 641, ../sass/_overrides.scss */
 #block-utopiandateandtime #mars-clock div {
   text-align: center;
   font-size: 14px;
   margin: 5px 0;
 }
 
-/* line 646, ../sass/_overrides.scss */
+/* line 653, ../sass/_overrides.scss */
 #converter #btn-reset-converter {
   padding: 3px 6px;
 }
-/* line 650, ../sass/_overrides.scss */
+/* line 657, ../sass/_overrides.scss */
 #converter h3 {
   color: black;
   font-size: 18px;
 }
-/* line 655, ../sass/_overrides.scss */
+/* line 662, ../sass/_overrides.scss */
 #converter h3,
 #converter p {
   margin: 5px 0;
 }
-/* line 660, ../sass/_overrides.scss */
+/* line 667, ../sass/_overrides.scss */
 #converter label {
   margin-bottom: 0;
   font-weight: normal;
 }
-/* line 665, ../sass/_overrides.scss */
+/* line 672, ../sass/_overrides.scss */
 #converter .date-part {
   text-align: left;
   display: inline-block;
 }
-/* line 669, ../sass/_overrides.scss */
+/* line 676, ../sass/_overrides.scss */
 #converter .date-part label {
   font-size: 12px;
 }
-/* line 674, ../sass/_overrides.scss */
+/* line 681, ../sass/_overrides.scss */
 #converter #year,
 #converter #mir {
   width: 50px;
 }
-/* line 679, ../sass/_overrides.scss */
+/* line 686, ../sass/_overrides.scss */
 #converter #earth-time,
 #converter #mars-time {
   width: 75px;
 }
 
-/* line 688, ../sass/_overrides.scss */
+/* line 695, ../sass/_overrides.scss */
 .converter-panel {
   text-align: center;
   border-style: solid;
@@ -10165,7 +10149,7 @@ blockquote {
   border-radius: 5px;
   margin: 5px 0;
 }
-/* line 696, ../sass/_overrides.scss */
+/* line 703, ../sass/_overrides.scss */
 .converter-panel input,
 .converter-panel select {
   display: inline-block;
@@ -10174,27 +10158,27 @@ blockquote {
   width: auto;
   max-width: 100%;
 }
-/* line 705, ../sass/_overrides.scss */
+/* line 712, ../sass/_overrides.scss */
 .converter-panel span {
   font-weight: bold;
 }
 
-/* line 710, ../sass/_overrides.scss */
+/* line 717, ../sass/_overrides.scss */
 .mars {
   background-color: #ffbfbf;
 }
-/* line 713, ../sass/_overrides.scss */
+/* line 720, ../sass/_overrides.scss */
 .mars,
 .mars th,
 .mars td {
   border-color: #ff8080;
 }
 
-/* line 720, ../sass/_overrides.scss */
+/* line 727, ../sass/_overrides.scss */
 .earth {
   background-color: #bfdfff;
 }
-/* line 723, ../sass/_overrides.scss */
+/* line 730, ../sass/_overrides.scss */
 .earth,
 .earth th,
 .earth td {

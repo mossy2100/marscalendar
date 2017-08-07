@@ -196,8 +196,10 @@ sub {
   }
 }
 
-#block-bookcontents {
+//#block-bookcontents {
+#block-calendar {
   font-size: 16px;
+  padding-top: 13px;
 
   @media (min-width: 768px) {
     font-size: 14px;
@@ -223,7 +225,7 @@ sub {
     }
   }
 
-  .current-page {
+  li.active a {
     background-color: $red;
     color: white;
     font-weight: bold;
@@ -310,6 +312,10 @@ sub {
 #content {
   background-color: white;
   padding: 15px;
+
+  ul.links {
+    display: none;
+  }
 
   .field--name-body {
     margin: 0 0 30px;
@@ -493,26 +499,27 @@ th.num {
 }
 
 .book-nav {
-  background-color: $paleOrange;
-  padding: 5px;
-  @include border-radius(5px);
-  margin-bottom: 15px;
-
-  table {
-    width: 100%;
-  }
-
-  .prev-page {
-    text-align: left;
-  }
-
-  .up-page {
-    text-align: center;
-  }
-
-  .next-page {
-    text-align: right;
-  }
+  display: none;
+//  background-color: $paleOrange;
+//  padding: 5px;
+//  @include border-radius(5px);
+//  margin-bottom: 15px;
+//
+//  table {
+//    width: 100%;
+//  }
+//
+//  .prev-page {
+//    text-align: left;
+//  }
+//
+//  .up-page {
+//    text-align: center;
+//  }
+//
+//  .next-page {
+//    text-align: right;
+//  }
 }
 
 .breadcrumb {
