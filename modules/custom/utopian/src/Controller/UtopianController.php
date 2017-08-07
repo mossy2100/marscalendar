@@ -14,15 +14,14 @@ namespace Drupal\utopian\Controller;
 class UtopianController {
 
   /**
-   * Displays the converter.
+   * Displays the datetime converter.
    *
    * @return array
-   *   A render array representing the converter page content.
+   *   A render array representing the datetime converter page content.
    */
-  public function converter() {
+  public function datetimeConverter() {
     $build = [
-      '#type'  => 'markup',
-      '#theme' => 'utopian_converter',
+      '#theme' => 'utopian_datetime_converter',
       '#cache' => [
         'max-age' => 0,
       ],
@@ -34,7 +33,7 @@ class UtopianController {
    * Displays the calendar pages.
    *
    * @return array
-   *   A render array representing the converter page content.
+   *   A render array representing the calendar pages content.
    */
   public function calendarPages() {
     ob_start();
@@ -82,7 +81,7 @@ class UtopianController {
       // Get the season class.
       $season = $seasons[floor(($m - 1) / 6)];
 
-      echo "<table class='calPage $season'>\n";
+      echo "<table class='calendar-page $season'>\n";
       echo "<thead>\n";
       echo "  <tr>\n";
       echo "    <th class='monthName' colspan='7'>$m. $month</th>\n";
@@ -165,11 +164,8 @@ class UtopianController {
     $calendar_pages = ob_get_clean();
 
     $build = [
-      '#type'      => 'markup',
       '#theme'     => 'utopian_calendar_pages',
-      '#variables' => [
-        'calendar_pages' => $calendar_pages,
-      ],
+      '#calendar_pages' => $calendar_pages,
       '#cache'     => [
         'max-age' => 0,
       ],

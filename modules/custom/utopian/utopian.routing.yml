@@ -1,7 +1,7 @@
 utopian.converter:
   path: '/datetime-converter'
   defaults:
-    _controller: '\Drupal\utopian\Controller\UtopianController::converter'
+    _controller: '\Drupal\utopian\Controller\UtopianController::datetimeConverter'
     _title: 'Datetime converter'
   requirements:
     _permission: 'access content'

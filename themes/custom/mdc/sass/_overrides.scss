@@ -321,169 +321,174 @@ sub {
     display: none;
   }
 
-  .field--name-body {
-    margin: 0 0 30px;
+  margin: 0 0 30px;
 
-    img {
-      text-align: center;
-      margin: 0 auto 10px;
-      max-width: 100%;
-    }
+  img {
+    text-align: center;
+    margin: 0 auto 10px;
+    max-width: 100%;
+  }
 
-    li {
-      margin: 10px 0;
-    }
+  li {
+    margin: 10px 0;
+  }
 
-    table {
-      margin: 10px auto;
-    }
+  table {
+    margin: 10px auto;
+  }
 
-    caption {
-      font-style: italic;
-      color: black;
-    }
+  caption {
+    font-style: italic;
+    color: black;
+    font-size: 14px;
+  }
+
+  td,
+  th {
+    border: solid 1px $orange;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  thead td,
+  th {
+    font-weight: bold;
+    background-color: $paleOrange;
+  }
+
+  tfoot td {
+    font-weight: bold;
+    background-color: $paleOrange;
+  }
+
+  th.planet {
+    text-align: center;
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Calendar pages
+
+  #calendar-pages {
+    text-align: center;
+  }
+
+  .calendar-page {
+    margin: 4px;
+    display: inline-block;
 
     td,
     th {
-      border: solid 1px $orange;
-      padding: 5px;
-    }
-
-    thead td,
-    th {
-      font-weight: bold;
-      background-color: $paleOrange;
-    }
-
-    tfoot td {
-      font-weight: bold;
-      background-color: $paleOrange;
-    }
-
-    th.planet {
       text-align: center;
+      vertical-align: middle;
+      padding: 4px;
+      font-size: 12px;
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Calendar pages
-    .calPage {
-      margin: 5px;
-      display: inline-block;
-
+    tr.squares {
       td,
       th {
-        font-size: 12px;
-        text-align: center;
-        vertical-align: middle;
-        padding: 4px;
-      }
-
-      tr.squares {
-        td,
-        th {
-          width: 23px;
-          height: 23px;
-        }
-      }
-
-      tr.daysOfWeek th {
-        font-weight: bold;
-      }
-
-      th.monthName {
-        font-size: 16px;
-        font-weight: bold;
-      }
-
-      td.monthIcon {
-        background-color: transparent;
-
-        img {
-          margin: 5px;
-          height: 120px;
-        }
-      }
-
-      .empty {
-        background-color: $grey;
+        width: 23px;
+        height: 23px;
       }
     }
 
-    .spring {
-      td,
-      th {
-        border-color: $spring-border;
-      }
-
-      th {
-        background-color: $spring;
-      }
-    }
-
-    .summer {
-      td,
-      th {
-        border-color: $summer-border;
-      }
-
-      th {
-        background-color: $summer;
-      }
-    }
-
-    .autumn {
-      td,
-      th {
-        border-color: $autumn-border;
-      }
-
-      th {
-        background-color: $autumn;
-      }
-    }
-
-    .winter {
-      td,
-      th {
-        border-color: $winter-border;
-      }
-
-      th {
-        background-color: $winter;
-      }
-    }
-
-    .special-sol {
+    tr.daysOfWeek th {
       font-weight: bold;
     }
 
-    .vernal-equinox {
-      background-color: $spring-border;
+    th.monthName {
+      font-size: 16px;
+      font-weight: bold;
     }
 
-    .summer-solstice {
-      background-color: $summer-border;
+    td.monthIcon {
+      background-color: transparent;
+
+      img {
+        margin: 5px;
+        height: 120px;
+      }
     }
 
-    .autumnal-equinox {
-      background-color: $autumn-border;
+    .empty {
+      background-color: $grey;
+    }
+  }
+
+  .spring {
+    td,
+    th {
+      border-color: $spring-border;
     }
 
-    .winter-solstice {
-      background-color: $winter-border;
+    th {
+      background-color: $spring;
+    }
+  }
+
+  .summer {
+    td,
+    th {
+      border-color: $summer-border;
     }
 
-    .aphelion {
-      background-color: $purple;
+    th {
+      background-color: $summer;
+    }
+  }
+
+  .autumn {
+    td,
+    th {
+      border-color: $autumn-border;
     }
 
-    .perihelion {
-      background-color: $pink;
+    th {
+      background-color: $autumn;
+    }
+  }
+
+  .winter {
+    td,
+    th {
+      border-color: $winter-border;
     }
 
-    .intercalary {
-      background-color: $grey2;
+    th {
+      background-color: $winter;
     }
+  }
+
+  .special-sol {
+    font-weight: bold;
+  }
+
+  .vernal-equinox {
+    background-color: $spring-border;
+  }
+
+  .summer-solstice {
+    background-color: $summer-border;
+  }
+
+  .autumnal-equinox {
+    background-color: $autumn-border;
+  }
+
+  .winter-solstice {
+    background-color: $winter-border;
+  }
+
+  .aphelion {
+    background-color: $purple;
+  }
+
+  .perihelion {
+    background-color: $pink;
+  }
+
+  .intercalary {
+    background-color: $grey2;
   }
 }
 
@@ -504,26 +509,26 @@ th.num {
 
 .book-nav {
   display: none;
-//  background-color: $paleOrange;
-//  padding: 5px;
-//  @include border-radius(5px);
-//  margin-bottom: 15px;
-//
-//  table {
-//    width: 100%;
-//  }
-//
-//  .prev-page {
-//    text-align: left;
-//  }
-//
-//  .up-page {
-//    text-align: center;
-//  }
-//
-//  .next-page {
-//    text-align: right;
-//  }
+  //  background-color: $paleOrange;
+  //  padding: 5px;
+  //  @include border-radius(5px);
+  //  margin-bottom: 15px;
+  //
+  //  table {
+  //    width: 100%;
+  //  }
+  //
+  //  .prev-page {
+  //    text-align: left;
+  //  }
+  //
+  //  .up-page {
+  //    text-align: center;
+  //  }
+  //
+  //  .next-page {
+  //    text-align: right;
+  //  }
 }
 
 .breadcrumb {
