@@ -150,12 +150,10 @@ class UtopianController {
             $classes[] = 'special-sol';
             $classes[] = 'intercalary';
           }
+          $classes_str = $classes ? ' class="' . implode(' ', $classes) . '"'
+            :'';
 
-          echo "    <td";
-          if ($classes) {
-            echo ' class="' . implode(' ', $classes) . '"';
-          }
-          echo ">$td</td>\n";
+          echo "    <td{$classes_str}>$td</td>\n";
         }
 
         echo "  </tr>\n";
