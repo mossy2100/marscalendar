@@ -4,3 +4,15 @@
  * @file
  * Utopian Calendar functions for datetimes, clock, and converter.
  */
+
+///**
+// * Implements hook_theme().
+// */
+//function utopian_theme($existing, $type, $theme, $path) {
+//  return [
+//    'utopian_converter' => [
+//      'variables' => [],
+//      'template'  => 'utopian-converter',
+//    ],
+//  ];
+//}

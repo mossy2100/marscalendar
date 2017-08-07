@@ -22,7 +22,6 @@
 
 $paleOrange: #ffdfbf;
 $orange: #ff8833;
-//$orange: #ff8200;
 $darkOrange: #e67300;
 
 $red: #c00;
@@ -222,6 +221,11 @@ sub {
       background-color: $orange;
       color: white;
       text-decoration: none;
+    }
+
+    &:focus {
+      background-color: mix($red, $orange, 25%);
+      color: white;
     }
   }
 

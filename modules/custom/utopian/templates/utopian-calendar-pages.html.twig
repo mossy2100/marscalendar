@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Template for the calendar pages callback.
+ */
+#}
+
+<p>TEST Viewing the calendar in the familiar format of one page per month helps to visualise how a
+  mir is
+  divided into months and weeks, and how the weeks align with months. Note how the final week of
+  each quarter is a short, 6-sol week.</p>
+
+<p>The intercalary sol at the end of a long mir (Tucana 28) is shown in bold, and the nominal dates
+  for the major astronomical events each mir are highlighted. The actual dates of astronomical
+  events can vary slightly from these (although usually by not more than 1 sol) due to the
+  intercalation rules not keeping the calendar in precise alignment with Mars&apos; orbit. Credit
+  goes to Tom Gangale for calculating these dates.</p>
+
+<table>
+  <caption>Annual Astronomical Events (Nominal Dates)</caption>
+  <thead>
+  <tr>
+    <th>Event</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>Northern vernal/southern autumnal equinox</td>
+    <td class="special-sol vernal-equinox">Phoenix 1</td>
+  </tr>
+  <tr>
+    <td>Aphelion</td>
+    <td class="special-sol aphelion">Monoceros 12</td>
+  </tr>
+  <tr>
+    <td>Northern summer/southern winter solstice</td>
+    <td class="special-sol summer-solstice">Volans 27</td>
+  </tr>
+  <tr>
+    <td>Northern autumnal/southern vernal equinox</td>
+    <td class="special-sol autumnal-equinox">Draco 11</td>
+  </tr>
+  <tr>
+    <td>Perihelion</td>
+    <td class="special-sol perihelion">Aquila 12</td>
+  </tr>
+  <tr>
+    <td>Northern winter/southern summer solstice</td>
+    <td class="special-sol winter-solstice">Vulpecula 14</td>
+  </tr>
+  </tbody>
+</table>
+
+{{ calendar_pages }}
