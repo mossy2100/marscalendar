@@ -51,9 +51,10 @@ function mars_mean_solar_time(float $JD) {
  * @param float $JDTT
  * @return float
  */
-function mars_sol_date(float $JDTT) {
-  return ($JDTT - 2405522.0028779) / SOLS_PER_DAY;
+function mars_sol_date(float $JD_TT) {
+  return ($JD_TT - 2405522.0028779) / SOLS_PER_DAY;
 
 //  MSD = (t + (TAI−UTC)) / SECONDS_PER_SOL + 34127.2954262
 
 }
+

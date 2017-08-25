@@ -42,7 +42,7 @@
 
   $(function() {
     // Check the clock is visible.
-    var $block = $("#block-utopiandateandtime div");
+    var $block = $("#block-utopiandateandtime");
     if (!$block.length) {
       return;
     }

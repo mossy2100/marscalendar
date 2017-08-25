@@ -8,33 +8,38 @@ class StarDateTime extends DateTime {
   //////////////////////////////////////////////////////////////////////////////
   // Constants
 
-  // These values are based on average Gregorian calendar month and year lengths.
-  const SECONDS_PER_MINUTE  = 60;
-  const SECONDS_PER_HOUR    = 3600;
-  const SECONDS_PER_DAY     = 86400;
-  const SECONDS_PER_WEEK    = 604800;
-  const SECONDS_PER_MONTH   = 2629746;
-  const SECONDS_PER_YEAR    = 31556952;
+  // These values are calculated from average Gregorian calendar month and
+  // year lengths (365-366 days/year, and 97 leap years per 400).
+  const SECONDS_PER_MINUTE = 60;
+  const SECONDS_PER_HOUR = 3600;
+  const SECONDS_PER_DAY = 86400;
+  const SECONDS_PER_WEEK = 604800;
+  const SECONDS_PER_MONTH = 2629746;
+  const SECONDS_PER_YEAR = 31556952;
 
-  const MINUTES_PER_HOUR    = 60;
-  const MINUTES_PER_DAY     = 1440;
-  const MINUTES_PER_WEEK    = 10080;
-  const MINUTES_PER_MONTH   = 43829.1;
-  const MINUTES_PER_YEAR    = 525949.2;
+  const MINUTES_PER_HOUR = 60;
+  const MINUTES_PER_DAY = 1440;
+  const MINUTES_PER_WEEK = 10080;
+  const MINUTES_PER_MONTH = 43829.1;
+  const MINUTES_PER_YEAR = 525949.2;
 
-  const HOURS_PER_DAY       = 24;
-  const HOURS_PER_WEEK      = 168;
-  const HOURS_PER_MONTH     = 730.485;
-  const HOURS_PER_YEAR      = 8765.82;
+  const HOURS_PER_DAY = 24;
+  const HOURS_PER_WEEK = 168;
+  const HOURS_PER_MONTH = 730.485;
+  const HOURS_PER_YEAR = 8765.82;
 
-  const DAYS_PER_WEEK       = 7;
-  const DAYS_PER_MONTH      = 30.436875;
-  const DAYS_PER_YEAR       = 365.2425;
+  const DAYS_PER_WEEK = 7;
+  const DAYS_PER_MONTH = 30.436875;
+  const DAYS_PER_YEAR = 365.2425;
 
-  const WEEKS_PER_MONTH     = 4.348125;
-  const WEEKS_PER_YEAR      = 52.1775;
+  const WEEKS_PER_MONTH = 4.348125;
+  const WEEKS_PER_YEAR = 52.1775;
 
-  const MONTHS_PER_YEAR     = 12;
+  const MONTHS_PER_YEAR = 12;
+
+  // For calculating the datetime in different scales.
+  const TT_MINUS_TAI = 32.184;
+  const JD_MINUS_UNIX = 2440587.5;
 
   //////////////////////////////////////////////////////////////////////////////
   // Static methods
@@ -77,7 +82,7 @@ class StarDateTime extends DateTime {
    *    $dt = new StarDateTime($year, $month, $day, $hour, $minute, $second);
    *    $dt = new StarDateTime($year, $month, $day, $hour, $minute, $second, $timezone);
    *
-   * @param string|int $year, $unix_timestamp or $datetime_string
+   * @param string|int $year , $unix_timestamp or $datetime_string
    * @param null|DateTimeZone|string|int $month or $timezone
    * @param int $day
    * @param null|DateTimeZone|string|int $hour or $timezone
@@ -112,7 +117,8 @@ class StarDateTime extends DateTime {
     }
     elseif ($n_args <= 4) {
       // Args are assumed to be: $year, $month, $day, [$timezone].
-      $date = self::padDigits($args[0], 4) . '-' . self::padDigits($args[1]) . '-'
+      $date = self::padDigits($args[0], 4) . '-' . self::padDigits($args[1])
+        . '-'
         . self::padDigits($args[2]);
       $time = '00:00:00';
       $datetime = "$date $time";
@@ -120,15 +126,18 @@ class StarDateTime extends DateTime {
     }
     elseif ($n_args >= 6 && $n_args <= 7) {
       // Args are assumed to be: $year, $month, $day, [$timezone].
-      $date = self::padDigits($args[0], 4) . '-' . self::padDigits($args[1]) . '-'
+      $date = self::padDigits($args[0], 4) . '-' . self::padDigits($args[1])
+        . '-'
         . self::padDigits($args[2]);
-      $time = self::padDigits($args[3]) . ':' . self::padDigits($args[4]) . ':' .
+      $time = self::padDigits($args[3]) . ':' . self::padDigits($args[4]) . ':'
+        .
         self::padDigits($args[5]);
       $datetime = "$date $time";
       $timezone = isset($args[6]) ? $args[6] : NULL;
     }
     else {
-      trigger_error(E_USER_WARNING, "Invalid number of arguments to constructor.");
+      trigger_error(E_USER_WARNING,
+        "Invalid number of arguments to constructor.");
     }
 
     // Support string timezones:
@@ -138,7 +147,8 @@ class StarDateTime extends DateTime {
 
     // Check we have a valid timezone:
     if ($timezone !== NULL && !($timezone instanceof DateTimeZone)) {
-      trigger_error(E_USER_WARNING, "Invalid timezone provided to constructor.");
+      trigger_error(E_USER_WARNING,
+        "Invalid timezone provided to constructor.");
     }
 
     // Call parent constructor:
@@ -150,6 +160,7 @@ class StarDateTime extends DateTime {
    *
    * @param int $n
    * @param int $w
+   *
    * @return string
    */
   protected static function padDigits($n, $w = 2) {
@@ -183,6 +194,7 @@ class StarDateTime extends DateTime {
    * @param int $year
    * @param int $month
    * @param int $day
+   *
    * @return self
    */
   public function setDate($year, $month = 1, $day = 1) {
@@ -206,6 +218,7 @@ class StarDateTime extends DateTime {
    * @param int $hour
    * @param int $minute
    * @param int $second
+   *
    * @return self
    */
   public function setTime($hour, $minute = 0, $second = 0) {
@@ -229,6 +242,7 @@ class StarDateTime extends DateTime {
    * Set the year.
    *
    * @param int $year
+   *
    * @return self
    */
   public function setYear($year) {
@@ -248,6 +262,7 @@ class StarDateTime extends DateTime {
    * Set the month.
    *
    * @param int $month
+   *
    * @return self
    */
   public function setMonth($month) {
@@ -267,6 +282,7 @@ class StarDateTime extends DateTime {
    * Set the day of the month.
    *
    * @param int $day
+   *
    * @return self
    */
   public function setDay($day) {
@@ -289,6 +305,7 @@ class StarDateTime extends DateTime {
    * Set the hour.
    *
    * @param int $hour
+   *
    * @return self
    */
   public function setHour($hour) {
@@ -308,6 +325,7 @@ class StarDateTime extends DateTime {
    * Set the minute.
    *
    * @param int $minute
+   *
    * @return self
    */
   public function setMinute($minute) {
@@ -327,6 +345,7 @@ class StarDateTime extends DateTime {
    * Set the second.
    *
    * @param int $second
+   *
    * @return self
    */
   public function setSecond($second) {
@@ -372,6 +391,7 @@ class StarDateTime extends DateTime {
    * Add years.
    *
    * @param int $years
+   *
    * @return self
    */
   public function addYears($years) {
@@ -383,6 +403,7 @@ class StarDateTime extends DateTime {
    * Add months.
    *
    * @param int $months
+   *
    * @return self
    */
   public function addMonths($months) {
@@ -394,6 +415,7 @@ class StarDateTime extends DateTime {
    * Add weeks.
    *
    * @param int $weeks
+   *
    * @return self
    */
   public function addWeeks($weeks) {
@@ -404,6 +426,7 @@ class StarDateTime extends DateTime {
    * Add days.
    *
    * @param int $days
+   *
    * @return self
    */
   public function addDays($days) {
@@ -415,6 +438,7 @@ class StarDateTime extends DateTime {
    * Add hours.
    *
    * @param int $hours
+   *
    * @return self
    */
   public function addHours($hours) {
@@ -426,6 +450,7 @@ class StarDateTime extends DateTime {
    * Add minutes.
    *
    * @param int $minutes
+   *
    * @return self
    */
   public function addMinutes($minutes) {
@@ -437,6 +462,7 @@ class StarDateTime extends DateTime {
    * Add seconds.
    *
    * @param int $seconds
+   *
    * @return self
    */
   public function addSeconds($seconds) {
@@ -452,6 +478,7 @@ class StarDateTime extends DateTime {
    * Subtract years.
    *
    * @param int $years
+   *
    * @return self
    */
   public function subYears($years) {
@@ -462,6 +489,7 @@ class StarDateTime extends DateTime {
    * Subtract months.
    *
    * @param int $months
+   *
    * @return self
    */
   public function subMonths($months) {
@@ -472,6 +500,7 @@ class StarDateTime extends DateTime {
    * Subtract weeks.
    *
    * @param int $weeks
+   *
    * @return self
    */
   public function subWeeks($weeks) {
@@ -482,6 +511,7 @@ class StarDateTime extends DateTime {
    * Subtract days.
    *
    * @param int $days
+   *
    * @return self
    */
   public function subDays($days) {
@@ -492,6 +522,7 @@ class StarDateTime extends DateTime {
    * Subtract hours.
    *
    * @param int $hours
+   *
    * @return self
    */
   public function subHours($hours) {
@@ -502,6 +533,7 @@ class StarDateTime extends DateTime {
    * Subtract minutes.
    *
    * @param int $minutes
+   *
    * @return self
    */
   public function subMinutes($minutes) {
@@ -512,6 +544,7 @@ class StarDateTime extends DateTime {
    * Subtract seconds.
    *
    * @param int $seconds
+   *
    * @return self
    */
   public function subSeconds($seconds) {
@@ -554,7 +587,8 @@ class StarDateTime extends DateTime {
 
     // Check time is in the past:
     if ($seconds < 0) {
-      trigger_error("StarDateTime::aboutHowLongAgo() only works with datetimes in the past.", E_USER_WARNING);
+      trigger_error("StarDateTime::aboutHowLongAgo() only works with datetimes in the past.",
+        E_USER_WARNING);
       return FALSE;
     }
 
@@ -622,6 +656,7 @@ class StarDateTime extends DateTime {
    * @param self $dt2
    * @param bool $absolute
    *   If TRUE then the absolute value of the difference is returned.
+   *
    * @return int
    */
   function diffSeconds(self $datetime2, $absolute = FALSE) {
@@ -636,12 +671,110 @@ class StarDateTime extends DateTime {
   // Conversion functions.
 
   /**
-   * Get the datetime as a Julian Date.
+   * Get the datetime as a Julian Date (UTC).
    *
    * @return float
    */
-  function getJulianDate() {
-    return unixtojd($this->getTimestamp());
+  function JD_UTC() {
+    return $this->getTimestamp() / self::SECONDS_PER_DAY + self::JD_MINUS_UNIX;
+  }
+
+  /**
+   * Get the datetime as a Julian Date (Terrestrial Time).
+   *
+   * @return float
+   */
+  function JD_TT() {
+    $dt = $this->taiMinusUtc() + self::TT_MINUS_TAI;
+    return $this->JD_UTC() + ($dt / self::SECONDS_PER_DAY);
+  }
+
+  /**
+   * Get the number of leap seconds inserted between when leap seconds started
+   * and the given $this datetime.
+   *
+   * The problem with this function as currently implemented is that it needs
+   * updating every time another leap second is inserted.
+   *
+   * @return int
+   */
+  function leapSecondsSoFar() {
+    // Leap seconds have been inserted at the end of the following months.
+    $leap_seconds = [
+      [1972, 6],
+      [1972, 12],
+      [1973, 12],
+      [1974, 12],
+      [1975, 12],
+      [1976, 12],
+      [1977, 12],
+      [1978, 12],
+      [1979, 12],
+
+      [1981, 6],
+      [1982, 6],
+      [1983, 6],
+      [1985, 6],
+      [1987, 12],
+      [1989, 12],
+
+      [1990, 12],
+      [1992, 6],
+      [1993, 6],
+      [1994, 6],
+      [1995, 12],
+      [1997, 6],
+      [1998, 12],
+
+      [2005, 12],
+      [2008, 12],
+
+      [2012, 6],
+      [2015, 6],
+      [2016, 12],
+    ];
+
+    // Create a DateTime object to use for the leap seconds. Actually, since
+    // PHP DateTimes are based on Unix timestamps, which do not include leap
+    // seconds, we can only create an object for the second /before./ the
+    // leap second.
+    // Remember, DateTime objects are based on Unix time, not true UTC, which
+    // means they do not include leap seconds.
+    // How can I resolve this?
+    // Simple. Convert Unix time to UTC.
+
+    // Create a DateTime object to work with. The date doesn't matter as this
+    // will be changed in the loop.
+    $ls = new StarDateTime(2000, 1, 1, 23, 59, 59, 'UTC');
+
+    // Count leap seconds.
+    $n_leap_seconds = 0;
+
+    foreach ($leap_seconds as [$year, $month]) {
+      // Get the datetime of the second before the leap second.
+      $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+      $ls->setDate($year, $month, $days_in_month);
+
+      if ($this > $ls) {
+        $n_leap_seconds++;
+      }
+      else {
+        break;
+      }
+    }
+
+    return $n_leap_seconds;
+  }
+
+  /**
+   * Get the difference between TAI and UTC, which is equal to the number of
+   * leap seconds so far, plus 10, since TAI - UTC was already 10 seconds when
+   * leap seconds started.
+   *
+   * @return int
+   */
+  function taiMinusUtc() {
+    return 10 + $this->leapSecondsSoFar();
   }
 
 }
