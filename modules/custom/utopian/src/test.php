@@ -193,7 +193,7 @@ function calc_line_of_best_fit($values) {
     'gradient'    => $m,
     'intercept'   => $c,
     'function'    => $f,
-    'differences' => $diffs,
+//    'differences' => $diffs,
     'max diff'    => $max_diff,
   ];
 }
@@ -249,7 +249,6 @@ function get_mars_vernal_equinoxes() {
 //test_msd();
 $values = get_mars_vernal_equinoxes();
 
-list($gradient, $intercept, $f, $diffs) = calc_line_of_best_fit($values);
 $info = calc_line_of_best_fit($values);
 var_dump($info);
 

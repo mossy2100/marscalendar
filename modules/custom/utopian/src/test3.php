@@ -9,7 +9,7 @@ require "StarDateTime.php";
 require "MarsDateTime.php";
 
 // Julian Date for the 1609 NVE.
-$jd = 2308806.2960603;
+$jd = 2308806.29606;
 echo "Julian Date of 1609 NVE = $jd\n";
 
 $dt_nve = StarDateTime::fromJulianDate($jd);
@@ -35,13 +35,13 @@ $jdtt = $jd + $deltaT / StarDateTime::SECONDS_PER_DAY;
 echo "JD_TT = $jdtt\n";
 
 // Calculate MSD.
-$msd = ($jdtt - 2405522.0028773) / MarsDateTime::DAYS_PER_SOL;
+$offset = -2451549.5 + (44796.0 - 0.000962) * MarsDateTime::DAYS_PER_SOL;
+echo "Offset = $offset\n";
+$msd = ($jdtt + $offset) / MarsDateTime::DAYS_PER_SOL;
 echo "MSD = $msd\n";
 echo "days per sol = " . MarsDateTime::DAYS_PER_SOL . "\n";
 
 // Calculate MSD (2nd method).
-$offset = -2451549.5 + (44796.0 - 0.000962) * MarsDateTime::DAYS_PER_SOL;
-echo "Offset = $offset\n";
 $msd2 = (($jdtt - 2451549.5) / MarsDateTime::DAYS_PER_SOL) + 44796.0 - 0.0009626;
 echo "MSD (2nd method) = $msd2\n";
 

@@ -1,0 +1,224 @@
+<p>In the Utopian Calendar, rather than using an era label like BCE or CE as in the Gregorian
+  Calendar, mirs are simply numbered using integers, i.e. … –3, –2, –1, 0, 1, 2, 3, etc. Defining an
+  epoch for the calendar means specifying which mir is numbered 0. As we have already decided that
+  the mir begins with the northern vernal equinox (NVE), the next question is which one will define
+  the beginning of mir 0.</p>
+
+<p>The Martian NVE that occurred at approximately 12 March 1609, 7:06:46 UTC is used. This
+  particular NVE makes a good starting point for the calendar because this is approximately when
+  telescopes started being used to study Mars. This epoch is called the <b>Telescopic Epoch</b>.</p>
+
+<p>The year 1609 represented the beginning of a new relationship between humans and Mars. It was the
+  year Galileo first started using the newly-invented telescope to observe Mars, as well as other
+  planets and moons. It was also the year that Johannes Kepler published <i>Astronomia Nova</i>, in
+  which his laws of planetary motion were explained; laws he arrived at by studying Tycho Brahe’s
+  observations of Mars.</p>
+
+<p>Before 1609, Mars had only ever been viewed with the naked eye. Selecting the Telescopic Epoch
+  for mir numbering means that the dates of all telescopic observations of Mars, and therefore all
+  maps, missions, and everything that has happened on Mars since, and that will happen in the
+  future, can be expressed with non-negative mir numbers.</p>
+
+<p>The use of this epoch for Martian timekeeping was first suggested in 1999 by Peter Kokh
+  (President of the Moon Society for many years).</p>
+
+<p>The sol during which this particular NVE occurred is therefore the first sol of mir 0. The <a
+  href="https://en.wikipedia.org/wiki/Timekeeping_on_Mars#Coordinated_Mars_Time_.28MTC.29"
+  target="_blank">MTC (Coordinated Mars Time)</a> at this particular point in time was approximately
+  M:495.010 (in <a href="/notation">Utopian notation</a>), i.e. shortly after midday. The actual
+  start point of the calendar is the start of this sol, about half a sol earlier, at approximately
+  11 March 1609, 18:54:21 UTC.</p>
+
+<p>Although I have shown this datetime accurate to the second, it&rsquo;s probably only accurate to
+  about a minute. It is difficult to perform this calculation with a high degree of accuracy because
+  of the method used. Future calculations will refine this value, but for now it will suffice.</p>
+
+<h2>How this epoch was computed</h2>
+
+<p>The noted astronomer Jean Meeus calculated the equinoxes and solstices of Mars from 1874–2126 and
+  published these in <a
+    href="https://www.amazon.com/Astronomical-Table-Sun-Moon-Planets/dp/1942675038" target="_blank"
+    title="Astronomical Tables of the Sun, Moon and Planets by Jean Meeus">Astronomical Tables of
+    the Sun, Moon and Planets</a>. They are also available <a
+    href="http://ops-alaska.com/time/gangale_mst/VernalEquinox.htm" target="_blank">here</a>, on the
+  Martian Time website. Ideally I would have directly computed the Julian Date for the NVE for 1609
+  using the same astronomical formulae that Meeus used, but this would have required computational
+  resources I do not presently have access to; therefore, for practical purposes, I have taken a
+  different approach.</p>
+
+<p>Using these values, I calculated a line of best fit through the data points using the method of
+  least squares, to derive a formula relating mir numbers to Julian Dates of Mars&rsquo; northern
+  venal equinoxes. Specifying the NVE of 1874 as mir 141 causes the NVE of 1609 to be mir 0. The
+  resulting formula is:</p>
+
+<table class="calculation">
+  <tr>
+    <td>JD<sub>UT</sub></td>
+    <td>= 686.971033153 * mir + 2308805.79636</td>
+  </tr>
+</table>
+
+<p>For mir = 0, the Julian Date for the NVE is therefore 2308805.79636.</p>
+
+<p>Using formulas adapted from <a
+  href="https://www.amazon.com/Numerical-Recipes-3rd-Scientific-Computing/dp/0521880688"
+  target="_blank">Numerical Recipes in C: The Art of Scientific Computing</a>, the Gregorian
+  Calendar datetime corresponding to this Julian Date is found to be 12 March 1609, 7:06:46 UTC.
+</p>
+
+<p>The data points provided by Meeus fit this line very closely, with a maximum error of only about
+  &plusmn;0.03 days, or 43 minutes and 12 seconds. This may seem a large inaccuracy, but fortunately
+  this is not the precise start datetime for the epoch that is required. The task now is to
+  determine the start of that sol on Mars, which we can calculate with slightly better accuracy, and
+  will be the same even if the calculation of the NVE is off by as much as 42.3 minutes.</p>
+
+<p>From the Julian Date for the NVE we can calculate MTC, i.e. the local time of sol at 0°
+  longitude. The original formulae to make this calculation come from Allison and McEwen, 2000, <a
+    href="/sites/default/files/pdf/Allison &amp; McEwen, 2000, A post-Pathfinder evaluation of areocentric solar coordinates with improved timing recipes for Mars seasonal:diurnal climate studies.pdf"
+    title="Allison and McEwen, A post-Pathfinder evaluation of aerocentric solar coordinates with improved timing recipes for Mars seasonal/diurnal climate studies"><i>A
+    post-Pathfinder evaluation of aerocentric solar coordinates with improved timing recipes for
+    Mars seasonal/diurnal climate studies</i></a>, although updates to the formulae have since been
+  made, as described at this page on the NASA Goddard website: <a
+    href="https://www.giss.nasa.gov/tools/mars24/help/algorithm.html" target="_blank">Mars24
+    Sunclock — Time on Mars — Algorithm and Worked Examples</a>.</p>
+
+<p>The local time of sol is calculated as follows.</p>
+
+<p><b>Step 1. Calculate the number of Julian centuries before the start of the year 2000.</b></p>
+
+<table class="calculation">
+  <tr>
+    <td><i>T</i></td>
+    <td>= (JD<sub>UT</sub> - 2451545.0) / 36525</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= (2308805.79636 - 2451545.0) / 36525</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= -3.90798641025</td>
+  </tr>
+</table>
+
+<p><b>Step 2. Calculate the difference in seconds between TT (Terrestrial Time) and UTC (Universal
+  Coordinated Time).</b></p>
+
+<p>For dates before 1972, the following formula is used:</p>
+
+<table class="calculation">
+  <tr>
+    <td><i>D</i></td>
+    <td>= TT - UTC</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 64.184 + 59 <i>T</i> - 51.2 <i>T</i><sup>2</sup> - 67.1 <i>T</i><sup>3</sup> - 16.4
+      <i>T</i><sup>4</sup></td>
+  </tr>
+</table>
+
+<p>Substituting our calculated value for <i>T</i> gives <i>D</i> = -768.74 seconds.</p>
+
+<p>Note, this is only an approximate value. The Mars24 Sunclock page doesn&rsquo;t indicate the
+  level of accuracy for this formula when used with 17<sup>th</sup>-century datetimes, however, to
+  give you some indication, the earlier formula given in the original Allison and McEwen paper is
+  accurate to within 11 seconds for 19<sup>th</sup> and 20<sup>th</sup> century dates. The updated
+  formula is more accurate, but at the same time, the further back in the past, the greater the
+  inaccuracy. The result is probably only accurate to within about 10–20 seconds.</p>
+
+<p><b>Step 3. Calculate the Julian Date in Terrestrial Time.</b></p>
+
+<table class="calculation">
+  <tr>
+    <td>JD<sub>TT</sub></td>
+    <td>= JD<sub>UT</sub> + (<i>D</i> / 86400)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 2308805.79636 + (-768.74 / 86400)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 2308805.78747</td>
+  </tr>
+</table>
+
+<p><b>Step 4. Calculate the Mars Sol Date (MSD).</b></p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/Timekeeping_on_Mars#Sols" target="_blank">Mars Sol
+  Date</a> is a proposed Martian equivalent of the Julian Date. It appears in the Allison and McEwen
+  paper, and was presumably invented by them or someone in the Pathfinder team.</p>
+
+<p>This calculation is done by subtracting an offset, then dividing by the number of days per sol
+  (1.0274912517).</p>
+
+<table class="calculation">
+  <tr>
+    <td>MSD</td>
+    <td>= (JD<sub>TT</sub> - 2405522.0028779) / 1.0274912517</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= (2308805.78747 - 2405522.0028779) / 1.0274912517</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= -94128.50499</td>
+  </tr>
+</table>
+
+<p><b>Step 5. Calculate MTC (Coordinated Mars Time).</b></p>
+
+<table class="calculation">
+  <tr>
+    <td>MTC</td>
+    <td>= MSD - floor(MSD)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= -94128.50499 - (-94129)</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 0.49501 sols</td>
+  </tr>
+</table>
+
+<p>(The function floor() rounds a value down to the nearest integer.)</p>
+
+<p>This gives the time of day as a fraction of a sol. Therefore, the NVE occurred just before noon
+  on this sol.</p>
+
+<p>The final step is to calculate the Julian Date of the start of that sol (i.e. midnight), which
+  will mark the beginning of the first sol of mir 0.</p>
+
+<p>Since Julian Dates are a number of days, we need to subtract a value in days from the Julian Date
+  of the NVE to find the Julian Date at M:000.000 on that particular sol. This can be calculated by
+  converting the time of sol to days:</p>
+
+<table class="calculation">
+  <tr>
+    <td>MTC<sub>days</sub></td>
+    <td>= 0.49501 / 1.0274912517</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 0.50862 days</td>
+  </tr>
+</table>
+
+<p>Subtracting this value gives the Julian Date of midnight on sol 1 of mir 0:</p>
+
+<table class="calculation">
+  <tr>
+    <td>JD<sub>UT</sub></td>
+    <td>= 2308805.79636 - 0.50862</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>= 2308805.28774</td>
+  </tr>
+</table>
+
+<p>This equals 11 March 1609, 18:54:21 UTC.</p>

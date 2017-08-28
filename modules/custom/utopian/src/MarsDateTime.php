@@ -136,7 +136,7 @@ class MarsDateTime {
    */
   public static function northernVernalEquinox($mir) {
 //    $jd = 686.971033153 * $mir + 2308805.796363; // earlier calc
-    $jd = 686.97103295817 * $mir + 2308806.2960603;
+    $jd = 686.971032958 * $mir + 2308806.29606;
     return MarsDateTime::fromJulianDate($jd);
   }
 }
