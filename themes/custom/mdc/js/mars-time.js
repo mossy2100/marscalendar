@@ -9,6 +9,10 @@ var SECONDS_PER_SOL = 88775.244147;
 var SECONDS_PER_DAY = 86400;
 var DAYS_PER_SOL = SECONDS_PER_SOL / SECONDS_PER_DAY;
 
+var MS_PER_SOL = SECONDS_PER_SOL * 1000;
+var MS_PER_ZODE = MS_PER_SOL / 10;
+var MS_PER_MICROSOL = MS_PER_SOL / 1e6;
+
 var SOLS_PER_SHORT_WEEK = 6;
 var SOLS_PER_LONG_WEEK = 7;
 var SOLS_PER_SHORT_MONTH = 27;
@@ -18,6 +22,7 @@ var SOLS_PER_LONG_QUARTER = 168;
 var SOLS_PER_SHORT_MIR = 668;
 var SOLS_PER_LONG_MIR = 669;
 var SOLS_PER_MIR = 668.591;
+var SOLS_PER_KILOMIR = SOLS_PER_MIR * 1000;
 
 var WEEKS_PER_MONTH = 4;
 var WEEKS_PER_QUARTER = 24;
@@ -146,19 +151,18 @@ function timestamp2utopian(timestamp, timeZone) {
   // - Kilomir  0 is from     0 to  999
   // - Kilomir  1 is from  1000 to 1999
   var kilomir;
-  var solsPerKilomir = SOLS_PER_MIR * 1000;
   if (rem > 0) {
-    kilomir = Math.floor(rem / solsPerKilomir);
+    kilomir = Math.floor(rem / SOLS_PER_KILOMIR);
   }
   else if (rem < 0) {
-    kilomir = Math.ceil(rem / solsPerKilomir) - 1;
+    kilomir = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
   }
   else { // rem == 0
     kilomir = 0;
   }
 
   // Adjust so remainder is positive.
-  rem -= kilomir * solsPerKilomir;
+  rem -= kilomir * SOLS_PER_KILOMIR;
 
   // Calculate the mir.
   var mirs = Math.floor(rem / SOLS_PER_MIR);
