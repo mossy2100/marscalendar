@@ -340,8 +340,7 @@ function utopianMonthName(month, abbrev) {
 
 /**
  * Names and abbreviated names of the sols of the week.
- * Note, unlike ISO 8601, which designates Monday as the first day of the week, and therefore
- * Sunday as the last, in the Utopian Calendar, Sunsol is the first sol of the week.
+ * Following ISO 8601, the week begins with Lunasol (Martian Monday) and ends with Sunsol.
  *
  * @var {array}
  */
