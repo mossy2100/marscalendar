@@ -22,19 +22,21 @@ echo "MSD: " . $nve->getMarsSolDate() . "\n";
 $mtc = $nve->getMTC();
 echo "MTC of the NVE, sols: " . $mtc . "\n";
 
-$mtc_days = $mtc * MarsDateTime::DAYS_PER_SOL;
+$mtc_days = (1 - $mtc) * MarsDateTime::DAYS_PER_SOL;
 echo "MTC of the NVE, days: " . $mtc_days . "\n";
 
 // Epoch
-$jd_epoch = $jd_nve - $mtc_days;
+$jd_epoch = $jd_nve + $mtc_days;
 $epoch = MarsDateTime::fromJulianDate($jd_epoch);
 
 echo "Mars Epoch Begin (the MTC midnight before NVE 0)\n";
 
-echo "Julian Date: " . $jd_epoch . "\n";
-echo "Datetime: " . $epoch->getDateTime() . "\n";
+echo "Julian Date of epoch start: " . $jd_epoch . "\n";
+echo "Datetime of epoch start: " . $epoch->getDateTime() . "\n";
 
 echo "MSD: " . $epoch->getMarsSolDate() . "\n";
 
 $mtc_epoch = $epoch->getMTC();
-echo "MTC of the epoch beginning, sols: " . $mtc_epoch . "\n";
+echo "MTC of the epoch start, sols: " . $mtc_epoch . "\n";
+$mils = round($mtc_epoch * 1e6) / 1e3;
+echo " = M:$mils\n";

@@ -956,12 +956,19 @@ class StarDateTime extends DateTime {
    *
    * Formulae from:
    * @see https://www.giss.nasa.gov/tools/mars24/help/algorithm.html
+   * and Morrison and Stephenson - Historical Values of the Earth's Clock Error ΔT and the
+   * Calculation of Eclipses
    *
    * @return float
    */
   public function ttMinusUtc() {
-    $dt = new StarDateTime(1972, 1, 1, 'UTC');
-    if ($this < $dt) {
+    $dt1 = new StarDateTime(1770, 1, 1, 'UTC');
+    $dt2 = new StarDateTime(1972, 1, 1, 'UTC');
+    if ($this < $dt1) {
+      $c = (1820 - $this->getYear()) / 100;
+      $d = -20 + (32 * pow($c, 2));
+    }
+    elseif ($this < $dt2) {
       $c = ($this->toJulianDate() - 2451545.0) / 36525;
       $d = 64.184 + (59 * $c) - (51.2 * pow($c, 2)) - (67.1 * pow($c, 3)) - (16.4 * pow($c, 4));
     }

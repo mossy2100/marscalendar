@@ -28,7 +28,7 @@ class MarsDateTime {
    * Number of Terran days in a sol.
    * @see https://www.wikiwand.com/en/Timekeeping_on_Mars
    */
-  const DAYS_PER_SOL = self::SECONDS_PER_SOL / StarDateTime::SECONDS_PER_DAY;
+  const DAYS_PER_SOL = 1.0274912517;
 
   /**
    * Tropical mir length, based on northern vernal equinox,
@@ -135,7 +135,8 @@ class MarsDateTime {
    * @return self
    */
   public static function northernVernalEquinox($mir) {
-    $jd = 686.971033153 * $mir + 2308805.796363;
+//    $jd = 686.971033153 * $mir + 2308805.796363; // earlier calc
+    $jd = 686.97103295817 * $mir + 2308806.2960603;
     return MarsDateTime::fromJulianDate($jd);
   }
 }

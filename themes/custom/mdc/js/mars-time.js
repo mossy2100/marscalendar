@@ -39,7 +39,7 @@ var MONTHS_PER_MIR = 24;
  *
  * @see http://marscalendar.com/epoch
  */
-var EPOCH_START = Date.UTC(1609, 2, 11, 18, 54, 21);
+var EPOCH_START = Date.UTC(1609, 2, 12, 19, 19, 6);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Helper functions.

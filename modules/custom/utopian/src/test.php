@@ -174,6 +174,7 @@ function calc_line_of_best_fit($values) {
   // Calculate differences.
   $diffs = [];
   $max_diff = NULL;
+  $csv = "mir,diff\n";
   foreach ($values as list($x, $y)) {
     $y2 = $f($x);
     $dy = $y2 - $y;
@@ -182,7 +183,10 @@ function calc_line_of_best_fit($values) {
     if (is_null($max_diff) || $abs_dy > $max_diff) {
       $max_diff = $abs_dy;
     }
+    $csv .= "$x,$dy\n";
   }
+
+  file_put_contents(__DIR__ . '/differences.csv', $csv);
 
   // Return information about the line of best fit.
   return [
@@ -201,50 +205,67 @@ function calc_line_of_best_fit($values) {
 function get_mars_vernal_equinoxes() {
   $rows = file(__DIR__ . '/vernal-equinoxes-of-mars.htm');
   $values = [];
-//  $xs = [];
-//  $ys = [];
+  $xs = [];
+  $ys = [];
   $points = [];
   $mir = 141;
 
   foreach ($rows as $row) {
     preg_match_all("|<td>([^<]*)</td>|", $row, $matches);
 //    var_dump($matches);
-    $jd = (float) trim($matches[1][2]);
+
+    $date = trim($matches[1][0]);
+    $date_parts = explode(' ', $date);
+    $date_string = $date_parts[0] . '-' . substr($date_parts[1], 0, 3) . '-' . $date_parts[2];
+
+    $time = trim($matches[1][1]);
+    $dts = "$date_string $time";
+    echo $dts . "\n";
+
+    $dt = new StarDateTime($dts, 'UTC');
+    $jd = $dt->toJulianDate();
+
     $values[] = [$mir, $jd];
-//    $xs[] = $mir;
-//    $ys[] = $jd;
+    $xs[] = $mir;
+    $ys[] = $jd;
     $points[] = "$mir,$jd";
+
     $mir++;
   }
 
-//  echo implode(',', $xs) . "\n";
-//  echo implode(',', $ys) . "\n";
+  echo implode(',', $xs) . "\n";
+  echo implode(',', $ys) . "\n";
 
-  $csv = implode("\n", $points);
+  $csv = "mir,julianDate\n" . implode("\n", $points);
   file_put_contents(__DIR__ . '/mars-vernal-equinoxes.csv', $csv);
+
+  $mirs = implode(",", $xs);
+  $jds = implode(",", $ys);
+  file_put_contents(__DIR__ . '/mirs-and-julian-dates.csv', "$mirs\n\n$jds");
 
   return $values;
 }
 
 //test_msd();
 $values = get_mars_vernal_equinoxes();
-//list($gradient, $intercept, $f, $diffs) = calc_line_of_best_fit($values);
+
+list($gradient, $intercept, $f, $diffs) = calc_line_of_best_fit($values);
 $info = calc_line_of_best_fit($values);
 var_dump($info);
 
-$jd_start = $info['intercept'];
-echo "Estimated JD for epoch start: " . $jd_start . "\n";
-echo "Estimated date time for epoch start: " . StarDateTime::fromJulianDate($jd_start) . "\n";
-echo "Estimated max error: " . $info['max diff'] . "\n";
-$jd_min = $jd_start - $info['max diff'];
-echo "Estimated min JD: " . $jd_min . "\n";
-echo "Estimated min date time: " . StarDateTime::fromJulianDate($jd_min) . "\n";
-$jd_max = $jd_start + $info['max diff'];
-echo "Estimated max JD: " . $jd_max . "\n";
-echo "Estimated max date time: " . StarDateTime::fromJulianDate($jd_max) . "\n";
-
-$jd0 = test_msd($jd_start);
-test_msd($jd0);
+//$jd_start = $info['intercept'];
+//echo "Estimated JD for epoch start: " . $jd_start . "\n";
+//echo "Estimated date time for epoch start: " . StarDateTime::fromJulianDate($jd_start) . "\n";
+//echo "Estimated max error: " . $info['max diff'] . "\n";
+//$jd_min = $jd_start - $info['max diff'];
+//echo "Estimated min JD: " . $jd_min . "\n";
+//echo "Estimated min date time: " . StarDateTime::fromJulianDate($jd_min) . "\n";
+//$jd_max = $jd_start + $info['max diff'];
+//echo "Estimated max JD: " . $jd_max . "\n";
+//echo "Estimated max date time: " . StarDateTime::fromJulianDate($jd_max) . "\n";
+//
+//$jd0 = test_msd($jd_start);
+//test_msd($jd0);
 
 //test_constants();
 //
