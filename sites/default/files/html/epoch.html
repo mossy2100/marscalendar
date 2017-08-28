@@ -4,9 +4,9 @@
   the mir begins with the northern vernal equinox (NVE), the next question is which one will define
   the beginning of mir 0.</p>
 
-<p>The Martian NVE that occurred at 12 March 1609, 7:06:46 UTC is used. This particular NVE makes a
-  good starting point for the calendar because this is approximately when telescopes started being
-  used to study Mars. This epoch is called the <b>Telescopic Epoch</b>.</p>
+<p>The Martian NVE that occurred at approximately 12 March 1609, 7:06:46 UTC is used. This
+  particular NVE makes a good starting point for the calendar because this is approximately when
+  telescopes started being used to study Mars. This epoch is called the <b>Telescopic Epoch</b>.</p>
 
 <p>The year 1609 represented the beginning of a new relationship between humans and Mars. It was the
   year Galileo first started using the newly-invented telescope to observe Mars, as well as other
@@ -29,14 +29,13 @@
   start point of the calendar is the start of this sol, about half a sol earlier, at approximately
   11 March 1609, 18:54:21 UTC.</p>
 
-<p>Although I have shown this datetime accurate to the second, it's probably only accurate to about
-  a minute. It is difficult to perform this calculation with a high degree of accuracy because of
-  the method used (described below). Future calculations will refine this value, but for now it will
-  do.</p>
+<p>Although I have shown this datetime accurate to the second, it&apos;s probably only accurate to
+  about a minute. It is difficult to perform this calculation with a high degree of accuracy because
+  of the method used. Future calculations will refine this value, but for now it will suffice.</p>
 
 <h2>How this epoch was computed</h2>
 
-<p>The noted astronomer Jean Meeus computed the equinoxes and solstices of Mars from 1874–2126 and
+<p>The noted astronomer Jean Meeus calculated the equinoxes and solstices of Mars from 1874–2126 and
   published these in <a
     href="https://www.amazon.com/Astronomical-Table-Sun-Moon-Planets/dp/1942675038" target="_blank"
     title="Astronomical Tables of the Sun, Moon and Planets by Jean Meeus">Astronomical Tables of
@@ -48,9 +47,9 @@
   different approach.</p>
 
 <p>Using these values, I calculated a line of best fit through the data points using the method of
-  least squares, to derive a formula relating mir numbers to Julian Dates of Mars' northern venal
-  equinoxes. Specifying the NVE of 1874 as mir 141 causes the NVE of 1609 to be mir 0. The resulting
-  formula is:</p>
+  least squares, to derive a formula relating mir numbers to Julian Dates of Mars&apos; northern
+  venal equinoxes. Specifying the NVE of 1874 as mir 141 causes the NVE of 1609 to be mir 0. The
+  resulting formula is:</p>
 
 <table class="calculation">
   <tr>
@@ -64,14 +63,14 @@
 <p>Using formulas adapted from <a
   href="https://www.amazon.com/Numerical-Recipes-3rd-Scientific-Computing/dp/0521880688"
   target="_blank">Numerical Recipes in C: The Art of Scientific Computing</a>, the Gregorian
-  Calendar datetime corresponding to this Julian Date is calculated as 7:06:46 UTC, 12 March 1609.
+  Calendar datetime corresponding to this Julian Date is found to be 12 March 1609, 7:06:46 UTC.
 </p>
 
-<p>The data points provided by Meeus fit this line very closely, with a maximum error of 0.03 days,
-  or 43 minutes and 12 seconds. This may seem a large inaccuracy, but fortunately this is not the
-  precise start datetime for the epoch that is required. The task now is to determine the start of
-  that sol on Mars, which we can calculate with slightly better accuracy, and will be the same even
-  if the calculation of the NVE is off by as much as 42.3 minutes.</p>
+<p>The data points provided by Meeus fit this line very closely, with a maximum error of only about
+  &plusmn;0.03 days, or 43 minutes and 12 seconds. This may seem a large inaccuracy, but fortunately
+  this is not the precise start datetime for the epoch that is required. The task now is to
+  determine the start of that sol on Mars, which we can calculate with slightly better accuracy, and
+  will be the same even if the calculation of the NVE is off by as much as 42.3 minutes.</p>
 
 <p>From the Julian Date for the NVE we can calculate MTC, i.e. the local time of sol at 0°
   longitude. The original formulae to make this calculation come from Allison and McEwen, 2000, <a
@@ -121,12 +120,12 @@
 
 <p>Substituting our calculated value for <i>T</i> gives <i>D</i> = -768.74 seconds.</p>
 
-<p>Note, this is only an approximate value. The Mars24 Sunclock page doesn't indicate the level of
-  accuracy for this formula when used with 17<sup>th</sup>-century datetimes, however, to give you
-  some indication, the earlier formula given in the original Allison and McEwen paper is accurate to
-  within 11 seconds for 19th and 20th century dates. The updated formula is more accurate, but at
-  the same time, the further back in the past, the greater the inaccuracy. The result is probably
-  only accurate to within about 10–20 seconds.</p>
+<p>Note, this is only an approximate value. The Mars24 Sunclock page doesn&apos;t indicate the level
+  of accuracy for this formula when used with 17<sup>th</sup>-century datetimes, however, to give
+  you some indication, the earlier formula given in the original Allison and McEwen paper is
+  accurate to within 11 seconds for 19<sup>th</sup> and 20<sup>th</sup> century dates. The updated
+  formula is more accurate, but at the same time, the further back in the past, the greater the
+  inaccuracy. The result is probably only accurate to within about 10–20 seconds.</p>
 
 <p><b>Step 3. Calculate the Julian Date in Terrestrial Time.</b></p>
 
