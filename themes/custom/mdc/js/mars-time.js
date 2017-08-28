@@ -5,11 +5,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Constants.
 
-var MS_PER_SOL = 88775244.09;
-var MS_PER_ZODE = 8877524.409;
-var MS_PER_MIL = 88775.24409;
-var MS_PER_TAL = 887.7524409;
-var MS_PER_MICROSOL = 88.77524409;
+var SECONDS_PER_SOL = 88775.244147;
+var SECONDS_PER_DAY = 86400;
+var DAYS_PER_SOL = SECONDS_PER_SOL / SECONDS_PER_DAY;
 
 var SOLS_PER_SHORT_WEEK = 6;
 var SOLS_PER_LONG_WEEK = 7;
@@ -20,7 +18,6 @@ var SOLS_PER_LONG_QUARTER = 168;
 var SOLS_PER_SHORT_MIR = 668;
 var SOLS_PER_LONG_MIR = 669;
 var SOLS_PER_MIR = 668.591;
-var SOLS_PER_KILOMIR = 668591;
 
 var WEEKS_PER_MONTH = 4;
 var WEEKS_PER_QUARTER = 24;
@@ -50,7 +47,7 @@ var MONTHS_PER_MIR = 24;
  * This was a more recent variation of the Darian Calendar. For some reason they changed the
  * epoch, although I don't know why. Maybe they recalculated it.
  */
-var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 36);
+// var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 36);
 
 /**
  * If I use this page:
@@ -62,6 +59,28 @@ var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 36);
  * gives
  * 1609 March 10, 18:47:08
  */
+// var EPOCH_START = Date.UTC(1609, 2, 10, 18, 47, 8);
+
+/**
+ * Updated epoch start date! This is as close as I can get with current information.
+ *
+ * Calculated by scraping values from http://ops-alaska.com/time/gangale_mst/VernalEquinox.htm
+ * to get a line of best fit, as follows:
+ *
+ *   julianDate = 686.971033153 * mir + 2308805.79636
+ *
+ * The Julian Date for the start of mir 0 is therefore 2308805.79636.
+ * This equals 1609-03-12T07:06:46Z
+ *
+ * The maximimum deviation of data points from LOBF is 0.0293864561245 days (about 42.3 minutes).
+ * This gives a range of the estimated JD for the start of mir 0 of
+ *   1609-03-12T06:24:27Z ... 1609-03-12T07:49:05Z
+ *
+ * At this datetime, at MTC, the local time (in mils) is 504.148, i.e. slightly after noon.
+ * That sol therefore starts 0.518 days earlier, which is JD 2308805.27836
+ * This equals 1609-03-11T18:40:50Z
+ */
+var EPOCH_START = Date.UTC(1609, 2, 11, 18, 40, 50);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Helper functions.
@@ -173,18 +192,19 @@ function timestamp2utopian(timestamp, timeZone) {
   // - Kilomir  0 is from     0 to  999
   // - Kilomir  1 is from  1000 to 1999
   var kilomir;
+  var solsPerKilomir = SOLS_PER_MIR * 1000;
   if (rem > 0) {
-    kilomir = Math.floor(rem / SOLS_PER_KILOMIR);
+    kilomir = Math.floor(rem / solsPerKilomir);
   }
   else if (rem < 0) {
-    kilomir = Math.ceil(rem / SOLS_PER_KILOMIR) - 1;
+    kilomir = Math.ceil(rem / solsPerKilomir) - 1;
   }
   else { // rem == 0
     kilomir = 0;
   }
 
   // Adjust so remainder is positive.
-  rem -= kilomir * SOLS_PER_KILOMIR;
+  rem -= kilomir * solsPerKilomir;
 
   // Calculate the mir.
   var mirs = Math.floor(rem / SOLS_PER_MIR);

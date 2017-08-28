@@ -490,6 +490,16 @@ sub {
   .intercalary {
     background-color: $grey2;
   }
+
+  table.calculation {
+    margin-left: 20px;
+    margin-right: 0;
+
+    td {
+      padding: 2px;
+      border: none;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -580,6 +590,11 @@ span.tab {
   display: inline-block;
   width: 75px;
   margin-left: 20px;
+}
+
+.fixed-width25 {
+  display: inline-block;
+  width: 25px;
 }
 
 .fixed-width50 {
