@@ -347,12 +347,12 @@ function utopianMonthName(month, abbrev) {
  */
 var UTOPIAN_SOL_NAMES = [
   undefined,
-  "Phobosol",
+  "Lunasol",
   "Earthsol",
   "Venusol",
   "Mercurisol",
   "Jupitersol",
-  "Deimosol",
+  "Saturnsol",
   "Sunsol"
 ];
 

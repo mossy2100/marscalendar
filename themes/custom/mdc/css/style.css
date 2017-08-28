@@ -10200,12 +10200,27 @@ blockquote {
 }
 
 /* line 752, ../sass/_overrides.scss */
+.mars-weekend {
+  background-color: #ffd9d9;
+}
+
+/* line 756, ../sass/_overrides.scss */
 .earth {
   background-color: #bfdfff;
 }
-/* line 755, ../sass/_overrides.scss */
+/* line 759, ../sass/_overrides.scss */
 .earth,
 .earth th,
 .earth td {
   border-color: #80bfff;
+}
+
+/* line 766, ../sass/_overrides.scss */
+.earth-weekend {
+  background-color: #d9ecff;
+}
+
+/* line 770, ../sass/_overrides.scss */
+.weekday {
+  background-color: #efefef;
 }

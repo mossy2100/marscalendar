@@ -749,6 +749,10 @@ blockquote {
   }
 }
 
+.mars-weekend {
+  background-color: lighten($autumn, 5%);
+}
+
 .earth {
   background-color: $winter;
 
@@ -757,4 +761,12 @@ blockquote {
   td {
     border-color: $winter-border;
   }
+}
+
+.earth-weekend {
+  background-color: lighten($winter, 5%);
+}
+
+.weekday {
+  background-color: #efefef;
 }

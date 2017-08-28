@@ -66,12 +66,12 @@ class UtopianController {
     ];
 
     $day_names = [
-      1 => 'Phobosol',
+      1 => 'Lunasol',
       'Earthsol',
       'Mercurisol',
       'Jupitersol',
       'Venusol',
-      'Deimosol',
+      'Saturnsol',
       'Sunsol',
     ];
 
@@ -95,7 +95,8 @@ class UtopianController {
       // Days of the week header.
       echo "  <tr class='daysOfWeek squares'>\n";
       for ($dow = 1; $dow <= 7; $dow++) {
-        echo "    <th>" . $day_names[$dow][0] . "</th>\n";
+        $abbrev = substr($day_names[$dow], 0, $dow <= 5 ? 1 : 2);
+        echo "    <th>$abbrev</th>\n";
       }
       echo "  </tr>\n";
 
