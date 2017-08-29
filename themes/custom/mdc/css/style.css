@@ -10201,7 +10201,7 @@ blockquote {
 
 /* line 752, ../sass/_overrides.scss */
 .mars-weekend {
-  background-color: #ffd9d9;
+  background-color: #ffffbf;
 }
 
 /* line 756, ../sass/_overrides.scss */
@@ -10217,10 +10217,15 @@ blockquote {
 
 /* line 766, ../sass/_overrides.scss */
 .earth-weekend {
-  background-color: #d9ecff;
+  background-color: #d4ffbf;
 }
 
 /* line 770, ../sass/_overrides.scss */
 .weekday {
   background-color: #efefef;
+}
+
+/* line 774, ../sass/_overrides.scss */
+.weekend {
+  color: #c00;
 }

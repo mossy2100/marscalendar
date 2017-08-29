@@ -95,8 +95,15 @@ class UtopianController {
       // Days of the week header.
       echo "  <tr class='daysOfWeek squares'>\n";
       for ($dow = 1; $dow <= 7; $dow++) {
-        $abbrev = substr($day_names[$dow], 0, $dow <= 5 ? 1 : 2);
-        echo "    <th>$abbrev</th>\n";
+        if ($dow <= 5) {
+          $abbrev = $day_names[$dow][0];
+          $class = '';
+        }
+        else {
+          $abbrev = substr($day_names[$dow], 0, 2);
+          $class = " class='weekend'";
+        }
+        echo "    <th{$class}>$abbrev</th>\n";
       }
       echo "  </tr>\n";
 
@@ -108,6 +115,10 @@ class UtopianController {
 
           $sol = ($w - 1) * 7 + $dow;
           $td = $sol;
+
+          if ($dow >= 6) {
+            $classes[] = 'weekend';
+          }
 
           // Add classes for special sols.
           if ($m == 1 && $sol == 1) {
