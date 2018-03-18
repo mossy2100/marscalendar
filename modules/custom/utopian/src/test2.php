@@ -5,7 +5,7 @@
  */
 
 require "util.php";
-require "StarDateTime.php";
+require "EarthDateTime.php";
 require "MarsDateTime.php";
 
 // NVE

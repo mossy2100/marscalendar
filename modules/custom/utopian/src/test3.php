@@ -5,16 +5,16 @@
  */
 
 require "util.php";
-require "StarDateTime.php";
+require "EarthDateTime.php";
 require "MarsDateTime.php";
 
 // Julian Date for the 1609 NVE.
 $jd = 2308806.29606;
 echo "Julian Date of 1609 NVE = $jd\n";
 
-$dt_nve = StarDateTime::fromJulianDate($jd);
+$dt_nve = EarthDateTime::fromJulianDate($jd);
 echo "DT of 1609 NVE = $dt_nve\n";
-$dt_nve2 = StarDateTime::fromJulianDate2($jd);
+$dt_nve2 = EarthDateTime::fromJulianDate2($jd);
 echo "DT of 1609 NVE (method 2) = $dt_nve2\n";
 
 // Number of Julian centuries before 1820.
@@ -31,7 +31,7 @@ $err = 0.82 * $cy2;
 echo "error in ∆T = $err seconds\n";
 
 // Calculate JD(TT).
-$jdtt = $jd + $deltaT / StarDateTime::SECONDS_PER_DAY;
+$jdtt = $jd + $deltaT / EarthDateTime::SECONDS_PER_DAY;
 echo "JD_TT = $jdtt\n";
 
 // Calculate MSD.
@@ -64,5 +64,5 @@ $jd_epoch = $jd + $mtc_d;
 echo "JD midnight = $jd_epoch\n";
 
 // Get the Gregorian date time.
-$dt = StarDateTime::fromJulianDate($jd_epoch);
+$dt = EarthDateTime::fromJulianDate($jd_epoch);
 echo "Epoch start = $dt\n";

@@ -12,24 +12,15 @@
 # core
 
 # Core's dependencies are managed with Composer.
-#vendor
+/vendor
 
 # Ignore configuration files that may contain sensitive information.
-sites/*/settings*.php
+sites/*/settings.local.php
 sites/*/services*.yml
 
-# Ignore paths that contain user-generated content.
-#sites/*/files
-sites/*/private
-
-# Ignore user-uploaded files.
-sites/default/files/*
-
-# Include image, HTML, and PDF files that are wanted on both local and remote sites.
-!sites/default/files/inline-images
-!sites/default/files/month-icons
-!sites/default/files/html
-!sites/default/files/pdf
+# Ignore Drupal-generated files.
+sites/*/files
+sites/*/files/*
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
