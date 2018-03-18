@@ -89,7 +89,7 @@ class UtopianController {
       echo "</thead>\n";
       echo "<tbody>\n";
       echo "  <tr>\n";
-      echo "    <td class='monthIcon' colspan='7'><img src='/sites/default/files/month-icons/$month.png'></td>\n";
+      echo "    <td class='monthIcon' colspan='7'><img src='/sites/default/media/images/constellations/$month.png'></td>\n";
       echo "  </tr>\n";
 
       // Days of the week header.
