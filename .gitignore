@@ -12,7 +12,8 @@
 # core
 
 # Core's dependencies are managed with Composer.
-/vendor
+vendor
+!core/assets/vendor
 
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings.local.php
@@ -20,20 +21,9 @@ sites/*/services*.yml
 
 # Ignore Drupal-generated files.
 sites/*/files
-sites/*/files/*
 
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
-
-# If you prefer to store your .gitignore file in the sites/ folder, comment
-# or delete the previous settings and uncomment the following ones, instead.
-
-# Ignore configuration files that may contain sensitive information.
-# */settings*.php
-
-# Ignore paths that contain user-generated content.
-# */files
-# */private
 
 # Ignore SimpleTest multi-site environment.
 # simpletest
@@ -51,3 +41,7 @@ core/phpunit.xml
 # sass cache
 .sass-cache
 themes/**/.sass-cache
+
+# Security review files
+modules/contrib/security_review/file_write_test.*
+modules/contrib/security_review/IGNOREME.txt
