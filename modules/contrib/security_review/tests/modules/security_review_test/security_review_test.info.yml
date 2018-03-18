@@ -5,8 +5,8 @@ package: Testing
 dependencies:
   - security_review
 
-# Information added by Drupal.org packaging script on 2016-10-20
+# Information added by Drupal.org packaging script on 2018-02-20
 version: '8.x-1.x-dev'
 core: '8.x'
 project: 'security_review'
-datestamp: 1476978840
+datestamp: 1519159984

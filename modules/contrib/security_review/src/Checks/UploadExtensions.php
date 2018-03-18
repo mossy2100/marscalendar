@@ -1,13 +1,8 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\security_review\Checks\UploadExtensions.
- */
-
 namespace Drupal\security_review\Checks;
 
-use Drupal\Core\Entity\Entity;
+use Drupal\Core\Link;
 use Drupal\Core\Url;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\security_review\Check;
@@ -123,11 +118,11 @@ class UploadExtensions extends Check {
           if ($entity->getTargetEntityTypeId() == 'node') {
             $url_params['node_type'] = $entity->getTargetBundle();
           }
-          $url = Url::fromRoute(
-            'entity.field_config.' . $entity->getTargetEntityTypeId() . '_field_edit_form',
+          $items[] = Link::createFromRoute(
+            $item,
+            sprintf('entity.field_config.%s_field_edit_form', $entity->getTargetEntityTypeId()),
             $url_params
           );
-          $items[] = $this->l($item, $url);
         }
         catch (RouteNotFoundException $e) {
           $items[] = $item;
