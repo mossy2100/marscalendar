@@ -25,9 +25,6 @@ sites/*/files
 # Ignore SimpleTest multi-site environment.
 sites/simpletest
 
-# Ignore SimpleTest multi-site environment.
-# simpletest
-
 # Ignore core phpcs.xml and phpunit.xml.
 core/phpcs.xml
 core/phpunit.xml
