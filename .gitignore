@@ -19,7 +19,7 @@ vendor
 sites/*/settings.local.php
 sites/*/services*.yml
 
-# Ignore Drupal-generated files.
+# Ignore Drupal-generated and user-uploaded files.
 sites/*/files
 
 # Ignore SimpleTest multi-site environment.

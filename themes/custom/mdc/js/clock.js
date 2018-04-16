@@ -48,7 +48,7 @@
     }
 
     // Load the clock HTML.
-    $block.load("/sites/default/files/html/clock.html");
+    $block.load("/sites/default/media/html/clock.html");
 
     // Display the time, updating every microsol.
     showTime();
