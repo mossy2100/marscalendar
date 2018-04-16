@@ -21,7 +21,7 @@
 
     // Datetime.
     var marsDatetimeStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
-      padDigits(marsNow.solOfMonth, 2) + ':' + formatMarsTime(marsNow.mils);
+      padDigits(marsNow.solOfMonth, 2) + 'T' + formatMarsTime(marsNow.mils);
     $('#mars-clock-datetime').html(marsDatetimeStr);
 
     // Month name.
@@ -42,16 +42,10 @@
 
   $(function() {
     // Check the clock is visible.
-    var $block = $("#block-utopiandateandtime");
-    if (!$block.length) {
-      return;
+    if ($("#block-utopiandateandtime").length) {
+      // Display the date and time.
+      showTime();
     }
-
-    // Load the clock HTML.
-    $block.load("/sites/default/media/html/clock.html");
-
-    // Display the time, updating every microsol.
-    showTime();
   });
 
 })(jQuery);
