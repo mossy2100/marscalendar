@@ -3,7 +3,7 @@
  * Loop to run the Mars clock.
  */
 
-(function($) {
+(function ($) {
 
   /**
    * Update the clocks every microsol.
@@ -21,7 +21,7 @@
 
     // Datetime.
     var marsDatetimeStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
-      padDigits(marsNow.solOfMonth, 2) + 'T' + formatMarsTime(marsNow.mils);
+      padDigits(marsNow.solOfMonth, 2) + ':' + formatMarsTime(marsNow.mils);
     $('#mars-clock-datetime').html(marsDatetimeStr);
 
     // Month name.
@@ -40,7 +40,7 @@
     setTimeout(showTime, MS_PER_MICROSOL);
   }
 
-  $(function() {
+  $(function () {
     // Check the clock is visible.
     if ($("#block-utopiandateandtime").length) {
       // Display the date and time.
