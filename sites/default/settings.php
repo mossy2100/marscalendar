@@ -539,7 +539,7 @@ if ($settings['hash_salt']) {
  * See https://www.drupal.org/documentation/modules/file for more information
  * about securing private files.
  */
-$settings['file_private_path'] = '/Users/shaun/Dropbox/SITES/marscalendar.com/private';
+# $settings['file_private_path'] = '';
 
 /**
  * Session write interval:
