@@ -37,11 +37,11 @@
   <li>Times are usually displayed with microsol resolution by showing the number of millisols to 3 decimal places. Both
     the number of millisols and microsols are zero-padded to 3 digits, e.g. <b>012.345, 888.222, 500.000</b>.
   </li>
-  <li>A date and time can be combined into a single datetime string using the ‘<strong>T</strong>' as a separator
-    between the date and the time, like in ISO 8601, e.g. <b>M216/17/08T123.456</b>.
+  <li>As in ISO 8601, a date and time can be combined into a single datetime string using the ‘<strong>T</strong>' as a
+    separator between the date and the time, e.g. <b>M216/17/08T123.456</b>.
   </li>
-  <li>When displayed without a date, Martian times can be prefixed with ‘<b>MT</b>’ to distinguish them from ordinary
-    numbers, e.g. <b>MT012.345, MT567.222</b>.
+  <li>When displayed without a date, Martian times can optionally be prefixed with ‘<b>MT</b>’ to distinguish them from
+    ordinary numbers if necessary, e.g. <b>MT012.345, MT567.222</b>.
   </li>
   <li>Times can also be shown with only millisol resolution, e.g. <b>MT012</b>, <b>MT777</b>.</li>
   <li>If required, the timezone can be shown as the offset in decisols, in the range –5, –4, ... –1, +0, +1, ... +5,
@@ -53,9 +53,9 @@
   <caption>Uses of the format.</caption>
   <thead>
   <tr>
-    <th>Display</th>
-    <th>Format</th>
-    <th>Example(s)</th>
+    <th style="width: 30%">Display</th>
+    <th style="width: 35%">Format</th>
+    <th style="width: 35%">Example(s)</th>
   </tr>
   </thead>
   <tbody>
