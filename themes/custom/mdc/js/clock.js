@@ -21,7 +21,7 @@
 
     // Datetime.
     var marsDatetimeStr = 'M' + marsNow.mir + '/' + padDigits(marsNow.month, 2) + '/' +
-      padDigits(marsNow.solOfMonth, 2) + ':' + formatMarsTime(marsNow.mils);
+      padDigits(marsNow.solOfMonth, 2) + 'T' + formatMarsTime(marsNow.mils);
     $('#mars-clock-datetime').html(marsDatetimeStr);
 
     // Month name.

@@ -31,21 +31,22 @@
     prefix will prevent confusion with Terran dates better than an unusual separator.
   </li>
   <li>As in ISO 8601, the date parts are arranged from most to least significant, i.e.
-    <b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}, e.g. <b>M216/24/17</b>.
+    <b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}, e.g. <b>M216/17/08</b>.
   </li>
-  <li>As in ISO 8601, month and sol parts of the date are zero-padded to 2 digits, e.g. <b>M216/01/05</b>.
-  </li>
+  <li>As in ISO 8601, month and sol parts of the date are zero-padded to 2 digits, e.g. <b>M216/17/08</b>.</li>
   <li>Times are usually displayed with microsol resolution by showing the number of millisols to 3 decimal places. Both
     the number of millisols and microsols are zero-padded to 3 digits, e.g. <b>012.345, 888.222, 500.000</b>.
   </li>
-  <li>A date and time can be combined into a single datetime string using the ‘<b>:</b>’ (colon) as a separator between
-    the date and the time, e.g. <b>M216/17/22:123.456</b>. (This part of the notation was introduced by the <a
-      href="http://mars-sim.sourceforge.net/" target="_blank">Mars Simulation</a> project, and it works very well.)
+  <li>A date and time can be combined into a single datetime string using the ‘<strong>T</strong>' as a separator
+    between the date and the time, like in ISO 8601, e.g. <b>M216/17/08T123.456</b>.
   </li>
-  <li>When displayed without a date, Martian times are prefixed with ‘<b>M:</b>’ to distinguish them from ordinary
-    numbers, e.g. <b>M:012.345, M:567.222</b>.
+  <li>When displayed without a date, Martian times can be prefixed with ‘<b>MT</b>’ to distinguish them from ordinary
+    numbers, e.g. <b>MT012.345, MT567.222</b>.
   </li>
-  <li>Times can also be shown with only millisol resolution, e.g. <b>M:012</b>, <b>M:777</b>.</li>
+  <li>Times can also be shown with only millisol resolution, e.g. <b>MT012</b>, <b>MT777</b>.</li>
+  <li>If required, the timezone can be shown as the offset in decisols, in the range –5, –4, ... –1, +0, +1, ... +5,
+    e.g. <b>M216/17/08T123.456+3</b>.
+  </li>
 </ul>
 
 <table>
@@ -61,8 +62,7 @@
   <tr>
     <td>Mir</td>
     <td><b>M</b>{mir}</td>
-    <td>M216 <br> M–95
-    </td>
+    <td>M216<br/> M–95</td>
   </tr>
   <tr>
     <td>Month</td>
@@ -72,28 +72,32 @@
   <tr>
     <td>Date</td>
     <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}</td>
-    <td>M216/17/08 <br> M–100/04/23
-    </td>
+    <td>M216/17/08<br/> M–100/04/23</td>
   </tr>
   <tr>
     <td>Time, low precision</td>
-    <td><b>M:</b>{mil}</td>
-    <td>M:123</td>
+    <td><b>MT</b>{mil}</td>
+    <td>MT123</td>
   </tr>
   <tr>
     <td>Time, high precision</td>
-    <td><b>M:</b>{mil}<b>.</b>{mic}</td>
-    <td>M:123.456</td>
+    <td><b>MT</b>{mil}<b>.</b>{mic}</td>
+    <td>MT123.456</td>
   </tr>
   <tr>
     <td>Datetime, low precision</td>
-    <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}<b>:</b>{mil}</td>
-    <td>M216/17/08:123</td>
+    <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}<b>T</b>{mil}</td>
+    <td>M216/17/08T123</td>
   </tr>
   <tr>
     <td>Datetime, high precision</td>
-    <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}<b>:</b>{mil}<b>.</b>{mic}</td>
-    <td>M216/17/08:123.456</td>
+    <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}<strong>T</strong>{mil}<b>.</b>{mic}</td>
+    <td>M216/17/08T123.456</td>
+  </tr>
+  <tr>
+    <td>Datetime with timezone</td>
+    <td><b>M</b>{mir}<b>/</b>{month}<b>/</b>{sol}<strong>T</strong>{mil}<b>.</b>{mic}{offset}</td>
+    <td>M216/17/08T123.456+3</td>
   </tr>
   </tbody>
 </table>
@@ -110,6 +114,8 @@
   <p>{mil} = Millisols as a zero-padded 3-digit integer in the range 000–999.</p>
 
   <p>{mic} = Microsols as a zero-padded 3-digit integer in the range 000–999.</p>
+
+  <p>{offset} = Number of decisols offset for the timezone.</p>
 </div>
 
 <table>
@@ -125,22 +131,22 @@
   <tr>
     <td>Midnight; start of new day/sol.</td>
     <td>00:00:00</td>
-    <td>M:000.000</td>
+    <td>MT000.000</td>
   </tr>
   <tr>
     <td>Average time of sunrise; start of morning.</td>
     <td>06:00:00</td>
-    <td>M:250.000</td>
+    <td>MT250.000</td>
   </tr>
   <tr>
     <td>Noon; start of afternoon.</td>
     <td>12:00:00</td>
-    <td>M:500.000</td>
+    <td>MT500.000</td>
   </tr>
   <tr>
     <td>Average time of sunset; start of evening.</td>
     <td>18:00:00</td>
-    <td>M:750.000</td>
+    <td>MT750.000</td>
   </tr>
   </tbody>
 </table>
