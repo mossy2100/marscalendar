@@ -1,5 +1,0 @@
-Change mecond back to tal. It's better. Check revision history to revert.
-
-Update epoch calculation.
-
-Whatever else you want to do, because it's your life, no-one else's.
