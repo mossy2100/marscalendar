@@ -770,6 +770,9 @@ $settings['file_scan_ignore_directories'] = [
 // Install profile.
 $settings['install_profile'] = 'standard';
 
+// Updated tmp folder.
+$settings['file_temp_path'] = '/var/tmp';
+
 // Config directory.
 $config_directories['sync'] = 'sites/default/files/config/sync';
 
