@@ -2,11 +2,11 @@
 
 namespace Drupal\security_review\Checks;
 
-use Drupal\Core\Entity\FieldableEntityInterface;
-use Drupal\Core\TypedData\TypedDataInterface;
+use Drupal\Core\Entity\Entity;
+use Drupal\Core\Entity\Exception\UndefinedLinkTemplateException;
+use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\security_review\Check;
 use Drupal\security_review\CheckResult;
-use Drupal\text\Plugin\Field\FieldType\TextItemBase;
 
 /**
  * Checks for Javascript and PHP in submitted content.
@@ -41,50 +41,50 @@ class Field extends Check {
     $result = CheckResult::SUCCESS;
     $findings = [];
 
+    $field_types = [
+      'text_with_summary',
+      'text_long',
+    ];
     $tags = [
       'Javascript' => 'script',
       'PHP' => '?php',
     ];
 
-    // Load all of the entities.
-    $entities = [];
-    $bundle_info = $this->entityManager()->getAllBundleInfo();
-    foreach ($bundle_info as $entity_type_id => $bundles) {
-      $current = $this->entityManager()
-        ->getStorage($entity_type_id)
-        ->loadMultiple();
-      $entities = array_merge($entities, $current);
-    }
-
-    // Search for text fields.
-    $text_items = [];
-    foreach ($entities as $entity) {
-      if ($entity instanceof FieldableEntityInterface) {
-        /** @var FieldableEntityInterface $entity */
-        foreach ($entity->getFields() as $field_list) {
-          foreach ($field_list as $field_item) {
-            if ($field_item instanceof TextItemBase) {
-              /** @var TextItemBase $item */
-              // Text field found.
-              $text_items[] = $field_item;
-            }
-          }
+    /** @var \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager */
+    $entity_type_manager = \Drupal::service('entity_type.manager');
+    /** @var \Drupal\Core\Entity\EntityFieldManagerInterface $field_manager */
+    $field_manager = \Drupal::service('entity_field.manager');
+    foreach ($field_manager->getFieldMap() as $entity_type_id => $fields) {
+      $field_storage_definitions = $field_manager->getFieldStorageDefinitions($entity_type_id);
+      foreach ($fields as $field_name => $field) {
+        if (!isset($field_storage_definitions[$field_name])) {
+          continue;
         }
-      }
-    }
-
-    // Scan the text items for vulnerabilities.
-    foreach ($text_items as $item) {
-      $entity = $item->getEntity();
-      foreach ($item->getProperties() as $property) {
-        /** @var TypedDataInterface $property */
-        $value = $property->getValue();
-        if (is_string($value)) {
-          $field_name = $property->getDataDefinition()->getLabel();
-          foreach ($tags as $vulnerability => $tag) {
-            if (strpos($value, '<' . $tag) !== FALSE) {
-              // Vulnerability found.
-              $findings[$entity->getEntityTypeId()][$entity->id()][$field_name][] = $vulnerability;
+        $field_storage_definition = $field_storage_definitions[$field_name];
+        if (in_array($field_storage_definition->getType(), $field_types)) {
+          if ($field_storage_definition instanceof FieldStorageConfig) {
+            $table = $entity_type_id . '__' . $field_name;
+            $separator = '_';
+            $id = 'entity_id';
+          }
+          else {
+            $table = $entity_type_id . '_field_data';
+            $separator = '__';
+            $id = $entity_type_manager->getDefinition($entity_type_id)->getKey('id');
+          }
+          $rows = \Drupal::database()->select($table, 't')
+            ->fields('t')
+            ->execute()
+            ->fetchAll();
+          foreach ($rows as $row) {
+            foreach (array_keys($field_storage_definition->getSchema()['columns']) as $column) {
+              $column_name = $field_name . $separator . $column;
+              foreach ($tags as $vulnerability => $tag) {
+                if (strpos($row->{$column_name}, '<' . $tag) !== FALSE) {
+                  // Vulnerability found.
+                  $findings[$entity_type_id][$row->{$id}][$field_name][] = $vulnerability;
+                }
+              }
             }
           }
         }
@@ -132,17 +132,13 @@ class Field extends Check {
           ->load($entity_id);
 
         foreach ($fields as $field => $finding) {
-          $url = $entity->toUrl('edit-form');
-          if ($url === NULL) {
-            $url = $entity->toUrl();
-          }
           $items[] = $this->t(
             '@vulnerabilities found in <em>@field</em> field of <a href=":url">@label</a>',
             [
               '@vulnerabilities' => implode(' and ', $finding),
               '@field' => $field,
               '@label' => $entity->label(),
-              ':url' => $url->toString(),
+              ':url' => $this->getEntityLink($entity),
             ]
           );
         }
@@ -154,6 +150,36 @@ class Field extends Check {
       '#paragraphs' => $paragraphs,
       '#items' => $items,
     ];
+  }
+
+  /**
+   * Attempt to get a good link for the given entity.
+   *
+   * Falls back on a string with entity type id and id if no good link can
+   * be found.
+   *
+   * @param \Drupal\Core\Entity\Entity $entity
+   *   The entity.
+   *
+   * @return string
+   */
+  protected function getEntityLink(Entity $entity) {
+    try {
+      $url = $entity->toUrl('edit-form');
+    }
+    catch (UndefinedLinkTemplateException $e) {
+      $url = NULL;
+    }
+    if ($url === NULL) {
+      try {
+        $url = $entity->toUrl();
+      }
+      catch (UndefinedLinkTemplateException $e) {
+        $url = NULL;
+      }
+    }
+
+    return $url !== NULL ? $url->toString() : ($entity->getEntityTypeId() . ':' . $entity->id());
   }
 
   /**
@@ -173,16 +199,12 @@ class Field extends Check {
           ->load($entity_id);
 
         foreach ($fields as $field => $finding) {
-          $url = $entity->toUrl('edit-form');
-          if ($url === NULL) {
-            $url = $entity->toUrl();
-          }
           $output .= "\t" . $this->t(
               '@vulnerabilities in @field of :link',
               [
                 '@vulnerabilities' => implode(' and ', $finding),
                 '@field' => $field,
-                ':link' => $url->toString(),
+                ':link' => $this->getEntityLink($entity),
               ]
             ) . "\n";
         }
