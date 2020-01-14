@@ -776,8 +776,10 @@ $settings['file_temp_path'] = '/var/tmp';
 // Config directory.
 $config_directories['sync'] = 'sites/default/files/config/sync';
 
-// Report and log all errors.
-error_reporting(E_ALL);
+// Report all errors except E_NOTICE
+error_reporting(E_ALL & ~E_NOTICE);
+
+// Log errors.
 ini_set('log_errors', TRUE);
 
 // Load local settings:
