@@ -8,6 +8,9 @@
  * See COPYRIGHT.txt and LICENSE.txt files in the "core" directory.
  */
 
+header("Location: index.html");
+exit();
+
 use Drupal\Core\DrupalKernel;
 use Symfony\Component\HttpFoundation\Request;
 
