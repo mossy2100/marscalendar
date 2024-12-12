@@ -1,0 +1,9 @@
+name: Book Contents
+description: 'Allows users to create a block showing all pages in a book.'
+package: Core
+
+type: module
+core: '8.x'
+
+dependencies:
+  - drupal:book

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Utopian Calendar functions for datetimes, clock, and converter.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function utopian_theme($existing, $type, $theme, $path) {
+  return [
+    'utopian_datetime_converter' => [
+      'variables' => [],
+      'template'  => 'utopian-datetime-converter',
+    ],
+    'utopian_calendar_pages' => [
+      'variables' => [
+        'calendar_pages' => 'The calendar pages should be here.',
+      ],
+      'template'  => 'utopian-calendar-pages',
+    ],
+  ];
+}

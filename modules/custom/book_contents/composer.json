@@ -1,0 +1,13 @@
+{
+  "name": "drupal/book_contents",
+  "description": "This module allows users to create a block showing all pages in a book.",
+  "type": "drupal-module",
+  "authors": [
+    {
+      "name": "Shaun Moss (mossy2100)",
+      "homepage": "https://www.shaunmoss.com",
+      "role": "Maintainer"
+    }
+  ],
+  "license": "GPL-2.0+"
+}

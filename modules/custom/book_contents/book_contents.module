@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Book contents block.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function book_contents_theme() {
+  return array(
+    'book_contents' => array(
+      'variables' => array('book_link' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view() for node entities.
+ */
+function book_contents_node_view(array &$build, EntityInterface $node, EntityViewDisplayInterface $display, $view_mode) {
+  if ($view_mode == 'full') {
+    if (!empty($node->book['bid']) && empty($node->in_preview)) {
+      $book_node = Node::load($node->book['bid']);
+      if (!$book_node->access()) {
+        return;
+      }
+      $build['book_contents'] = array(
+        '#theme' => 'book_contents',
+        '#book_link' => $node->book,
+        '#weight' => 100,
+        // The book navigation is a listing of Node entities, so associate its
+        // list cache tag for correct invalidation.
+        '#cache' => [
+          'tags' => $node->getEntityType()->getListCacheTags(),
+        ],
+      );
+    }
+  }
+}

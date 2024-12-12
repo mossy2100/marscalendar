@@ -1,0 +1,128 @@
+<h2>Tropical and calendar mirs</h2>
+
+<p>The average length of a year in the Gregorian Calendar (the most commonly used calendar on Earth)
+  is 365.2425 days. This is very close to the average period between northern hemisphere vernal
+  equinoxes, which is 365.242374 days. This period is known as the <b>tropical year</b>, and
+  it covers the full cycle of seasons from the start of the spring to the end of winter in the
+  northern hemisphere.</p>
+
+<p>In truth, this is just one option for determining the tropical year; any of the seasonal markers
+  can be used (vernal equinox, summer solstice, autumnal equinox, or winter solstice), or an average
+  of these durations. All of these values are slightly different, and change over time, due to
+  gravitational interactions between the planets and the Sun. However, the northern vernal equinox
+  tropical year is the most commonly used.</p>
+
+<p>Astronomers measure Earth’s progress through the tropical year using <i>longitude of the Sun</i>
+  (abbreviated “Ls”), which is the position of the Sun against the backdrop of fixed stars that it
+  moves across. At the northern vernal equinox, Ls = 0°. During the year, as the Sun appears to move
+  past the stars (from the perspective of Earth), Ls increases to 360°.</p>
+
+<p>Following this scientific tradition, the Utopian Calendar mir begins at the northern hemisphere
+  vernal equinox (within one sol). Thus, as Ls increases from 0° to 360°, the sols of the mir
+  increase from 1 to 668 (or 669).</p>
+
+<p>There is a poetic bonus gained by choosing to begin the mir with the northern spring. On Earth
+  the northern spring begins in March, with the vernal equinox occurring on or close to March 20. In
+  the early Roman calendar March was the first month of the year; thus, the year ended with winter
+  and began with spring. March was named for the god Mars, who was originally the Roman god of
+  springtime before he became the god of war. Therefore, it’s quite appropriate to begin the new mir
+  at the beginning of spring, which is the god Mars’ season.</p>
+
+<h2>Short and long mirs</h2>
+
+<p>The average period between northern vernal equinoxes on Mars is 668.5907 sols, which is used as
+  the basis for the calendar mir length in the Darian and Utopian Calendars.</p>
+
+<p>However, we want calendar mirs to be a whole number of sols, just like the calendar year is a
+  whole number of days in Terran calendars. This will make it possible to organise the sols of the
+  mir into weeks and months. To ensure the average calendar mir length is 668.5907 sols, a pattern
+  of <b>short mirs</b> of 668 sols and <b>long mirs</b> of 669 sols is defined, analogous to the
+  common years of 365 days and leap years of 366 days in the Gregorian Calendar. However, the
+  adjectives “common” and “leap” aren’t suitable for mirs because short mirs aren’t common, since
+  they occur less often than long mirs.</p>
+
+<p>The Utopian Calendar specifies a system of rules similar to those used by the Gregorian Calendar
+  to determine when a calendar mir is short or long. These rules produce an average calendar mir
+  length of 668.591 sols per mir, which is close enough to 668.5907 for practical purposes:</p>
+
+<ol>
+  <li>A mir is short unless one of the following rules applies. (668 sols/mir)</li>
+  <li>Odd-numbered mirs are long. (668 + 0.5 = 668.5 sols/mir)</li>
+  <li>Mirs divisible by 10 (ending in 0) are also long. (668.5 + 0.1 = 668.6 sols/mir)</li>
+  <li><i>Except</i>, mirs divisible by 100 (ending in 00) are short. (668.6 - 0.01 = 668.59
+    sols/mir)
+  </li>
+  <li><i>Except</i>, mirs divisible by 1000 (ending in 000) are long. (668.59 + 0.001 = 668.591
+    sols/mir)
+  </li>
+</ol>
+
+<p>There is a difference of 668.591 - 668.5907 = 0.0003 sols, or about 27 seconds, per mir.
+  After 2000 mirs, the error will have accumulated to almost 15 hours. Then the intercalation rules
+  are modified to resynchronise the calendar with Mars’ cycle. This is not only necessary to
+  compensate for this slight difference between the length of the calendar mir and the northern
+  vernal equinox mir, but also because the length of the northern vernal equinox mir is slowly
+  increasing.</p>
+
+<p>The Darian Calendar specifies intercalation rules for the first 10000 mirs, to achieve this
+  resynchronisation:</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Range of mirs</th>
+    <th>Formula</th>
+    <th>Mean length of calendar mir (sols)</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td align="right">0 to 2000</td>
+    <td>(<i>M</i> - 1)\2 + <i>M</i>\10 - <i>M</i>\100 + <i>M</i>\1000</td>
+    <td>668.5910</td>
+  </tr>
+  <tr>
+    <td align="right">2001 to 4800</td>
+    <td>(<i>M</i> - 1)\2 + M\10 - <i>M</i>\150</td>
+    <td>668.5933</td>
+  </tr>
+  <tr>
+    <td align="right">4801 to 6800</td>
+    <td>(<i>M</i> - 1)\2 + <i>M</i>\10 - <i>M</i>\200</td>
+    <td>668.5950</td>
+  </tr>
+  <tr>
+    <td align="right">6801 to 8400</td>
+    <td>(<i>M</i> - 1)\2 + <i>M</i>\10 - <i>M</i>\300</td>
+    <td>668.5967</td>
+  </tr>
+  <tr>
+    <td align="right">8401 to 10000</td>
+    <td>(<i>M</i> - 1)\2 + <i>M</i>\10 - <i>M</i>\600</td>
+    <td>668.5983</td>
+  </tr>
+  </tbody>
+</table>
+
+<p>The resulting error is only about 1 sol after 12000 mirs.</p>
+
+<p>The intercalary sol, i.e. the 669<sup>th</sup> sol of the mir in a long mir, is appended to the
+  last month of the mir. The advantage of doing this is that the date will always map to the same
+  sol number within a mir (1-669). This is not the case with the Gregorian Calendar, for
+  example, because dates after 28 February (the 59<sup>th</sup> day of the year) map to different
+  days of the year depending on whether or not it’s a leap year. For example, 1 March is the 60<sup>th</sup>
+  day of the year in a common year, or the 61<sup>st</sup> in a leap year (29 February is the
+  60<sup>th</sup>). Perhaps this isn’t such a big deal, but it does make sense to append the extra
+  sol at the end of the mir rather than inserting it in the middle somewhere.</p>
+
+<p>This also reflects the early Roman calendar, when March was the first month of the year. January
+  and February were appended to the original 10-month calendar around 713 BC, and February was the
+  last month of the year up until about 450 BC. As the standard calendar year was only 355 days, it
+  would fall out of sync with the seasons, so the Romans would periodically add extra days into
+  February to resynchronise it. However, from 450 BC the calendar year started with January, making
+  February the second month.</p>
+
+<p>Incidentally, this is also why September, October, November, and December are now the
+  9<sup>th</sup>, 10<sup>th</sup>, 11<sup>th</sup>, and 12<sup>th</sup> months, instead of the
+  7<sup>th</sup>, 8<sup>th</sup>, 9<sup>th</sup>, and 10<sup>th</sup> months, which they originally
+  were, as their Latin prefixes suggest.</p>

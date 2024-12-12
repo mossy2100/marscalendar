@@ -1,0 +1,8 @@
+services:
+  cache_context.route.book_contents:
+    class: Drupal\book_contents\Cache\BookContentsCacheContext
+    arguments: ['@request_stack']
+    calls:
+      - [setContainer, ['@service_container']]
+    tags:
+      - { name: cache.context}

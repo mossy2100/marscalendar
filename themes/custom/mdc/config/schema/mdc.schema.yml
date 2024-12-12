@@ -1,0 +1,5 @@
+# Schema for the theme setting configuration file of the mdc theme.
+
+mdc.settings:
+  type: theme_settings
+  label: 'mdc settings'

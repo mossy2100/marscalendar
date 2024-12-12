@@ -1,0 +1,373 @@
+The 88 constellations
+=====================
+
+Andromeda 
+Antlia 
+Apus 
+Aquarius 
+Aquila 
+Ara 
+Aries 
+Auriga 
+Boötes 
+Caelum 
+Camelopardalis 
+Cancer 
+Canes Venatici 
+Canis Major 
+Canis Minor 
+Capricornus 
+Carina 
+Cassiopeia 
+Centaurus 
+Cepheus 
+Cetus 
+Chamaeleon 
+Circinus 
+Columba 
+Coma Berenices 
+Corona Austrina 
+Corona Borealis 
+Corvus 
+Crater 
+Crux 
+Cygnus 
+Delphinus 
+Dorado 
+Draco 
+Equuleus 
+Eridanus 
+Fornax 
+Gemini 
+Grus 
+Hercules 
+Horologium 
+Hydra 
+Hydrus 
+Indus 
+Lacerta 
+Leo 
+Leo Minor 
+Lepus 
+Libra 
+Lupus 
+Lynx 
+Lyra 
+Mensa 
+Microscopium 
+Monoceros 
+Musca 
+Norma 
+Octans 
+Ophiuchus 
+Orion 
+Pavo 
+Pegasus 
+Perseus 
+Phoenix 
+Pictor 
+Pisces 
+Piscis Austrinus 
+Puppis 
+Pyxis 
+Reticulum 
+Sagitta 
+Sagittarius 
+Scorpius 
+Sculptor 
+Scutum 
+Serpens 
+Sextans 
+Taurus 
+Telescopium 
+Triangulum 
+Triangulum Australe 
+Tucana 
+Ursa Major 
+Ursa Minor 
+Vela 
+Virgo 
+Volans 
+Vulpecula 
+
+
+
+Top 11 non-zodiacal constellations order by popularity
+======================================================
+Orion
+Andromeda
+Ursa Major
+Draco
+Ursa Minor
+Canis Major
+Cassiopeia
+Hercules
+Pegasus
+Bootes
+Perseus
+
+
+
+Hi Derrick
+
+Regarding areocentric coordinates for constellations, Francois Guesdon did some work on this last
+year.  We actually ordered the constellations according to ecliptic R.A., seeing as how the Sun
+travels along the path of the ecliptic, so that the calendar becomes sort of like a psuedo-zodiac.
+For the ideal balance, we tried to find constellations with ecliptic R.A.s that lay between those of
+the zodiacal constellations.  This would result in a "neat" alternating pattern of zodiacal and
+non-zodiacal constellations. While this is probably not that important, it would result in at least
+the odd month names matching between the Utopian and Darian calendars.
+
+Francois calculated the "areocentric" declination for the constellations we were interested in (I've
+attached his results for your interest) so we could eliminate those that were too far north or
+south. However, as mentioned in the earlier email, this restriction eliminated some of the most
+popular and recognisable constellations and should probably be relaxed. For example, Crux, even
+though it would primarily be visible only to people in southern Mars, is one of the most famous and
+recognisable constellations and probably would add more value to the calendar than, for example,
+Grus.
+
+The only other possible reason to know the areocentric declination would perhaps be to strike a
+balance between northern and southern constellations.
+
+Here are Francois' calculations of areocentric declinations, for some of the constellations:
+
+Cygnus 76.1 degrees
+Cepheus 72.0
+Lyra 60.2 
+Cassiopeia 59.8
+Draco 57.1
+Pegasus 52.9 
+Andromeda 52.7
+Ursa minor 50.6
+Hercules 42.7
+Aquila 38.6
+Pisces 34.8
+Perseus 30.6
+Aquarius 24.9
+Aries 20.4
+Ursa M. 19.5
+Bootes 19.2
+Capricornus 19.1
+Ophiuchus 14.6
+Auriga 14.4
+Cetus 9.3
+Fomalhaut 7.1
+Sagittarius 4.2
+Taurus 0.5
+Gemini -7.1 
+Scorpius -10.8
+Grus -11.3
+Leo -15.1
+Eridanus -15.4
+Virgo -16.3
+Cancer -16.8
+Orion -20.2
+Libra -21.0
+Canis Minor -29.0
+Corvus -39.7
+Hydra -43.5 
+Canis Major -49.1
+Centaurus -52.6
+Crux -62.3
+Puppis -63.7 
+LMC (Dorado) -67.0
+Vela -74.9
+Carina -82.7
+
+For anyone with an interest, here is my current train of thought on this puzzle.
+
+It is really only necessary to select 10 names from a set of 74, as 14 constellations are
+more-or-less definite: the 12 in the common zodiac; Ophiuchus, the 13th constellation of the zodiac;
+and Orion, the most visible and recognisable constellation of all.
+
+Rather than examine all 74 remaining constellations, some of which are very obscure, here is a list
+of all the constellations that have been considered since this topic began, including those used in
+the Utopian Calendar, the Martian Dreams calendar, and the calendar Tom designed for Bill Woods:
+  Canis Major, Canis Minor, Ursa Major, Ursa Minor, Bootes, Centaurus, Andromeda, Crux, Cygnus,
+  Hercules, Pegasus, Aquila, Lyra, Perseus, Draco, Cassiopeia, Carina, Auriga, Cetus, Monoceros,
+  Hydra, Corvus, Lupus, Phoenix, Columba, Lynx, Draco, Eridanus.
+
+I am currently inclined to think the following 4 names would be particularly good choices:
+* Canes, to represent both Canis Major and Canis Minor, which contain the v.bright stars Sirius,
+  Adhara and Procyon (bright stars here: http://www.astro.wisc.edu/~dolan/constellations/extra/brightest.html).
+* Ursae, to represent both Ursa Major and Ursa Minor, two of the most popular constellations
+  (approximate constellation popularity here: http://www.astro.wisc.edu/~dolan/constellations/constellationcount_list.html).
+* Crux, easily one of the best known and recognisable constellations in the world (appearing on many
+  nation's flags), and contains the bright stars Acrux, Becrux and Gacrux.
+
+For the last 7, I think it is between:
+Centaurus, Bootes, Aquila, Lyra, Carina, Auriga for containing bright stars. Andromeda, Draco,
+Hercules, and Pegasus for being popular and/or recognisable.
+
+* Centaurus, quite a recognisable constellation, and contains two bright stars Rigel Kentaurus and Hadar.
+* Bootes is fairly recognisable, and contains Arcturus the 4th brightest star in our sky.
+* Aquila, contains the bright star Altair.
+* Lyra, somewhat popular and contains the v.bright star Vega (made famous by Carl Sagan's "Contact")
+* Carina contains the second-brightest star in our sky, Canopus.
+* Auriga contains the sixth-brightest star in our sky, Capella.
+* Andromeda, apparently (according to above link) the second most popular constellation, and contains some well-known  galaxies.
+* Draco is apparently the 5th most popular constellation (although that section of sky would be well represented by the two bears)
+* Hercules and Pegasus are both fairly recognisable and popular.
+
+It would be easy to pick the constellations I "like" but this is far too fuzzy a method for my
+brain. I think the most logical choices will become more clear when looking at the distribution of
+these interesting constellations in the sky.
+
+Considering the main candidates:
+Northern: Cygnus, Lyra, Draco, Pegasus, Andromeda, Ursa Minor, Hercules, Aquila, Pisces, Aquarius,
+Aries, Ursa Major, Bootes, Capricornus, Ophiuchus, Auriga, Sagittarius, Taurus.
+Southern: Gemini, Scorpius, Leo, Virgo, Cancer, Orion, Libra, Canis Minor, Canis Major, Centaurus,
+Crux, Carina
+
+The 18 definites and almost definites include 8 northern and 10 southern (counting Canis Maj and Min
+as one, and Ursa Maj and Min as one).
+
+The remaining:
+Northern: Cygnus, Lyra, Draco, Pegasus, Andromeda, Hercules, Aquila, Bootes, Auriga.
+Southern: Carina
+
+So it would seem Carina is a shoe-in, simply in order to even up the N/S split.  To complete a
+selection with an even N/S balance means choosing another southern constellation such as Corvus or
+Eridanus.  Eridanus has the bright star Achernar but Corvus is probably easier to spot and is at
+least somewhat popular.
+
+Alternatively, it would probably be ok to accept 11 southern constellations and 13 northern, which
+allows for choosing 3 from the reduced list of interesting northern constellations above.  Which of
+these would make the best choices could probably be determined by looking at the ecplitic R.A.s of
+the whole list and trying to find as close as possible to the alternating zodiacal/non-zodiacal
+sequence.
+
+Something for another day.
+
+Shaun
+
+
+
+
+
+
+
+
+New target. Select 24 constellations of beasts (mythical or real) that people would like to be.
+===============================================================================================
+
+01 Phoenix	        S	Phoenix           00 55.91 Phe
+02 Cetus	          S	Whale             01 40.10 Cet
+03 Dorado 	        S	Dolphinfish       05 14.51 Dor
+04 Lepus	          S	Hare              05 33.95 Lep
+05 Columba	        S	Dove              05 51.76 Col
+06 Monoceros	      S	Unicorn           07 03.63 Mon
+07 Volans	          S	Flying Fish       07 47.73 Vol
+08 Lynx	            N	Lynx              07 59.53 Lyn
+09 Camelopardalis	  N	Giraffe           08 51.37 Cam
+10 Chamaeleon	      S	Chameleon         10 41.53 Cha
+11 Hydra	          N	Sea Serpent       11 36.73 Hya
+12 Corvus	          S	Crow (Raven)      12 26.52 Crv
+13 Centaurus	      S	Centaur           13 04.27 Cen
+14 Draco	          N	Dragon            15 08.64 Dra
+15 Lupus	          S	Wolf              15 13.21 Lup
+16 Apus	            S	Bird of Paradise  16 08.65 Aps
+17 Pavo	            S	Peacock           19 36.71 Pav
+18 Aquila	          N	Eagle             19 40.02 Aql
+19 Vulpecula	      N	Fox               20 13.88 Vul
+20 Cygnus	          N	Swan              20 35.28 Cyg
+21 Delphinus	      N	Dolphin           20 41.61 Del
+22 Grus	            S	Crane             22 27.39 Gru
+23 Pegasus	        N	Pegasus           22 41.84 Peg
+24 Tucana	          S	Toucan            23 46.64 Tuc
+
+15 South
+9 North
+24 Total
+
+
+Rejects
+=======
+
+Old zodiac/Lunar calendar
+-------------------------
+Aries	          Z	Ram
+Taurus	        Z	Bull
+Capricornus	    Z	Goat
+Cancer	        Z	Crab
+Scorpius	      Z	Scorpion
+Pisces	        Z	Fishes
+Leo	            Z	Lion
+7
+
+Redundant
+---------
+Lacerta	        N	Lizard            22 27.68 Lac (chameleon)
+Hydrus	        S	Water Snake (sea serpent)
+Serpens	        N	Serpent           16 57.04 Ser (sea serpent)
+Equuleus	      N	Foal             21 11.26 Equ (pegasus, unicorn, centaur)
+4
+
+No-one wants to be
+------------------
+Musca	          S	Southern Fly
+1
+
+Two word names
+--------------
+Canes Venatici	  N	Hunting Dogs
+Canis Major	      S	Great Dog
+Canis Minor	      S	Little Dog
+Leo Minor	        N	Little Lion
+Piscis Austrinus	S	Southern Fish
+Ursa Major	      N	Big Bear
+Ursa Minor	      N	Little Bear
+7
+
+People
+------
+Andromeda	N	Andromeda
+Aquarius	Z	Water Bearer
+Auriga	N	Charioteer
+Boötes	N	Herdsmen
+Cassiopeia	N	Cassiopeia
+Cepheus	N	Cepheus
+Gemini	Z	Twins
+Hercules	N	Hercules
+Indus	S	Indian
+Ophiuchus	N	Serpent-Bearer
+Orion	S	Orion
+Perseus	N	Perseus
+Pictor	S	Painter (or his  Easel)
+Sagittarius	Z	Archer
+Sculptor	S	Sculptor
+Virgo	Z	Virgin
+16
+
+Things
+------
+Antlia	S	Airpump
+Ara	S	Altar
+Carina	S	Keel (of Argo)1
+Coma Berenices	N	Berenice's Hair
+Corona Australis	S	Southern Crown
+Corona Borealis	N	Northern Crown
+Crux	S	Southern Cross
+Eridanus	S	Eridanus (river)
+Mensa	S	Table (mountain)
+Puppis	S	Poop deck (of Argo)1
+Triangulum	N	Triangle
+Triangulum Australe	S	Southern Triangle
+Vela	S	Sail (of Argo)1
+Circinus	S	Compasses
+Caelum	S	Sculptor's Tool
+Crater	S	Cup
+Fornax	S	Furnace
+Horologium	S	Clock
+Libra	Z	Scales
+Lyra	N	Lyre (Harp)
+Microscopium	S	Microscope
+Norma	S	Rule (straightedge)
+Octans	S	Octant
+Pyxis	S	Mariner's Compass
+Reticulum	S	Net
+Sagitta	N	Arrow
+Scutum	N	Shield
+Sextans	S	Sextant
+Telescopium	S	Telescope
+29
