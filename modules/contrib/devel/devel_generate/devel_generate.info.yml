@@ -2,7 +2,7 @@ type: module
 name: 'Devel Generate'
 description: 'Generate dummy users, nodes, menus, taxonomy terms...'
 package: Development
-# core: 8.x
+core_version_requirement: ^10.0
 tags:
  - developer
 
