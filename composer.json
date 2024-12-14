@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "drupal/book": "^2.0@alpha",
         "drupal/bootstrap": "^5.0",
         "drupal/color": "^1.0",
         "drupal/core-composer-scaffold": "^10",

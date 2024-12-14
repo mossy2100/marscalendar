@@ -767,9 +767,6 @@ $settings['file_scan_ignore_directories'] = [
  * Common settings.
  */
 
-// Install profile.
-$settings['install_profile'] = 'standard';
-
 // Updated tmp folder.
 $settings['file_temp_path'] = '/var/tmp';
 
