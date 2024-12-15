@@ -26,9 +26,9 @@
         "drupal/editor_advanced_link": "^2.2",
         "drupal/libraries": "^4.0",
         "drupal/pathauto": "^1.12",
-        "drupal/quickedit": "^1.0",
-        "drupal/rdf": "^2.1",
-        "drupal/security_review": "^2.0"
+        "drupal/rdf": "^3.0@beta",
+        "drupal/security_review": "^2.0",
+        "drupal/upgrade_status": "^4.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -103,8 +103,8 @@
         }
     },
     "require-dev": {
-        "drupal/core-dev": "^10",
-        "drush/drush": "^13",
+        "drupal/core-dev": "10.3.10",
+        "drush/drush": "^13.3",
         "mglaman/phpstan-drupal": "^1.2",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^1.11",

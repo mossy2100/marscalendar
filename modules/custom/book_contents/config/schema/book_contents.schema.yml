@@ -1,9 +1,0 @@
-# Schema for the configuration files of the book contents module.
-
-block.settings.book_contents:
-  type: block_settings
-  label: 'Book contents block'
-  mapping:
-    block_mode:
-      type: string
-      label: 'Block display mode'
