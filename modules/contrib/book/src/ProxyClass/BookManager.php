@@ -135,7 +135,7 @@ namespace Drupal\book\ProxyClass {
         /**
          * {@inheritdoc}
          */
-        public function bookTreeAllData(int $bid, array $link = NULL, int $max_depth = NULL, int $min_depth = NULL): array {
+      public function bookTreeAllData(int $bid, ?array $link = NULL, ?int $max_depth = NULL, ?int $min_depth = NULL): array {
             return $this->lazyLoadItself()->bookTreeAllData($bid, $link, $max_depth, $min_depth);
         }
 

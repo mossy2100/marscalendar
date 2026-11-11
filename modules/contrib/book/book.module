@@ -82,7 +82,12 @@ function book_theme(): array {
       'variables' => ['items' => [], 'attributes' => []],
     ],
     'book_export_html' => [
-      'variables' => ['title' => NULL, 'contents' => NULL, 'depth' => NULL],
+      'variables' => [
+        'title' => NULL,
+        'book_title' => NULL,
+        'contents' => NULL,
+        'depth' => NULL,
+      ],
     ],
     'book_all_books_block' => [
       'render element' => 'book_menus',
@@ -122,7 +127,7 @@ function book_node_links_alter(array &$links, NodeInterface $node, array $contex
             'url' => Url::fromRoute('node.add', ['node_type' => $child_type], ['query' => ['parent' => $node->id()]]),
           ];
         }
-        if (!empty($node->book['pid'])) {
+        if (!empty($node->book['pid']) && $book_access instanceof AccessResultAllowed) {
           $book_links['book_add_sibling'] = [
             'title' => t('Add sibling page'),
             'url' => Url::fromRoute('node.add', ['node_type' => $child_type], ['query' => ['parent' => $node->book['pid']]]),

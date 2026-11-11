@@ -76,9 +76,11 @@ class BookExport {
     $tree = $this->bookManager->bookSubtreeData($node->book);
     $contents = $this->exportTraverse($tree, [$this, 'bookNodeExport']);
     $node = $this->entityRepository->getTranslationFromContext($node);
+    $book_title = $this->nodeStorage->load($node->book['bid'])->label();
     return [
       '#theme' => 'book_export_html',
       '#title' => $node->label(),
+      '#book_title' => $book_title,
       '#contents' => $contents,
       '#depth' => $node->book['depth'],
       '#cache' => [

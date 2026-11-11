@@ -96,7 +96,7 @@ class RouteAccessController extends ControllerBase implements ContainerInjection
     $children = $this->bookManager->bookSubtreeData($this->node->book);
     $child = reset($children);
 
-    return count($child['below']) > 1;
+    return !empty($child['below']) && count($child['below']) > 1;
   }
 
 }

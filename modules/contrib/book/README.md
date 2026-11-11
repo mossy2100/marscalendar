@@ -41,6 +41,8 @@ Modules that provide additional support for book:
 * [Book tree menu](https://www.drupal.org/project/book_tree_menu) - Book Tree Menu enhances the default book navigation
 * [Booktree](https://www.drupal.org/project/booktree) - Booktree module - take as input a series of Book nodes and create a tree-like structure using Book node
   relationships. Similar to booktree_menu.
+* [Sync book index to Drupal core menu](https://www.drupal.org/project/book_menu_sync) - module provides an easy-to-use solution for converting a Drupal
+  book structure into a standard Drupal menu.
 
 ## Alternatives
 

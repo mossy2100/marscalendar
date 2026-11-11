@@ -170,7 +170,12 @@ class BookTest extends BookTestBase {
   /**
    * Tests book export ("printer-friendly version") functionality.
    *
+   * @throws \Behat\Mink\Exception\ElementNotFoundException
+   * @throws \Behat\Mink\Exception\ElementTextException
    * @throws \Behat\Mink\Exception\ExpectationException
+   * @throws \Behat\Mink\Exception\ResponseTextException
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function testBookExport(): void {
@@ -186,6 +191,10 @@ class BookTest extends BookTestBase {
     $this->clickLink('Printer-friendly version');
 
     $this->assertSession()->elementTextContains('css', 'h1', $this->book->label());
+
+    $node_storage = $this->container->get('entity_type.manager')->getStorage('node');
+    $book_title = $node_storage->load($this->book->id())->label();
+
     // Make sure each part of the book is there.
     foreach ($nodes as $node) {
       // Verify unpublished node doesn't appear in export.
@@ -194,6 +203,7 @@ class BookTest extends BookTestBase {
         $this->assertSession()->responseNotContains($node->body->processed);
       }
       else {
+        $this->assertSession()->pageTextContains($book_title);
         $this->assertSession()->pageTextContains($node->label());
         $this->assertSession()->responseContains($node->body->processed);
       }
@@ -520,6 +530,7 @@ class BookTest extends BookTestBase {
    *
    * @throws \Behat\Mink\Exception\ResponseTextException
    * @throws \Drupal\Core\Entity\EntityStorageException
+   * @throws \Behat\Mink\Exception\ExpectationException
    */
   public function testBookListing(): void {
     // Uninstall 'node_access_test' as this interferes with the test.
@@ -530,6 +541,11 @@ class BookTest extends BookTestBase {
     // Load the book page and assert the created book title is displayed.
     $this->drupalGet('book');
     $this->assertSession()->pageTextContains($this->book->label());
+
+    // Assert helper links aren't available for anonymous users.
+    $this->drupalGet('node/' . $nodes[1]->id());
+    $this->assertSession()->linkNotExists('Add child page');
+    $this->assertSession()->linkNotExists('Add sibling page');
 
     // Unpublish the top book page and confirm that the created book title is
     // not displayed for anonymous.
