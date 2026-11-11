@@ -1,0 +1,20 @@
+/**
+ * @file
+ * Mars clock block.
+ */
+
+.utopian-clock div {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.utopian-clock__datetime {
+  font-weight: bold;
+  font-variant-numeric: tabular-nums;
+}
+
+.utopian-clock label {
+  margin: 0;
+  font-weight: normal;
+}

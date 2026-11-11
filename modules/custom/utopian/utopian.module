@@ -2,29 +2,24 @@
 
 /**
  * @file
- * Utopian Calendar functions for datetimes, clock, and converter.
+ * Datetime converter, calendar pages, and Mars clock for the Utopian Calendar.
  */
+
+declare(strict_types=1);
 
 /**
  * Implements hook_theme().
- *
- * @param array  $existing An array of existing implementations that may be used for override purposes.
- * @param string $type     Whether a theme, module, etc. is being processed.
- * @param string $theme    The actual name of theme, module, etc. that is being processed.
- * @param string $path     The directory path of the theme or module, so that it doesn't need to be looked up.
- * @return array An array of theme hook information.
  */
-function utopian_theme(array $existing, string $type, string $theme, string $path): array {
+function utopian_theme(): array {
   return [
     'utopian_datetime_converter' => [
-      'variables' => [],
-      'template'  => 'utopian-datetime-converter',
+      'variables' => ['mars_time_zones' => []],
     ],
     'utopian_calendar_pages' => [
-      'variables' => [
-        'calendar_pages' => NULL,
-      ],
-      'template'  => 'utopian-calendar-pages',
+      'variables' => ['events' => [], 'sol_headings' => [], 'months' => []],
+    ],
+    'utopian_clock' => [
+      'variables' => ['mars_time_zones' => []],
     ],
   ];
 }

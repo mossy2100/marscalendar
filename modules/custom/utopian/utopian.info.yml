@@ -1,6 +1,6 @@
 name: Utopian Calendar
-description: 'Functions for Utopian Calendar datetimes, clock, and converter.'
-package: Core
+description: 'Datetime converter, calendar pages, and Mars clock for the Utopian Calendar.'
+package: Custom
 type: module
-core_version_requirement: ^9.4 || ^10
+core_version_requirement: ^11
 php: 8.3

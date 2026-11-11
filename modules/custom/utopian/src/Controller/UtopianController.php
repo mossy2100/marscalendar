@@ -1,187 +1,120 @@
 <?php
-/**
- * Created by PhpStorm at 2017-08-06T19:51
- * @author Shaun Moss (shaun@astromultimedia.com, @mossy2100)
- * @file
- * Contains \Drupal\utopian\Controller\UtopianController.
- */
+
+declare(strict_types=1);
 
 namespace Drupal\utopian\Controller;
 
+use Drupal\utopian\UtopianCalendar;
+
 /**
- * Controller routines for Utopian routes.
+ * Page callbacks for the Utopian Calendar.
  */
-class UtopianController {
+final class UtopianController {
 
   /**
    * Displays the datetime converter.
    *
    * @return array
-   *   A render array representing the datetime converter page content.
+   *   A render array for the converter page.
    */
-  public function datetimeConverter() {
-    $build = [
+  public function datetimeConverter(): array {
+    return [
       '#theme' => 'utopian_datetime_converter',
-      '#cache' => [
-        'max-age' => 0,
-      ],
+      '#mars_time_zones' => UtopianCalendar::TIME_ZONES,
+      '#attached' => ['library' => ['utopian/converter']],
     ];
-    return $build;
   }
 
   /**
-   * Displays the calendar pages.
+   * Displays the calendar, one page per month.
    *
    * @return array
-   *   A render array representing the calendar pages content.
+   *   A render array for the calendar pages.
    */
-  public function calendarPages() {
-    ob_start();
-
-    $month_names = [
-      1 => 'Phoenix',
-      'Cetus',
-      'Dorado',
-      'Lepus',
-      'Columba',
-      'Monoceros',
-      'Volans',
-      'Lynx',
-      'Camelopardalis',
-      'Chameleon',
-      'Hydra',
-      'Corvus',
-      'Centaurus',
-      'Draco',
-      'Lupus',
-      'Apus',
-      'Pavo',
-      'Aquila',
-      'Vulpecula',
-      'Cygnus',
-      'Delphinus',
-      'Grus',
-      'Pegasus',
-      'Tucana',
-    ];
-
-    $day_names = [
-      1 => 'Lunasol',
-      'Earthsol',
-      'Mercurisol',
-      'Jupitersol',
-      'Venusol',
-      'Saturnsol',
-      'Sunsol',
-    ];
-
-    $seasons = ['spring', 'summer', 'autumn', 'winter'];
-
-    foreach ($month_names as $m => $month) {
-      // Get the season class.
-      $season = $seasons[floor(($m - 1) / 6)];
-
-      echo "<table class='calendar-page $season'>\n";
-      echo "<thead>\n";
-      echo "  <tr>\n";
-      echo "    <th class='monthName' colspan='7'>$m. $month</th>\n";
-      echo "  </tr>\n";
-      echo "</thead>\n";
-      echo "<tbody>\n";
-      echo "  <tr>\n";
-      echo "    <td class='monthIcon' colspan='7'><img src='/sites/default/media/images/constellations/$month.png'></td>\n";
-      echo "  </tr>\n";
-
-      // Days of the week header.
-      echo "  <tr class='daysOfWeek squares'>\n";
-      for ($dow = 1; $dow <= 7; $dow++) {
-        if ($dow <= 5) {
-          $abbrev = $day_names[$dow][0];
-          $class = '';
-        }
-        else {
-          $abbrev = substr($day_names[$dow], 0, 2);
-          $class = " class='weekend'";
-        }
-        echo "    <th{$class}>$abbrev</th>\n";
-      }
-      echo "  </tr>\n";
-
-      // Date squares.
-      for ($w = 1; $w <= 4; $w++) {
-        echo "  <tr class='squares'>\n";
-        for ($dow = 1; $dow <= 7; $dow++) {
-          $classes = [];
-
-          $sol = ($w - 1) * 7 + $dow;
-          $td = $sol;
-
-          if ($dow >= 6) {
-            $classes[] = 'weekend';
-          }
-
-          // Add classes for special sols.
-          if ($m == 1 && $sol == 1) {
-            $classes[] = 'special-sol';
-            $classes[] = 'vernal-equinox';
-          }
-          elseif ($m == 6 && $sol == 12) {
-            $classes[] = 'special-sol';
-            $classes[] = 'aphelion';
-          }
-          elseif ($m == 6 && $sol == 28) {
-            $classes[] = 'empty';
-            $td = '&nbsp;';
-          }
-          elseif ($m == 7 && $sol == 27) {
-            $classes[] = 'special-sol';
-            $classes[] = 'summer-solstice';
-          }
-          elseif ($m == 12 && $sol == 28) {
-            $classes[] = 'empty';
-            $td = '&nbsp;';
-          }
-          elseif ($m == 14 && $sol == 11) {
-            $classes[] = 'special-sol';
-            $classes[] = 'autumnal-equinox';
-          }
-          elseif ($m == 18 && $sol == 12) {
-            $classes[] = 'special-sol';
-            $classes[] = 'perihelion';
-          }
-          elseif ($m == 18 && $sol == 28) {
-            $classes[] = 'empty';
-            $td = '&nbsp;';
-          }
-          elseif ($m == 19 && $sol == 14) {
-            $classes[] = 'special-sol';
-            $classes[] = 'winter-solstice';
-          }
-          elseif ($m == 24 && $sol == 28) {
-            $classes[] = 'special-sol';
-            $classes[] = 'intercalary';
-          }
-          $classes_str = $classes ? ' class="' . implode(' ', $classes) . '"'
-            :'';
-
-          echo "    <td{$classes_str}>$td</td>\n";
-        }
-
-        echo "  </tr>\n";
-      }
-
-      echo "</tbody>\n";
-      echo "</table>\n";
+  public function calendarPages(): array {
+    $events = [];
+    foreach (UtopianCalendar::EVENTS as $event) {
+      $events[] = $event + ['date' => UtopianCalendar::MONTH_NAMES[$event['month']] . ' ' . $event['sol']];
     }
-    $calendar_pages = ob_get_clean();
 
-    $build = [
-      '#theme'     => 'utopian_calendar_pages',
-      '#calendar_pages' => $calendar_pages,
-      '#cache'     => [
-        'max-age' => 0,
-      ],
+    $solHeadings = [];
+    foreach (UtopianCalendar::SOL_NAMES as $solOfWeek => $name) {
+      $isWeekend = $solOfWeek > 5;
+      $solHeadings[] = [
+        'abbreviation' => substr($name, 0, $isWeekend ? 2 : 1),
+        'name' => $name,
+        'weekend' => $isWeekend,
+      ];
+    }
+
+    $months = [];
+    foreach (UtopianCalendar::MONTH_NAMES as $month => $name) {
+      $months[] = [
+        'number' => $month,
+        'name' => $name,
+        'season' => UtopianCalendar::SEASONS[intdiv($month - 1, UtopianCalendar::MONTHS_PER_QUARTER)],
+        'image' => base_path() . 'sites/default/media/images/constellations/' . $name . '.png',
+        'weeks' => $this->monthWeeks($month),
+      ];
+    }
+
+    return [
+      '#theme' => 'utopian_calendar_pages',
+      '#events' => $events,
+      '#sol_headings' => $solHeadings,
+      '#months' => $months,
+      '#attached' => ['library' => ['utopian/calendar_pages']],
     ];
-    return $build;
   }
+
+  /**
+   * Builds the sol squares for one month page.
+   *
+   * @param int $month
+   *   The month (1..24).
+   *
+   * @return array
+   *   Rows of 7 cells, each with a 'label' (the sol number, or NULL for an
+   *   empty square) and a list of CSS 'classes'.
+   */
+  private function monthWeeks(int $month): array {
+    $eventClasses = [];
+    foreach (UtopianCalendar::EVENTS as $event) {
+      if ($event['month'] === $month) {
+        $eventClasses[$event['sol']] = ['special-sol', $event['class']];
+      }
+    }
+
+    $isQuarterEnd = $month % UtopianCalendar::MONTHS_PER_QUARTER === 0;
+    $lastSol = UtopianCalendar::SOLS_PER_WEEK * UtopianCalendar::WEEKS_PER_MONTH;
+    $weeks = [];
+    for ($week = 0; $week < UtopianCalendar::WEEKS_PER_MONTH; $week++) {
+      $cells = [];
+      for ($solOfWeek = 1; $solOfWeek <= UtopianCalendar::SOLS_PER_WEEK; $solOfWeek++) {
+        $sol = $week * UtopianCalendar::SOLS_PER_WEEK + $solOfWeek;
+        $classes = $solOfWeek > 5 ? ['weekend'] : [];
+        $label = $sol;
+
+        if ($sol === $lastSol && $isQuarterEnd) {
+          // The last month of each quarter is short, except Tucana, whose 28th
+          // sol is the intercalary sol of a long mir.
+          if ($month === count(UtopianCalendar::MONTH_NAMES)) {
+            $classes = [...$classes, 'special-sol', 'intercalary'];
+          }
+          else {
+            $classes = [...$classes, 'empty'];
+            $label = NULL;
+          }
+        }
+        elseif (isset($eventClasses[$sol])) {
+          $classes = [...$classes, ...$eventClasses[$sol]];
+        }
+
+        $cells[] = ['label' => $label, 'classes' => $classes];
+      }
+      $weeks[] = $cells;
+    }
+    return $weeks;
+  }
+
 }

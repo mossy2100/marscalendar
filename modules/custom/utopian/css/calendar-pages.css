@@ -1,0 +1,146 @@
+/**
+ * @file
+ * Calendar pages: the astronomical events table and one table per month.
+ */
+
+:root {
+  --utopian-spring: #d4ffbf;
+  --utopian-spring-border: #99e673;
+  --utopian-summer: #ffffbf;
+  --utopian-summer-border: #ffd480;
+  --utopian-autumn: #ffbfbf;
+  --utopian-autumn-border: #ff8080;
+  --utopian-winter: #bfdfff;
+  --utopian-winter-border: #80bfff;
+  --utopian-aphelion: #c9abff;
+  --utopian-perihelion: #ffd2ff;
+  --utopian-intercalary: #ddd;
+  --utopian-empty: #eee;
+  --utopian-weekend: #c00;
+}
+
+.utopian-calendar-pages {
+  text-align: center;
+}
+
+/* Month pages. */
+
+.calendar-page {
+  display: inline-table;
+  margin: 4px;
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+.calendar-page td,
+.calendar-page th {
+  padding: 4px;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid var(--utopian-season-border);
+}
+
+.calendar-page th {
+  background-color: var(--utopian-season);
+}
+
+.calendar-page__squares td,
+.calendar-page__squares th {
+  width: 23px;
+  height: 23px;
+}
+
+.calendar-page__sols-of-week th {
+  font-weight: bold;
+}
+
+.calendar-page__sols-of-week abbr {
+  text-decoration: none;
+  cursor: help;
+}
+
+.calendar-page th.calendar-page__month-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.calendar-page td.calendar-page__month-icon {
+  background-color: transparent;
+}
+
+.calendar-page__month-icon img {
+  height: 120px;
+  margin: 5px;
+}
+
+.calendar-page .weekend {
+  color: var(--utopian-weekend);
+}
+
+.calendar-page .empty {
+  background-color: var(--utopian-empty);
+}
+
+/* Seasons (northern hemisphere), one per quarter. */
+
+.calendar-page.spring {
+  --utopian-season: var(--utopian-spring);
+  --utopian-season-border: var(--utopian-spring-border);
+}
+
+.calendar-page.summer {
+  --utopian-season: var(--utopian-summer);
+  --utopian-season-border: var(--utopian-summer-border);
+}
+
+.calendar-page.autumn {
+  --utopian-season: var(--utopian-autumn);
+  --utopian-season-border: var(--utopian-autumn-border);
+}
+
+.calendar-page.winter {
+  --utopian-season: var(--utopian-winter);
+  --utopian-season-border: var(--utopian-winter-border);
+}
+
+/* Astronomical events, in both the events table and the month pages. */
+
+.utopian-events .special-sol,
+.calendar-page .special-sol {
+  font-weight: bold;
+}
+
+.utopian-events .vernal-equinox,
+.calendar-page .vernal-equinox {
+  background-color: var(--utopian-spring-border);
+}
+
+.utopian-events .summer-solstice,
+.calendar-page .summer-solstice {
+  background-color: var(--utopian-summer-border);
+}
+
+.utopian-events .autumnal-equinox,
+.calendar-page .autumnal-equinox {
+  background-color: var(--utopian-autumn-border);
+}
+
+.utopian-events .winter-solstice,
+.calendar-page .winter-solstice {
+  background-color: var(--utopian-winter-border);
+}
+
+.utopian-events .aphelion,
+.calendar-page .aphelion {
+  background-color: var(--utopian-aphelion);
+}
+
+.utopian-events .perihelion,
+.calendar-page .perihelion {
+  background-color: var(--utopian-perihelion);
+}
+
+.calendar-page .intercalary {
+  background-color: var(--utopian-intercalary);
+}

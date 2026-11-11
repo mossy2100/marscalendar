@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Template for the Mars clock block.
+ *
+ * Available variables:
+ * - mars_time_zones: Mars time zone labels, keyed by offset in zodes from MTC.
+ *
+ * Elements with a data-utopian attribute are updated by js/clock.js.
+ */
+#}
+<div class="utopian-clock utopian-panel utopian-panel--mars">
+  <div class="utopian-clock__datetime" data-utopian="clock-datetime">&nbsp;</div>
+  <div>
+    <label>Time zone:
+      <select class="form-select" data-utopian="clock-time-zone">
+        {% for offset, label in mars_time_zones %}
+          <option value="{{ offset }}"{{ offset == 0 ? ' selected' }}>{{ label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+  <div>Month: <span data-utopian="clock-month-name">&nbsp;</span></div>
+  <div>Sol: <span data-utopian="clock-sol-name">&nbsp;</span></div>
+  <div><span data-utopian="clock-sol-of-week">&nbsp;</span> sol of the week</div>
+  <div><span data-utopian="clock-sol-of-mir">&nbsp;</span> sol of the mir</div>
+</div>

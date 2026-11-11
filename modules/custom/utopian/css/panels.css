@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Earth and Mars panels shared by the datetime converter and the Mars clock.
+ */
+
+:root {
+  --utopian-earth: #bfdfff;
+  --utopian-earth-border: #80bfff;
+  --utopian-mars: #ffbfbf;
+  --utopian-mars-border: #ff8080;
+}
+
+.utopian-panel {
+  margin: 5px 0;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.utopian-panel--earth {
+  background-color: var(--utopian-earth);
+  border-color: var(--utopian-earth-border);
+}
+
+.utopian-panel--mars {
+  background-color: var(--utopian-mars);
+  border-color: var(--utopian-mars-border);
+}
+
+.utopian-panel input,
+.utopian-panel select {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  padding: 2px 4px;
+}
+
+.utopian-panel span {
+  font-weight: bold;
+}

@@ -1,0 +1,54 @@
+/**
+ * @file
+ * Datetime converter.
+ */
+
+.utopian-converter__reset {
+  padding: 3px 6px;
+}
+
+.utopian-converter h3 {
+  margin: 5px 0;
+  font-size: 18px;
+  color: #000;
+}
+
+.utopian-converter p {
+  margin: 5px 0;
+}
+
+.utopian-converter label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.utopian-converter__fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.utopian-converter__part {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.utopian-converter__part label {
+  font-size: 12px;
+}
+
+.utopian-converter__separator {
+  padding-bottom: 4px;
+  font-weight: bold;
+}
+
+.utopian-converter__year {
+  width: 60px;
+}
+
+.utopian-converter__time {
+  width: 80px;
+}

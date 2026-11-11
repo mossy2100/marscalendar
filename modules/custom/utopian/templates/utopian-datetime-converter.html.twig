@@ -2,130 +2,98 @@
 /**
  * @file
  * Template for the datetime converter page.
+ *
+ * Available variables:
+ * - mars_time_zones: Mars time zone labels, keyed by offset in zodes from MTC.
+ *
+ * Elements with a data-utopian attribute are read and updated by js/converter.js.
  */
 #}
+<p>On this page you can convert between Terran (Gregorian) and Martian (Utopian) datetimes. Find out when your birthday
+  is on Mars!</p>
 
-<p>On this page you can convert between Terran (Gregorian) and Martian (Utopian)
-    datetimes. Find out when your birthday is on Mars!</p>
-
-<div id="converter">
+<div class="utopian-converter">
   <p>
-    <button id="btn-reset-converter" class="btn btn-primary">Reset to now
-    </button>
+    <button type="button" class="btn btn-primary utopian-converter__reset" data-utopian="reset">Reset to now</button>
   </p>
 
-  <form>
-    <div class="converter-panel earth">
+  <form class="utopian-converter__form">
+    <div class="utopian-panel utopian-panel--earth">
       <h3>Gregorian</h3>
-      <div>
-        <div class="date-part">
-          <label>Year</label>
-          <br>
-          <input id="year" class="earth-date form-text form-control">
+      <div class="utopian-converter__fields">
+        <div class="utopian-converter__part">
+          <label for="utopian-year">Year</label>
+          <input id="utopian-year" class="earth-date form-control utopian-converter__year" data-utopian="year"
+            inputmode="numeric">
         </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>-</b>
+        <div class="utopian-converter__separator" aria-hidden="true">-</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-earth-month">Month</label>
+          <select id="utopian-earth-month" class="earth-date form-select" data-utopian="earth-month"></select>
         </div>
-        <div class="date-part">
-          <label>Month</label>
-          <br>
-          <select id="earth-month" class="earth-date form-select form-control"></select>
+        <div class="utopian-converter__separator" aria-hidden="true">-</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-day">Day</label>
+          <select id="utopian-day" class="earth-date form-select" data-utopian="day"></select>
         </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>-</b>
-        </div>
-        <div class="date-part">
-          <label>Day</label>
-          <br>
-          <select id="day" class="earth-date form-select form-control"></select>
-        </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>T</b>
-        </div>
-        <div class="date-part">
-          <label>Time</label>
-          <br>
-          <input id="earth-time" class="earth-date form-text form-control">
+        <div class="utopian-converter__separator" aria-hidden="true">T</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-earth-time">Time</label>
+          <input id="utopian-earth-time" class="earth-date form-control utopian-converter__time"
+            data-utopian="earth-time">
         </div>
       </div>
-      <p><label>Time zone:</label> <select id="earth-time-zone"
-        class="earth-date form-select form-control">
-        <option value="local" selected>Local</option>
-        <option value="utc">UTC</option>
-      </select></p>
-      <p><label>Month:</label> <span id="earth-month-name"></span></p>
-      <p><label>Day:</label> <span id="day-name"></span></p>
-      <p><span id="day-of-week"></span> day of the week</p>
-      <p><span id="day-of-year"></span> day of the year</p>
+      <p>
+        <label for="utopian-earth-time-zone">Time zone:</label>
+        <select id="utopian-earth-time-zone" class="earth-date form-select" data-utopian="earth-time-zone">
+          <option value="local" selected>Local</option>
+          <option value="utc">UTC</option>
+        </select>
+      </p>
+      <p>Month: <span data-utopian="earth-month-name"></span></p>
+      <p>Day: <span data-utopian="day-name"></span></p>
+      <p><span data-utopian="day-of-week"></span> day of the week</p>
+      <p><span data-utopian="day-of-year"></span> day of the year</p>
     </div>
-    <div class="converter-panel mars">
+
+    <div class="utopian-panel utopian-panel--mars">
       <h3>Utopian</h3>
-      <div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>M</b>
+      <div class="utopian-converter__fields">
+        <div class="utopian-converter__separator" aria-hidden="true">M</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-mir">Mir</label>
+          <input id="utopian-mir" class="mars-date form-control utopian-converter__year" data-utopian="mir"
+            inputmode="numeric">
         </div>
-        <div class="date-part">
-          <label>Mir</label>
-          <br>
-          <input id="mir" class="mars-date form-text form-control">
+        <div class="utopian-converter__separator" aria-hidden="true">/</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-mars-month">Month</label>
+          <select id="utopian-mars-month" class="mars-date form-select" data-utopian="mars-month"></select>
         </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>/</b>
+        <div class="utopian-converter__separator" aria-hidden="true">/</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-sol">Sol</label>
+          <select id="utopian-sol" class="mars-date form-select" data-utopian="sol"></select>
         </div>
-        <div class="date-part">
-          <label>Month</label>
-          <br>
-          <select id="mars-month" class="mars-date form-select form-control"></select>
-        </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>/</b>
-        </div>
-        <div class="date-part">
-          <label>Sol</label>
-          <br>
-          <select id="sol" class="mars-date form-select form-control"></select>
-        </div>
-        <div class="date-part">
-          &nbsp;
-          <br>
-          <b>:</b>
-        </div>
-        <div class="date-part">
-          <label>Time</label>
-          <br>
-          <input id="mars-time" class="mars-date form-text form-control">
+        <div class="utopian-converter__separator" aria-hidden="true">T</div>
+        <div class="utopian-converter__part">
+          <label for="utopian-mars-time">Time</label>
+          <input id="utopian-mars-time" class="mars-date form-control utopian-converter__time"
+            data-utopian="mars-time">
         </div>
       </div>
-      <p><label>Time zone:</label> <select id="mars-time-zone"
-        class="mars-date form-select form-control">
-        <option value="-5">MCT-5 (Amazonis)</option>
-        <option value="-4">MCT-4 (Olympus)</option>
-        <option value="-3">MCT-3 (Tharsis)</option>
-        <option value="-2">MCT-2 (Marineris)</option>
-        <option value="-1">MCT-1 (Argyre)</option>
-        <option value="0" selected>MCT (Noachis)</option>
-        <option value="1">MCT+1 (Arabia)</option>
-        <option value="2">MCT+2 (Hellas)</option>
-        <option value="3">MCT+3 (Utopia)</option>
-        <option value="4">MCT+4 (Elysium)</option>
-        <option value="5">MCT+5 (Arcadia)</option>
-      </select></p>
-      <p><label>Month:</label> <span id="mars-month-name"></span></p>
-      <p><label>Sol:</label> <span id="sol-name"></span></p>
-      <p><span id="sol-of-week"></span> sol of the week</p>
-      <p><span id="sol-of-mir"></span> sol of the mir</p>
+      <p>
+        <label for="utopian-mars-time-zone">Time zone:</label>
+        <select id="utopian-mars-time-zone" class="mars-date form-select" data-utopian="mars-time-zone">
+          {% for offset, label in mars_time_zones %}
+            <option value="{{ offset }}"{{ offset == 0 ? ' selected' }}>{{ label }}</option>
+          {% endfor %}
+        </select>
+      </p>
+      <p>Month: <span data-utopian="mars-month-name"></span></p>
+      <p>Sol: <span data-utopian="sol-name"></span></p>
+      <p><span data-utopian="sol-of-week"></span> sol of the week</p>
+      <p><span data-utopian="sol-of-mir"></span> sol of the mir</p>
     </div>
   </form>
 </div>

@@ -1,59 +1,71 @@
 {#
 /**
  * @file
- * Template for the calendar pages callback.
+ * Template for the calendar pages.
+ *
+ * Available variables:
+ * - events: The annual astronomical events, each with 'label', 'class' and 'date'.
+ * - sol_headings: The sols of the week, each with 'abbreviation', 'name' and 'weekend'.
+ * - months: The 24 months, each with 'number', 'name', 'season', 'image' and 'weeks'. Each week is a list of 7 cells,
+ *   each with a 'label' (NULL for an empty square) and a list of 'classes'.
  */
 #}
+<p>Viewing the calendar in the familiar format of one page per month helps to visualise how a mir is divided into
+  months and weeks, and how the weeks align with months. Note how the final week of each quarter is a short, 6-sol
+  week.</p>
 
-<p>Viewing the calendar in the familiar format of one page per month helps to
-    visualise how a mir is divided into months and weeks, and how the weeks
-    align with months. Note how the final week of each quarter is a short, 6-sol week.</p>
-
-<p>Nominal dates for the major astronomical events each mir are highlighted. The
-    actual dates of astronomical events can vary slightly from these (although
-    usually by not more than 1 sol) due to variations in the Martian tropical
-    year, and the intercalation rules not keeping the calendar in precise
-    alignment with Mars&rsquo; orbit. Credit goes to Tom Gangale for calculating
-    these dates.</p>
+<p>Nominal dates for the major astronomical events each mir are highlighted. The actual dates of astronomical events
+  can vary slightly from these (although usually by not more than 1 sol) due to variations in the Martian tropical
+  year, and the intercalation rules not keeping the calendar in precise alignment with Mars&rsquo; orbit. Credit goes
+  to Tom Gangale for calculating these dates.</p>
 
 <p>The intercalary sol at the end of a long mir (Tucana 28) is shown in bold.</p>
 
-<table>
-	<caption>Annual Astronomical Events (Nominal Dates)</caption>
-	<thead>
-		<tr>
-			<th>Event</th>
-			<th>Date</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Northern vernal/southern autumnal equinox</td>
-			<td class="special-sol vernal-equinox">Phoenix 1</td>
-		</tr>
-		<tr>
-			<td>Aphelion</td>
-			<td class="special-sol aphelion">Monoceros 12</td>
-		</tr>
-		<tr>
-			<td>Northern summer/southern winter solstice</td>
-			<td class="special-sol summer-solstice">Volans 27</td>
-		</tr>
-		<tr>
-			<td>Northern autumnal/southern vernal equinox</td>
-			<td class="special-sol autumnal-equinox">Draco 11</td>
-		</tr>
-		<tr>
-			<td>Perihelion</td>
-			<td class="special-sol perihelion">Aquila 12</td>
-		</tr>
-		<tr>
-			<td>Northern winter/southern summer solstice</td>
-			<td class="special-sol winter-solstice">Vulpecula 14</td>
-		</tr>
-	</tbody>
+<table class="utopian-events">
+  <caption>Annual Astronomical Events (Nominal Dates)</caption>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for event in events %}
+      <tr>
+        <td>{{ event.label }}</td>
+        <td class="special-sol {{ event.class }}">{{ event.date }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
-<div id="calendar-pages">
-	{{ calendar_pages|raw }}
+<div class="utopian-calendar-pages">
+  {% for month in months %}
+    <table class="calendar-page {{ month.season }}">
+      <thead>
+        <tr>
+          <th class="calendar-page__month-name" colspan="7">{{ month.number }}. {{ month.name }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="calendar-page__month-icon" colspan="7">
+            <img src="{{ month.image }}" alt="{{ month.name }} constellation">
+          </td>
+        </tr>
+        <tr class="calendar-page__sols-of-week calendar-page__squares">
+          {% for heading in sol_headings %}
+            <th{{ create_attribute().addClass(heading.weekend ? 'weekend' : []) }}><abbr title="{{ heading.name }}">{{ heading.abbreviation }}</abbr></th>
+          {% endfor %}
+        </tr>
+        {% for week in month.weeks %}
+          <tr class="calendar-page__squares">
+            {% for cell in week %}
+              <td{{ create_attribute().addClass(cell.classes) }}>{{ cell.label ?? '' }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% endfor %}
 </div>

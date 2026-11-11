@@ -1,0 +1,39 @@
+time:
+  js:
+    js/utopian-time.js: {}
+  dependencies:
+    - core/drupal
+
+panels:
+  css:
+    component:
+      css/panels.css: {}
+
+converter:
+  js:
+    js/converter.js: {}
+  css:
+    component:
+      css/converter.css: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - utopian/time
+    - utopian/panels
+
+clock:
+  js:
+    js/clock.js: {}
+  css:
+    component:
+      css/clock.css: {}
+  dependencies:
+    - core/drupal
+    - core/once
+    - utopian/time
+    - utopian/panels
+
+calendar_pages:
+  css:
+    component:
+      css/calendar-pages.css: {}
