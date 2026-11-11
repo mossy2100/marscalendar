@@ -2,12 +2,14 @@
 // phpcs:ignoreFile
 
 /**
- * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\book\BookManager' "core/modules/book/src".
+ * This file was generated via php core/scripts/generate-proxy-class.php 'Drupal\book\BookManager' "modules/contrib/book/src/".
  */
 
 namespace Drupal\book\ProxyClass {
 
-    /**
+  use Drupal\book\BookInterface;
+
+  /**
      * Provides a proxy class for \Drupal\book\BookManager.
      *
      * @see \Drupal\Component\ProxyBuilder
@@ -70,42 +72,48 @@ namespace Drupal\book\ProxyClass {
         /**
          * {@inheritdoc}
          */
-        public function getAllBooks(): array {
+        public function getAllBooks(): array
+        {
             return $this->lazyLoadItself()->getAllBooks();
         }
 
         /**
          * {@inheritdoc}
          */
-        public function getLinkDefaults(int|string $nid): array {
+        public function getLinkDefaults(string|int $nid): array
+        {
             return $this->lazyLoadItself()->getLinkDefaults($nid);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function getParentDepthLimit(array $book_link): int {
+        public function getParentDepthLimit(array $book_link): int
+        {
             return $this->lazyLoadItself()->getParentDepthLimit($book_link);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function addFormElements(array $form, \Drupal\Core\Form\FormStateInterface $form_state, \Drupal\node\NodeInterface $node, \Drupal\Core\Session\AccountInterface $account, bool $collapsed = true): array {
+        public function addFormElements(array $form, \Drupal\Core\Form\FormStateInterface $form_state, \Drupal\node\NodeInterface $node, \Drupal\Core\Session\AccountInterface $account, bool $collapsed = true): array
+        {
             return $this->lazyLoadItself()->addFormElements($form, $form_state, $node, $account, $collapsed);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function checkNodeIsRemovable(\Drupal\node\NodeInterface $node): bool {
+        public function checkNodeIsRemovable(\Drupal\node\NodeInterface $node): bool
+        {
             return $this->lazyLoadItself()->checkNodeIsRemovable($node);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function updateOutline(\Drupal\node\NodeInterface $node): bool {
+        public function updateOutline(\Drupal\node\NodeInterface $node): bool
+        {
             return $this->lazyLoadItself()->updateOutline($node);
         }
 
@@ -113,78 +121,88 @@ namespace Drupal\book\ProxyClass {
          * {@inheritdoc}
          */
         public function getBookParents(array $item, array $parent = array (
-        )): array {
+        )): array
+        {
             return $this->lazyLoadItself()->getBookParents($item, $parent);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function getTableOfContents(int|string $bid, int $depth_limit, array $exclude = array (
-        ), bool $truncate = TRUE): array {
-            return $this->lazyLoadItself()->getTableOfContents($bid, $depth_limit, $exclude);
+        public function getTableOfContents(string|int $bid, int $depth_limit, array $exclude = array (
+        ), bool $truncate = true): array
+        {
+            return $this->lazyLoadItself()->getTableOfContents($bid, $depth_limit, $exclude, $truncate);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function deleteFromBook(int $nid): void {
+        public function deleteFromBook(int $nid): void
+        {
             $this->lazyLoadItself()->deleteFromBook($nid);
         }
 
         /**
          * {@inheritdoc}
          */
-      public function bookTreeAllData(int $bid, ?array $link = NULL, ?int $max_depth = NULL, ?int $min_depth = NULL): array {
-            return $this->lazyLoadItself()->bookTreeAllData($bid, $link, $max_depth, $min_depth);
+        public function bookTreeAllData(int $bid, ?array $link = NULL, ?int $max_depth = NULL, ?int $min_depth = NULL, bool $expanded = FALSE): array {
+            return $this->lazyLoadItself()->bookTreeAllData($bid, $link, $max_depth, $min_depth, $expanded);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function getActiveTrailIds(string $bid, array $link): array {
+        public function getActiveTrailIds(string $bid, array $link): array
+        {
             return $this->lazyLoadItself()->getActiveTrailIds($bid, $link);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function bookTreeOutput(array $tree): array {
+        public function bookTreeOutput(array $tree): array
+        {
             return $this->lazyLoadItself()->bookTreeOutput($tree);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function bookTreeCollectNodeLinks(array &$tree, array &$node_links): void {
+        public function bookTreeCollectNodeLinks(array &$tree, array &$node_links): void
+        {
             $this->lazyLoadItself()->bookTreeCollectNodeLinks($tree, $node_links);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function bookTreeGetFlat(array $book_link): array {
+        public function bookTreeGetFlat(array $book_link): array
+        {
             return $this->lazyLoadItself()->bookTreeGetFlat($book_link);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function loadBookLink(int $nid, bool $translate = true): array {
+        public function loadBookLink(int $nid, bool $translate = true): array
+        {
             return $this->lazyLoadItself()->loadBookLink($nid, $translate);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function loadBookLinks(array $nids, bool $translate = true): array {
+        public function loadBookLinks(array $nids, bool $translate = true): array
+        {
             return $this->lazyLoadItself()->loadBookLinks($nids, $translate);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function saveBookLink(array $link, bool $new): array {
+        public function saveBookLink(array $link, bool $new): array
+        {
             return $this->lazyLoadItself()->saveBookLink($link, $new);
         }
 
@@ -192,21 +210,24 @@ namespace Drupal\book\ProxyClass {
          * {@inheritdoc}
          */
         public function bookTreeCheckAccess(array &$tree, array $node_links = array (
-        )): void {
+        )): void
+        {
             $this->lazyLoadItself()->bookTreeCheckAccess($tree, $node_links);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function bookLinkTranslate(array &$link): array {
+        public function bookLinkTranslate(array &$link): array
+        {
             return $this->lazyLoadItself()->bookLinkTranslate($link);
         }
 
         /**
          * {@inheritdoc}
          */
-        public function bookSubtreeData(array $link): array {
+        public function bookSubtreeData(array $link): array
+        {
             return $this->lazyLoadItself()->bookSubtreeData($link);
         }
 
@@ -216,6 +237,13 @@ namespace Drupal\book\ProxyClass {
         public function setStringTranslation(\Drupal\Core\StringTranslation\TranslationInterface $translation)
         {
             return $this->lazyLoadItself()->setStringTranslation($translation);
+        }
+
+        /**
+         * {@inheritdoc }
+         */
+        public function updateDescendantAliases(BookInterface $node): void {
+          $this->lazyLoadItself()->updateDescendantAliases($node);
         }
 
     }

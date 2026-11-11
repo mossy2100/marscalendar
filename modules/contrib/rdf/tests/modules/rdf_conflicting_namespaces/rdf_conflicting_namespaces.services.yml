@@ -1,0 +1,5 @@
+
+services:
+  Drupal\rdf_conflicting_namespaces\Hook\RdfConflictingNamespacesHooks:
+    class: Drupal\rdf_conflicting_namespaces\Hook\RdfConflictingNamespacesHooks
+    autowire: true

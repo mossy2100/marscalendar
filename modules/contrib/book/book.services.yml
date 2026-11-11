@@ -6,7 +6,7 @@ services:
       - { name: breadcrumb_builder, priority: 701 }
   book.manager:
     class: Drupal\book\BookManager
-    arguments: ['@entity_type.manager', '@string_translation', '@config.factory', '@book.outline_storage', '@renderer', '@language_manager', '@entity.repository', '@book.backend_chained_cache', '@cache.book_memory', '@current_route_match']
+    autowire: true
     lazy: true
   Drupal\book\BookManagerInterface: '@book.manager'
   book.outline:
@@ -66,6 +66,7 @@ services:
       # invalidates also this cache data.
       - { name: cache.bin.memory }
   book.setting_save.subscriber:
+    autowire: true
     class: Drupal\book\EventSubscriber\BookSettingsSaveEventSubscriber
     tags:
       - { name: event_subscriber }

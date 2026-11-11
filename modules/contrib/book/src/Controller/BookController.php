@@ -2,6 +2,7 @@
 
 namespace Drupal\book\Controller;
 
+use Drupal\book\BookInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Cache\CacheableResponse;
 use Drupal\Core\Controller\ControllerBase;
@@ -60,6 +61,14 @@ class BookController extends ControllerBase {
       $links['edit'] = [
         'title' => t('Edit order and titles'),
         'url' => Url::fromRoute('book.admin_edit', ['node' => $book['nid']]),
+      ];
+      $links['outline'] = [
+        'title' => t('Edit book outline'),
+        'url' => Url::fromRoute('entity.node.book_outline_form', ['node' => $book['nid']]),
+      ];
+      $links['delete'] = [
+        'title' => t('Delete entire book'),
+        'url' => Url::fromRoute('book.book_delete_confirmation_form', ['book_id' => $book['nid']]),
       ];
       $row[] = [
         'data' => [
@@ -130,7 +139,7 @@ class BookController extends ControllerBase {
       throw new NotFoundHttpException();
     }
 
-    if (!isset($node->book)) {
+    if (!$node instanceof BookInterface) {
       $this->messenger()->addWarning(t('%title is not in a book and cannot be exported.', ['%title' => $node->label()]));
       throw new NotFoundHttpException();
     }

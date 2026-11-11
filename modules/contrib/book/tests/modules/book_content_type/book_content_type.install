@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the test module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function book_content_type_install(): void {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('book.settings');
+  $settings = [];
+  $settings[] = [
+    'content_type' => 'book',
+    'child_type' => 'book',
+  ];
+  $config->set('allowed_types', $settings)->save();
+}

@@ -1,0 +1,9 @@
+name: 'Book module content type'
+type: module
+description: 'Content type for book.'
+package: Testing
+
+# Information added by Drupal.org packaging script on 2026-10-09
+version: '3.0.8'
+project: 'book'
+datestamp: 1791557391

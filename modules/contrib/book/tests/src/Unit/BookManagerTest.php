@@ -5,23 +5,32 @@ declare(strict_types=1);
 namespace Drupal\Tests\book\Unit;
 
 use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\Core\Cache\Context\CacheContextsManager;
 use Drupal\Core\Config\ConfigFactory;
 use Drupal\Core\Entity\EntityRepositoryInterface;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Language\LanguageManager;
+use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\TranslationInterface;
 use Drupal\Tests\UnitTestCase;
 use Drupal\book\BookManager;
 use Drupal\book\BookOutlineStorageInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
- * @coversDefaultClass \Drupal\book\BookManager
- * @group book
+ * BookManager test.
  */
+#[CoversClass(BookManager::class)]
+#[Group('book')]
+#[RunTestsInSeparateProcesses]
 class BookManagerTest extends UnitTestCase {
 
   /**
@@ -88,6 +97,13 @@ class BookManagerTest extends UnitTestCase {
   protected MockObject|RouteMatchInterface $routeMatch;
 
   /**
+   * The logger.factory service.
+   *
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface|\PHPUnit\Framework\MockObject\MockObject
+   */
+  protected MockObject|LoggerChannelFactoryInterface $loggerFactory;
+
+  /**
    * {@inheritdoc}
    *
    * @throws \PHPUnit\Framework\MockObject\Exception
@@ -103,16 +119,18 @@ class BookManagerTest extends UnitTestCase {
     $this->languageManager = $this->createMock('Drupal\Core\Language\LanguageManagerInterface');
     $this->entityRepository = $this->createMock('Drupal\Core\Entity\EntityRepositoryInterface');
     $this->routeMatch = $this->createMock(RouteMatchInterface::class);
+    $this->loggerFactory = $this->createMock(LoggerChannelFactoryInterface::class);
+    $moduleHandler = $this->createMock(ModuleHandlerInterface::class);
     // Used for both book manager cache services: backend chain and memory.
     $cache = $this->createMock(CacheBackendInterface::class);
-    $this->bookManager = new BookManager($this->entityTypeManager, $this->translation, $this->configFactory, $this->bookOutlineStorage, $this->renderer, $this->languageManager, $this->entityRepository, $cache, $cache, $this->routeMatch);
+    $cacheContextsManager = $this->createMock(CacheContextsManager::class);
+    $this->bookManager = new BookManager($this->entityTypeManager, $this->translation, $this->configFactory, $this->bookOutlineStorage, $this->renderer, $this->languageManager, $this->entityRepository, $cache, $cache, $this->routeMatch, $this->loggerFactory, $moduleHandler, $cacheContextsManager);
   }
 
   /**
    * Tests the getBookParents() method.
-   *
-   * @dataProvider providerTestGetBookParents
    */
+  #[DataProvider('providerTestGetBookParents')]
   public function testGetBookParents($book, $parent, $expected): void {
     $this->assertEquals($expected, $this->bookManager->getBookParents($book, $parent));
   }

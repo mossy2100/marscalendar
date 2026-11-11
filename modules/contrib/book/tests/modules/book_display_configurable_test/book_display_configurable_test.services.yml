@@ -1,0 +1,5 @@
+
+services:
+  Drupal\book_display_configurable_test\Hook\BookDisplayConfigurableTestHooks:
+    class: Drupal\book_display_configurable_test\Hook\BookDisplayConfigurableTestHooks
+    autowire: true

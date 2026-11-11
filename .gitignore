@@ -43,3 +43,4 @@ themes/**/.sass-cache
 modules/contrib/security_review/file_write_test.*
 modules/contrib/security_review/IGNOREME.txt
 /README.md
+/autoload_runtime.php

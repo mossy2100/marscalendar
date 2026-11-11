@@ -1,0 +1,5 @@
+
+services:
+  Drupal\book_breadcrumb_test\Hook\BookBreadcrumbTestHooks:
+    class: Drupal\book_breadcrumb_test\Hook\BookBreadcrumbTestHooks
+    autowire: true

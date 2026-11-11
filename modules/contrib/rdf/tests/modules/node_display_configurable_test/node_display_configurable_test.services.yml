@@ -1,0 +1,5 @@
+
+services:
+  Drupal\node_display_configurable_test\Hook\NodeDisplayConfigurableTestHooks:
+    class: Drupal\node_display_configurable_test\Hook\NodeDisplayConfigurableTestHooks
+    autowire: true

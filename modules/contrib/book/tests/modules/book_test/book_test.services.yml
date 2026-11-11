@@ -1,0 +1,5 @@
+
+services:
+  Drupal\book_test\Hook\BookTestHooks:
+    class: Drupal\book_test\Hook\BookTestHooks
+    autowire: true

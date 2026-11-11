@@ -4,7 +4,7 @@ namespace Drupal\book\Form;
 
 use Drupal\Component\Utility\Crypt;
 use Drupal\Core\Entity\EntityRepositoryInterface;
-use Drupal\Core\Entity\EntityStorageInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
@@ -16,6 +16,7 @@ use Drupal\book\BookManager;
 use Drupal\book\BookManagerInterface;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Provides a form for administering a single book's hierarchy.
@@ -24,24 +25,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class BookAdminEditForm extends FormBase {
 
-  /**
-   * Constructs a new BookAdminEditForm.
-   *
-   * @param \Drupal\Core\Entity\EntityStorageInterface $nodeStorage
-   *   The content block storage.
-   * @param \Drupal\book\BookManagerInterface $bookManager
-   *   The book manager.
-   * @param \Drupal\Core\Entity\EntityRepositoryInterface $entityRepository
-   *   The entity repository service.
-   * @param \Drupal\Core\Session\AccountProxyInterface $currentUser
-   *   Gets the current active user.
-   * @param \Drupal\Core\Render\RendererInterface $renderer
-   *   The renderer.
-   * @param \Drupal\Core\Routing\RouteMatchInterface $current_route_match
-   *   Gets current route.
-   */
   public function __construct(
-    protected EntityStorageInterface $nodeStorage,
+    protected EntityTypeManagerInterface $entityTypeManager,
     protected BookManagerInterface $bookManager,
     protected EntityRepositoryInterface $entityRepository,
     protected AccountProxyInterface $currentUser,
@@ -54,9 +39,8 @@ class BookAdminEditForm extends FormBase {
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container): static {
-    $entity_type_manager = $container->get('entity_type.manager');
     return new static(
-      $entity_type_manager->getStorage('node'),
+      $container->get('entity_type.manager'),
       $container->get('book.manager'),
       $container->get('entity.repository'),
       $container->get('current_user'),
@@ -76,6 +60,10 @@ class BookAdminEditForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?NodeInterface $node = NULL): array {
+    if (!$node->getBook()) {
+      throw new NotFoundHttpException();
+    }
+
     $form['#title'] = $this->t('Edit %parent book outline', ['%parent' => $node->label()]);
     $form['#node'] = $node;
     $this->bookAdminTable($node, $form);
@@ -83,6 +71,8 @@ class BookAdminEditForm extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Save book pages'),
     ];
+
+    $form['#attached']['library'][] = 'book/book-edit-form';
 
     return $form;
   }
@@ -103,7 +93,7 @@ class BookAdminEditForm extends FormBase {
       }
 
       /** @var \Drupal\node\NodeInterface $node */
-      $node = $this->nodeStorage->load($book['nid']);
+      $node = $this->entityTypeManager->getStorage('node')->load($book['nid']);
       $node->setTitle($book['title']);
       $violations = $node->validate();
 
@@ -116,6 +106,9 @@ class BookAdminEditForm extends FormBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @throws \Drupal\Core\Entity\EntityMalformedException
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     // Save elements in the same order as defined in post rather than the form.
@@ -141,14 +134,14 @@ class BookAdminEditForm extends FormBase {
 
           // Update the title if changed.
           if ($row['title']['#default_value'] != $values['title']) {
-            $node = $this->nodeStorage->load($values['nid']);
+            $node = $this->entityTypeManager->getStorage('node')->load($values['nid']);
             $node = $this->entityRepository->getTranslationFromContext($node);
             $node->revision_log = $this->t('Title changed from %original to %current.', [
               '%original' => $node->label(),
               '%current' => $values['title'],
             ]);
             $node->setTitle($values['title']);
-            $node->book['link_title'] = $node->label();
+            $node->setBookKey('link_title', $node->label());
             $node->setNewRevision();
             $node->save();
             $this->logger('content')->info('book: updated %title.', [
@@ -180,7 +173,7 @@ class BookAdminEditForm extends FormBase {
       '#header' => [
         $title_field_definition->getLabel(),
         $this->t('Weight'),
-        $this->t('Parent'),
+        $this->t('Hidden Book Information'),
         $this->t('Operations'),
       ],
       '#empty' => $this->t('No book content available.'),
@@ -202,7 +195,7 @@ class BookAdminEditForm extends FormBase {
       ],
     ];
 
-    $tree = $this->bookManager->bookSubtreeData($node->book);
+    $tree = $this->bookManager->bookSubtreeData($node->getBook());
     // Do not include the book item itself.
     $tree = array_shift($tree);
     if ($tree['below']) {
@@ -217,7 +210,7 @@ class BookAdminEditForm extends FormBase {
         '#type' => 'value',
         '#value' => $hash,
       ];
-      $this->bookAdminTableTree($tree['below'], $form['table']);
+      $this->bookAdminTableTree($tree['below'], $form['table'], (int) ($tree['link']['depth'] ?? 0));
     }
   }
 
@@ -228,10 +221,12 @@ class BookAdminEditForm extends FormBase {
    *   A subtree of the book menu hierarchy.
    * @param array $form
    *   The form that is being modified, passed by reference.
+   * @param int $depth
+   *   The initial depth of the book node.
    *
    * @see self::buildForm()
    */
-  protected function bookAdminTableTree(array $tree, array &$form): void {
+  protected function bookAdminTableTree(array $tree, array &$form, int $depth): void {
     // The delta must be big enough to give each node a distinct value.
     $count = count($tree);
     $delta = ($count < 30) ? 50 : intval($count / 2) + 1;
@@ -248,21 +243,16 @@ class BookAdminEditForm extends FormBase {
       $form[$id]['#attributes']['class'][] = 'draggable';
       $form[$id]['#weight'] = $data['link']['weight'];
 
-      /* Indentation stylings break the child ordering admin form,
-      so check the route. */
-      $route_name = $this->current_route_match->getRouteName();
-
-      if ($route_name != 'book.node_child_ordering') {
-        if (isset($data['link']['depth']) && $data['link']['depth'] > 2) {
-          $indentation = [
-            '#theme' => 'indentation',
-            '#size' => $data['link']['depth'] - 2,
-          ];
-        }
+      $supported_depth = max($depth + 1, 2);
+      if (isset($data['link']['depth']) && $data['link']['depth'] > $supported_depth) {
+        $indentation = [
+          '#theme' => 'indentation',
+          '#size' => $data['link']['depth'] - $supported_depth,
+        ];
       }
 
       /** @var \Drupal\node\NodeInterface $node */
-      $node = $this->nodeStorage->load($nid);
+      $node = $this->entityTypeManager->getStorage('node')->load($nid);
       $field_name = 'title';
       $field_items = $node->get($field_name);
       if ($field_items->access('edit')) {
@@ -343,7 +333,7 @@ class BookAdminEditForm extends FormBase {
       }
 
       if ($data['below']) {
-        $this->bookAdminTableTree($data['below'], $form);
+        $this->bookAdminTableTree($data['below'], $form, $depth);
       }
     }
   }

@@ -4,12 +4,16 @@ namespace Drupal\Tests\pathauto\Functional;
 
 use Drupal\comment\Tests\CommentTestTrait;
 use Drupal\Tests\BrowserTestBase;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Tests pathauto settings form.
  *
  * @group pathauto
  */
+#[Group('pathauto')]
+#[RunTestsInSeparateProcesses]
 class PathautoEnablingEntityTypesTest extends BrowserTestBase {
 
   use PathautoTestHelperTrait;
@@ -58,6 +62,8 @@ class PathautoEnablingEntityTypesTest extends BrowserTestBase {
   }
 
   /**
+   * Test enable/disable alias patterns per entity type.
+   *
    * A suite of tests to verify if the feature to enable and disable the
    * ability to define alias patterns for a given entity type works. Test with
    * the comment module, as it is not enabled by default.
@@ -74,7 +80,7 @@ class PathautoEnablingEntityTypesTest extends BrowserTestBase {
     $edit = [
       'enabled_entity_types[comment]' => TRUE,
     ];
-    $this->submitForm($edit, "Save configuration" );
+    $this->submitForm($edit, "Save configuration");
     $this->createPattern('comment', '/comment/[comment:body]');
 
     // Create a node, a comment type and a comment entity.

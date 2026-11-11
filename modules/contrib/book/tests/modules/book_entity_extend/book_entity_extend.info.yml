@@ -1,0 +1,12 @@
+name: 'Book entity extend test'
+type: module
+description: 'Overrides a node bundle class so it no longer implements Drupal\book\BookInterface, to reproduce contrib/book#node-view-getBook errors.'
+package: Testing
+dependencies:
+  - drupal:book
+  - drupal:node
+
+# Information added by Drupal.org packaging script on 2026-10-09
+version: '3.0.8'
+project: 'book'
+datestamp: 1791557391

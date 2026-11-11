@@ -1,0 +1,5 @@
+
+services:
+  Drupal\rdf_test_namespaces\Hook\RdfTestNamespacesHooks:
+    class: Drupal\rdf_test_namespaces\Hook\RdfTestNamespacesHooks
+    autowire: true

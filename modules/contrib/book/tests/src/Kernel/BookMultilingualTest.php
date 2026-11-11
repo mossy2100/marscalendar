@@ -13,6 +13,8 @@ use Drupal\language\Plugin\LanguageNegotiation\LanguageNegotiationUrl;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\user\Plugin\LanguageNegotiation\LanguageNegotiationUser;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
@@ -20,9 +22,9 @@ use Symfony\Component\Routing\Route;
 
 /**
  * Tests multilingual books.
- *
- * @group book
  */
+#[Group('book')]
+#[RunTestsInSeparateProcesses]
 class BookMultilingualTest extends KernelTestBase {
 
   use UserCreationTrait;
@@ -42,6 +44,7 @@ class BookMultilingualTest extends KernelTestBase {
     'field',
     'text',
     'book',
+    'book_content_type',
     'language',
     'content_translation',
   ];
@@ -97,8 +100,11 @@ class BookMultilingualTest extends KernelTestBase {
     $node_type->save();
     $this->container->get('content_translation.manager')->setEnabled('node', $node_type->id(), TRUE);
     $book_config = $this->config('book.settings');
-    $allowed_types = $book_config->get('allowed_types');
-    $allowed_types[] = $node_type->id();
+    $allowed_types = $book_config->get('allowed_types') ?? [];
+    $allowed_types[] = [
+      'content_type' => $node_type->id(),
+      'child_type' => $node_type->id(),
+    ];
     $book_config->set('allowed_types', $allowed_types)->save();
     // To test every possible combination of root-child / child-child, two
     // trees are needed. The first level below the root needs to have two
@@ -127,43 +133,47 @@ class BookMultilingualTest extends KernelTestBase {
         $node->addTranslation(self::LANGCODE, [
           'title' => $this->randomString(),
         ]);
+        $book = $node->getBook();
         switch ($i) {
           case 0:
-            $node->book['bid'] = 'new';
-            $node->book['pid'] = 0;
-            $node->book['depth'] = 1;
+            $book['bid'] = 'new';
+            $book['pid'] = 0;
+            $book['depth'] = 1;
             break;
 
           case 1:
           case 2:
-            $node->book['bid'] = $root;
-            $node->book['pid'] = $root;
-            $node->book['depth'] = 2;
+            $book['bid'] = $root;
+            $book['pid'] = $root;
+            $book['depth'] = 2;
             break;
 
           case 3:
           case 4:
-            $node->book['bid'] = $root;
-            $node->book['pid'] = $root + 1;
-            $node->book['depth'] = 3;
+            $book['bid'] = $root;
+            $book['pid'] = $root + 1;
+            $book['depth'] = 3;
             break;
 
           case 5:
           case 6:
-            $node->book['bid'] = $root;
-            $node->book['pid'] = $root + 2;
-            $node->book['depth'] = 3;
+            $book['bid'] = $root;
+            $book['pid'] = $root + 2;
+            $book['depth'] = 3;
             break;
         }
         // This is necessary to make the table of contents consistent across
         // test runs.
-        $node->book['weight'] = $i;
+        $book['weight'] = $i;
         $node->set('nid', $root + $i);
+        $node->setBook($book);
         $node->enforceIsNew();
         $node->save();
       }
     }
     $this->container->get('current_user')->setAccount($this->createUser(['access content']));
+    // Avoid any issues with $context.
+    $this->container->get('kernel')->rebuildContainer();
   }
 
   /**
@@ -226,6 +236,12 @@ class BookMultilingualTest extends KernelTestBase {
     $bbb = $this->container->get('book.breadcrumb');
     $links = $bbb->build($route_match)->getLinks();
     $link = array_shift($links);
+    // Simulate http request.
+    $link->getUrl()->setOption('absolute', TRUE);
+    $link->getUrl()->setUrlGenerator(\Drupal::service('url_generator'));
+    $context = \Drupal::service('router.request_context');
+    $context->setHost("$langcode.book.test.domain");
+    $context->setScheme('https');
     $rendered_link = (string) Link::fromTextAndUrl($link->getText(), $link->getUrl())->toString();
     $this->assertStringContainsString("https://$langcode.book.test.domain/", $rendered_link);
     $link = array_shift($links);
@@ -327,7 +343,15 @@ class BookMultilingualTest extends KernelTestBase {
   protected function assertNodeLinkIsCorrectlyTranslated(int $nid, string $title, Url $url, string $langcode): void {
     $node = Node::load($nid);
     $this->assertSame($node->getTranslation($langcode)->label(), $title);
-    $rendered_link = (string) Link::fromTextAndUrl($title, $url)->toString();
+
+    // Simulate http request.
+    $url->setOption('absolute', TRUE);
+    $url->setUrlGenerator(\Drupal::service('url_generator'));
+    $context = \Drupal::service('router.request_context');
+    $context->setHost("$langcode.book.test.domain");
+    $context->setScheme('https');
+    // Generate url and check translation.
+    $rendered_link = Link::fromTextAndUrl($title, $url)->toString();
     $this->assertStringContainsString("https://$langcode.book.test.domain/node/$nid", $rendered_link);
   }
 
