@@ -1,5 +1,5 @@
 name: marscalendar
-type: drupal10
+type: drupal11
 docroot: .
 php_version: "8.3"
 webserver_type: nginx-fpm
