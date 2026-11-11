@@ -1,0 +1,6 @@
+# Mount MarsCalendar/private into the web container as the Drupal private files directory.
+# This keeps private files outside the docroot, as in production.
+services:
+  web:
+    volumes:
+      - ../../../private:/var/www/private
