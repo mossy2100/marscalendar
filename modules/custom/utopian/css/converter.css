@@ -45,10 +45,10 @@
   font-weight: bold;
 }
 
-.utopian-converter__year {
+.utopian-panel .utopian-converter__year {
   width: 60px;
 }
 
-.utopian-converter__time {
+.utopian-panel .utopian-converter__time {
   width: 80px;
 }

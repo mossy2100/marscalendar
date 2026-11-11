@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - utopian
+  theme:
+    - mdc
+id: mdc_utopian_clock
+theme: mdc
+region: sidebar_first
+weight: 20
+provider: null
+plugin: utopian_clock
+settings:
+  id: utopian_clock
+  label: 'Current datetime on Mars'
+  label_display: visible
+  provider: utopian
+visibility: {  }

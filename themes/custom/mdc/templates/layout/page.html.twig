@@ -1,0 +1,69 @@
+{#
+/**
+ * @file
+ * Page layout for the MDC theme.
+ *
+ * A full-width header, then three columns (left sidebar, content, right
+ * sidebar) on a starfield with Mars behind, then the footer. On narrow screens
+ * the columns stack in the same order.
+ *
+ * Regions:
+ * - page.header: The site banner and slogan.
+ * - page.highlighted: Items above the content.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: The calendar menu, search and Mars clock.
+ * - page.sidebar_second: Contact and promotional blocks.
+ * - page.footer: The copyright notice.
+ *
+ * @see template_preprocess_page()
+ */
+#}
+{%
+  set content_classes = [
+    'mdc-content',
+    page.sidebar_first and page.sidebar_second ? 'col-lg-6',
+    (page.sidebar_first or page.sidebar_second) and not (page.sidebar_first and page.sidebar_second) ? 'col-lg-9',
+    not page.sidebar_first and not page.sidebar_second ? 'col-12',
+  ]
+%}
+<div class="mdc-background">
+  <div class="container mdc-page">
+
+    {% if page.header %}
+      <header class="mdc-header" role="banner">
+        {{ page.header }}
+      </header>
+    {% endif %}
+
+    <div class="row g-0 mdc-columns">
+      {% if page.sidebar_first %}
+        <aside class="col-lg-3 mdc-sidebar mdc-sidebar--first" role="complementary">
+          {{ page.sidebar_first }}
+        </aside>
+      {% endif %}
+
+      <main{{ create_attribute({'class': content_classes, 'role': 'main'}) }}>
+        <a id="main-content" tabindex="-1"></a>{# The skip link is in html.html.twig. #}
+        {% if page.highlighted %}
+          <div class="mdc-highlighted">{{ page.highlighted }}</div>
+        {% endif %}
+        {{ page.help }}
+        {{ page.content }}
+      </main>
+
+      {% if page.sidebar_second %}
+        <aside class="col-lg-3 mdc-sidebar mdc-sidebar--second" role="complementary">
+          {{ page.sidebar_second }}
+        </aside>
+      {% endif %}
+    </div>
+
+    {% if page.footer %}
+      <footer class="mdc-footer" role="contentinfo">
+        {{ page.footer }}
+      </footer>
+    {% endif %}
+
+  </div>
+</div>

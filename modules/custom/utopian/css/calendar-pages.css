@@ -55,7 +55,7 @@
   font-weight: bold;
 }
 
-.calendar-page__sols-of-week abbr {
+.calendar-page__sols-of-week abbr[title] {
   text-decoration: none;
   cursor: help;
 }

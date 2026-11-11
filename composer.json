@@ -17,7 +17,7 @@
     "require": {
         "composer/installers": "^2.0",
         "drupal/book": "^3.0",
-        "drupal/bootstrap": "^5.0",
+        "drupal/bootstrap5": "^4",
         "drupal/core": "^11",
         "drupal/core-composer-scaffold": "^11",
         "drupal/core-project-message": "^11",

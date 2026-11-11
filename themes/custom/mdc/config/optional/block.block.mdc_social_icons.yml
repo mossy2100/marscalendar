@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:27b1b28c-8027-4310-b578-a2e18bd35de8'
+  module:
+    - block_content
+  theme:
+    - mdc
+id: mdc_social_icons
+theme: mdc
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:27b1b28c-8027-4310-b578-a2e18bd35de8'
+settings:
+  id: 'block_content:27b1b28c-8027-4310-b578-a2e18bd35de8'
+  label: 'Social icons'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

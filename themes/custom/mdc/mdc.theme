@@ -1,7 +1,17 @@
 <?php
+
 /**
  * @file
- * Bootstrap sub-theme.
- *
- * Place your custom PHP code in this file.
+ * Theme hooks for the MDC theme.
  */
+
+declare(strict_types=1);
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form.
+ */
+function mdc_form_search_block_form_alter(array &$form, FormStateInterface $form_state): void {
+  $form['keys']['#attributes']['placeholder'] = t('Search');
+}

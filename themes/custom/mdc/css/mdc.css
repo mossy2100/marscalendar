@@ -1,0 +1,439 @@
+/**
+ * @file
+ * Styles for the MDC theme, ported from the original Bootstrap 3 theme.
+ */
+
+:root {
+  --mdc-red: #c00;
+  --mdc-dark-red: #900;
+  --mdc-orange: #f83;
+  --mdc-dark-orange: #e67300;
+  --mdc-pale-orange: #ffdfbf;
+  --mdc-focus: #df4f1a;
+
+  /* Bootstrap overrides. */
+  --bs-body-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bs-body-font-size: 14px;
+  --bs-body-line-height: 1.43;
+  --bs-link-color: var(--mdc-red);
+  --bs-link-color-rgb: 204, 0, 0;
+  --bs-link-hover-color: var(--mdc-orange);
+  --bs-link-hover-color-rgb: 255, 136, 51;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Elements. */
+
+body {
+  background-color: #000;
+  background-image: url("../images/stars-tileable.jpg");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--mdc-red);
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+sup,
+sub {
+  font-size: 10px;
+  line-height: 0;
+}
+
+figure {
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  text-align: center;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--mdc-red);
+  --bs-btn-border-color: var(--mdc-dark-red);
+  --bs-btn-hover-bg: var(--mdc-orange);
+  --bs-btn-hover-border-color: var(--mdc-dark-orange);
+  --bs-btn-active-bg: var(--mdc-orange);
+  --bs-btn-active-border-color: var(--mdc-dark-orange);
+  --bs-btn-focus-shadow-rgb: 255, 136, 51;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Page layout. */
+
+.mdc-background {
+  min-height: 100vh;
+  padding-top: 20px;
+  background-image: url("../images/hires-Mars-transparent-bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center 31px;
+  background-size: 100% auto;
+}
+
+@media (min-width: 1200px) {
+  .mdc-page {
+    max-width: 1170px;
+  }
+}
+
+.mdc-columns {
+  margin-bottom: 30px;
+}
+
+.mdc-sidebar {
+  padding: 0 15px;
+  background-color: var(--mdc-pale-orange);
+}
+
+.mdc-content {
+  padding: 15px;
+  background-color: #fff;
+}
+
+@media (min-width: 992px) {
+  .mdc-columns {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .mdc-sidebar,
+  .mdc-content {
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Header and branding. */
+
+.mdc-branding__logo {
+  display: block;
+  max-width: 100%;
+  margin: 10px 10px 0;
+}
+
+.mdc-branding__logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mdc-branding__name {
+  font-size: 48px;
+  color: #fff;
+}
+
+.mdc-branding__slogan {
+  margin: 5px 10px 10px;
+  font-size: 16px;
+  font-style: italic;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .mdc-branding__logo {
+    margin: 0;
+  }
+
+  .mdc-branding__slogan {
+    margin: 5px 0 10px;
+    font-size: 24px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Sidebar blocks. */
+
+.mdc-sidebar .block {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--mdc-orange);
+}
+
+.mdc-sidebar .block:last-child {
+  border-bottom: none;
+}
+
+.mdc-sidebar .block h2 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.mdc-sidebar .field--name-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Calendar menu. */
+
+.mdc-sidebar .nav {
+  display: block;
+  margin: 0;
+  padding: 13px 0 0;
+  font-size: 16px;
+  list-style: none;
+}
+
+@media (min-width: 992px) {
+  .mdc-sidebar .nav {
+    font-size: 14px;
+  }
+}
+
+.mdc-sidebar .nav-item {
+  margin: 0;
+}
+
+.mdc-sidebar .nav-link {
+  display: block;
+  margin: 2px 0;
+  padding: 2px 5px;
+  border-radius: 3px;
+  line-height: 1.43;
+  color: var(--mdc-red);
+}
+
+.mdc-sidebar .nav-link:hover {
+  background-color: var(--mdc-orange);
+  color: #fff;
+  text-decoration: none;
+}
+
+.mdc-sidebar .nav-link:focus-visible {
+  background-color: var(--mdc-focus);
+  color: #fff;
+}
+
+.mdc-sidebar .nav-link.active,
+.mdc-sidebar .nav-link.is-active {
+  background-color: var(--mdc-red);
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Search: a text field joined to a red magnifier button. */
+
+.mdc-sidebar .search-block-form form {
+  display: flex;
+}
+
+.mdc-sidebar .search-block-form .form-item {
+  flex: 1;
+  margin: 0;
+}
+
+.mdc-sidebar .search-block-form .form-search {
+  height: 34px;
+  border-radius: 4px 0 0 4px;
+}
+
+.mdc-sidebar .search-block-form .form-actions {
+  margin: 0;
+}
+
+.mdc-sidebar .search-block-form .form-submit {
+  width: 40px;
+  height: 34px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--mdc-dark-red);
+  border-radius: 0 4px 4px 0;
+  background: var(--mdc-red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0'/%3E%3C/svg%3E") center / 16px no-repeat;
+  color: transparent;
+}
+
+.mdc-sidebar .search-block-form .form-submit:hover,
+.mdc-sidebar .search-block-form .form-submit:focus {
+  border-color: var(--mdc-dark-orange);
+  background-color: var(--mdc-orange);
+}
+
+/* Social icons and the IMRS book. */
+
+#social-icons {
+  margin: 10px 0;
+}
+
+#social-icons p {
+  margin: 0;
+}
+
+#social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 4px 2px;
+}
+
+#social-icons img {
+  width: 40px;
+  height: 40px;
+}
+
+.mdc-sidebar img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Content. */
+
+.mdc-content h1:first-child,
+.mdc-content .block-page-title-block h1 {
+  margin: 0;
+  padding: 0 0 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.mdc-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 10px;
+}
+
+.mdc-content li {
+  margin: 10px 0;
+}
+
+.mdc-content table {
+  margin: 10px auto;
+}
+
+.mdc-content caption {
+  caption-side: top;
+  font-size: 14px;
+  font-style: italic;
+  color: #000;
+  text-align: center;
+}
+
+.mdc-content td,
+.mdc-content th {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid var(--mdc-orange);
+}
+
+.mdc-content thead td,
+.mdc-content th,
+.mdc-content tfoot td {
+  font-weight: bold;
+  background-color: var(--mdc-pale-orange);
+}
+
+.mdc-content th.planet {
+  text-align: center;
+}
+
+.mdc-content td.num,
+.mdc-content th.num {
+  text-align: right;
+}
+
+.mdc-content table.calculation {
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+.mdc-content table.calculation td {
+  padding: 2px;
+  border: none;
+}
+
+.mdc-content .math,
+.mdc-content .indent {
+  margin-left: 20px;
+}
+
+/* The calendar pages and clock have their own colours (utopian module). */
+.mdc-content .calendar-page td,
+.mdc-content .calendar-page th {
+  border-color: var(--utopian-season-border);
+}
+
+.mdc-content .calendar-page th {
+  background-color: var(--utopian-season);
+}
+
+/* Hidden node furniture, as on the original site. */
+.mdc-content .node__meta,
+.mdc-content .author,
+.mdc-content ul.links,
+.mdc-content .book-navigation,
+.mdc-content .book-nav {
+  display: none;
+}
+
+nav.tabs,
+.mdc-content .nav-tabs {
+  margin: 15px 0;
+}
+
+.alert {
+  margin: 15px 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Footer. */
+
+.mdc-footer {
+  padding: 0 15px 15px;
+  color: #fff;
+}
+
+.mdc-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.mdc-footer a:hover {
+  color: var(--mdc-orange);
+}
