@@ -1,0 +1,7 @@
+# security.txt for marscalendar.com
+# https://securitytxt.org/  (RFC 9116)
+
+Contact: mailto:security@oceanmoon.software
+Expires: 2027-05-28T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://marscalendar.com/.well-known/security.txt
