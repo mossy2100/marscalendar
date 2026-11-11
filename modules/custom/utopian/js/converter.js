@@ -80,6 +80,10 @@
       this.currentYear = null;
       this.currentMir = null;
 
+      // The moment both calendars show, as a Unix timestamp in milliseconds.
+      // Changing a time zone keeps this fixed and redisplays it.
+      this.instant = null;
+
       addOptions(this.earth.month, 12);
       addOptions(this.earth.day, 31);
       addOptions(this.mars.month, Drupal.utopian.MONTHS_PER_MIR);
@@ -113,9 +117,15 @@
         el.addEventListener('change', () => {
           this.limitDays();
           const dtEarth = this.getEarth();
+          this.instant = dtEarth.valueOf();
           this.showEarthDerived(dtEarth);
-          this.setMars(Drupal.utopian.timestampToUtopian(dtEarth.valueOf(), this.marsTimeZone()));
+          this.setMars(Drupal.utopian.timestampToUtopian(this.instant, this.marsTimeZone()));
         });
+      });
+
+      // Show the same moment in the newly selected Earth time zone.
+      this.earth.timeZone.addEventListener('change', () => {
+        this.setEarth(new Date(this.instant));
       });
     }
 
@@ -138,9 +148,15 @@
         el.addEventListener('change', () => {
           this.limitSols();
           const dtMars = this.getMars();
+          this.instant = Drupal.utopian.utopianToTimestamp(dtMars);
           this.showMarsDerived(dtMars);
-          this.setEarth(new Date(Drupal.utopian.utopianToTimestamp(dtMars)));
+          this.setEarth(new Date(this.instant));
         });
+      });
+
+      // Show the same moment in the newly selected Mars time zone.
+      this.mars.timeZone.addEventListener('change', () => {
+        this.setMars(Drupal.utopian.timestampToUtopian(this.instant, this.marsTimeZone()));
       });
     }
 
@@ -150,10 +166,11 @@
     reset() {
       const now = new Date();
       now.setMilliseconds(0);
+      this.instant = now.valueOf();
       this.currentYear = now.getFullYear();
       this.setEarth(now);
 
-      const dtMars = Drupal.utopian.timestampToUtopian(now.valueOf(), this.marsTimeZone());
+      const dtMars = Drupal.utopian.timestampToUtopian(this.instant, this.marsTimeZone());
       this.currentMir = dtMars.mir;
       this.setMars(dtMars);
     }

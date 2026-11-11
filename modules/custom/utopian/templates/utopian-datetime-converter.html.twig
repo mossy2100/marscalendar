@@ -45,7 +45,7 @@
       </div>
       <p>
         <label for="utopian-earth-time-zone">Time zone:</label>
-        <select id="utopian-earth-time-zone" class="earth-date form-select" data-utopian="earth-time-zone">
+        <select id="utopian-earth-time-zone" class="form-select" data-utopian="earth-time-zone">
           <option value="local" selected>Local</option>
           <option value="utc">UTC</option>
         </select>
@@ -84,7 +84,7 @@
       </div>
       <p>
         <label for="utopian-mars-time-zone">Time zone:</label>
-        <select id="utopian-mars-time-zone" class="mars-date form-select" data-utopian="mars-time-zone">
+        <select id="utopian-mars-time-zone" class="form-select" data-utopian="mars-time-zone">
           {% for offset, label in mars_time_zones %}
             <option value="{{ offset }}"{{ offset == 0 ? ' selected' }}>{{ label }}</option>
           {% endfor %}
